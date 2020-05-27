@@ -13,6 +13,6 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/zain', function () {
+Route::get('/faizan', function () {
     return view('welcome');
 });
