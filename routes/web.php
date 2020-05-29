@@ -21,3 +21,6 @@ Route::get('/sign-in',function(){
     return view('home.sign-in');
 })->name('sign-in');
 
+Route::get('/dashboard',function(){
+    return view('dashboard.main_dashboard');
+})->name('dashboard');
