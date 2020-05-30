@@ -20,3 +20,8 @@ Route::get('/', function () {
 Route::get('/sign-in',function(){
     return view('home.sign-in');
 })->name('sign-in');
+
+Route::get('/register',function(){
+    return view('home.register
+    ');
+})->name('register');
