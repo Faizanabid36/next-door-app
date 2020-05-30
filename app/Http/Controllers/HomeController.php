@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -22,15 +24,16 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    // public function index()
-    // {
-    //     return view('home');
-    // }
+    public function index()
+    {
+        return view('user.user_dashboard');
+    }
 
     public function list()
     {
-        $users = User::paginate(5)->get();
-        dd($users);
+        // $users = User::paginate(5)->all();
+        $users = DB::table('users')->paginate(4);
+
         return \view('dashboard.user_list' , \compact('users'));
     }
 

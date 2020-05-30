@@ -83,20 +83,24 @@
                                 </td>
                                 <td class="product-price">{{$num->contact}}</td>
                                 <td class="product-action">
-                                    <span class="action-edit"><i class="feather icon-edit"></i></span>
                                     <a href="{{url('/list/{id}'.$num->id)}}"> <span ><i class="feather icon-trash"></i></span></a>
                                 </td>
                             </tr>
+                           
+
                             @endforeach
 
                         </tbody>
                     </table>
+
                 </div>
                 <!-- DataTable ends -->
             </section>
             <!-- Data list view end -->
 
         </div>
+        {{ $users->links() }}
+
     </div>
 </div>
 <!-- END: Content-->

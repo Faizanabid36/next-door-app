@@ -24,15 +24,15 @@
                 </li>
                 <li class=" navigation-header"><span>Neighborhood</span>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Events</span></a>
+                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-credit-card"></i><span class="menu-title" data-i18n="Email">Events</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Crime and Safety</span></a>
+                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-check-circle"></i><span class="menu-title" data-i18n="Email">Crime and Safety</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Lost and Found</span></a>
+                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-eye"></i><span class="menu-title" data-i18n="Email">Lost and Found</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">Documents</span></a>
+                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-file-text"></i><span class="menu-title" data-i18n="Email">Documents</span></a>
                 </li>
-                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">General</span></a>
+                <li class=" nav-item"><a href="app-email.html"><i class="feather icon-edit"></i><span class="menu-title" data-i18n="Email">General</span></a>
                 </li>
 
                 {{-- <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Todo</span></a>

@@ -11,7 +11,7 @@
     <meta name="keywords"
           content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard analytics - Vuexy - Bootstrap HTML admin template</title>
+    <title>Dashboard</title>
     <link rel="apple-touch-icon" href="{{asset('theme/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/app-assets/images/ico/favicon.ico')}}">
     <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600')}}" rel="stylesheet">
@@ -79,7 +79,7 @@
                     <ul class="nav navbar-nav">
                         <div class="bookmark-input search-input">
                             <div class="bookmark-input-icon"><i class="feather icon-search primary"></i></div>
-                            <input class="form-control input" type="text" placeholder="Explore Vuexy..." tabindex="0"
+                            <input class="form-control input" type="text" placeholder="Search..." tabindex="0"
                                    data-search="template-list">
                             <ul class="search-list search-list-bookmark"></ul>
                         </div>
@@ -99,7 +99,7 @@
                                 class="ficon feather icon-search"></i></a>
                         <div class="search-input">
                             <div class="search-input-icon"><i class="feather icon-search primary"></i></div>
-                            <input class="input" type="text" placeholder="Explore Vuexy..." tabindex="-1"
+                            <input class="input" type="text" placeholder="Search..." tabindex="-1"
                                    data-search="template-list">
                             <div class="search-input-close"><i class="feather icon-x"></i></div>
                             <ul class="search-list search-list-main"></ul>
