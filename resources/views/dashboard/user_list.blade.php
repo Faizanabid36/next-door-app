@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
-@section('users_list')
-
+@section('body_content')
  <!-- BEGIN: Content-->
  <div class="app-content content">
     <div class="content-overlay"></div>
@@ -57,38 +56,45 @@
                 <div class="table-responsive">
                     <table class="table data-list-view">
                         <thead>
-                            <tr>
-                                <th></th>
-                                <th>USERNAME</th>
+                        <tr>
+                            <th></th>
+                            <th>USERNAME</th>
+                            @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
                                 <th>EMAIL</th>
                                 <th>POSTAL CODE</th>
                                 <th>ADDRESS</th>
-                                <th>CONTACT NUMBER</th>
+                            @endif
+                            <th>CONTACT NUMBER</th>
+                            @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
                                 <th>ACTION</th>
-                            </tr>
+                            @endif
+                        </tr>
                         </thead>
                         <tbody>
-                            @foreach ($users as $num)
+                        @foreach ($users as $num)
                             <tr>
                                 <td></td>
                                 <td class="product-name">{{$num->name}}</td>
-                                <td class="product-category">{{$num->email}}</td>
-                                <td>
-                                    {{$num->postal}}
-                                </td>
-                                <td>
-
-                                            <div class="chip-text">{{$num->address}}</div>
-
-                                </td>
+                                @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
+                                    <td class="product-category">{{$num->email}}</td>
+                                    <td>
+                                        {{$num->postal}}
+                                    </td>
+                                    <td>
+                                        <div class="chip-text">{{$num->address}}</div>
+                                    </td>
+                                @endif
                                 <td class="product-price">{{$num->contact}}</td>
-                                <td class="product-action">
-                                    <a href="{{url('/list/{id}'.$num->id)}}"> <span ><i class="feather icon-trash"></i></span></a>
-                                </td>
+                                @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
+                                    <td class="product-action">
+                                        <a href="{{url('/list/{id}'.$num->id)}}"> <span><i
+                                                    class="feather icon-trash"></i></span></a>
+                                    </td>
+                                @endif
                             </tr>
-                           
 
-                            @endforeach
+
+                        @endforeach
 
                         </tbody>
                     </table>

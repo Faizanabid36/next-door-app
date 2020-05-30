@@ -1,5 +1,5 @@
 @extends('layouts.main')
-@section('main_page')
+@section('body_content')
   <!-- BEGIN: Content-->
   <div class="app-content content">
     <div class="content-overlay"></div>

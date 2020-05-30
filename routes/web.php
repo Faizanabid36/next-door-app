@@ -27,13 +27,8 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/admin-dashboard' , 'RouteViewsController@main_dashboard')->name('admin-dashboard');
 });
 
-Route::get('/dashboard', 'HomeController@index')->name('dashboard');
-
 
 Auth::routes();
-
-
-// admin routes
 
 Route::get('/list' , 'HomeController@list')->name('neighour_list');
 Route::get('/list/{id}' , 'HomeController@delete_user')->name('delete');

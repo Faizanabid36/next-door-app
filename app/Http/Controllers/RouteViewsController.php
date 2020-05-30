@@ -13,6 +13,8 @@ class RouteViewsController extends Controller
     }
     public function main_dashboard()
     {
+        if(!auth()->user()->admin)
+            return back();
         return view('dashboard.main_dashboard');
     }
     public function login_page()
