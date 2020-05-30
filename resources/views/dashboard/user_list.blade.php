@@ -1,4 +1,4 @@
-@extends('layout.main')
+@extends('layouts.main')
 
 @section('users_list')
 
@@ -77,9 +77,9 @@
                                     {{$num->postal}}
                                 </td>
                                 <td>
-                                   
+
                                             <div class="chip-text">{{$num->address}}</div>
-                                        
+
                                 </td>
                                 <td class="product-price">{{$num->contact}}</td>
                                 <td class="product-action">
@@ -88,7 +88,7 @@
                                 </td>
                             </tr>
                             @endforeach
-                           
+
                         </tbody>
                     </table>
                 </div>
@@ -100,5 +100,5 @@
     </div>
 </div>
 <!-- END: Content-->
-    
+
 @endsection

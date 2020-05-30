@@ -1,6 +1,6 @@
-@extends('layout.main')
+@extends('layouts.main')
 
-    
+
 @section('user_main_page')
   <!-- BEGIN: Content-->
   <div class="app-content content">
@@ -34,10 +34,10 @@
                             </div>
                         </div>
                     </div>
-                  
+
 
                 </div>
-                
+
             </section>
             <!-- Dashboard Analytics end -->
 

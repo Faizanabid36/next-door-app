@@ -29,18 +29,16 @@ class HomeController extends Controller
 
     public function list()
     {
-        $users = User::all();
+        $users = User::paginate(5)->get();
+        dd($users);
         return \view('dashboard.user_list' , \compact('users'));
     }
 
     public function delete_user($id)
     {
-       
         User::where(['id'=>$id])->delete();
-        
         return redirect()->back();
-        dd('klcas');
     }
 
-  
+
 }
