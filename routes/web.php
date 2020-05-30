@@ -14,16 +14,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
-Route::get('/sign-in',function(){
-    return view('home.sign-in');
-})->name('sign-in');
 
-Route::get('/sign-up',function(){
-    return view('home.signup');
-})->name('sign-up');
 
 Route::post('/login/custom', [
     'uses' => 'LoginController@login',
@@ -39,11 +33,12 @@ Route::group(['middleware' => 'auth' ], function(){
     })->name('admin-dashboard');
 });
 
-Route::get('/admin-dashboard',function(){
-    return view('dashboard.main_dashboard');
-})->name('admin-dashboard');
 
-Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+// admin routes
+
+Route::get('/list' , 'HomeController@list')->name('neighour_list');
+Route::get('/list/{id}' , 'HomeController@delete_user')->name('delete');
+
