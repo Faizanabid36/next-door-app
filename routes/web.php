@@ -21,7 +21,29 @@ Route::get('/sign-in',function(){
     return view('home.sign-in');
 })->name('sign-in');
 
-Route::get('/register',function(){
-    return view('home.register
-    ');
-})->name('register');
+Route::get('/sign-up',function(){
+    return view('home.signup');
+})->name('sign-up');
+
+Route::post('/login/custom', [
+    'uses' => 'LoginController@login',
+    'as' => 'login.custom'
+]);
+
+Route::group(['middleware' => 'auth' ], function(){
+    Route::get('/dashboard' , function(){
+        return view('user.user_dashboard');
+    })->name('dashboard');
+    Route::get('/admin-dashboard' , function(){
+        return view('dashboard.main_dashboard');
+    })->name('admin-dashboard');
+});
+
+Route::get('/admin-dashboard',function(){
+    return view('dashboard.main_dashboard');
+})->name('admin-dashboard');
+
+Route::get('/dashboard', 'UserController@dashboard')->name('dashboard');
+Auth::routes();
+
+Route::get('/home', 'HomeController@index')->name('home');
