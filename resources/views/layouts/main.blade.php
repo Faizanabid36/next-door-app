@@ -1,5 +1,5 @@
-@include('layout.header')
-@include('layout.sidebar')
+@include('layouts.header')
+@include('layouts.sidebar')
 {{-- admin --}}
 @yield('main_page')
 @yield('users_list')
@@ -7,4 +7,4 @@
 {{-- user --}}
 @yield('user_main_page')
 
-@include('layout.footer')
+@include('layouts.footer')

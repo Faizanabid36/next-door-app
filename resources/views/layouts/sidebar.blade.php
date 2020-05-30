@@ -4,7 +4,7 @@
     <div class="main-menu menu-fixed menu-dark menu-accordion menu-shadow" data-scroll-to-active="true">
         <div class="navbar-header">
             <ul class="nav navbar-nav flex-row">
-                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{asset('../../../theme/html/ltr/vertical-menu-template-semi-dark/index.html')}}">
+                <li class="nav-item mr-auto"><a class="navbar-brand" href="{{asset('theme/html/ltr/vertical-menu-template-semi-dark/index.html')}}">
                         <div class="brand-logo"></div>
                         <h2 class="brand-text mb-0">Next Door</h2>
                     </a></li>
@@ -34,7 +34,7 @@
                 </li>
                 <li class=" nav-item"><a href="app-email.html"><i class="feather icon-mail"></i><span class="menu-title" data-i18n="Email">General</span></a>
                 </li>
-        
+
                 {{-- <li class=" nav-item"><a href="app-todo.html"><i class="feather icon-check-square"></i><span class="menu-title" data-i18n="Todo">Todo</span></a>
                 </li> --}}
                 {{-- <li class=" nav-item"><a href="app-calender.html"><i class="feather icon-calendar"></i><span class="menu-title" data-i18n="Calender">Calender</span></a>
@@ -51,16 +51,16 @@
                         </li>
                     </ul>
                 </li> --}}
-               
-              
-               
+
+
+
                 <li class=" navigation-header"><span>pages</span>
                 </li>
                 <li class=" nav-item"><a href="page-user-profile.html"><i class="feather icon-user"></i><span class="menu-title" data-i18n="Profile">Profile</span></a>
                 </li>
                 <li class=" nav-item"><a href="page-account-settings.html"><i class="feather icon-settings"></i><span class="menu-title" data-i18n="Account Settings">Account Settings</span></a>
                 </li>
-              
+
                 <li class=" nav-item"><a href="page-search.html"><i class="feather icon-search"></i><span class="menu-title" data-i18n="Search">Search</span></a>
                 </li>
 
@@ -95,7 +95,7 @@
                         </li>
                         <li><a href="page-maintenance.html"><i class="feather icon-circle"></i><span class="menu-item" data-i18n="Maintenance">Maintenance</span></a>
                         </li>
-                       
+
                     </ul>
 
                 </li>
