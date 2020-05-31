@@ -28,16 +28,15 @@ class HomeController extends Controller
     public function list()
     {
         // $users = User::paginate(5)->all();
-        $users = User::paginate(2);
-//        dd($users);
-
+        $users = User::all();
         return \view('frontend.neighbours.user_list' , compact('users'));
     }
 
-    public function delete_user($id)
+    public function delete_user()
     {
-        User::find($id)->delete();
-        return back()->with('deleted','User Deleted');
+        $id=\request('ids');
+        $status=User::whereIn('id',$id)->delete();
+        return compact('status');
     }
 
     public function public_agencies()

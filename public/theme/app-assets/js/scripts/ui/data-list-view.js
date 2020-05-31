@@ -82,15 +82,16 @@ $(document).ready(function() {
     bInfo: false,
     pageLength: 4,
     buttons: [
-      {
-        text: "<i class='feather icon-plus'></i> Add New",
-        action: function() {
-          $(this).removeClass("btn-secondary")
-          $(".add-new-data").addClass("show")
-          $(".overlay-bg").addClass("show")
-        },
-        className: "btn-outline-primary"
-      }
+      // {
+      //   text: "<i class='feather icon-plus'></i> Add New",
+      //   action: function() {
+      //       $(this).addClass('d-none')
+      //       $(this).removeClass("btn-secondary")
+      //       // $(".add-new-data").addClass("show")
+      //       // $(".overlay-bg").addClass("show")
+      //   },
+      //   className: "btn-outline-primary"
+      // }
     ],
     initComplete: function(settings, json) {
       $(".dt-buttons .btn").removeClass("btn-secondary")
@@ -130,12 +131,6 @@ $(document).ready(function() {
     $('#data-price').val('$99');
     $(".add-new-data").addClass("show");
     $(".overlay-bg").addClass("show");
-  });
-
-  // On Delete
-  $('.action-delete').on("click", function(e){
-    e.stopPropagation();
-    $(this).closest('td').parent('tr').fadeOut();
   });
 
   // dropzone init

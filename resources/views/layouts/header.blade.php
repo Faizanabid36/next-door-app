@@ -11,6 +11,7 @@
     <meta name="keywords"
           content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
+    <meta name="csrf-token" content="{{ csrf_token() }}" />
     <title>@yield('title')</title>
     <link rel="apple-touch-icon" href="{{asset('theme/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/app-assets/images/ico/favicon.ico')}}">
@@ -19,9 +20,11 @@
     <!-- BEGIN: Vendor CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/charts/apexcharts.css')}}">
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('theme/app-assets/vendors/css/extensions/tether-theme-arrows.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/tether-theme-arrows.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/tether.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/file-uploaders/dropzone.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
     <!-- END: Vendor CSS-->
 
     <!-- BEGIN: Theme CSS-->
@@ -29,11 +32,14 @@
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/bootstrap-extended.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/components.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/themes/semi-dark-layout.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/colors.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/themes/dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
-    <link rel="stylesheet" type="text/css"
-          href="{{asset('theme/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/file-uploaders/dropzone.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/data-list-view.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
