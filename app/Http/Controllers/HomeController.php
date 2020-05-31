@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\User;
+use Illuminate\Support\Facades\DB;
+
 
 class HomeController extends Controller
 {
@@ -21,8 +24,26 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+
+    public function list()
     {
-        return view('home');
+        // $users = User::paginate(5)->all();
+        $users = User::paginate(2);
+//        dd($users);
+
+        return \view('frontend.neighbours.user_list' , compact('users'));
     }
+
+    public function delete_user($id)
+    {
+        User::find($id)->delete();
+        return back()->with('deleted','User Deleted');
+    }
+
+    public function public_agencies()
+    {
+        return view('frontend.public_agencies.view');
+    }
+
+
 }

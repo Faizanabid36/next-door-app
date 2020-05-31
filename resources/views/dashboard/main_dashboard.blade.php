@@ -1,7 +1,5 @@
-@extends('layout.main')
-
-    
-@section('main_page')
+@extends('layouts.main')
+@section('body_content')
   <!-- BEGIN: Content-->
   <div class="app-content content">
     <div class="content-overlay"></div>
@@ -17,9 +15,9 @@
                         <div class="card bg-analytics text-white">
                             <div class="card-content">
                                 <div class="card-body text-center">
-                                    <img src="../../../app-assets/images/elements/decore-left.png" class="img-left" alt="
+                                    <img src="{{asset('theme/app-assets/images/elements/decore-left.png')}}" class="img-left" alt="
         card-img-left">
-                                    <img src="../../../app-assets/images/elements/decore-right.png" class="img-right" alt="
+                                    <img src="{{asset('theme/app-assets/images/elements/decore-right.png')}}" class="img-right" alt="
         card-img-right">
                                     <div class="avatar avatar-xl bg-primary shadow mt-0">
                                         <div class="avatar-content">
@@ -34,10 +32,10 @@
                             </div>
                         </div>
                     </div>
-                  
+
 
                 </div>
-                
+
             </section>
             <!-- Dashboard Analytics end -->
 

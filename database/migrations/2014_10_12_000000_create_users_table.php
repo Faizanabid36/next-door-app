@@ -22,7 +22,10 @@ class CreateUsersTable extends Migration
             $table->string('password');
             $table->longText('address');
             $table->integer('contact');
+            $table->integer('gender');
             $table->integer('postal');
+            $table->integer('is_public_agent')->nullable();
+            $table->string('avatar')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

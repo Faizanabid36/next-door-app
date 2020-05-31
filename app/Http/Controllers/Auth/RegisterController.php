@@ -68,6 +68,13 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+        if($data['gender']==0)
+        {
+            $data['avatar']=asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg');
+        }
+        else{
+            $data['avatar']=asset('theme\app-assets\images\portrait\small\avatar-s-26.jpg');
+        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
@@ -75,6 +82,8 @@ class RegisterController extends Controller
             'address' => $data['address'],
             'contact' => $data['contact'],
             'postal' => $data['postal'],
+            'gender'=>$data['gender'],
+            'avatar'=>$data['avatar'],
         ]);
     }
 }
