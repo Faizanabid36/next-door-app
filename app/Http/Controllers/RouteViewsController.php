@@ -15,10 +15,19 @@ class RouteViewsController extends Controller
     {
         if(!auth()->user()->admin)
             return back();
-        return view('dashboard.main_dashboard');
+        return view('admin.main_dashboard');
     }
     public function login_page()
     {
         return view('auth.login');
+    }
+
+    public function add_cat()
+    {
+        return \view('admin.category.add');
+    }
+    public function view_cat()
+    {
+        return \view('admin.category.view');
     }
 }

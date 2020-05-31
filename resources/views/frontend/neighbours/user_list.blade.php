@@ -171,12 +171,12 @@
                             <thead>
                             <tr>
                                 <th></th>
-                                <th>Image</th>
+                                <th>PROFILE IMAGE</th>
                                 <th>NAME</th>
-                                <th>CATEGORY</th>
-                                <th>POPULARITY</th>
-                                <th>ORDER STATUS</th>
-                                <th>PRICE</th>
+                                <th>EMAIL</th>
+                                <th>ADDRESS</th>
+                                
+                                <th>CONTACT NUMBER</th>
                                 <th>ACTION</th>
                             </tr>
                             </thead>
@@ -188,18 +188,16 @@
                                                                  alt="Img placeholder">
                                     </td>
                                     <td class="product-name">{{$user->name}}</td>
-                                    <td class="product-category">Computers</td>
-                                    <td>
-
-                                    </td>
-                                    <td>
+                                    <td class="product-category">{{$user->email}}</td>
+                                    <td>{{$user->address}}</td>
+                                    {{-- <td> --}}
                                         {{--                                        <div class="chip chip-warning">--}}
                                         {{--                                            <div class="chip-body">--}}
                                         {{--                                                <div class="chip-text">on hold</div>--}}
                                         {{--                                            </div>--}}
                                         {{--                                        </div>--}}
-                                    </td>
-                                    <td class="product-price">$69.99</td>
+                                    {{-- </td> --}}
+                                    <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
                                         <span class="action-edit"><i class="feather icon-edit"></i></span>
                                         <span id="delete-item-{{$user->id}}" class="action-delete"><i class="feather icon-trash"></i></span>
