@@ -31,13 +31,18 @@ class HomeController extends Controller
         $users = User::paginate(2);
 //        dd($users);
 
-        return \view('dashboard.user_list' , \compact('users'));
+        return \view('frontend.neighbours.user_list' , compact('users'));
     }
 
     public function delete_user($id)
     {
         User::find($id)->delete();
         return back()->with('deleted','User Deleted');
+    }
+
+    public function public_agencies()
+    {
+        return view('frontend.public_agencies.view');
     }
 
 

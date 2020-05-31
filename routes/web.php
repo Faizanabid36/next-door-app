@@ -25,6 +25,7 @@ Route::post('/login/custom', [
 Route::group(['middleware' => 'auth' ], function(){
     Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
     Route::get('/admin-dashboard' , 'RouteViewsController@main_dashboard')->name('admin-dashboard');
+    Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
 });
 
 

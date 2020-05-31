@@ -11,7 +11,7 @@
     <meta name="keywords"
           content="admin template, Vuexy admin template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="PIXINVENT">
-    <title>Dashboard</title>
+    <title>@yield('title')</title>
     <link rel="apple-touch-icon" href="{{asset('theme/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/app-assets/images/ico/favicon.ico')}}">
     <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600')}}" rel="stylesheet">
@@ -27,20 +27,17 @@
     <!-- BEGIN: Theme CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/bootstrap.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/bootstrap-extended.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/colors.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/components.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/themes/dark-layout.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/themes/semi-dark-layout.css')}}">
 
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css"
           href="{{asset('theme/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/colors/palette-gradient.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/dashboard-analytics.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/card-analytics.css')}}">
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->
+    <link rel="stylesheet" href="{{asset('theme/app-assets/css/pages/users.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/assets/css/style.css')}}">
     <!-- END: Custom CSS-->
 
@@ -64,17 +61,11 @@
                                     class="ficon feather icon-menu"></i></a></li>
                     </ul>
                     <ul class="nav navbar-nav bookmark-icons">
-                        <!-- li.nav-item.mobile-menu.d-xl-none.mr-auto-->
-                        <!--   a.nav-link.nav-menu-main.menu-toggle.hidden-xs(href='#')-->
-                        <!--     i.ficon.feather.icon-menu-->
+
                         <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-chat.html"
                                                                   data-toggle="tooltip" data-placement="top"
                                                                   title="Chat"><i
                                     class="ficon feather icon-message-square"></i></a></li>
-                        <li class="nav-item d-none d-lg-block"><a class="nav-link" href="app-email.html"
-                                                                  data-toggle="tooltip" data-placement="top"
-                                                                  title="Email"><i class="ficon feather icon-mail"></i></a>
-                        </li>
                     </ul>
                     <ul class="nav navbar-nav">
                         <div class="bookmark-input search-input">
@@ -83,11 +74,6 @@
                                    data-search="template-list">
                             <ul class="search-list search-list-bookmark"></ul>
                         </div>
-                        <!-- select.bookmark-select-->
-                        <!--   option Chat-->
-                        <!--   option email-->
-                        <!--   option todo-->
-                        <!--   option Calendar-->
                         </li>
                     </ul>
                 </div>
