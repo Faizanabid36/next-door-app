@@ -28,7 +28,7 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
-    Route::get('agents_list','RouteViewsController@agents_list')->name('agents_list');
+    Route::get('agents_list','HomeController@agents_list')->name('agents_list');
 });
 
 
@@ -48,6 +48,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
+    Route::get('agents_list','HomeController@agents_list')->name('agents_list');
 });
 
 

@@ -45,5 +45,13 @@ class HomeController extends Controller
         return view('frontend.public_agencies.view');
     }
 
+    public function agents_list()
+    {
+        $users = User::whereNotNull('is_public_agent')->get();
+        if(auth()->user()->admin)
+            return \view('admin.public_agents.user_list' , compact('users'));
+        return \view('frontend.public_agencies.user_list' , compact('users'));
+    }
+
 
 }
