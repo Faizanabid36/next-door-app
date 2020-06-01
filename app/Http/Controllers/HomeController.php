@@ -25,10 +25,11 @@ class HomeController extends Controller
      * @return \Illuminate\Contracts\Support\Renderable
      */
 
-    public function list()
+    public function neighbours_list()
     {
-        // $users = User::paginate(5)->all();
-        $users = User::all();
+        $users = User::whereNull('is_public_agent')->get();
+        if(auth()->user()->admin)
+            return \view('admin.neighbours.user_list' , compact('users'));
         return \view('frontend.neighbours.user_list' , compact('users'));
     }
 

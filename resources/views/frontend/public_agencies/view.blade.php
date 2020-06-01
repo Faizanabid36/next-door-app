@@ -13,11 +13,7 @@
                             <h2 class="content-header-title float-left mb-0">Profile</h2>
                             <div class="breadcrumb-wrapper col-12">
                                 <ol class="breadcrumb">
-                                    <li class="breadcrumb-item"><a href="index.html">Home</a>
-                                    </li>
-                                    <li class="breadcrumb-item"><a href="#">Pages</a>
-                                    </li>
-                                    <li class="breadcrumb-item active">Profile
+                                    <li class="breadcrumb-item"><a href="{{route('agents_list')}}">Public Agents</a>
                                     </li>
                                 </ol>
                             </div>

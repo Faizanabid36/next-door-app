@@ -2,8 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
-
 class RouteViewsController extends Controller
 {
     //
@@ -29,5 +27,13 @@ class RouteViewsController extends Controller
     public function view_cat()
     {
         return \view('admin.category.view');
+    }
+
+    public function agents_list()
+    {
+        $users = User::whereNotNull('is_public_agent')->get();
+        if(auth()->user()->admin)
+            return \view('admin.neighbours.user_list' , compact('users'));
+        return \view('frontend.public_agents.user_list' , compact('users'));
     }
 }
