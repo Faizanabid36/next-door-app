@@ -27,35 +27,15 @@
                     <div class="form-group breadcrum-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="feather icon-settings"></i>
-                            </button>
-                            <div class="dropdown-menu dropdown-menu-right">
-                                <a class="dropdown-item" href="#">Chat
-                                </a>
-                                <a class="dropdown-item" href="#">Email</a>
-                                <a class="dropdown-item" href="#">Calendar</a>
-                            </div>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
+                                    class="feather icon-settings"></i></button>
+                            <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a
+                                    class="dropdown-item" href="#">Email</a><a class="dropdown-item"
+                                                                               href="#">Calendar</a></div>
                         </div>
                     </div>
                 </div>
             </div>
-            <section id="animation">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Show / Hide Animation</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                           
-                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
-                                slideUp</button>
-                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="fade-toast">fadeIn -
-                                fadeOut</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-thumb-view" class="data-thumb-view-header">
@@ -71,6 +51,7 @@
                                     <i class="feather icon-x"></i>
                                 </div>
                             </div>
+                            
                             <div class="card-content">
                                 <div class="card-body">
                                     <form class="form" action="{{route('edit_category')}}" method="POST">
@@ -95,10 +76,25 @@
                                     </form>
                                 </div>
                             </div>
-                            <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
-                            </div>
+                           
                         </div>
-                       
+                        <section id="">
+                            <div class="card">
+                                <div class="card-header">
+                                    <h4 class="card-title">Duration & Timeout</h4>
+                                </div>
+                                <div class="card-content">
+                                    <div class="card-body">
+                                        <p>you can use options like <code>showDuration</code>, <code>hideDuration</code>, <code>timeout</code> for your
+                                            toasts. To create a sticky toast set the <code>timeout</code> to <code>0</code></p>
+                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="fast-duration">Show .5s</button>
+                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="slow-duration">Hide 3s</button>
+                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="timeout">Timeout 5s</button>
+                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="sticky">Sticky Toast</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
 
                         <div class="card-body">
 
@@ -118,15 +114,12 @@
                                         <tr>
                                             <td id="category-{{$num->id}}">{{$num->name}}</td>
                                             <td>
-                                                
-                                                <span class="btn btn-outline-warning mr-1 mb-1" id="slide-toast" onclick="openEdit({{$num}})" >
-                                                    <i class="feather icon-edit" ></i>
+                                                <span class="" onclick="openEdit({{$num}})">
+                                                    <i class="feather icon-edit"></i>
                                                 </span>
-                                                <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
-                                                    slideUp</button>
                                                 <a href="{{url('view_category/delete_category/'.$num->id)}}">
                                                     <span
-                                                        id="delete-item-" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast" class="action-delete">
+                                                        id="delete-item-" class="action-delete">
                                                         <i class="feather icon-trash"></i>
                                                     </span>
                                                 </a>
@@ -146,7 +139,7 @@
     </div>
     <!-- END: Content-->
 
-    
+
     
 @endsection
 @section('footer_scripts')
