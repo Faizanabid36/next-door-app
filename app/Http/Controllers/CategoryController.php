@@ -2,16 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
     public function addcategory(Request $request)
     {
-        if($request->isMethod('post'))
-        {  
-            
+        if ($request->isMethod('post')) {
+
             $data = $request->all();
             $cat = new Category;
             $cat->name = $data['name'];
@@ -24,7 +23,7 @@ class CategoryController extends Controller
     public function viewcategory()
     {
         $cat = Category::all();
-        return view('admin.category.view' )->with('cat' , $cat);
+        return view('admin.category.view', compact('cat'));
     }
     public function deletecategory($id)
     {
@@ -35,19 +34,9 @@ class CategoryController extends Controller
 
     public function editcategory(Request $request , $id=null)
     {
-        if($request->isMethod('post'))
-        {
-            $data = $request->all();
-            $find = Category::find($id);
-            Category::where(['id'=>$id])->update([
-                'name' => $data['name'],
-                                
-            ]);
-
-            $find->save();
-            return back();
-        }
-        $detail = Category::where(['id' => $id])->first();
-        return view('admin.category.view', compact('detail'));
+        Category::whereId($request->input('id'))->update([
+            'name' => $request->input('name'),
+        ]);
+        return back()->with('success', 'Updated Successfully');
     }
 }
