@@ -51,6 +51,10 @@ Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
 });
 
+//Admin create user
+Route::get('/ceate_agent', 'PublicAgentController@createagent')->name('create_agent');
+
+
 
 
 
