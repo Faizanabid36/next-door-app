@@ -118,6 +118,21 @@
                                                             </div>
                                                         <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
                                                     </fieldset>
+
+                                                    <fieldset class="form-label-group form-group position-relative has-icon-left">
+                                                    <div  class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
+                                                    <label for="gender" class="col-md-4 col-form-label">{{ __('Gender') }}</label>
+                                                   
+                                                    <div><input id="female" type="radio" name="gender" value="1" {{ (old('sex') == 'female') ? 'checked' : '' }} >Female</div>
+                                                    <div><input id="male" type="radio" name="gender" value="0" {{ (old('sex') == 'male') ? 'checked' : '' }} >Male</div>
+                                                    @if ($errors->has('gender'))
+                                                    <span class="help-block">
+                                                    <strong>{{ $errors->first('gender') }}</strong>
+                                                    </span>
+                                                    @endif
+                                                    
+                                                    </div>     
+                                                </fieldset>                                              
                                                     
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                         <input id="postal" type="number" class="form-control" name="postal" required autocomplete="postal">

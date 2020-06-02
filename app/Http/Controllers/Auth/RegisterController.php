@@ -70,10 +70,10 @@ class RegisterController extends Controller
     {
         if($data['gender']==0)
         {
-            $data['avatar']=asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg');
+            $data['avatar']=('theme\app-assets\images\portrait\small\avatar-s-25.jpg');
         }
         else{
-            $data['avatar']=asset('theme\app-assets\images\portrait\small\avatar-s-26.jpg');
+            $data['avatar']=('theme\app-assets\images\portrait\small\avatar-s-26.jpg');
         }
         return User::create([
             'name' => $data['name'],
