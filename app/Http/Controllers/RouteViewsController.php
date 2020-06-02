@@ -17,7 +17,14 @@ class RouteViewsController extends Controller
     }
     public function login_page()
     {
-        return view('auth.login');
+        if (!isset(auth()->user()->id))
+            return view('auth.login');
+        else {
+            if (auth()->user()->admin)
+                return view('admin.main_dashboard');
+            else
+                return view('user.user_dashboard');
+        }
     }
 
     public function add_cat()
