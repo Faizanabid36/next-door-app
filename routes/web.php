@@ -43,7 +43,9 @@ Route::name('admin.')->prefix('admin')->group(function () {
 });
 
 //Admin create user
-Route::get('/ceate_agent', 'PublicAgentController@createagent')->name('create_agent');
+Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
+Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
+
 
 
 

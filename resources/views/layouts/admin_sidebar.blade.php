@@ -3,7 +3,7 @@
 <li class=" nav-item"><a href="#"><i class="feather icon-settings"></i><span class="menu-title"
                                                                              data-i18n="Account Settings">Account Settings</span></a>
 </li>
-<li class=" nav-item"><a href="{{ route('create_agent')}}"><i class="feather icon-user-plus"></i><span class="menu-title"
+<li class=" nav-item"><a href="{{ route('create')}}"><i class="feather icon-user-plus"></i><span class="menu-title"
                                                                               data-i18n="Account Settings">Create User</span></a>
 </li>
 <li class=" nav-item"><a href="#"><i class="feather icon-credit-card"></i><span class="menu-title"

@@ -120,18 +120,37 @@
                                                     </fieldset>
 
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                    <div  class="form-group{{ $errors->has('gender') ? ' has-error' : '' }}">
-                                                    <label for="gender" class="col-md-4 col-form-label">{{ __('Gender') }}</label>
-                                                   
-                                                    <div><input id="female" type="radio" name="gender" value="1" {{ (old('sex') == 'female') ? 'checked' : '' }} >Female</div>
-                                                    <div><input id="male" type="radio" name="gender" value="0" {{ (old('sex') == 'male') ? 'checked' : '' }} >Male</div>
-                                                    @if ($errors->has('gender'))
-                                                    <span class="help-block">
-                                                    <strong>{{ $errors->first('gender') }}</strong>
-                                                    </span>
-                                                    @endif
-                                                    
-                                                    </div>     
+                                                
+                                                    <div class="form-group">
+                                                        <label>Gender</label>
+                                                        <ul class="list-unstyled mb-0">
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input  id="female" type="radio" name="gender" value="1" {{ (old('sex') == 'female') ? 'checked' : '' }}>
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Male
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                            <li class="d-inline-block mr-2">
+                                                                <fieldset>
+                                                                    <div class="vs-radio-con">
+                                                                        <input id="male" type="radio" name="gender" value="0" {{ (old('sex') == 'male') ? 'checked' : '' }} >
+                                                                        <span class="vs-radio">
+                                                                            <span class="vs-radio--border"></span>
+                                                                            <span class="vs-radio--circle"></span>
+                                                                        </span>
+                                                                        Female
+                                                                    </div>
+                                                                </fieldset>
+                                                            </li>
+                                                           
+                                                        </ul>
+                                                    </div>
                                                 </fieldset>                                              
                                                     
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
