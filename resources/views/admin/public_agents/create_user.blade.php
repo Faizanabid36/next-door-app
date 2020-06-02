@@ -46,7 +46,7 @@
                                     <a href="javascript: void(0);">
                                         <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" class="rounded mr-75" alt="profile image" height="64" width="64">
                                     </a>
-                                    <div class="media-body mt-75">
+                                    {{-- <div class="media-body mt-75">
                                         <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                             <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Upload new photo</label>
                                             <input type="file" id="account-upload" hidden>
@@ -55,19 +55,12 @@
                                         <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG. Max
                                                 size of
                                                 800kB</small></p>
-                                    </div>
+                                    </div> --}}
                                 </div>
                                 <hr>
                                 <form novalidate>
                                     <div class="row">
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <div class="controls">
-                                                    <label for="account-username">Username</label>
-                                                    <input type="text" class="form-control" id="account-username" placeholder="Username" value="hermione007" required data-validation-required-message="This username field is required">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-12">
                                             <div class="form-group">
                                                 <div class="controls">
@@ -84,6 +77,30 @@
                                                 </div>
                                             </div>
                                         </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label for="account-e-mail">Address</label>
+                                                    <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label for="account-e-mail">Gender</label>
+                                                    <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-12">
+                                            <div class="form-group">
+                                                <div class="controls">
+                                                    <label for="account-e-mail">Postal Code</label>
+                                                    <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                </div>
+                                            </div>
+                                        </div>
                                         {{-- <div class="col-12">
                                             <div class="alert alert-warning alert-dismissible mb-2" role="alert">
                                                 <button type="button" class="close" data-dismiss="alert" aria-label="Close">
@@ -95,16 +112,9 @@
                                                 <a href="javascript: void(0);">Resend confirmation</a>
                                             </div>
                                         </div> --}}
-                                        <div class="col-12">
-                                            <div class="form-group">
-                                                <label for="account-company">Company</label>
-                                                <input type="text" class="form-control" id="account-company" placeholder="Company name">
-                                            </div>
-                                        </div>
+                                        
                                         <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-                                                changes</button>
-                                            <button type="reset" class="btn btn-outline-warning">Cancel</button>
+                                            <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Approved Agent</button>
                                         </div>
                                     </div>
                                 </form>

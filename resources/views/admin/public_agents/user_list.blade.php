@@ -36,6 +36,26 @@
                     </div>
                 </div>
             </div>
+             <!-- Animation section start -->
+             <section id="animation">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Show / Hide Animation</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                            <p>Use the jQuery <code>show/hide</code> method of your choice. These default to <code>fadeIn/fadeOut</code>.
+                                The methods <code>fadeIn/fadeOut</code>, <code>slideDown/slideUp</code>, and <code>show/hide</code> are built
+                                into jQuery.</p>
+                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
+                                slideUp</button>
+                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="fade-toast">fadeIn -
+                                fadeOut</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <!-- // Animation section end -->
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-thumb-view" class="data-thumb-view-header">
@@ -88,7 +108,7 @@
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
                                         <span class="action-edit"><i class="feather icon-edit"></i></span>
-                                        <span id="delete-item-{{$user->id}}" class="action-delete"><i class="feather icon-trash"></i></span>
+                                        <span id="delete-item-{{$user->id}} slide-toast " class="action-delete"><i class="feather icon-trash"></i></span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -191,6 +211,7 @@
                     }
                 },
                 error: function (data) {
+                    
                     alert(data.responseJSON.message)
                     console.log(data);
                 }
@@ -213,6 +234,7 @@
                     }
                 },
                 error: function (data) {
+                    
                     alert(data.responseJSON.message)
                     console.log(data);
                 }
