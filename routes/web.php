@@ -42,7 +42,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/view_category', 'CategoryController@viewcategory')->name('view_category');
     Route::get('/view_category/delete_category/{id}', 'CategoryController@deletecategory');
     Route::get('/view_category/edit_category/{id}', 'CategoryController@editcategory');
-    Route::post('/view_category/edit_category/{id}', 'CategoryController@editcategory');
+    Route::post('/view_category/edit_category/{id}', 'CategoryController@editcategory')->name('edit_cat');
 
 });
 
