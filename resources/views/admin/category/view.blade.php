@@ -53,13 +53,13 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="" method="POST" >
+                                    <form class="form" action="{{route('edit_cat')}}" method="POST" >
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="category-column"  class="form-control" placeholder="Enter Category Name" name="name">
+                                                        <input type="text" id="category-column" class="form-control" placeholder="Enter Category Name" name="name">
                                                         {{-- <label for="first-name-column">First Name</label> --}}
                                                     </div>
                                                 </div>
@@ -96,7 +96,7 @@
                                        
                                   
                                     <tr>
-                                        <td>{{$num->name}}</td>
+                                        <td id="category-{{$num->id}}">{{$num->name}}</td>
                                        
                                         <td> <span class="action-edit"><i class="feather icon-edit"></i></span>
                                           <a href="{{url('view_category/delete_category/'.$num->id)}}"><span id="delete-item-" class="action-delete"><i class="feather icon-trash"></i></span></a>  </td>
