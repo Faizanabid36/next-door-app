@@ -113,6 +113,7 @@
                                 </table>
                             </div>
                         </div>
+                    </div>
                         <!-- add new sidebar ends -->
                 </section>
                 <!-- Data list view end -->
