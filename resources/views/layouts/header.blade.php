@@ -24,6 +24,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/tether.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/file-uploaders/dropzone.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/toastr.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
     <!-- END: Vendor CSS-->
 
@@ -40,6 +41,8 @@
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/colors/palette-gradient.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/file-uploaders/dropzone.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/data-list-view.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/extensions/toastr.css')}}">
+
     <!-- END: Page CSS-->
 
     <!-- BEGIN: Custom CSS-->

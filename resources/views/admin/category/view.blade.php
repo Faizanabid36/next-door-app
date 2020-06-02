@@ -36,6 +36,22 @@
                     </div>
                 </div>
             </div>
+            <section id="animation">
+                <div class="card">
+                    <div class="card-header">
+                        <h4 class="card-title">Show / Hide Animation</h4>
+                    </div>
+                    <div class="card-content">
+                        <div class="card-body">
+                           
+                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
+                                slideUp</button>
+                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="fade-toast">fadeIn -
+                                fadeOut</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-thumb-view" class="data-thumb-view-header">
@@ -78,6 +94,7 @@
                             <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
                             </div>
                         </div>
+                       
 
                         <div class="card-body">
 
@@ -97,12 +114,15 @@
                                         <tr>
                                             <td id="category-{{$num->id}}">{{$num->name}}</td>
                                             <td>
-                                                <span class="" onclick="openEdit({{$num}})">
-                                                    <i class="feather icon-edit"></i>
+                                                
+                                                <span class="btn btn-outline-warning mr-1 mb-1" id="slide-toast" onclick="openEdit({{$num}})" >
+                                                    <i class="feather icon-edit" ></i>
                                                 </span>
+                                                <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
+                                                    slideUp</button>
                                                 <a href="{{url('view_category/delete_category/'.$num->id)}}">
                                                     <span
-                                                        id="delete-item-" class="action-delete">
+                                                        id="delete-item-" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast" class="action-delete">
                                                         <i class="feather icon-trash"></i>
                                                     </span>
                                                 </a>
@@ -121,6 +141,9 @@
         </div>
     </div>
     <!-- END: Content-->
+
+    
+    
 @endsection
 @section('footer_scripts')
     <script>
