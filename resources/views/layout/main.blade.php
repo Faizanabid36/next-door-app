@@ -6,4 +6,6 @@
 {{-- user --}}
 @yield('user_main_page')
 
+
+
 @include('layout.footer')
