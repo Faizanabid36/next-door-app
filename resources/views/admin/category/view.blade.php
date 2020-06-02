@@ -1,6 +1,6 @@
 @extends('layouts.main')
-
-@section('view_cat')
+@section('title','View Categories')
+@section('body_content')
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -53,70 +53,89 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{route('edit_cat')}}" method="POST" >
+                                    <form class="form" action="{{route('edit_category')}}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
+                                                        <input type="hidden" id="category-column-id" name="id">
                                                         <input type="text" id="category-column" class="form-control" placeholder="Enter Category Name" name="name">
                                                         {{-- <label for="first-name-column">First Name</label> --}}
                                                     </div>
                                                 </div>
-                                        
+
                                                 <div class="col-12">
-                                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Update Category</button>
+                                                    <button type="submit" class="btn btn-primary mr-1 mb-1">Update
+                                                        Category
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
                                     </form>
                                 </div>
                             </div>
-                            
                             <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
-                             
+                            </div>
                         </div>
-                    </div>
 
-                    <div class="card-body">
-                        
-                        <!-- Table with outer spacing -->
-                        <div class="table-responsive">
-                            <table class="table">
-                                <thead>
+                        <div class="card-body">
+
+                            <!-- Table with outer spacing -->
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
                                     <tr>
-                                        
+
                                         <th>Name</th>
                                         <th>Action</th>
-                                      
+
                                     </tr>
-                                </thead>
-                                <tbody>
-                                   @foreach ($cat as $num)
-                                       
-                                  
-                                    <tr>
-                                        <td id="category-{{$num->id}}">{{$num->name}}</td>
-                                       
-                                        <td> <span class="action-edit"><i class="feather icon-edit"></i></span>
-                                          <a href="{{url('view_category/delete_category/'.$num->id)}}"><span id="delete-item-" class="action-delete"><i class="feather icon-trash"></i></span></a>  </td>
-                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach ($cat as $num)
+                                        <tr>
+                                            <td id="category-{{$num->id}}">{{$num->name}}</td>
+                                            <td>
+                                                <span class="" onclick="openEdit({{$num}})">
+                                                    <i class="feather icon-edit"></i>
+                                                </span>
+                                                <a href="{{url('view_category/delete_category/'.$num->id)}}">
+                                                    <span
+                                                        id="delete-item-" class="action-delete">
+                                                        <i class="feather icon-trash"></i>
+                                                    </span>
+                                                </a>
+                                            </td>
+                                        </tr>
                                     @endforeach
-                                </tbody>
-                            </table>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
-                    </div>
-                    <!-- add new sidebar ends -->
+                        <!-- add new sidebar ends -->
                 </section>
                 <!-- Data list view end -->
-
             </div>
         </div>
     </div>
     <!-- END: Content-->
+@endsection
+@section('footer_scripts')
+    <script>
+        function openEdit(category) {
+            $(".add-new-data").addClass("show");
+            $(".overlay-bg").addClass("show");
+            $('#category-column').val(category.name)
+            $('#category-column-id').val(category.id)
+        }
 
-
-
-   
-
+        // $('.action-edit').on("click",function(e,category){
+        //     e.stopPropagation();
+        //     $('#data-name').val('Altec Lansing - Bluetooth Speaker');
+        //     $('#data-price').val('$99');
+        //     $(".add-new-data").addClass("show");
+        //     $(".overlay-bg").addClass("show");
+        // });
+    </script>
 @endsection

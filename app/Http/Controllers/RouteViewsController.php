@@ -22,10 +22,14 @@ class RouteViewsController extends Controller
 
     public function add_cat()
     {
+        if(!auth()->user()->admin)
+            return back();
         return \view('admin.category.add');
     }
     public function view_cat()
     {
+        if(!auth()->user()->admin)
+            return back();
         return \view('admin.category.view');
     }
 }

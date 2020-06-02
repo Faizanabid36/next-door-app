@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-
-@section('add_cat')
+@section('title','Add Category')
+@section('body_content')
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -35,11 +35,11 @@
         </div>
         <div class="content-body">
             <!-- Basic Horizontal form layout section start -->
-           
+
             <!-- // Basic Horizontal form layout section end -->
 
             <!-- Basic Vertical form layout section start -->
-            
+
             <!-- // Basic multiple Column Form section start -->
             <section id="multiple-column-form">
                 <div class="row match-height">
@@ -60,7 +60,7 @@
                                                         {{-- <label for="first-name-column">First Name</label> --}}
                                                     </div>
                                                 </div>
-                                        
+
                                                 <div class="col-12">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Add Category</button>
                                                 </div>

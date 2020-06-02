@@ -18,6 +18,7 @@
 
 
  <!-- BEGIN: Vendor JS-->
+ <script src="{{asset('js/app.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/vendors.min.js')}}"></script>
  <!-- BEGIN Vendor JS-->
 
@@ -49,4 +50,5 @@
  <script src="{{asset('theme/app-assets/js/scripts/pages/user-profile.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>
+
  <!-- END: Page JS-->
