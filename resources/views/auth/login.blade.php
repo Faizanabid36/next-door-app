@@ -61,13 +61,10 @@
                                         <p class="px-2">Welcome back, please login to your account.</p>
                                         <div class="card-content">
                                             <div class="card-body pt-1">
-                                                <form method="POST" action="{{ route('login.custom') }}">
+                                                <form method="POST" action="{{ route('login') }}">
                                                     @csrf
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                         <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                        
-                              
-
                                                             @error('email')
                                                                 <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
@@ -77,7 +74,7 @@
                                                             <i class="feather icon-user"></i>
                                                         </div>
                                                         <label for="email" class="col-md-4 col-form-label">{{ __('E-Mail Address') }}</label>
-                                                       
+
 
                                                     </fieldset>
 

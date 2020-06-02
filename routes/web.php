@@ -14,13 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'RouteViewsController@login_page')->name('login');
-
-
-
-Route::post('/login/custom', [
-    'uses' => 'LoginController@login',
-    'as' => 'login.custom'
-]);
+Route::get('/home', 'RouteViewsController@login_page')->name('login');
 
 Route::group(['middleware' => 'auth' ], function(){
     Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
