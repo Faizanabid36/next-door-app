@@ -1,6 +1,6 @@
 @extends('layouts.main')
-
-@section('view_cat')
+@section('title','View Categories')
+@section('body_content')
     <div class="app-content content">
         <div class="content-overlay"></div>
         <div class="header-navbar-shadow"></div>
@@ -63,7 +63,7 @@
                                                         {{-- <label for="first-name-column">First Name</label> --}}
                                                     </div>
                                                 </div>
-                                        
+
                                                 <div class="col-12">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Update Category</button>
                                                 </div>
@@ -72,32 +72,32 @@
                                     </form>
                                 </div>
                             </div>
-                            
+
                             <div class="add-data-footer d-flex justify-content-around px-3 mt-2">
-                             
+
                         </div>
                     </div>
 
                     <div class="card-body">
-                        
+
                         <!-- Table with outer spacing -->
                         <div class="table-responsive">
                             <table class="table">
                                 <thead>
                                     <tr>
-                                        
+
                                         <th>Name</th>
                                         <th>Action</th>
-                                      
+
                                     </tr>
                                 </thead>
                                 <tbody>
                                    @foreach ($cat as $num)
-                                       
-                                  
+
+
                                     <tr>
                                         <td>{{$num->name}}</td>
-                                       
+
                                         <td> <span class="action-edit"><i class="feather icon-edit"></i></span>
                                           <a href="{{url('view_category/delete_category/'.$num->id)}}"><span id="delete-item-" class="action-delete"><i class="feather icon-trash"></i></span></a>  </td>
                                     </tr>
@@ -117,6 +117,6 @@
 
 
 
-   
+
 
 @endsection
