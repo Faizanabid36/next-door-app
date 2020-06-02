@@ -14,9 +14,9 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', 'RouteViewsController@login_page')->name('login');
-Route::get('/home', 'RouteViewsController@login_page')->name('login');
 
 Route::group(['middleware' => 'auth' ], function(){
+    Route::get('/home', 'RouteViewsController@login_page')->name('login');
     Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
     Route::get('/admin-dashboard' , 'RouteViewsController@main_dashboard')->name('admin-dashboard');
     Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
@@ -24,8 +24,6 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
 });
-
-
 Auth::routes();
 
 //Category Group

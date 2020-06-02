@@ -36,26 +36,6 @@
                     </div>
                 </div>
             </div>
-             <!-- Animation section start -->
-             <section id="animation">
-                <div class="card">
-                    <div class="card-header">
-                        <h4 class="card-title">Show / Hide Animation</h4>
-                    </div>
-                    <div class="card-content">
-                        <div class="card-body">
-                            <p>Use the jQuery <code>show/hide</code> method of your choice. These default to <code>fadeIn/fadeOut</code>.
-                                The methods <code>fadeIn/fadeOut</code>, <code>slideDown/slideUp</code>, and <code>show/hide</code> are built
-                                into jQuery.</p>
-                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="slide-toast">slideDown -
-                                slideUp</button>
-                            <button type="button" class="btn btn-outline-warning mr-1 mb-1" id="fade-toast">fadeIn -
-                                fadeOut</button>
-                        </div>
-                    </div>
-                </div>
-            </section>
-            <!-- // Animation section end -->
             <div class="content-body">
                 <!-- Data list view starts -->
                 <section id="data-thumb-view" class="data-thumb-view-header">
@@ -196,31 +176,38 @@
             }
         });
         $('.bulk-delete').on("click", function (e) {
-            let selected=document.getElementsByClassName("selected");
-            let Ids=[];
-            for(let i=0; i<selected.length;i++)
+            let selected = document.getElementsByClassName("selected");
+            let Ids = [];
+            if(selected.length<=0){
+                toastr.error('No Data Selected', 'Invalid Selection!', { "timeOut": 5000 });
+                return false;
+            }
+            for (let i = 0; i < selected.length; i++)
                 Ids.push(selected[i].id)
             $.ajax({
-                type:'POST',
-                url:'{{route('delete_user')}}',
+                type: 'POST',
+                url: '{{route('delete_user')}}',
                 data:{ids:Ids},
                 success:function(data){
                     for(let x=0;x<Ids.length;x++){
                         console.log(`#${Ids[x]}`)
                         $(`#${Ids[x]}`).fadeOut();
+                        toastr.success('User Deleted Successfully', 'Success', {
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut",
+                            timeOut: 2000
+                        });
                     }
                 },
                 error: function (data) {
-                    
-                    alert(data.responseJSON.message)
+                    toastr.error(data.responseJSON.message, 'Timeout!', { "timeOut": 5000 });
                     console.log(data);
                 }
-
             });
         });
         $('.action-delete').on("click", function (e) {
-            let selected=document.getElementsByClassName("delete");
             let Ids=[];
+            console.log(this)
             idString=this.id.split("-")
             Ids[0]=idString[idString.length-1];
             $.ajax({
@@ -228,14 +215,17 @@
                 url:'{{route('delete_user')}}',
                 data:{ids:Ids,"_token": "{{ csrf_token() }}",},
                 success:function(data){
-                    if(data.status){
-                        e.stopPropagation();
-                        $(this).closest('td').parent('tr').fadeOut();
-                    }
+                    e.stopPropagation();
+                    $(`#${Ids[0]}`).fadeOut();
+                    toastr.success('User Deleted Successfully', 'Deleted', {
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        timeOut: 2000
+                    });
+                    // $(this).closest('td').parent('tr').fadeOut();
                 },
                 error: function (data) {
-                    
-                    alert(data.responseJSON.message)
+                    toastr.error(data.responseJSON.message, 'Timeout!', { "timeOut": 5000 });
                     console.log(data);
                 }
 

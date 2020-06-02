@@ -88,7 +88,8 @@
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
                                         <span class="action-edit"><i class="feather icon-edit"></i></span>
-                                        <span id="delete-item-{{$user->id}}" class="action-delete"><i class="feather icon-trash"></i></span>
+                                        <span onclick="delete({{$user->id}})" id="delete-item-{{$user->id}}" class="action-delete delete-toast"><i
+                                                class="feather icon-trash"></i></span>
                                     </td>
                                 </tr>
                             @endforeach
@@ -176,30 +177,38 @@
             }
         });
         $('.bulk-delete').on("click", function (e) {
-            let selected=document.getElementsByClassName("selected");
-            let Ids=[];
-            for(let i=0; i<selected.length;i++)
+            let selected = document.getElementsByClassName("selected");
+            let Ids = [];
+            if(selected.length<=0){
+                toastr.error('No Data Selected', 'Invalid Selection!', { "timeOut": 5000 });
+                return false;
+            }
+            for (let i = 0; i < selected.length; i++)
                 Ids.push(selected[i].id)
             $.ajax({
-                type:'POST',
-                url:'{{route('delete_user')}}',
+                type: 'POST',
+                url: '{{route('delete_user')}}',
                 data:{ids:Ids},
                 success:function(data){
                     for(let x=0;x<Ids.length;x++){
                         console.log(`#${Ids[x]}`)
                         $(`#${Ids[x]}`).fadeOut();
+                        toastr.success('User Deleted Successfully', 'Success', {
+                            "showMethod": "fadeIn",
+                            "hideMethod": "fadeOut",
+                            timeOut: 2000
+                        });
                     }
                 },
                 error: function (data) {
-                    alert(data.responseJSON.message)
+                    toastr.error(data.responseJSON.message, 'Timeout!', { "timeOut": 5000 });
                     console.log(data);
                 }
-
             });
         });
         $('.action-delete').on("click", function (e) {
-            let selected=document.getElementsByClassName("delete");
             let Ids=[];
+            console.log(this)
             idString=this.id.split("-")
             Ids[0]=idString[idString.length-1];
             $.ajax({
@@ -207,13 +216,17 @@
                 url:'{{route('delete_user')}}',
                 data:{ids:Ids,"_token": "{{ csrf_token() }}",},
                 success:function(data){
-                    if(data.status){
-                        e.stopPropagation();
-                        $(this).closest('td').parent('tr').fadeOut();
-                    }
+                    e.stopPropagation();
+                    $(`#${Ids[0]}`).fadeOut();
+                    toastr.success('User Deleted Successfully', 'Deleted', {
+                        "showMethod": "fadeIn",
+                        "hideMethod": "fadeOut",
+                        timeOut: 2000
+                    });
+                    // $(this).closest('td').parent('tr').fadeOut();
                 },
                 error: function (data) {
-                    alert(data.responseJSON.message)
+                    toastr.error(data.responseJSON.message, 'Timeout!', { "timeOut": 5000 });
                     console.log(data);
                 }
 
