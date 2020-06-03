@@ -34,18 +34,17 @@ class PublicAgentController extends Controller
             if ($request->isMethod('post')) {
     
                 $data = $request->all();
-                $cat = new User;
-                $cat->name = $data['name'];
-                $cat->email = $data['email'];
-                $cat->password = $data['password'];
-                $cat->gender = $data['gender'];
-                $cat->address = $data['address'];
-                $cat->postal = $data['postal'];
-                $cat->contact = $data['contact'];
-                $cat->postal = $data['postal'];
-                $cat->is_public_agent = 1;
-                $cat->avatar =$data['avatar'];
-                $cat->save();
+                $u = new User;
+                $u->name = $data['name'];
+                $u->email = $data['email'];
+                $u->password = $data['password'];
+                $u->gender = $data['gender'];
+                $u->address = $data['address'];
+                $u->postal = $data['postal'];
+                $u->contact = $data['contact'];
+                $u->is_public_agent = 1;
+                $u->avatar =$data['avatar'];
+                $u->save();
                 return redirect()->back();
             }
             // // $details = Category::where(['parent_id'=>0])->get();
