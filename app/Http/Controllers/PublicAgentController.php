@@ -37,7 +37,7 @@ class PublicAgentController extends Controller
                 $u = new User;
                 $u->name = $data['name'];
                 $u->email = $data['email'];
-                $u->password = $data['password'];
+                $u->password = Hash::make( $data['password']);
                 $u->gender = $data['gender'];
                 $u->address = $data['address'];
                 $u->postal = $data['postal'];
