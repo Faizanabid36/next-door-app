@@ -39,7 +39,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
-    Route::get('agents_list','HomeController@agents_list')->name('agents_list');
+    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
 });
 
 //Admin create user

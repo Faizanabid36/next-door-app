@@ -64,12 +64,12 @@
                                                 <form method="POST" action="{{ route('login') }}">
                                                     @csrf
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
+                                                        @error('email')
+                                                        <span class="invalid-feedback" role="alert">
                                                                     <strong>{{ $message }}</strong>
                                                                 </span>
-                                                            @enderror
+                                                        @enderror
+                                                        <input type="email" class="form-control @error('email') is-invalid @enderror" id="email" placeholder="Email"  name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>

@@ -16,34 +16,28 @@
                             <div class="card-body">
                                 <ul class="nav nav-tabs mb-3" role="tablist">
                                     <li class="nav-item">
-                                        <h3 class="mb-1"> <a class="nav-link d-flex align-items-center active" id="account-tab" data-toggle="tab" href="#account" aria-controls="account" role="tab" aria-selected="true">
-                                            <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Create Public Agent</span>
-                                        </a></h3>
-                                    </li>
-                                   
-                                </ul>
-                                <div class="tab-pane"  aria-labelledby="information-tab" role="tabpanel">
-                                    <!-- users edit Info form start -->
-                                     {{-- <div class="media mb-2">
-                                            <a class="mr-2 my-25" href="#">
-                                                <img src="{{asset('/'.auth()->user()->avatar)}}" alt="users avatar" class="users-avatar-shadow rounded" height="90" width="90">
+                                        <h3 class="mb-1">
+                                            <a class="nav-link d-flex align-items-center active"
+                                               id="account-tab" data-toggle="tab" href="#account"
+                                               aria-controls="account" role="tab" aria-selected="true">
+                                                <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Create Public Agent</span>
                                             </a>
-                                            <div class="media-body mt-50">
-                                                <h4 class="media-heading">Angelo Sashington</h4>
-                                                <div class="col-12 d-flex mt-1 px-0">
-                                                    <a href="#" class="btn btn-primary d-none d-sm-block mr-75">Change</a>
-                                                    <a href="#" class="btn btn-primary d-block d-sm-none mr-75"><i class="feather icon-edit-1"></i></a>
-                                                    <a href="#" class="btn btn-outline-danger d-none d-sm-block">Remove</a>
-                                                    <a href="#" class="btn btn-outline-danger d-block d-sm-none"><i class="feather icon-trash-2"></i></a>
-                                                </div>
-                                            </div>
-                                        </div> --}}
+                                        </h3>
+                                    </li>
+                                </ul>
+                                @if(Session::has('success'))
+                                    <div class="alert alert-primary mb-2" role="alert">
+                                        <strong>Success</strong> User Created Successfully
+                                    </div>
+                                @endif
+                                <div class="tab-pane" aria-labelledby="information-tab" role="tabpanel">
+                                    <!-- users edit Info form start -->
                                     <form class="form" method="POST" action="{{ route('create_agent') }}">
                                         {{ csrf_field() }}
                                         <div class="row mt-1">
-                                            
+
                                             <div class="col-12 col-sm-6">
-                                               
+
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
@@ -101,7 +95,7 @@
                                                                 </div>
                                                             </fieldset>
                                                         </li>
-                                                       
+
                                                     </ul>
                                                 </div>
                                                 {{-- <div class="form-group">
@@ -133,20 +127,20 @@
                                                         </li>
                                                     </ul>
                                                 </div> --}}
-                    
+
                                             </div>
                                             <div class="col-12 col-sm-6">
-                                                
+
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <h5 class="mb-1"> <a class=" d-flex " id="account-tab" data-toggle="tab">
                                                             <i class="feather icon-map-pin mr-25"></i><span class="d-none d-sm-block">Address</span>
                                                         </a></h5>
-                                                        
+
                                                         <input id="address" type="text" class="form-control" name="address" required autocomplete="address" placeholder="Address" data-validation-required-message="This Website field is required">
                                                     </div>
                                                 </div>
-                                                
+
                                                 <div class="form-group">
                                                     <div class="controls">
                                                         <h5 class="mb-1"> <a class=" d-flex " id="account-tab" data-toggle="tab">
@@ -163,7 +157,7 @@
                                                         <input id="contact" type="number" class="form-control" name="contact" required autocomplete="contact" placeholder="Contact Number" data-validation-required-message="This Time Zone field is required">
                                                     </div>
                                                 </div>
-                                                
+
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                                 <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">add</button>

@@ -51,7 +51,7 @@
                                     <i class="feather icon-x"></i>
                                 </div>
                             </div>
-                            
+
                             <div class="card-content">
                                 <div class="card-body">
                                     <form class="form" action="{{route('edit_category')}}" method="POST">
@@ -76,29 +76,20 @@
                                     </form>
                                 </div>
                             </div>
-                           
+
                         </div>
-                        <section id="">
-                            <div class="card">
-                                <div class="card-header">
-                                    <h4 class="card-title">Duration & Timeout</h4>
-                                </div>
-                                <div class="card-content">
-                                    <div class="card-body">
-                                        <p>you can use options like <code>showDuration</code>, <code>hideDuration</code>, <code>timeout</code> for your
-                                            toasts. To create a sticky toast set the <code>timeout</code> to <code>0</code></p>
-                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="fast-duration">Show .5s</button>
-                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="slow-duration">Hide 3s</button>
-                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="timeout">Timeout 5s</button>
-                                        <button type="button" class="btn btn-outline-info mr-1 mb-1" id="sticky">Sticky Toast</button>
-                                    </div>
-                                </div>
-                            </div>
-                        </section>
-
                         <div class="card-body">
-
-                            <!-- Table with outer spacing -->
+                            @if(Session::has('deleted'))
+                                <div class="alert alert-primary mb-2" role="alert">
+                                    <strong>Success</strong> Category Deleted Successfully
+                                </div>
+                            @endif
+                            @if(Session::has('updated'))
+                                <div class="alert alert-primary mb-2" role="alert">
+                                    <strong>Success</strong> Category Updated Successfully
+                                </div>
+                            @endif
+                        <!-- Table with outer spacing -->
                             <div class="table-responsive">
                                 <table class="table">
                                     <thead>
@@ -140,7 +131,7 @@
     <!-- END: Content-->
 
 
-    
+
 @endsection
 @section('footer_scripts')
     <script>

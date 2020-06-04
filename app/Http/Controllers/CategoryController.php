@@ -15,7 +15,7 @@ class CategoryController extends Controller
             $cat = new Category;
             $cat->name = $data['name'];
             $cat->save();
-            return redirect()->back();
+            return back()->with('created','Created Successfully');
         }
         // // $details = Category::where(['parent_id'=>0])->get();
         // return view('admin.product.category.add_category' , \compact('details'));
@@ -28,8 +28,7 @@ class CategoryController extends Controller
     public function deletecategory($id)
     {
         Category::where(['id'=>$id])->delete();
-        return redirect()->back();
-
+        return back()->with('deleted','Category Deleted');
     }
 
     public function editcategory(Request $request , $id=null)
@@ -37,6 +36,6 @@ class CategoryController extends Controller
         Category::whereId($request->input('id'))->update([
             'name' => $request->input('name'),
         ]);
-        return back()->with('success', 'Updated Successfully');
+        return back()->with('updated', 'Updated Successfully');
     }
 }

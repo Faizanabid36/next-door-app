@@ -50,13 +50,19 @@
                             </div>
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{ route('add_category') }}" method="POST" >
+                                    @if(Session::has('created'))
+                                        <div class="alert alert-primary mb-2" role="alert">
+                                            <strong>Success</strong> Category Created Successfully
+                                        </div>
+                                    @endif
+                                    <form class="form" action="{{ route('add_category') }}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-6 col-12">
                                                     <div class="form-label-group">
-                                                        <input type="text" id="category-column" class="form-control" placeholder="Enter Category Name" name="name">
+                                                        <input type="text" id="category-column" class="form-control"
+                                                               placeholder="Enter Category Name" name="name">
                                                         {{-- <label for="first-name-column">First Name</label> --}}
                                                     </div>
                                                 </div>
