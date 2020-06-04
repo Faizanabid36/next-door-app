@@ -87,8 +87,8 @@
 {{--                                     </td>--}}
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
-                                        <span class="action-edit"><i class="feather icon-edit"></i></span>
-                                        <span onclick="delete({{$user->id}})" id="delete-item-{{$user->id}}" class="action-delete delete-toast"><i
+                                      
+                                        <span onclick="delete({{$user->id}})" id="delete-item-{{$user->id}}" class="action-delete delete-toast btn btn-danger mr-1 mb-1"><i
                                                 class="feather icon-trash"></i></span>
                                     </td>
                                 </tr>

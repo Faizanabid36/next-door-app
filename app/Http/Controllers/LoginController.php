@@ -28,8 +28,8 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt([
             'email' => $request->email,
-            'password' => $request->password
-        ])) {
+            'password' => $request->password])) 
+            {
             $user = User::where('email', $request->email)->first();
             if ($user->is_admin()) {
                 return redirect()->route('admin-dashboard');
