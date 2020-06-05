@@ -39,4 +39,11 @@ class RouteViewsController extends Controller
             return back();
         return \view('admin.category.view');
     }
+
+    public function account()
+    {
+        if(!auth()->user()->admin)
+            return back();
+        return \view('frontend.account.account');
+    }
 }

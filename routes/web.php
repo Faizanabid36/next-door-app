@@ -46,6 +46,9 @@ Route::name('admin.')->prefix('admin')->group(function () {
 Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
 Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 
+Route::get('/account' , 'RouteViewsController@account')->name('account');
+
+
 
 
 

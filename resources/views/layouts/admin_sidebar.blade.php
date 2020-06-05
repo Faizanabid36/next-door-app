@@ -1,6 +1,6 @@
 <li class=" navigation-header"><span>admin pages</span>
 </li>
-<li class=" nav-item"><a href="#"><i class="feather icon-settings"></i><span class="menu-title"
+<li class=" nav-item"><a href="{{route('account')}}"><i class="feather icon-settings"></i><span class="menu-title"
                                                                              data-i18n="Account Settings">Account Settings</span></a>
 </li>
 <li class=" nav-item"><a href="{{ route('create')}}"><i class="feather icon-user-plus"></i><span class="menu-title"
