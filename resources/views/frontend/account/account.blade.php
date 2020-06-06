@@ -51,12 +51,12 @@
                                     Change Password
                                 </a>
                             </li>
-                            <li class="nav-item">
+                            {{-- <li class="nav-item">
                                 <a class="nav-link d-flex py-75" id="account-pill-info" data-toggle="pill" href="#account-vertical-info" aria-expanded="false">
                                     <i class="feather icon-info mr-50 font-medium-3"></i>
                                     Info
                                 </a>
-                            </li>
+                            </li> --}}
                             <li class="nav-item">
                                 <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
                                     <i class="feather icon-camera mr-50 font-medium-3"></i>
@@ -110,14 +110,7 @@
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <div class="col-12">
-                                                        <div class="form-group">
-                                                            <div class="controls">
-                                                                <label for="account-name">Name</label>
-                                                                <input type="text" class="form-control" id="account-name" placeholder="Name" value="Hermione Granger" required data-validation-required-message="This name field is required">
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                   
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
@@ -126,7 +119,32 @@
                                                             </div>
                                                         </div>
                                                     </div>
+                                                   
                                                     <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="account-e-mail">Postal Code</label>
+                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="account-e-mail">Address</label>
+                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <div class="controls">
+                                                                <label for="account-e-mail">Emergency Contact</label>
+                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    {{-- <div class="col-12">
                                                         <div class="alert alert-warning alert-dismissible mb-2" role="alert">
                                                             <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                                                                 <span aria-hidden="true">×</span>
@@ -136,16 +154,15 @@
                                                             </p>
                                                             <a href="javascript: void(0);">Resend confirmation</a>
                                                         </div>
-                                                    </div>
-                                                    <div class="col-12">
+                                                    </div> --}}
+                                                    {{-- <div class="col-12">
                                                         <div class="form-group">
                                                             <label for="account-company">Company</label>
                                                             <input type="text" class="form-control" id="account-company" placeholder="Company name">
                                                         </div>
-                                                    </div>
+                                                    </div> --}}
                                                     <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
-                                                            changes</button>
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Update Profile</button>
                                                         <button type="reset" class="btn btn-outline-warning">Cancel</button>
                                                     </div>
                                                 </div>
