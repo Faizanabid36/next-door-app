@@ -11,14 +11,6 @@
                         <div class="col-12">
                             <h2 class="content-header-title float-left mb-0">Neighbours List</h2>
                             <div class="breadcrumb-wrapper col-12">
-                                {{--                                <ol class="breadcrumb">--}}
-                                {{--                                    <li class="breadcrumb-item"><a href="#">Home</a>--}}
-                                {{--                                    </li>--}}
-                                {{--                                    <li class="breadcrumb-item"><a href="#">Data List</a>--}}
-                                {{--                                    </li>--}}
-                                {{--                                    <li class="breadcrumb-item active">Neighbours--}}
-                                {{--                                    </li>--}}
-                                </ol>
                             </div>
                         </div>
                     </div>
@@ -27,8 +19,9 @@
                     <div class="form-group breadcrum-right">
                         <div class="dropdown">
                             <button class="btn-icon btn btn-primary btn-round btn-sm dropdown-toggle" type="button"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i
-                                    class="feather icon-settings"></i></button>
+                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <i class="feather icon-settings"></i>
+                            </button>
                             <div class="dropdown-menu dropdown-menu-right"><a class="dropdown-item" href="#">Chat</a><a
                                     class="dropdown-item" href="#">Email</a><a class="dropdown-item"
                                                                                href="#">Calendar</a></div>

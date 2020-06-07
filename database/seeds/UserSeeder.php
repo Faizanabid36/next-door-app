@@ -101,6 +101,18 @@ class UserSeeder extends Seeder
                 'gender' => 0,
                 'admin' => 0,
                 'avatar' => ('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+            ],
+            [
+                'name' => 'Agent',
+                'email' => 'agent@gmail.com',
+                'password' => \Hash::make('1234567890'),
+                'address' => 'asdf-gh-021',
+                'contact' => '12312312',
+                'postal' => '123',
+                'gender' => 0,
+                'admin' => 0,
+                'is_public_agent'=>1,
+                'avatar' => ('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
             ]
         ];
         foreach ($user as $u)
