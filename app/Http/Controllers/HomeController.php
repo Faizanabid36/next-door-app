@@ -47,8 +47,6 @@ class HomeController extends Controller
 
     public function agents_list()
     {
-        if(!auth()->user()->admin)
-            return back();
         $users = User::whereNotNull('is_public_agent')->get();
         if(auth()->user()->admin)
             return \view('admin.public_agents.user_list' , compact('users'));

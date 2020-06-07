@@ -88,7 +88,7 @@
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
                                         {{-- <span class="action-edit"><i class="feather icon-edit btn btn-primary mr-1 mb-1"></i></span> --}}
-                                        <span id="delete-item-{{$user->id}} slide-toast " class="action-delete btn btn-danger mr-1 mb-1"><i class="feather icon-trash"></i></span>
+                                        <span id="delete-item-{{$user->id}}" class="action-delete btn btn-danger mr-1 mb-1"><i class="feather icon-trash"></i></span>
                                     </td>
                                 </tr>
                             @endforeach

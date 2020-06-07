@@ -38,9 +38,9 @@ Route::group(['middleware' => 'auth'], function () {
 
 });
 
-Route::name('admin.')->prefix('admin')->group(function () {
+Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
-    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
+//    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
     Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
