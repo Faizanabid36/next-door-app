@@ -1,6 +1,7 @@
 @extends('layouts.main')
+@section('title','Edit Profile')
+@section('body_content')
 
-@section('account')
 <div class="app-content content">
     <div class="content-overlay"></div>
     <div class="header-navbar-shadow"></div>
@@ -82,6 +83,11 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
+                                @if(Session::has('success'))
+                                <div class="alert alert-primary mb-2" role="alert">
+                                    <strong>Success</strong> User Updated Successfully
+                                </div>
+                            @endif
                                     <div class="tab-content">
                                         <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
                                             <div class="media">
@@ -100,13 +106,14 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <form novalidate>
+                                            <form novalidate method="POST" action="{{action('UserController@updateuser',$user->id)}}">
+                                                @csrf
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-username">Username</label>
-                                                                <input type="text" class="form-control" id="account-username" placeholder="Username" value="hermione007" required data-validation-required-message="This username field is required">
+                                                                <input type="text" name="name" class="form-control" id="account-username" placeholder="Username" value="{{$user->name}}" required data-validation-required-message="This username field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -115,7 +122,7 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">E-mail</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                                <input type="email" name="email" class="form-control" id="account-e-mail" placeholder="Email" value="{{$user->email}}" required data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -124,7 +131,7 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">Postal Code</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                                <input type="text" name="postal" class="form-control" id="account-postal-code" placeholder="postal-code" value="{{$user->postal}}" required data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -132,15 +139,15 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">Address</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                                <input type="text" name="address" class="form-control" id="account-address" placeholder="Address" value="{{$user->address}}" required data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-e-mail">Emergency Contact</label>
-                                                                <input type="email" class="form-control" id="account-e-mail" placeholder="Email" value="granger007@hogward.com" required data-validation-required-message="This email field is required">
+                                                                <label for="account-e-mail">Contact</label>
+                                                                <input type="email" name="contact" class="form-control" id="account-emergency-contact" placeholder="emergencyContact" value="{{$user->contact}}" required data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>

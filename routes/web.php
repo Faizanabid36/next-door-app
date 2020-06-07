@@ -35,6 +35,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/view_category/delete_category/{id}', 'CategoryController@deletecategory');
     Route::post('/view_category/edit_category', 'CategoryController@editcategory')->name('edit_category');
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
+    Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
 
 });
 
@@ -44,6 +45,8 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
+
+
 
 
 

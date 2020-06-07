@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use app\User;
 
 class RouteViewsController extends Controller
 {
@@ -42,8 +43,11 @@ class RouteViewsController extends Controller
 
     public function account()
     {
-        if(!auth()->user()->admin)
-            return back();
-        return \view('frontend.account.account');
+        // $users= User::where('id',auth()->user()->id)->first();
+        $user=auth()->user();
+        
+
+        
+        return \view('frontend.account.account',compact('user'));
     }
 }
