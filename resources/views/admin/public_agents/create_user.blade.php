@@ -32,7 +32,7 @@
                                 @endif
                                 <div class="tab-pane" aria-labelledby="information-tab" role="tabpanel">
                                     <!-- users edit Info form start -->
-                                    <form class="form" method="POST" action="{{ route('create_agent') }}">
+                                    <form class="form" method="POST" action="{{ route('admin.create_agent') }}">
                                         {{ csrf_field() }}
                                         <div class="row mt-1">
 
@@ -161,7 +161,7 @@
                                             </div>
                                             <div class="col-12 d-flex flex-sm-row flex-column justify-content-end mt-1">
                                                 <button type="submit" class="btn btn-primary glow mb-1 mb-sm-0 mr-0 mr-sm-1">Create Agent</button>
-                                                
+
                                             </div>
                                         </div>
                                     </form>

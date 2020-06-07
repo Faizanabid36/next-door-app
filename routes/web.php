@@ -34,19 +34,16 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/view_category', 'CategoryController@viewcategory')->name('view_category');
     Route::get('/view_category/delete_category/{id}', 'CategoryController@deletecategory');
     Route::post('/view_category/edit_category', 'CategoryController@editcategory')->name('edit_category');
+    Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
 
 });
 
 Route::name('admin.')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
     Route::get('agents_list','HomeController@delete_user')->name('agents_list');
+    Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
+    Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
-
-//Admin create user
-Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
-Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
-
-Route::get('/account' , 'RouteViewsController@account')->name('account');
 
 
 
