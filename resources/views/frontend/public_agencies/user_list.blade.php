@@ -173,8 +173,16 @@
                                                         <th><img width="100" src="{{asset('/').$user->avatar}}" alt=""></th>
                                                         <th>{{$user->name}}</th>
                                                         <th>{{$user->email}}</th>
-                                                        <th>{{$user->address}}</th>
-                                                        <th>{{$user->contact}}</th>
+                                                        @if((isset($user->user_extra))&&$user->user_extra->hide_address)
+                                                            <td></td>
+                                                        @else
+                                                            <th>{{$user->address}}</th>
+                                                        @endif
+                                                        @if((isset($user->user_extra))&&$user->user_extra->hide_phone)
+                                                            <td></td>
+                                                        @else
+                                                            <th>{{$user->contact}}</th>
+                                                        @endif
                                                     </tr>
                                                 @endforeach
                                                 </tbody>
