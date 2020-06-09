@@ -88,7 +88,7 @@
                                             <strong>Success</strong> User Updated Successfully
                                         </div>
                                     @endif
-{{--                                        {{dd(Session::all())}}--}}
+
                                     @if(Session::has('errors'))
                                         <div class="alert alert-danger mb-2" role="alert">
                                             <strong>Error</strong> {{Session::get('errors')->first()}}
@@ -99,17 +99,20 @@
                                              aria-labelledby="account-pill-general" aria-expanded="true">
                                             <div class="media">
                                                 <a href="javascript: void(0);">
-                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg"
+                                                    <!-- <img src="../../../users//portrait/small/avatar-s-12.jpg"
                                                          class="rounded mr-75" alt="profile image" height="64"
-                                                         width="64">
+                                                         width="64"> -->
                                                 </a>
                                                 <div class="media-body mt-75">
+                                                <form novalidate method="POST"
+                                                enctype='multipart/form-data' 
+                                                  action="{{action('UserController@updateuser',$user->id)}}">
                                                     <div
                                                         class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                                         <label
                                                             class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
                                                             for="account-upload">Upload new photo</label>
-                                                        <input type="file" id="account-upload" hidden>
+                                                        <input type="file" name="Picture" id="account-upload" hidden>
                                                         <button class="btn btn-sm btn-outline-warning ml-50">Reset
                                                         </button>
                                                     </div>
@@ -120,8 +123,7 @@
                                                 </div>
                                             </div>
                                             <hr>
-                                            <form novalidate method="POST"
-                                                  action="{{action('UserController@updateuser',$user->id)}}">
+                                           
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-12">

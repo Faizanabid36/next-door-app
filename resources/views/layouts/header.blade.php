@@ -192,7 +192,7 @@
                                     class="user-name text-bold-600"> {{ Auth::user()->name }}</span><span
                                     class="user-status">Available</span></div>
                             <span><img class="round"
-                                       src="{{asset('/'.auth()->user()->avatar)}}"
+                                       src="{{asset(auth()->user()->avatar)}}"
                                        alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
