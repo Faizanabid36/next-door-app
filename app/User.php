@@ -9,7 +9,8 @@ class User extends Authenticatable
 {
     use Notifiable;
 
-    protected $with = 'user_extra';
+    protected $with = ['user_extra'];
+
 
     /**
      * The attributes that are mass assignable.
@@ -62,11 +63,12 @@ class User extends Authenticatable
 
     public function user_extra()
     {
-        return $this->hasOne(UserExtra::class, 'emergency_contact', 'user_extra_id');
+        return $this->hasOne(UserExtra::class, 'user_id', 'user_extra_id');
     }
 
     public function family_members()
     {
-        $this->hasMany(FamilyMember::class, 'user_id', 'family_member_id');
+        return $this->hasMany(FamilyMember::class, 'user_id', 'family_member_id');
     }
+
 }

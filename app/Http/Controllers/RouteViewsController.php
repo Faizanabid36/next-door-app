@@ -44,8 +44,9 @@ class RouteViewsController extends Controller
     public function account()
     {
         // $users= User::where('id',auth()->user()->id)->first();
-        $user=auth()->user();
-//        return $user;
+        // $user=auth()->user()->with('family_members');
+        $user= User::with(['family_members','user_extra'])->get();
+       return $user;
 
         return \view('frontend.account.account',compact('user'));
     }
