@@ -83,55 +83,80 @@
                         <div class="card">
                             <div class="card-content">
                                 <div class="card-body">
-                                @if(Session::has('success'))
-                                <div class="alert alert-primary mb-2" role="alert">
-                                    <strong>Success</strong> User Updated Successfully
-                                </div>
-                            @endif
+                                    @if(Session::has('success'))
+                                        <div class="alert alert-primary mb-2" role="alert">
+                                            <strong>Success</strong> User Updated Successfully
+                                        </div>
+                                    @endif
+{{--                                        {{dd(Session::all())}}--}}
+                                    @if(Session::has('errors'))
+                                        <div class="alert alert-danger mb-2" role="alert">
+                                            <strong>Error</strong> {{Session::get('errors')->first()}}
+                                        </div>
+                                    @endif
                                     <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="account-vertical-general" aria-labelledby="account-pill-general" aria-expanded="true">
+                                        <div role="tabpanel" class="tab-pane active" id="account-vertical-general"
+                                             aria-labelledby="account-pill-general" aria-expanded="true">
                                             <div class="media">
                                                 <a href="javascript: void(0);">
-                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg" class="rounded mr-75" alt="profile image" height="64" width="64">
+                                                    <img src="../../../app-assets/images/portrait/small/avatar-s-12.jpg"
+                                                         class="rounded mr-75" alt="profile image" height="64"
+                                                         width="64">
                                                 </a>
                                                 <div class="media-body mt-75">
-                                                    <div class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
-                                                        <label class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer" for="account-upload">Upload new photo</label>
+                                                    <div
+                                                        class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                        <label
+                                                            class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                            for="account-upload">Upload new photo</label>
                                                         <input type="file" id="account-upload" hidden>
-                                                        <button class="btn btn-sm btn-outline-warning ml-50">Reset</button>
+                                                        <button class="btn btn-sm btn-outline-warning ml-50">Reset
+                                                        </button>
                                                     </div>
-                                                    <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG. Max
+                                                    <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or PNG.
+                                                            Max
                                                             size of
                                                             800kB</small></p>
                                                 </div>
                                             </div>
                                             <hr>
-                                            <form novalidate method="POST" action="{{action('UserController@updateuser',$user->id)}}">
+                                            <form novalidate method="POST"
+                                                  action="{{action('UserController@updateuser',$user->id)}}">
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-username">Username</label>
-                                                                <input type="text" name="name" class="form-control" id="account-username" placeholder="Username" value="{{$user->name}}" required data-validation-required-message="This username field is required">
+                                                                <input type="text" name="name" class="form-control"
+                                                                       id="account-username" placeholder="Username"
+                                                                       value="{{$user->name}}" required
+                                                                       data-validation-required-message="This username field is required">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                   
+
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">E-mail</label>
-                                                                <input type="email" name="email" class="form-control" id="account-e-mail" placeholder="Email" value="{{$user->email}}" required data-validation-required-message="This email field is required">
+                                                                <input type="email" name="email" class="form-control"
+                                                                       id="account-e-mail" placeholder="Email"
+                                                                       value="{{$user->email}}" required
+                                                                       data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
-                                                   
+
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">Postal Code</label>
-                                                                <input type="text" name="postal" class="form-control" id="account-postal-code" placeholder="postal-code" value="{{$user->postal}}" required data-validation-required-message="This email field is required">
+                                                                <input type="text" name="postal" class="form-control"
+                                                                       id="account-postal-code"
+                                                                       placeholder="Postal-code"
+                                                                       value="{{$user->postal}}" required
+                                                                       data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -139,7 +164,10 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">Address</label>
-                                                                <input type="text" name="address" class="form-control" id="account-address" placeholder="Address" value="{{$user->address}}" required data-validation-required-message="This email field is required">
+                                                                <input type="text" name="address" class="form-control"
+                                                                       id="account-address" placeholder="Address"
+                                                                       value="{{$user->address}}" required
+                                                                       data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -147,7 +175,11 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-e-mail">Contact</label>
-                                                                <input type="email" name="contact" class="form-control" id="account-emergency-contact" placeholder="emergencyContact" value="{{$user->contact}}" required data-validation-required-message="This email field is required">
+                                                                <input type="number" name="contact" class="form-control"
+                                                                       id="account-emergency-contact"
+                                                                       placeholder="Contact" value="{{$user->contact}}"
+                                                                       required
+                                                                       data-validation-required-message="This email field is required">
                                                             </div>
                                                         </div>
                                                     </div>

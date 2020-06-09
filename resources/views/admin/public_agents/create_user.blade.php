@@ -25,6 +25,11 @@
                                         </h3>
                                     </li>
                                 </ul>
+                                @if(Session::has('errors'))
+                                    <div class="alert alert-primary mb-2" role="alert">
+                                        <strong>Error</strong> {{Session::get('errors')->first()}}
+                                    </div>
+                                @endif
                                 @if(Session::has('success'))
                                     <div class="alert alert-primary mb-2" role="alert">
                                         <strong>Success</strong> User Created Successfully

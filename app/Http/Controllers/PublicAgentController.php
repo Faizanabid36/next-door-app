@@ -17,6 +17,14 @@ class PublicAgentController extends Controller
 
     public function createagent(Request $request)
     {
+        $this->validate($request,[
+            'email'=>'required|unique:users,email',
+            'name'=>'required',
+            'gender'=>'required',
+            'address'=>'required',
+            'postal'=>'required',
+            'contact'=>'required',
+        ]);
         if ($request['gender'] == 0) {
             \request()->merge(['avatar' => 'theme\app-assets\images\portrait\small\avatar-s-25.jpg']);
         } else {
@@ -28,7 +36,7 @@ class PublicAgentController extends Controller
             User::create(\request()->except('_token'));
             return back()->with('success', 'Created Successfully');
         }
-        // // $details = Category::where(['parent_id'=>0])->get();
+        // $details = Category::where(['parent_id'=>0])->get();
         // return view('admin.product.category.add_category' , \compact('details'));
 
     }
