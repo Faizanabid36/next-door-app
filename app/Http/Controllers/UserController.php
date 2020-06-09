@@ -19,12 +19,27 @@ class UserController extends Controller
             'postal' => 'required',
             'contact' => 'required',
             'address' => 'required',
+            'image' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         // (\request()->merge(['pass'=> \Hash::make('1234567890') ]));
         //\request()->except('_token');
+        if (request()->hasFile('Picture')){
 
-        $user = User::whereId($id)->update(\request()->except('_token'));
+        $file = $request->file('Picture');
+
+        $imageName =auth()->user()->id.'.' . $file->getClientOriginalExtension();
+        $destinationPath = public_path('/users/avatar/');
+
+
+        $file->move($destinationPath,$imageName);
+        (\request()->merge(['avatar'=> ('users/avatar/'.$imageName) ]));
+
+      }
+
+        $user = User::whereId($id)->update(\request()->except('_token','Picture'));
+            
         return back()->with('success', 'User Updated Successfuly ');
+        
 
     }
 }
