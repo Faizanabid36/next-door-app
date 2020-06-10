@@ -209,14 +209,18 @@
                                                 </div>
                                             </form>
                                         </div>
+
                                         <div class="tab-pane fade " id="account-vertical-password" role="tabpanel" aria-labelledby="account-pill-password" aria-expanded="false">
-                                            <form novalidate>
+                                            
+                                            <form novalidate method="POST" enctype='multipart/form-data'  action="{{ action('UserController@changePassword',$user->id)}}">
+                                            @csrf
+                                            
                                                 <div class="row">
                                                     <div class="col-12">
                                                         <div class="form-group">
                                                             <div class="controls">
-                                                                <label for="account-old-password">Old Password</label>
-                                                                <input type="password" class="form-control" id="account-old-password" required placeholder="Old Password" data-validation-required-message="This old password field is required">
+                                                                <label for="account-old-password" >Old Password</label>
+                                                                <input type="password" class="form-control" name="account-old-password" id="account-old-password" required placeholder="Old Password" data-validation-required-message="This old password field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -224,7 +228,7 @@
                                                         <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="account-new-password">New Password</label>
-                                                                <input type="password" name="password" id="account-new-password" class="form-control" placeholder="New Password" required data-validation-required-message="The password field is required" minlength="6">
+                                                                <input type="password" name="account-new-password" id="account-new-password" class="form-control" placeholder="New Password" required data-validation-required-message="The password field is required" minlength="6">
                                                             </div>
                                                         </div>
                                                     </div>
