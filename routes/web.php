@@ -46,6 +46,8 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
 
+// profile
+Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profile')->name('view_profile');
 
 
 

@@ -196,6 +196,9 @@
                                        alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
+                            <a class="dropdown-item" href="{{url('/home/view_profile/{$id}')}}">
+                                <i class="feather icon-user"></i> View Profile
+                            </a>
                             <a class="dropdown-item" href="{{route('edit_profile')}}">
                                 <i class="feather icon-user"></i> Edit Profile
                             </a>
