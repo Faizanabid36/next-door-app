@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+//
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,6 +36,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/view_category/edit_category', 'CategoryController@editcategory')->name('edit_category');
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
+    Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
 
 });
 
