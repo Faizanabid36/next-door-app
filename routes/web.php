@@ -23,6 +23,7 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
+    Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
 Auth::routes();
 

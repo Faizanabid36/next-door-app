@@ -27,7 +27,6 @@ class CreateUsersTable extends Migration
             $table->integer('is_public_agent')->nullable();
             $table->string('avatar')->nullable();
             $table->integer('user_extra_id')->nullable();
-            $table->integer('family_member_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

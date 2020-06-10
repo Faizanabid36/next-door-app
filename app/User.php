@@ -62,7 +62,7 @@ class User extends Authenticatable
     }
     public function family_members()
     {
-        return $this->hasMany(FamilyMember::class, 'user_id', 'family_member_id');
+        return $this->hasMany(FamilyMember::class, 'user_id');
     }
     public function posts()
     {
