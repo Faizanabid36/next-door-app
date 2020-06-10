@@ -46,33 +46,38 @@ class UserController extends Controller
 
     }
     public function changePassword(Request $request, $id ) {
+
+        User::where('id', $id)
+              ->update(['password' => Hash::make(\request('password'))]);
+              return back();
+
         //if old pass is not matched
-        if (!(Hash::check($request->get('account-old-password'), Auth::user()->password))) {
-            return back()->with('error',"Password Not Matched Please try again.");
-        }
+        // if (!(Hash::check($request->get('account-old-password'), Auth::user()->password))) {
+        //     return back()->with('error',"Password Not Matched Please try again.");
+        // }
         //if old and new sem
-        if(strcmp($request->get('account-old-password'), $request->get('account-new-password'))){
+        // if(strcmp($request->get('account-old-password'), $request->get('account-new-password'))){
 
-            return back()->with("error","New Password is same as Old Password.");
-        }
-        if(!(strcmp($request->get('account-old-password'), $request->get('con-password')))){
+        //     return back()->with("error","New Password is same as Old Password.");
+        // }
+        // if(!(strcmp($request->get('account-old-password'), $request->get('con-password')))){
 
-            return back()->with("error","Retyped And New Password Not Matched.");
-        }
+        //     return back()->with("error","Retyped And New Password Not Matched.");
+        // }
 
         // $validatedData = $request->validate([
         //     'account-old-password' => 'required',
         //     'account-new-password' => 'required|string|min:6|confirmed',
         // ]);
 
-       $user = Auth::user();
-       $user->password = Hash::make($request->get('account-new-password'));
+    //    $user = Auth::user();
+    //    $user->password = Hash::make($request->get('account-new-password'));
       // (\request()->merge(['password'=>($user->password)]));
         
        
       //  $user= User::whereId($id)->update(\request());
-         $user->save();
-        return redirect('/')->with('Success',"Password Changed! ");
+        //  $user->save();
+        // return redirect('/')->with('Success',"Password Changed! ");
     }
 
 }
