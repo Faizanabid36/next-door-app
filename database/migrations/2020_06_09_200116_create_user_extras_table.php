@@ -17,7 +17,8 @@ class CreateUserExtrasTable extends Migration
             $table->id();
             $table->integer('user_id')->unique();
             $table->string('emergency_contact');
-            $table->string('bio');
+            $table->string('birthdate')->nullable();
+            $table->longText('bio')->nullable();
             $table->smallInteger('hide_phone')->nullable()->default(0);
             $table->smallInteger('hide_address')->nullable()->default(0);
             $table->timestamps();

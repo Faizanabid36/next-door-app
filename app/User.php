@@ -58,7 +58,7 @@ class User extends Authenticatable
     }
     public function user_extra()
     {
-        return $this->hasOne(UserExtra::class, 'user_id', 'user_extra_id');
+        return $this->hasOne(UserExtra::class, 'user_id', 'id');
     }
     public function family_members()
     {

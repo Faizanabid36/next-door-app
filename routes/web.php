@@ -38,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
     Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
+    Route::post('update_user_extras/{id}','UserController@update_user_extras')->name('update_user_extras');
 
 });
 
