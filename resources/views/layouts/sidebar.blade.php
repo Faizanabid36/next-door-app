@@ -42,7 +42,7 @@
                 </li>
                 <li class=" navigation-header"><span>pages</span>
                 </li>
-                <li class=" nav-item"><a href="page-user-profile.html"><i class="feather icon-user"></i><span
+                <li class=" nav-item"><a href="#"><i class="feather icon-user"></i><span
                             class="menu-title" data-i18n="Profile">Profile</span></a>
                 </li>
                 @if(isset(auth()->user()->id)&&auth()->user()->id==1)

@@ -47,10 +47,4 @@ class RouteViewsController extends Controller
         return \view('frontend.account.account', compact('user'));
     }
 
-    public function view_profile($id)
-    {
-
-        $profile = auth()->user();
-        return \view('frontend.account.view_profile' , compact('profile'));
-    }
 }

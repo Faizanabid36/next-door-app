@@ -39,6 +39,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
     Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
     Route::post('update_user_extras/{id}','UserController@update_user_extras')->name('update_user_extras');
+    // profile
+    Route::get('/home/view_profile/{id}', 'HomeController@view_profile')->name('view_profile');
 
 });
 
@@ -48,9 +50,6 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
-
-// profile
-Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profile')->name('view_profile');
 
 
 

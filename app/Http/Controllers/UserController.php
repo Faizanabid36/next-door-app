@@ -32,7 +32,6 @@ class UserController extends Controller
             (\request()->merge(['avatar' => ('users/avatar/' . $imageName)]));
         }
         User::whereId($id)->update(\request()->except('_token', 'Picture'));
-
         return back()->with('success', 'User Updated Successfuly ');
     }
 

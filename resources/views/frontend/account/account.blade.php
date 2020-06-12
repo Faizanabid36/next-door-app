@@ -205,7 +205,7 @@
                                                                        placeholder="Old Password"
                                                                        data-validation-required-message="This old password field is required">
                                                             </div>
-                                                        </div>
+                                                    </div>
                                                     </div>
                                                     <div class="col-12">
                                                         <div class="form-group">

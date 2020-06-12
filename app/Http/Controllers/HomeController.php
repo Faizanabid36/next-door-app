@@ -52,6 +52,11 @@ class HomeController extends Controller
             return \view('admin.public_agents.user_list' , compact('users'));
         return \view('frontend.public_agencies.user_list' , compact('users'));
     }
+    public function view_profile($id)
+    {
+        $profile = User::whereId($id)->first();
+        return \view('frontend.account.view_profile' , compact('profile'));
+    }
 
 
 }

@@ -169,7 +169,7 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($users as $user)
-                                                    <tr>
+                                                    <tr onclick="window.location=`{{route('view_profile',$user->id)}}">
                                                         <th><img width="100" src="{{asset('/').$user->avatar}}" alt=""></th>
                                                         <th>{{$user->name}}</th>
                                                         <th>{{$user->email}}</th>
