@@ -48,7 +48,7 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
 });
 
 // profile
-Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profile')->name('view_profile');
+Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profiles')->name('view_profile');
 
 
 

@@ -50,8 +50,16 @@ class RouteViewsController extends Controller
 
     public function view_profile($id)
     {
-       
         $profile = auth()->user();
         return \view('frontend.account.view_profile' , compact('profile'));
+    }
+
+    public function view_profiles( $id)
+    {
+        
+        // $data = $request->all($id);
+        dd($profile);
+        // $profile = auth()->user();
+        // return \view('frontend.account.view_profile' , compact('profile'));
     }
 }
