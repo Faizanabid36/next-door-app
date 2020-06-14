@@ -1,2 +1,4 @@
-<!-- Hello <strong>{{ $name }}</strong>,
-<p>{{body}}</p> -->
+
+
+Hello <strong>{{ $data->$name ?? ''}}</strong>,
+<p>{{$data->$body ?? ''}}</p>
