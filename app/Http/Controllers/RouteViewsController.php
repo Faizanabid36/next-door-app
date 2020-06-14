@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\User;
+
 class RouteViewsController extends Controller
 {
     //
@@ -42,8 +44,9 @@ class RouteViewsController extends Controller
 
     public function account()
     {
-//         $user= User::where('id',auth()->user()->id)->with('user_extra')->first();
-        $user=auth()->user();
+        $user= User::whereId(auth()->user()->id)->with('user_extra','family_members')->first();
+        // $user=auth()->user()->with('family_members');
+        // return $user;
         return \view('frontend.account.account', compact('user'));
     }
 

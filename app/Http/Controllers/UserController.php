@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use App\UserExtra;
+use App\FamilyMember;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;
@@ -78,6 +79,57 @@ class UserController extends Controller
             request()->merge(['hide_address' => 0]);
         UserExtra::where('user_id', $id)->update(\request()->except('_token','display_phone','display_address'));
         return back()->with('success', 'Settings Updated');
+    }
+    public function update_family(Request $request,$id)
+    {
+        $this->validate($request, [
+            'member_name' => 'required|max:54',
+            'relation' => 'required|max:54',
+            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if (request()->hasFile('Picture')) {
+            $file = $request->file('Picture');
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/users/family/');
+            $file->move($destinationPath, $imageName);
+            (\request()->merge(['member_image' => ('users/family/' . $imageName)]));
+        }
+        $data=new FamilyMember();
+        $data->member_name=$request->get('member_name');
+        $data->member_relation=$request->get('relation');
+        $data->member_image=$request->get('member_image');
+        $data->user_id=$id;
+        $user=User::find($id);
+        $user->family_members()->save($data);
+        return back()->with('success', 'Member Created Successfully');   
+    }
+    public function edit_family(Request $request, $id)
+    {
+        $this->validate($request, [
+            'member_name' => 'required|max:54',
+            'relation' => 'required|max:54',
+            'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+        ]);
+        if (request()->hasFile('Picture')) {
+            $file = $request->file('Picture');
+            $imageName = time() . '.' . $file->getClientOriginalExtension();
+            $destinationPath = public_path('/users/family/');
+            $file->move($destinationPath, $imageName);
+            (\request()->merge(['member_image' => ('users/family/' . $imageName)]));
+        }
+        $request->merge(['member_relation'=>$request->get('relation')]);
+        $x=FamilyMember::whereId($id)->update($request->except('_token','Picture','relation'));
+        if($x)
+            return back()->with('success', 'Member Updated Successfully');  
+        return back()->with('error', 'Could Not Update Member');
+    }
+
+    public function delete_family($id)
+    {
+        $d=FamilyMember::whereId($id)->delete();
+        if($d)
+            return back()->with('success', 'Member Deleted Successfully');  
+        return back()->with('error', 'Could Not Delete Member');
     }
 
 }
