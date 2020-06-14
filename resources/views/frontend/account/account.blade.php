@@ -61,6 +61,12 @@
                                     User Extras
                                 </a>
                             </li>
+                            <li class="nav-item">
+                                <a class="nav-link d-flex py-75" id="account-pill-social" data-toggle="pill" href="#account-vertical-social" aria-expanded="false">
+                                    <i class="feather icon-home mr-50 font-medium-3"></i>
+                                    Family and Pets
+                                </a>
+                            </li>
                         </ul>
                     </div>
                     <!-- right content section -->
@@ -69,7 +75,7 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     @if(Session::has('success'))
-                                        <div class="alert alert-primary mb-2" role="alert">
+                                        <div class="alert alert-success mb-2" role="alert">
                                             <strong>Success</strong> {{Session::get('success')}}
                                         </div>
                                     @endif
@@ -106,14 +112,12 @@
                                                             <input onchange="loadFile(event)" type="file" name="Picture"
                                                                    id="account-upload"
                                                                    hidden>
-                                                            <button class="btn btn-sm btn-outline-warning ml-50">Reset
-                                                            </button>
                                                         </div>
                                                         <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
                                                                 PNG.
                                                                 Max
                                                                 size of
-                                                                800kB</small></p>
+                                                                2MB</small></p>
                                                     </div>
                                                 </div>
                                                 <hr>
@@ -241,8 +245,6 @@
                                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes
                                                         </button>
-                                                        <button type="reset" class="btn btn-outline-warning">Cancel
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
@@ -326,11 +328,119 @@
                                                                 class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Save
                                                             changes
                                                         </button>
-                                                        <button type="reset" class="btn btn-outline-warning">Cancel
-                                                        </button>
                                                     </div>
                                                 </div>
                                             </form>
+                                        </div>
+                                        <div class="tab-pane fade " id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
+                                            <form 
+                                                action="{{action('UserController@update_family',$user->id)}}"
+                                                method="POST"
+                                                enctype="multipart/form-data">
+                                                @csrf
+                                            <div class="media">
+                                                    <a href="javascript: void(0);">
+                                                        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTr0H_sETw5Ki7KtS9tHJsY5z_HMZkB4BTKE0l6kBrz1R0HenZQMg&s"
+                                                             id="member_picture"
+                                                             class="rounded mr-75" alt="profile image" height="64"
+                                                             width="64">
+                                                    </a>
+                                                    <div class="media-body mt-75">
+                                                        <div
+                                                            class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                            <label
+                                                                class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                                for="member-picture-upload">Upload new photo</label>
+                                                            <input onchange="loadMemberPicture(event)" type="file" name="Picture"
+                                                                   id="member-picture-upload"
+                                                                   hidden>
+                                                        </div>
+                                                        <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                                                PNG.
+                                                                Max
+                                                                size of
+                                                                2MB</small></p>
+                                                    </div>
+                                                </div>
+                                                <hr>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-facebook">Name</label>
+                                                            <input type="text" id="account-facebook" name="member_name" class="form-control" placeholder="Family Member Name">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12">
+                                                        <div class="form-group">
+                                                            <label for="account-google">Relation</label>
+                                                            <input type="text" id="account-google" name="relation" class="form-control" placeholder="Define Relation">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-12 d-flex flex-sm-row flex-column justify-content-end">
+                                                        <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Add Member</button>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                            @if(count($user->family_members)>0)
+                                                <hr>
+                                                <br>
+                                                <h3>Edit Family Member/Pet</h3>
+                                            @endif
+                                            @foreach($user->family_members as $family_member)
+                                                <div class="col-md-6 mt-5 mb-5">
+                                                    <form 
+                                                        action="{{action('UserController@edit_family',$family_member->id)}}"
+                                                        method="POST"
+                                                        enctype="multipart/form-data">
+                                                        @csrf
+                                                    <div class="media">
+                                                            <a href="javascript: void(0);">
+                                                                <img src="{{asset($family_member->member_image)}}"
+                                                                    id="member_picture{{$family_member->id}}"
+                                                                    class="rounded mr-75" alt="profile image" height="64"
+                                                                    width="64">
+                                                            </a>
+                                                            <div class="media-body mt-75">
+                                                                <div
+                                                                    class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                                                    <label
+                                                                        class="btn btn-sm btn-primary ml-50 mb-50 mb-sm-0 cursor-pointer"
+                                                                        for="{{$family_member->id}}">Upload new photo</label>
+                                                                    <input type="file" name="Picture"
+                                                                        id="{{$family_member->id}}"
+                                                                        hidden>
+                                                                </div>
+                                                                <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                                                        PNG.
+                                                                        Max
+                                                                        size of
+                                                                        2MB</small></p>
+                                                            </div>
+                                                        </div>
+                                                        <hr>
+                                                        <div class="row">
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label for="account-facebook">Name</label>
+                                                                    <input type="text" value="{{$family_member->member_name}}" id="account-facebook{{$family_member->id}}" name="member_name" class="form-control" placeholder="Family Member Name">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-12">
+                                                                <div class="form-group">
+                                                                    <label for="account-google">Relation</label>
+                                                                    <input type="text" value="{{$family_member->member_relation}}" id="account-google{{$family_member->id}}" name="relation" class="form-control" placeholder="Define Relation">
+                                                                </div>
+                                                            </div>
+                                                            <div class="col-6 d-flex flex-sm-row flex-column justify-content-end">
+                                                                <button type="submit" class="btn btn-primary mr-sm-1 mb-1 mb-sm-0">Update</button>
+                                                            </div>
+                                                            <div class="col-6 d-flex flex-sm-row flex-column justify-content-end">
+                                                                <a href="{{route('delete_family',$family_member->id)}}" class="btn btn-danger mr-sm-1 mb-1 mb-sm-0">Delete</a>
+                                                            </div>
+                                                        </div>
+                                                    </form>
+                                                </div>
+                                            @endforeach
                                         </div>
                                     </div>
                                 </div>
@@ -347,9 +457,23 @@
 @endsection
 @section('footer_scripts')
     <script type="text/javascript">
-        var loadFile = function (event) {
-            var image = document.getElementById('avatar_picture');
+        $( document ).ready(function() {
+            console.log( "ready!" );
+            @foreach($user->family_members as $family_member)
+                $("#{{$family_member->id}}").change(function(){
+                    console.log(event.target.files[0])
+                    let image = document.getElementById("member_picture{{$family_member->id}}")
+                    image.src = URL.createObjectURL(event.target.files[0]);
+                });
+            @endforeach
+        });
+        let loadFile = function (event) {
+            let image = document.getElementById('avatar_picture');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+        let loadMemberPicture = function(event){
+            let image = document.getElementById('member_picture');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        }
     </script>
 @endsection
