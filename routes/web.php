@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 //
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -44,7 +45,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('delete_family/{id}','UserController@delete_family')->name('delete_family');
     // profile
     Route::get('/home/view_profile/{id}', 'HomeController@view_profile')->name('view_profile');
-
+    //email
+    Route::get('/email','EmailConfigController@send_email')->name('email');
 });
 
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
