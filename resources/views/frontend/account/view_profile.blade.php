@@ -42,9 +42,7 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-
             </div>
             <br>
             <!-- page users view start -->
@@ -242,6 +240,36 @@
             </section>
             <!-- Timeline Ends -->
 
+            <section class="page-users-view">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="card">
+                            <div class="card-header ">
+                                <div class="card-title">Family Members and Pets</div>
+                            </div>
+                            @foreach($profile->family_members as $member)
+                                <div class="col-md-4 col-sm-12">
+                                    <div class="card">
+                                        <div class="card-content">
+                                            <img class="card-img-top img-fluid" src="{{asset($member->member_image)}}" alt="{{$member->member_name}}">
+                                            <div class="card-body">
+                                                <div class="row">
+                                                    <h3>{{$member->member_name}}</h3>
+                                                    <p class="card-text  mb-0">{{$member->member_relation}}</p>
+                                                    <!-- <div class="card-btns d-flex justify-content-between mt-2">
+                                                        <a href="#" class="btn gradient-light-primary text-white">Download</a>
+                                                        <a href="#" class="btn btn-outline-primary">View All</a>
+                                                    </div> -->
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
     </div>
 </div>

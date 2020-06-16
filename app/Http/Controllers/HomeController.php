@@ -35,9 +35,13 @@ class HomeController extends Controller
 
     public function delete_user()
     {
-        $id=\request('ids');
-        $status=User::whereIn('id',$id)->delete();
-        return compact('status');
+        $ids=\request('ids');
+        foreach($ids as $id)
+        {
+            $user = User::find($id);
+            $user->delete();
+        }
+        return ['status'=>'deleted'];
     }
 
     public function public_agencies()
@@ -54,7 +58,7 @@ class HomeController extends Controller
     }
     public function view_profile($id)
     {
-        $profile = User::whereId($id)->first();
+        $profile = User::whereId($id)->with('family_members')->first();
         return \view('frontend.account.view_profile' , compact('profile'));
     }
 
