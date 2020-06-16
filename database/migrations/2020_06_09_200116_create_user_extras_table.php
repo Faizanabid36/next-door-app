@@ -16,7 +16,7 @@ class CreateUserExtrasTable extends Migration
         Schema::create('user_extras', function (Blueprint $table) {
             $table->id();
             $table->integer('user_id')->unique();
-            $table->string('emergency_contact');
+            $table->string('emergency_contact')->nullable();
             $table->string('birthdate')->nullable();
             $table->longText('bio')->nullable();
             $table->smallInteger('hide_phone')->nullable()->default(0);
