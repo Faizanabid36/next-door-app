@@ -72,11 +72,11 @@ class UserController extends Controller
         if (isset($display_phone))
             request()->merge(['hide_phone' => 0]);
         else
-            request()->merge(['hide_phone' => 0]);
+            request()->merge(['hide_phone' => 1]);
         if (isset($display_address))
-            request()->merge(['hide_address' => 1]);
-        else
             request()->merge(['hide_address' => 0]);
+        else
+            request()->merge(['hide_address' => 1]);
         UserExtra::where('user_id', $id)->update(\request()->except('_token','display_phone','display_address'));
         return back()->with('success', 'Settings Updated');
     }
@@ -101,7 +101,7 @@ class UserController extends Controller
         $data->user_id=$id;
         $user=User::find($id);
         $user->family_members()->save($data);
-        return back()->with('success', 'Member Created Successfully');   
+        return back()->with('success', 'Member Created Successfully');
     }
     public function edit_family(Request $request, $id)
     {
@@ -120,7 +120,7 @@ class UserController extends Controller
         $request->merge(['member_relation'=>$request->get('relation')]);
         $x=FamilyMember::whereId($id)->update($request->except('_token','Picture','relation'));
         if($x)
-            return back()->with('success', 'Member Updated Successfully');  
+            return back()->with('success', 'Member Updated Successfully');
         return back()->with('error', 'Could Not Update Member');
     }
 
@@ -128,7 +128,7 @@ class UserController extends Controller
     {
         $d=FamilyMember::whereId($id)->delete();
         if($d)
-            return back()->with('success', 'Member Deleted Successfully');  
+            return back()->with('success', 'Member Deleted Successfully');
         return back()->with('error', 'Could Not Delete Member');
     }
 
