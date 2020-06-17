@@ -82,10 +82,15 @@ class User extends Authenticatable
     {
         return $this->hasMany(FamilyMember::class, 'user_id');
     }
-    
+
     // User can have many posts
     public function posts()
     {
-        return $this->hasMany(Post::class,'user_id');
+        return $this->hasMany(Post::class, 'user_id');
+    }
+
+    public function identities()
+    {
+        return $this->hasMany('App\SocialIdentity');
     }
 }

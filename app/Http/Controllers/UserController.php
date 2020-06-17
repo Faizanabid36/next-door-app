@@ -2,9 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\FamilyMember;
 use App\User;
 use App\UserExtra;
-use App\FamilyMember;
 use Auth;
 use Hash;
 use Illuminate\Http\Request;

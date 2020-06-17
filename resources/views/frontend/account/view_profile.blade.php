@@ -187,17 +187,6 @@
                                             <div class="timeline-icon bg-warning">
                                                 <i class="feather  icon-heart font-medium-2"></i>
                                             </div>
-                                            <div class="timeline-info">
-                                                <p class="font-weight-bold" style=" color:#5e50ee">Gender</p>
-                                                <span>
-                                                @if ([$profile->gender]==1)
-                                                {{$male = 'Male'}}
-                                                @else
-                                                    {{$male = 'Female'}}
-                                                @endif
-                                                </span>
-                                            </div>
-
                                         </li>
                                         <li>
                                             <div class="timeline-icon bg-success">

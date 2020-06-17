@@ -72,7 +72,7 @@
                             @foreach($users as $user)
                                 <tr id="{{$user->id}}">
                                     <td></td>
-                                    <td class="product-img"><img src="{{asset('/').$user->avatar}}"
+                                    <td class="product-img"><img src="{{$user->avatar}}"
                                                                  alt="Img placeholder">
                                     </td>
                                     <td class="product-name">{{$user->name}}</td>
@@ -87,7 +87,7 @@
 {{--                                     </td>--}}
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
-                                      
+
                                         <span onclick="delete({{$user->id}})" id="delete-item-{{$user->id}}" class="action-delete delete-toast btn btn-danger mr-1 mb-1"><i
                                                 class="feather icon-trash"></i></span>
                                     </td>

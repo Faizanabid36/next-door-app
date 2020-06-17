@@ -56,6 +56,9 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
 
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
 
 
 
