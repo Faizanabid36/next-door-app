@@ -4,14 +4,13 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class UserExtra extends Model
+class SocialIdentity extends Model
 {
     //
     protected $guarded = [];
 
-    // A Family Member Belongs to a User
     public function user()
     {
-        return $this->belongsTo(User::class,'user_id','id');
+        return $this->belongsTo('App\User');
     }
 }

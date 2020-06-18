@@ -25,6 +25,7 @@
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/file-uploaders/dropzone.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/toastr.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/extensions/dataTables.checkboxes.css')}}">
     <!-- END: Vendor CSS-->
 
@@ -196,7 +197,7 @@
                                        alt="avatar" height="40" width="40"></span>
                         </a>
                         <div class="dropdown-menu dropdown-menu-right">
-                            <a class="dropdown-item" href="{{url('/home/view_profile/{$id}')}}">
+                            <a class="dropdown-item" href="{{route('view_profile',auth()->user()->id)}}">
                                 <i class="feather icon-user"></i> View Profile
                             </a>
                             <a class="dropdown-item" href="{{route('edit_profile')}}">

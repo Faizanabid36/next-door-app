@@ -128,9 +128,9 @@
                                                 <div class="divider-text">OR</div>
                                             </div>
                                             <div class="footer-btn d-inline">
-                                                <a href="#" class="btn btn-facebook"><span class="fa fa-facebook"></span></a>
+                                                <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
                                                 <a href="#" class="btn btn-twitter white"><span class="fa fa-twitter"></span></a>
-                                                <a href="#" class="btn btn-google"><span class="fa fa-google"></span></a>
+                                                <a href="{{ url('/login/google') }}" class="btn btn-google"><span class="fa fa-google"></span></a>
                                             </div>
                                         </div>
                                     </div>

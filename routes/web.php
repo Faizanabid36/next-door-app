@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 //
 /*
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -23,6 +24,7 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
+    Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
 Auth::routes();
 
@@ -37,7 +39,14 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
     Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
-
+    Route::post('/update_family/{id}','UserController@update_family')->name('update_family');
+    Route::post('update_user_extras/{id}','UserController@update_user_extras')->name('update_user_extras');
+    Route::post('edit_family/{id}','UserController@edit_family')->name('edit_family');
+    Route::get('delete_family/{id}','UserController@delete_family')->name('delete_family');
+    // profile
+    Route::get('/home/view_profile/{id}', 'HomeController@view_profile')->name('view_profile');
+    //email
+    Route::get('/email','EmailConfigController@send_email')->name('email');
 });
 
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
@@ -47,8 +56,13 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
 
+<<<<<<< HEAD
 // profile
 Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profiles')->name('view_profile');
+=======
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+>>>>>>> f06cb5678c0a8dce73e2b0ae772d3d708860b274
 
 
 

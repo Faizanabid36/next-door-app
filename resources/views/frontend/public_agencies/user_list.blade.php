@@ -169,8 +169,8 @@
                                                 </thead>
                                                 <tbody>
                                                 @foreach($users as $user)
-                                                    <tr>
-                                                        <th><img width="100" src="{{asset('/').$user->avatar}}" alt=""></th>
+                                                    <tr onclick="window.location=`{{route('view_profile',$user->id)}}">
+                                                        <th><img width="100" src="{{$user->avatar}}" alt=""></th>
                                                         <th>{{$user->name}}</th>
                                                         <th>{{$user->email}}</th>
                                                         @if((isset($user->user_extra))&&$user->user_extra->hide_address)
