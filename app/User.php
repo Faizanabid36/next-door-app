@@ -93,4 +93,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SocialIdentity');
     }
+    public function address()
+    {
+        return $this->hasOne(UserAddress::class,'user_id','id');
+    }
 }

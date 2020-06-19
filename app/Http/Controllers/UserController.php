@@ -126,10 +126,25 @@ class UserController extends Controller
 
     public function delete_family($id)
     {
-        $d=FamilyMember::whereId($id)->delete();
-        if($d)
+        $d = FamilyMember::whereId($id)->delete();
+        if ($d)
             return back()->with('success', 'Member Deleted Successfully');
         return back()->with('error', 'Could Not Delete Member');
+    }
+
+    public function getLocation(Request $request)
+    {
+        try{
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/' . $request->get('country_code') . '/' . $request->get('postal'));
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            return ($place_name);
+        }
+        catch (\Exception $exception)
+        {
+            return "Invalid Selection";
+        }
     }
 
 }
