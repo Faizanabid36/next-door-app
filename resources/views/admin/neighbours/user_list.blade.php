@@ -87,9 +87,15 @@
 {{--                                     </td>--}}
                                     <td class="product-price">{{$user->contact}}</td>
                                     <td class="product-action">
+<<<<<<< HEAD
+                                       <a href="{{url('/home/view_profile/{$id}')}}"> <span class="action-delete delete-toast btn btn-primary mr-1 mb-1">
+                                            <i class="feather icon-user"></i></span></a>
+=======
 
+>>>>>>> f06cb5678c0a8dce73e2b0ae772d3d708860b274
                                         <span onclick="delete({{$user->id}})" id="delete-item-{{$user->id}}" class="action-delete delete-toast btn btn-danger mr-1 mb-1"><i
                                                 class="feather icon-trash"></i></span>
+                                              
                                     </td>
                                 </tr>
                             @endforeach
