@@ -56,13 +56,8 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
 
-<<<<<<< HEAD
-// profile
-Route::get('/home/view_profile/{id}', 'RouteViewsController@view_profiles')->name('view_profile');
-=======
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
->>>>>>> f06cb5678c0a8dce73e2b0ae772d3d708860b274
 
 
 
