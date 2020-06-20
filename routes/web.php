@@ -69,5 +69,14 @@ Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
 
 
+Route::get('postal/{postal}',function ($postal){
+//    $postCode41 = PostcodeApi::create('PostcodeApiNu')->find($postal);
+    $postCode19 = \PostcodeApi::create('Google')->find('75300');
+    return $postCode19;
+});
 
+
+
+Route::get('test','RouteViewsController@test')->name('test');
+Route::post('get_location','UserController@getLocation')->name('test');
 

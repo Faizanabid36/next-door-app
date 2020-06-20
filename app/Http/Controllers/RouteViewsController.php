@@ -50,4 +50,9 @@ class RouteViewsController extends Controller
         return \view('frontend.account.account', compact('user'));
     }
 
+
+    public function test()
+    {
+        return view('auth.test');
+    }
 }

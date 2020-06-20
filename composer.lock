@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "73ba95f9bdeca567494243c606db0b78",
+    "content-hash": "afd7af7070f6416905193c447a33086e",
     "packages": [
         {
             "name": "asm89/stack-cors",
@@ -1506,6 +1506,63 @@
                 }
             ],
             "time": "2020-05-24T18:27:52+00:00"
+        },
+        {
+            "name": "nickurt/laravel-postcodeapi",
+            "version": "1.14",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/nickurt/laravel-postcodeapi.git",
+                "reference": "3956ed93a1e4942656324c8b59b0dd3873475b65"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/nickurt/laravel-postcodeapi/zipball/3956ed93a1e4942656324c8b59b0dd3873475b65",
+                "reference": "3956ed93a1e4942656324c8b59b0dd3873475b65",
+                "shasum": ""
+            },
+            "require": {
+                "ext-json": "*",
+                "guzzlehttp/guzzle": "^6.3",
+                "laravel/framework": "^6.0|^7.0|^8.0",
+                "php": "^7.2"
+            },
+            "require-dev": {
+                "orchestra/testbench": "^4.0|^5.0|^6.0",
+                "phpunit/phpunit": "^7.5|^8.0"
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "nickurt\\PostcodeApi\\ServiceProvider"
+                    ],
+                    "aliases": {
+                        "PostcodeApi": "nickurt\\PostcodeApi\\Facade"
+                    }
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "nickurt\\PostcodeApi\\": "src/"
+                },
+                "files": [
+                    "src/helpers.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "description": "Universal PostcodeApi for Laravel 6.x/7.x",
+            "keywords": [
+                "api",
+                "laravel",
+                "postcode",
+                "postcodeapi",
+                "universal"
+            ],
+            "time": "2020-06-16T12:40:47+00:00"
         },
         {
             "name": "nikic/php-parser",
