@@ -93,4 +93,9 @@ class User extends Authenticatable
     {
         return $this->hasMany('App\SocialIdentity');
     }
+
+    public function sale_items()
+    {
+        return $this->hasMany(SaleItems::class,'user_id','id');
+    }
 }

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+Use App\User;
 //
 /*
 
@@ -58,6 +59,10 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
 
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
+Route::get('/sale' , 'SaleItemController@item')->name('item');
+Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
+
 
 
 

@@ -229,7 +229,7 @@
             </section>
             <!-- Timeline Ends -->
 
-            <section class="page-users-view">
+            {{-- <section class="page-users-view">
                 <div class="row">
                     <div class="col-12">
                         <div class="card">
@@ -254,11 +254,95 @@
                                         </div>
                                     </div>
                                 </div>
-                            @endforeach
+                           
                         </div>
                     </div>
                 </div>
+            </section> --}}
+            <section id="timeline-card">
+                <div class="row">
+                    <div class="col-lg-12 col-sm-12">
+                        <div class="card">
+                          
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <h2 class="card-title" style="font-size: 33px; font-weight: bold;">Family Members and Pets</h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
             </section>
+            <section id="admin-video">
+                <div class="row">
+                    <div class="col-lg-5 col-sm-12">
+                        
+                        @foreach($profile->family_members as $member)
+                        <div class="card">
+                            <div class="card-header">
+                              
+                                <h2 class="card-title " style="color:#5e50ee ">
+                                    <ul class="activity-timeline timeline-left list-unstyled">
+                                        <li>
+                                            <div class="timeline-icon bg-primary">
+                                                <i class="feather  icon-user font-medium-2"></i>
+                                            </div>
+                                            <div class="timeline-info">
+                                                <p class="font-weight-bold" style=" color:#5e50ee">Member Name</p>
+                                                <span> {{$member->member_name}}</span>
+                                            </div>
+
+                                        </li>
+                                       
+
+                                       
+                                    </ul>
+                                    
+                                   
+                                </h2>
+                                <h2 class="card-title " style="color:#5e50ee ">
+                                    <ul class="activity-timeline timeline-left list-unstyled">
+                                        <li>
+                                            <div class="timeline-icon bg-danger">
+                                                <i class="feather  icon-heart font-medium-2"></i>
+                                            </div>
+                                            <div class="timeline-info">
+                                                <p class="font-weight-bold" style=" color:#5e50ee">Relation</p>
+                                                <span> {{$member->member_relation}}</span>
+                                            </div>
+
+                                        </li>
+                                       
+
+                                       
+                                    </ul>
+                                    
+                                   
+                                </h2>
+                                <p class=""></p>
+                                {{-- <div class="heading-elements">
+                                    <ul class="list-inline mb-0">
+                                        <li><span><i class="feather icon-more-vertical"></i></span></li>
+                                    </ul>
+                                </div> --}}
+                            </div>
+                            <div class="card-content">
+                                <div class="card-body">
+                                    <img class="img-fluid" src="{{asset($member->member_image)}}" alt="img placeholder" alt="{{$member->member_name}}">
+                                   
+                                </div>
+                            </div>
+                            
+                        </div>
+                        @endforeach
+                        
+                    </div>
+                    
+                    
+                </div>
+            </section>
+           
         </div>
     </div>
 </div>
