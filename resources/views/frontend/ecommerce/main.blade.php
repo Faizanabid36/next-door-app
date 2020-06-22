@@ -1031,5 +1031,12 @@
             </div>
         </div>
     </div>
+<<<<<<< HEAD
     <!-- END: Content-->
 @endsection
+=======
+</div>
+<!-- END: Content-->
+
+@endsection
+>>>>>>> b18e434998d68c7d30a9914eed1a437e77bd2d78
