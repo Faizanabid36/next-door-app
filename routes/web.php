@@ -83,3 +83,4 @@ Route::get('postal/{postal}',function ($postal){
 Route::get('test','RouteViewsController@test')->name('test');
 Route::post('get_location','UserController@getLocation')->name('test');
 
+
