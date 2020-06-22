@@ -21,6 +21,10 @@
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/vendors.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/charts/apexcharts.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/tether-theme-arrows.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/nouislider.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/ui/prism.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/forms/select/select2.min.css')}}">
+
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/tether.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/file-uploaders/dropzone.min.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/tables/datatable/datatables.min.css')}}">
@@ -40,6 +44,10 @@
     <!-- BEGIN: Page CSS-->
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/menu/menu-types/vertical-menu.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/core/colors/palette-gradient.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/extensions/noui-slider.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/app-ecommerce-shop.css')}}">
+
+
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/file-uploaders/dropzone.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/data-list-view.css')}}">
     <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/extensions/toastr.css')}}">

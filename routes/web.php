@@ -63,6 +63,9 @@ Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallb
 Route::get('/sale' , 'SaleItemController@item')->name('item');
 Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
+// ecommerce
+Route::get('/ecommerce' , 'EcommerceController@main')->name('ecommerce');
+
 
 
 

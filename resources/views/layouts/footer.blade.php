@@ -43,6 +43,15 @@
  <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/ui/prism.min.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/extensions/wNumb.js')}}"></script>
+
+ <script src="{{asset('theme/app-assets/vendors/js/extensions/nouislider.min.js')}}"></script>
+
+ <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+
+
+
  <!-- END: Page Vendor JS-->
 
  @yield('footer_scripts')
@@ -51,6 +60,8 @@
  <script src="{{asset('theme/app-assets/js/core/app.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/components.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/extensions/toastr.js')}}"></script>
+ <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
+
 
  <!-- END: Theme JS-->
 
