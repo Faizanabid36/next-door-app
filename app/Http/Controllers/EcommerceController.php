@@ -8,6 +8,6 @@ class EcommerceController extends Controller
 {
     public function main()
     {
-        return view('frontend.ecommerce.main');
+        return view('frontend.ecommerce.all_sale_items');
     }
 }

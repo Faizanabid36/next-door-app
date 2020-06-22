@@ -64,7 +64,7 @@ Route::get('/sale' , 'SaleItemController@item')->name('item');
 Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
 // ecommerce
-Route::get('/ecommerce' , 'EcommerceController@main')->name('ecommerce');
+Route::get('/sale-and-business' , 'EcommerceController@main')->name('ecommerce');
 
 
 
@@ -82,5 +82,4 @@ Route::get('postal/{postal}',function ($postal){
 
 Route::get('test','RouteViewsController@test')->name('test');
 Route::post('get_location','UserController@getLocation')->name('test');
-
 

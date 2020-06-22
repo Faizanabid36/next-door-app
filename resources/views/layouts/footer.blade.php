@@ -24,10 +24,11 @@
 
  <!-- BEGIN Vendor JS-->
 
+ @yield('scripts')
+
  <!-- BEGIN: Page Vendor JS-->
 {{-- <script src="{{asset('theme/app-assets/vendors/js/extensions/shepherd.min.js')}}"></script>--}}
  <script src="{{asset('theme/app-assets/vendors/js/extensions/tether.min.js')}}"></script>
- <script src="{{asset('theme/app-assets/vendors/js/extensions/dropzone.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/vfs_fonts.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/datatables.min.js')}}"></script>
@@ -39,14 +40,9 @@
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/datatables.bootstrap4.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/buttons.html5.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/buttons.print.min.js')}}"></script>
- <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
- <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+
  <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
- <script src="{{asset('theme/app-assets/vendors/js/ui/prism.min.js')}}"></script>
- <script src="{{asset('theme/app-assets/vendors/js/extensions/wNumb.js')}}"></script>
-
- <script src="{{asset('theme/app-assets/vendors/js/extensions/nouislider.min.js')}}"></script>
 
  <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
 
@@ -65,9 +61,7 @@
  <!-- END: Theme JS-->
 
  <!-- BEGIN: Page JS-->
-{{-- <script src="{{asset('theme/app-assets/js/scripts/pages/user-profile.js')}}"></script>--}}
-{{-- <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>--}}
-{{-- <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>--}}
-{{-- <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>--}}
- <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
+ <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
+ <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>
+
  <!-- END: Page JS-->

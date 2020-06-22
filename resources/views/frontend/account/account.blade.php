@@ -1,5 +1,13 @@
 @extends('layouts.main')
 @section('title','Edit Profile')
+
+@section('styles')
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/file-uploaders/dropzone.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/pickers/pickadate/pickadate.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/file-uploaders/dropzone.css')}}">
+    <link rel="stylesheet" href="{{asset('theme/app-assets/css/pages/users.css')}}">
+@endsection
+
 @section('body_content')
 
 <div class="app-content content">
@@ -333,7 +341,7 @@
                                             </form>
                                         </div>
                                         <div class="tab-pane fade " id="account-vertical-social" role="tabpanel" aria-labelledby="account-pill-social" aria-expanded="false">
-                                            <form 
+                                            <form
                                                 action="{{action('UserController@update_family',$user->id)}}"
                                                 method="POST"
                                                 enctype="multipart/form-data">
@@ -388,7 +396,7 @@
                                             @endif
                                             @foreach($user->family_members as $family_member)
                                                 <div class="col-md-6 mt-5 mb-5">
-                                                    <form 
+                                                    <form
                                                         action="{{action('UserController@edit_family',$family_member->id)}}"
                                                         method="POST"
                                                         enctype="multipart/form-data">
@@ -476,4 +484,11 @@
             image.src = URL.createObjectURL(event.target.files[0]);
         }
     </script>
+@endsection
+
+@section('scripts')
+    <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>
+    <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+    <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+    <script src="{{asset('theme/app-assets/vendors/js/extensions/dropzone.min.js')}}"></script>
 @endsection

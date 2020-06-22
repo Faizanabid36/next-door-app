@@ -1,14 +1,20 @@
 @extends('layouts.main')
 
+@section('title',$profile->name)
+
+@section('styles')
+    <link rel="stylesheet" href="{{asset('theme/app-assets/css/pages/users.css')}}">
+@endsection
+
 @section('view_profile')
 
- <!-- BEGIN: Content-->
- <div class="app-content content">
-    <div class="content-overlay"></div>
-    <div class="header-navbar-shadow"></div>
-    <div class="content-wrapper">
-        <div class="content-header row">
-        </div>
+    <!-- BEGIN: Content-->
+    <div class="app-content content">
+        <div class="content-overlay"></div>
+        <div class="header-navbar-shadow"></div>
+        <div class="content-wrapper">
+            <div class="content-header row">
+            </div>
         <div class="content-body">
             <div class="content-body">
                 <div id="user-profile">
@@ -254,7 +260,7 @@
                                         </div>
                                     </div>
                                 </div>
-                           
+
                         </div>
                     </div>
                 </div>
@@ -263,7 +269,7 @@
                 <div class="row">
                     <div class="col-lg-12 col-sm-12">
                         <div class="card">
-                          
+
                             <div class="card-content">
                                 <div class="card-body">
                                     <h2 class="card-title" style="font-size: 33px; font-weight: bold;">Family Members and Pets</h2>
@@ -277,11 +283,11 @@
             <section id="admin-video">
                 <div class="row">
                     <div class="col-lg-5 col-sm-12">
-                        
+
                         @foreach($profile->family_members as $member)
                         <div class="card">
                             <div class="card-header">
-                              
+
                                 <h2 class="card-title " style="color:#5e50ee ">
                                     <ul class="activity-timeline timeline-left list-unstyled">
                                         <li>
@@ -294,12 +300,11 @@
                                             </div>
 
                                         </li>
-                                       
 
-                                       
+
                                     </ul>
-                                    
-                                   
+
+
                                 </h2>
                                 <h2 class="card-title " style="color:#5e50ee ">
                                     <ul class="activity-timeline timeline-left list-unstyled">
@@ -313,12 +318,11 @@
                                             </div>
 
                                         </li>
-                                       
 
-                                       
+
                                     </ul>
-                                    
-                                   
+
+
                                 </h2>
                                 <p class=""></p>
                                 {{-- <div class="heading-elements">
@@ -330,24 +334,28 @@
                             <div class="card-content">
                                 <div class="card-body">
                                     <img class="img-fluid" src="{{asset($member->member_image)}}" alt="img placeholder" alt="{{$member->member_name}}">
-                                   
+
                                 </div>
                             </div>
-                            
+
                         </div>
                         @endforeach
-                        
+
                     </div>
-                    
-                    
+
+
                 </div>
             </section>
-           
+
+        </div>
         </div>
     </div>
-</div>
-<!-- END: Content-->
+    <!-- END: Content-->
 
 
 
+@endsection
+
+@section('scripts')
+    <script src="{{asset('theme/app-assets/js/scripts/pages/user-profile.js')}}"></script>
 @endsection
