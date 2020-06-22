@@ -3,6 +3,5 @@
 @yield('body_content')
 @yield('create-user')
 @yield('view_profile')
-@yield('ecom')
 @include('layouts.footer')
 

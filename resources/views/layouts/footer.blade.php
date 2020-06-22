@@ -60,14 +60,14 @@
  <script src="{{asset('theme/app-assets/js/core/app.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/components.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/extensions/toastr.js')}}"></script>
- <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
 
 
  <!-- END: Theme JS-->
 
  <!-- BEGIN: Page JS-->
- <script src="{{asset('theme/app-assets/js/scripts/pages/user-profile.js')}}"></script>
- <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
- <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>
- <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>
+{{-- <script src="{{asset('theme/app-assets/js/scripts/pages/user-profile.js')}}"></script>--}}
+{{-- <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>--}}
+{{-- <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>--}}
+{{-- <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>--}}
+ <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
  <!-- END: Page JS-->
