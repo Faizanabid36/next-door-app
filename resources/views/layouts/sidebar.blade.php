@@ -55,6 +55,9 @@
                                 class="menu-title" data-i18n="Email">Neighbours</span></a>
                     </li>
                 @endif
+                <li class=" nav-item"><a href="{{ route('ecommerce')}}"><i class="feather icon-user"></i><span
+                    class="menu-title" data-i18n="Profile">Ecommerce</span></a>
+                </li>
                 @if(isset(auth()->user()->id)&&auth()->user()->id==1)
                     @include('layouts.admin_sidebar')
                 @endif
