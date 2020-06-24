@@ -55,4 +55,9 @@ class RouteViewsController extends Controller
     {
         return view('auth.test');
     }
+
+    public function signup()
+    {
+        return \view('auth.secondreg');
+    }
 }

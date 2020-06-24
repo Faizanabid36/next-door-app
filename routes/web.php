@@ -27,6 +27,7 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
     Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
+Route::get('/signup' , 'RouteViewsController@signup')->name('signup');
 Auth::routes();
 
 //Category Group

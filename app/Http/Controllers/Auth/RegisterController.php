@@ -76,4 +76,6 @@ class RegisterController extends Controller
             'postal' => $data['postal'],
         ]);
     }
+
+   
 }

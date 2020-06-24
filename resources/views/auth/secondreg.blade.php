@@ -70,54 +70,120 @@
                                             <div class="card-body pt-0">
                                                 <form method="POST" action="{{ route('register') }}">
                                                     @csrf
-                                                    <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="name" type="text" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required autocomplete="name" autofocus>
-                                                        @error('name')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-user"></i>
+                                                    {{-- <div class="btn-group mb-1">
+                                                        <div class="dropdown">
+                                                            <button class="btn btn-primary dropdown-toggle mr-1" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                                Primary
+                                                            </button>
+                                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                                                <a class="dropdown-item" href="#">Option 1</a>
+                                                                <a class="dropdown-item" href="#">Option 2</a>
+                                                                <a class="dropdown-item" href="#">Option 3</a>
                                                             </div>
-                                                        <label for="name" class="col-md-4 col-form-label">{{ __('Username') }}</label>
-                                                    </fieldset>
+                                                        </div>
+                                                    </div> --}}
+                                                  
+
+                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
+                                                        <select class="form-control">
+                                                          
+                                                            <option>Select Country</option>
+                                                            <option value="AD">Andorra</option>
+                                                            <option value="AR">Argentina</option>
+                                                            <option value="AS">American Samoa</option>
+                                                            <option value="AT">Austria</option>
+                                                            <option value="AU">Australia</option>
+                                                            <option value="BD">Bangladesh</option>
+                                                            <option value="BE">Belgium</option>
+                                                            <option value="BG">Bulgaria</option>
+                                                            <option value="BR">Brazil</option>
+                                                            <option value="CA">Canada</option>
+                                                            <option value="CH">Switzerland</option>
+                                                            <option value="CZ">Czech Republic</option>
+                                                            <option value="DE">Germany</option>
+                                                            <option value="DK">Denmark</option>
+                                                            <option value="DO">Dominican Republic</option>
+                                                            <option value="ES">Spain</option>
+                                                            <option value="FI">Finland</option>
+                                                            <option value="FO">Faroe Islands</option>
+                                                            <option value="FR">France</option>
+                                                            <option value="GB">Great Britain</option>
+                                                            <option value="GF">French Guyana</option>
+                                                            <option value="GG">Guernsey</option>
+                                                            <option value="GL">Greenland</option>
+                                                            <option value="GP">Guadeloupe</option>
+                                                            <option value="GT">Guatemala</option>
+                                                            <option value="GU">Guam</option>
+                                                            <option value="GY">Guyana</option>
+                                                            <option value="HR">Croatia</option>
+                                                            <option value="HU">Hungary</option>
+                                                            <option value="IM">Isle of Man</option>
+                                                            <option value="IN">India</option>
+                                                            <option value="IS">Iceland</option>
+                                                            <option value="IT">Italy</option>
+                                                            <option value="JE">Jersey</option>
+                                                            <option value="JP">Japan</option>
+                                                            <option value="LI">Liechtenstein</option>
+                                                            <option value="LK">Sri Lanka</option>
+                                                            <option value="LT">Lithuania</option>
+                                                            <option value="LU">Luxembourg</option>
+                                                            <option value="MC">Monaco</option>
+                                                            <option value="MD">Moldavia</option>
+                                                            <option value="MH">Marshall Islands</option>
+                                                            <option value="MK">Macedonia</option>
+                                                            <option value="MP">Northern Mariana Islands</option>
+                                                            <option value="MQ">Martinique</option>
+                                                            <option value="MX">Mexico</option>
+                                                            <option value="MY">Malaysia</option>
+                                                            <option value="NL">Holland</option>
+                                                            <option value="NO">Norway</option>
+                                                            <option value="NZ">New Zealand</option>
+                                                            <option value="PH">Phillippines</option>
+                                                            <option value="PK">Pakistan</option>
+                                                            <option value="PL">Poland</option>
+                                                            <option value="PM">Saint Pierre and Miquelon</option>
+                                                            <option value="PR">Puerto Rico</option>
+                                                            <option value="PT">Portugal</option>
+                                                            <option value="RE">French Reunion</option>
+                                                            <option value="RU">Russia</option>
+                                                            <option value="SE">Sweden</option>
+                                                            <option value="SI">Slovenia</option>
+                                                            <option value="SJ">Svalbard & Jan Mayen Islands</option>
+                                                            <option value="SK">Slovak Republic</option>
+                                                            <option value="SM">San Marino</option>
+                                                            <option value="TH">Thailand</option>
+                                                            <option value="TR">Turkey	</option>
+                                                            <option value="US">United States</option>
+                                                            <option value="VA">Vatican</option>
+                                                            <option value="VI">Virgin Islands</option>
+                                                            <option value="YT">Mayotte</option>
+                                                            <option value="ZA">South Africa</option>
+
+                                                          
+                                                        </select>                                                     
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-user"></i>
+                                                        </div>
+                                                   
+                                                </fieldset>
+
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email">
-
-                                                            @error('email')
-                                                                <span class="invalid-feedback" role="alert">
-                                                                    <strong>{{ $message }}</strong>
-                                                                </span>
-                                                            @enderror
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-user"></i>
-                                                            </div>
-                                                        <label for="email" class="col-md-4 col-form-label">{{ __('E-Mail Address') }}</label>
-                                                    </fieldset>
-
+                                                        <input id="postal" type="number" class="form-control" name="postal" required autocomplete="postal">
+                                                   
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-user"></i>
+                                                        </div>
+                                                    <label for="postal-code" class="col-md-4 col-form-label">{{ __('Postal Code') }}</label>
+                                                </fieldset>
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
+                                                        <input id="contact" type="number" class="form-control" name="contact" required autocomplete="contact">
+                                                   
+                                                        <div class="form-control-position">
+                                                            <i class="feather icon-user"></i>
+                                                        </div>
+                                                    <label for="contact" class="col-md-4 col-form-label">{{ __('Emergency Contact') }}</label>
+                                                </fieldset>
 
-                                                        @error('password')
-                                                            <span class="invalid-feedback" role="alert">
-                                                                <strong>{{ $message }}</strong>
-                                                            </span>
-                                                        @enderror
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-user"></i>
-                                                            </div>
-                                                        <label for="password" class="col-md-4 col-form-label">{{ __('Password') }}</label>
-                                                    </fieldset>
-
-                                                    <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                            <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required autocomplete="new-password">
-                                                       
-                                                            <div class="form-control-position">
-                                                                <i class="feather icon-user"></i>
-                                                            </div>
-                                                        <label for="password-confirm" class="col-md-4 col-form-label">{{ __('Confirm Password') }}</label>
-                                                    </fieldset>
 
                                                     {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                 
@@ -153,14 +219,7 @@
                                                     </div>
                                                 </fieldset>                                               --}}
                                                     
-                                                    {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <input id="postal" type="number" class="form-control" name="postal" required autocomplete="postal">
-                                                   
-                                                        <div class="form-control-position">
-                                                            <i class="feather icon-user"></i>
-                                                        </div>
-                                                    <label for="postal-code" class="col-md-4 col-form-label">{{ __('Postal Code') }}</label>
-                                                </fieldset> --}}
+                                                  
 
                                                 {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input id="address" type="text" class="form-control" name="address" required autocomplete="address">
@@ -193,8 +252,8 @@
                                                             </fieldset>
                                                         </div>
                                                     </div> --}}
-                                                    <a href="{{ route('login') }}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a>
-                                                    <button type="submit" class="btn btn-primary float-right btn-inline mb-50"> {{ __('Next Page') }}</a>
+                                                    {{-- <a href="{{ route('login') }}" class="btn btn-outline-primary float-left btn-inline mb-50">Login</a> --}}
+                                                    <button type="submit" class="btn btn-primary float-right btn-inline mb-50"> {{ __('Register') }}</a>
                                                 </form>
                                             </div>
                                         </div>
