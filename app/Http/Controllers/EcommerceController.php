@@ -10,4 +10,9 @@ class EcommerceController extends Controller
     {
         return view('frontend.ecommerce.all_sale_items');
     }
+
+    public function single()
+    {
+        return view('frontend.ecommerce.single');
+    }
 }

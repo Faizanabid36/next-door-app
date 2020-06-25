@@ -104,8 +104,8 @@
                                             </h3>
                                         </div>
                                     </div>
-                                    <div class="item-name">
-                                        <a href="app-ecommerce-details.html">Camera</a>
+                                    <div class="item-name" style="font-weight: bold">
+                                        <a href="app-ecommerce-details.html" >Camera</a>
                                        
                                     </div>
                                    
@@ -299,54 +299,130 @@
             </div>
         </div>
     </div>
-    <div class="modal fade text-left" id="composeForm" tabindex="-1" role="dialog" aria-labelledby="emailCompose" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-scrollable">
+    <form action="" >
+    <div  class="modal fade text-left" id="composeForm" tabindex="-1" role="dialog" aria-labelledby="emailCompose" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable" >
             <div class="modal-content">
                 <div class="modal-header">
-                    <h3 class="modal-title text-text-bold-600" id="emailCompose">New Message</h3>
+                    <h3 class="modal-title text-text-bold-600" id="emailCompose">Add Post</h3>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body pt-1">
                     <div class="form-label-group mt-1">
-                        <input type="text" id="emailTo" class="form-control" placeholder="To" name="fname-floating">
-                        <label for="emailTo">To</label>
+                        <input type="text" id="emailTo" class="form-control" placeholder="Title" name="fname-floating">
+                        <label for="emailTo">Title</label>
                     </div>
+                    <div>
                     <div class="form-label-group">
-                        <input type="text" id="emailSubject" class="form-control" placeholder="Subject" name="fname-floating">
-                        <label for="emailSubject">Subject</label>
+                        <input type="text"  class="form-control" placeholder="Price" name="fname-floating">
+                        <label for="emailCC">Price</label>
                     </div>
-                    <div class="form-label-group">
-                        <input type="text" id="emailCC" class="form-control" placeholder="CC" name="fname-floating">
-                        <label for="emailCC">CC</label>
-                    </div>
-                    <div class="form-label-group">
-                        <input type="text" id="emailBCC" class="form-control" placeholder="BCC" name="fname-floating">
-                        <label for="emailBCC">BCC</label>
-                    </div>
-                    <div id="email-container">
-                        <div class="editor" data-placeholder="Message">
+                    <div class="form-group d-flex justify-content-between align-items-center ">
+                        <div class="text-left">
+                            <fieldset class="checkbox">
+                                <div class="vs-checkbox-con vs-checkbox-primary">
+                                    <input type="checkbox">
+                                    <span class="vs-checkbox">
+                                        <span class="vs-checkbox--check">
+                                            <i class="vs-icon feather icon-check"></i>
+                                        </span>
+                                    </span>
+                                    <span class="card-link">Free</span>
+                                </div>
+                            </fieldset>
                         </div>
+                       
                     </div>
-                    <div class="form-group mt-2">
-                        <div class="custom-file">
-                            <input type="file" class="custom-file-input" id="emailAttach">
-                            <label class="custom-file-label" for="emailAttach">Attach file</label>
+                     </div>
+                    <section class="">
+                        
+                        <fieldset class="form-label-group">
+                            <textarea class="form-control" id="label-textarea" rows="2" placeholder="Description"></textarea>
+                            <label for="label-textarea">Label in Textarea</label>
+                        </fieldset>
+                        
+                    </section>
+                    <script>
+                        $(document).ready(function() {
+                        var max_fields      = 3; //maximum input boxes allowed
+                        var wrapper         = $(".input_fields_wrap"); //Fields wrapper
+                        var add_button      = $(".add_field_button"); //Add button ID
+                       
+                        var x = 1; //initlal text box count
+                        
+                        
+                       $(add_button).click(function(e){ //on add input button click
+                            e.preventDefault();
+                            if(x < max_fields){ //max input box allowed
+                        
+                                 //text box increment
+                                $(wrapper).append('<div class="custom-file "><input type="file" class="custom-file-input" name="mytext[]"/><label class="custom-file-label" for="emailAttach" name="mytext[]"  >Upload Image</label><a href="#" class="remove_field">Remove</a></div>'); //add input box
+                                x++;
+                               
+                          }
+                          
+                        });
+                       
+                        $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
+                           
+                            e.preventDefault(); 
+                            $(this).parent('div').remove(); 
+                            x--;
+                        })
+                    });
+                        
+                        </script>
+                        
+                   
+                    <fieldset class="form-label-group form-group position-relative has-icon-left">
+                        <select class="form-control">
+                          
+                            <option>Select Category</option>
+                            <option value="AD">Andorra</option>
+                            <option value="AR">Argentina</option>
+                            <option value="AS">American Samoa</option>
+                            <option value="AT">Austria</option>
+                            <option value="AU">Australia</option>
+                            <option value="BD">Bangladesh</option>
+                            <option value="BE">Belgium</option>
+                        </select>                                                     
+                        <div class="form-control-position">
+                            <i class="feather icon-user"></i>
                         </div>
+                   
+                </fieldset>
+                   
+                    <div  class="form-group mt-2 input_fields_wrap" id="newElementId">
+                        <div class="custom-file " >
+                            <input type="file" class="custom-file-input" id="emailAttach" >
+                            <label class="custom-file-label" for="emailAttach" name="mytext[]"  >Upload Image</label>
+                        </div>
+                        
                     </div>
+                  
+                     
+                    
+                   
+                    <button type="button"    class="add_field_button btn mr-1 mb-1 btn-primary btn-sm" style="float: right">Add Another Image</button>
+          
+               
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" value="Send" class="btn btn-primary">
+                    <input type="submit" value="Add" class="btn btn-primary">
                     <input type="Reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
                 </div>
             </div>
         </div>
     </div>
+</form>
+
     <!-- END: Content-->
 
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
+    
 @endsection
 
 

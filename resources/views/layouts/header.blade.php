@@ -16,6 +16,7 @@
     <link rel="apple-touch-icon" href="{{asset('theme/app-assets/images/ico/apple-icon-120.png')}}">
     <link rel="shortcut icon" type="image/x-icon" href="{{asset('theme/app-assets/images/ico/favicon.ico')}}">
     <link href="{{asset('https://fonts.googleapis.com/css?family=Montserrat:300,400,500,600')}}" rel="stylesheet">
+    <script src="{{asset('https://code.jquery.com/jquery-3.3.1.min.js')}}"></script>
 
     @yield('styles')
 

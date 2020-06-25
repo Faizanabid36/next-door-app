@@ -66,7 +66,7 @@ Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
 // ecommerce
 Route::get('/sale-and-business' , 'EcommerceController@main')->name('ecommerce');
-
+Route::get('/single' , 'EcommerceController@single')->name('single');
 
 
 
