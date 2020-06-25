@@ -208,7 +208,8 @@
                                                 @csrf
                                                 <div class="row">
                                                     <div class="col-12">
-                                                        <div class="form-group">
+                                                        @if(!is_null($user->password))
+                                                            <div class="form-group">
                                                             <div class="controls">
                                                                 <label for="old-password">Old Password</label>
                                                                 <input type="password" required="" class="form-control"
@@ -217,6 +218,7 @@
                                                                        placeholder="Old Password"
                                                                        data-validation-required-message="This old password field is required">
                                                             </div>
+                                                            @endif
                                                     </div>
                                                     </div>
                                                     <div class="col-12">

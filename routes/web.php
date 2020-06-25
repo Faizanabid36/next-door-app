@@ -65,20 +65,7 @@ Route::get('/sale' , 'SaleItemController@item')->name('item');
 Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
 // ecommerce
-Route::get('/sale-and-business' , 'EcommerceController@main')->name('ecommerce');
 Route::get('/single' , 'EcommerceController@single')->name('single');
-
-
-
-
-
-
-Route::get('postal/{postal}',function ($postal){
-//    $postCode41 = PostcodeApi::create('PostcodeApiNu')->find($postal);
-    $postCode19 = \PostcodeApi::create('Google')->find('75300');
-    return $postCode19;
-});
-
 
 
 Route::get('test','RouteViewsController@test')->name('test');

@@ -44,21 +44,17 @@ class UserController extends Controller
     public function changePassword(Request $request, $id)
     {
         $this->validate($request,[
-            'old_password'=>'required|min:6',
+            'old_password'=>'sometimes|required|min:6',
             'new_password'=>'required|min:6',
             'confirm_password'=>'required|min:6|required_with:new_password|same:new_password',
         ]);
         //if old pass is not matched
-        if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
-            return back()->with('error', "Incorrect Password Entered.");
+        if(isset($request->old_password))
+        {
+            if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
+                return back()->with('error', "Incorrect Password Entered.");
+            }
         }
-        //if old and new sem
-//        if (strcmp($request->get('old_password'), $request->get('new_password'))) {
-//            return back()->with("error", "New Password is same as Old Password.");
-//        }
-//        if (!(strcmp($request->get('old_password'), $request->get('confirm_password')))) {
-//            return back()->with("error", "Retyped And New Password Not Matched.");
-//        }
         $user = Auth::user();
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
