@@ -69,6 +69,10 @@ class User extends Authenticatable
                 $post->delete(); // <-- direct deletion
             });
 
+            $family_members->identities()->each(function ($identity) {
+                $identity->delete();
+            });
+
             $family_members->user_extra()->delete(); // Deletes User Extra Settings
         });
     }

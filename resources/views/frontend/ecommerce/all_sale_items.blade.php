@@ -1,11 +1,5 @@
 @extends('layouts.main')
 @section('title','For Sale and Business')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/extensions/noui-slider.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/app-ecommerce-shop.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/nouislider.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/ui/prism.min.css')}}">
-@endsection
 @section('body_content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -423,10 +417,3 @@
 
 @endsection
 
-
-@section('scripts')
-    <script src="{{asset('theme/app-assets/vendors/js/ui/prism.min.js')}}"></script>
-    <script src="{{asset('theme/app-assets/vendors/js/extensions/wNumb.js')}}"></script>
-    <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
-    <script src="{{asset('theme/app-assets/vendors/js/extensions/nouislider.min.js')}}"></script>
-@endsection
