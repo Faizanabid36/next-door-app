@@ -20,9 +20,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:54',
             'email' => 'required',
-            'postal' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
+//            'address' => 'required',
             'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if (request()->hasFile('Picture')) {
@@ -128,18 +126,22 @@ class UserController extends Controller
         return back()->with('error', 'Could Not Delete Member');
     }
 
-    public function getLocation(Request $request)
+    public function update_address(Request $request)
     {
+        $this->validate($request,[
+            'postal' => 'required',
+        ]);
         try{
             $client = new \GuzzleHttp\Client();
-            $display = $client->request('GET', 'http://api.zippopotam.us/' . $request->get('country_code') . '/' . $request->get('postal'));
+            $display = $client->request('GET', 'http://api.zippopotam.us/' . $request->get('country') . '/' . $request->get('postal'));
             $output = json_decode($display->getBody()->getContents());
             $place_name = $output->places[0]->{'place name'};
-            return ($place_name);
+            $user=User::whereId($request->get('id'))->update(['postal'=>$request->get('postal'),'address'=>$place_name,'country'=>$request->get('country')]);
+            return back()->with('success','Address Has Been Updated');
         }
         catch (\Exception $exception)
         {
-            return "Invalid Selection";
+            return back()->with('error','Postal Code Does not Exist');
         }
     }
 }

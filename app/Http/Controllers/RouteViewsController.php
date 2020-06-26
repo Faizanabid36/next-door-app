@@ -50,12 +50,6 @@ class RouteViewsController extends Controller
         return \view('frontend.account.edit_profile', compact('user'));
     }
 
-
-    public function test()
-    {
-        return view('auth.test');
-    }
-
     public function signup()
     {
         return \view('auth.secondreg');

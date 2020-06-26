@@ -85,9 +85,8 @@
 
 
                                                      <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <select class="form-control">
-
-                                                            <option>Select Country</option>
+                                                        <select class="form-control" name="country">
+                                                            <option value="">Select Country</option>
                                                             <option value="AD">Andorra</option>
                                                             <option value="AR">Argentina</option>
                                                             <option value="AS">American Samoa</option>

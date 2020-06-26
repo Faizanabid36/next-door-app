@@ -51,7 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     //email
     Route::get('/email','EmailConfigController@send_email')->name('email');
 });
-
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
 //    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
@@ -68,7 +67,5 @@ Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 // ecommerce
 Route::get('/single' , 'EcommerceController@single')->name('single');
 
-
-Route::get('test','RouteViewsController@test')->name('auth.reg');
-Route::post('get_location','UserController@getLocation')->name('test');
+Route::post('get_location/','UserController@update_address')->name('update_postal');
 
