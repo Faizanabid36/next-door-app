@@ -69,6 +69,10 @@ class User extends Authenticatable
                 $post->delete(); // <-- direct deletion
             });
 
+            $family_members->identities()->each(function ($identity) {
+                $identity->delete();
+            });
+
             $family_members->user_extra()->delete(); // Deletes User Extra Settings
         });
     }
@@ -92,5 +96,10 @@ class User extends Authenticatable
     public function identities()
     {
         return $this->hasMany('App\SocialIdentity');
+    }
+
+    public function sale_items()
+    {
+        return $this->hasMany(SaleItems::class,'user_id','id');
     }
 }

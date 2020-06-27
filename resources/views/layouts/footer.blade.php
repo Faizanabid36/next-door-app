@@ -24,8 +24,10 @@
 
  <!-- BEGIN Vendor JS-->
 
+ @yield('scripts')
+
  <!-- BEGIN: Page Vendor JS-->
-{{-- <script src="{{asset('theme/app-assets/vendors/js/extensions/shepherd.min.js')}}"></script>--}}
+ {{-- <script src="{{asset('theme/app-assets/vendors/js/extensions/shepherd.min.js')}}"></script>--}}
  <script src="{{asset('theme/app-assets/vendors/js/extensions/tether.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/extensions/dropzone.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/tables/datatable/pdfmake.min.js')}}"></script>
@@ -43,6 +45,11 @@
  <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/forms/validation/jqBootstrapValidation.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/ui/prism.min.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/extensions/wNumb.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/extensions/nouislider.min.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/forms/select/select2.full.min.js')}}"></script>
+
  <!-- END: Page Vendor JS-->
 
  @yield('footer_scripts')
@@ -52,6 +59,7 @@
  <script src="{{asset('theme/app-assets/js/scripts/components.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/extensions/toastr.js')}}"></script>
 
+
  <!-- END: Theme JS-->
 
  <!-- BEGIN: Page JS-->
@@ -59,4 +67,12 @@
  <script src="{{asset('theme/app-assets/js/scripts/ui/data-list-view.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/datatables/datatable.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>
+ <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
+
+
  <!-- END: Page JS-->
+
+ <script src="{{asset('theme/app-assets/js/scripts/pages/account-setting.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/pickers/pickadate/picker.date.js')}}"></script>
+ <script src="{{asset('theme/app-assets/vendors/js/extensions/dropzone.min.js')}}"></script>

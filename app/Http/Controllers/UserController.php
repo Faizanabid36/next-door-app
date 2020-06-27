@@ -20,9 +20,7 @@ class UserController extends Controller
         $this->validate($request, [
             'name' => 'required|max:54',
             'email' => 'required',
-            'postal' => 'required',
-            'contact' => 'required',
-            'address' => 'required',
+//            'address' => 'required',
             'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if (request()->hasFile('Picture')) {
@@ -44,21 +42,17 @@ class UserController extends Controller
     public function changePassword(Request $request, $id)
     {
         $this->validate($request,[
-            'old_password'=>'required|min:6',
+            'old_password'=>'sometimes|required|min:6',
             'new_password'=>'required|min:6',
             'confirm_password'=>'required|min:6|required_with:new_password|same:new_password',
         ]);
         //if old pass is not matched
-        if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
-            return back()->with('error', "Incorrect Password Entered.");
+        if(isset($request->old_password))
+        {
+            if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
+                return back()->with('error', "Incorrect Password Entered.");
+            }
         }
-        //if old and new sem
-//        if (strcmp($request->get('old_password'), $request->get('new_password'))) {
-//            return back()->with("error", "New Password is same as Old Password.");
-//        }
-//        if (!(strcmp($request->get('old_password'), $request->get('confirm_password')))) {
-//            return back()->with("error", "Retyped And New Password Not Matched.");
-//        }
         $user = Auth::user();
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
@@ -126,10 +120,28 @@ class UserController extends Controller
 
     public function delete_family($id)
     {
-        $d=FamilyMember::whereId($id)->delete();
-        if($d)
+        $d = FamilyMember::whereId($id)->delete();
+        if ($d)
             return back()->with('success', 'Member Deleted Successfully');
         return back()->with('error', 'Could Not Delete Member');
     }
 
+    public function update_address(Request $request)
+    {
+        $this->validate($request,[
+            'postal' => 'required',
+        ]);
+        try{
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/' . $request->get('country') . '/' . $request->get('postal'));
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            $user=User::whereId($request->get('id'))->update(['postal'=>$request->get('postal'),'address'=>$place_name,'country'=>$request->get('country')]);
+            return back()->with('success','Address Has Been Updated');
+        }
+        catch (\Exception $exception)
+        {
+            return back()->with('error','Postal Code Does not Exist');
+        }
+    }
 }

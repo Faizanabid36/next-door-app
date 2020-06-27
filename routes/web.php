@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+Use App\User;
 //
 /*
 
@@ -26,6 +27,8 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
     Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
+Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
+Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
 Auth::routes();
 
 //Category Group
@@ -48,7 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     //email
     Route::get('/email','EmailConfigController@send_email')->name('email');
 });
-
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
 //    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
@@ -59,10 +61,11 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
+Route::get('/sale' , 'SaleItemController@item')->name('item');
+Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
+// ecommerce
+Route::get('/single' , 'EcommerceController@single')->name('single');
 
-
-
-
-
+Route::post('get_location/','UserController@update_address')->name('update_postal');
 

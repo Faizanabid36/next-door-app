@@ -53,9 +53,9 @@ class RegisterController extends Controller
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
-            'address' => ['required', 'string', 'max:255'],
-            'contact' => ['required', 'string', 'max:15'],
-            'postal' => ['required', 'string', 'max:10' ],
+//            'address' => ['required', 'string', 'max:255'],
+//            'contact' => ['required', 'string', 'max:15'],
+//            'postal' => ['required', 'string', 'max:10' ],
 
         ]);
     }
@@ -68,22 +68,15 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        if($data['gender']==0)
-        {
-            $data['avatar']=('theme\app-assets\images\portrait\small\avatar-s-25.jpg');
-        }
-        else{
-            $data['avatar']=('theme\app-assets\images\portrait\small\avatar-s-26.jpg');
-        }
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'password' => Hash::make($data['password']),
-            'address' => $data['address'],
-            'contact' => $data['contact'],
-            'postal' => $data['postal'],
-            'gender'=>$data['gender'],
-            'avatar'=>$data['avatar'],
+//            'contact' => $data['contact'],
+//            'postal' => $data['postal'],
         ]);
     }
+
+
+
 }
