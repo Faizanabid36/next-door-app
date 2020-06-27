@@ -1,11 +1,5 @@
 @extends('layouts.main')
 @section('title','For Sale and Business')
-@section('styles')
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/plugins/extensions/noui-slider.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/css/pages/app-ecommerce-shop.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/extensions/nouislider.min.css')}}">
-    <link rel="stylesheet" type="text/css" href="{{asset('theme/app-assets/vendors/css/ui/prism.min.css')}}">
-@endsection
 @section('body_content')
     <!-- BEGIN: Content-->
     <div class="app-content content">
@@ -50,14 +44,14 @@
                                         <button class="navbar-toggler shop-sidebar-toggler" type="button" data-toggle="collapse">
                                             <span class="navbar-toggler-icon d-block d-lg-none"><i class="feather icon-menu"></i></span>
                                         </button>
-                                       
+
                                     </div>
                                     <div class="view-options">
                                         <div id="clear-filters">
-                                           
+
                                         </div>
                                         <div class="view-btn-option">
-                                            
+
                                             <button type="button" class="btn btn-primary btn-block my-2" data-toggle="modal" data-target="#composeForm"><i class="feather icon-edit"></i> &nbsp; Add Post</button>
                                         </div>
                                     </div>
@@ -96,7 +90,7 @@
                                 <div class="card-body">
                                     <div class="item-wrapper">
                                         <div class="item-rating">
-                                           
+
                                         </div>
                                         <div>
                                             <h3 class="item-price"  style="color: #5e50ee !important ">
@@ -106,9 +100,9 @@
                                     </div>
                                     <div class="item-name" style="font-weight: bold">
                                         <a href="app-ecommerce-details.html" >Camera</a>
-                                       
+
                                     </div>
-                                   
+
                                 </div>
                                 <div class="item-options text-center">
                                     <div class="item-wrapper">
@@ -118,18 +112,16 @@
                                             </div>
                                         </div>
                                         <div class="item-cost">
-                                           
+
                                         </div>
                                     </div>
-                                   
+
                                     <div class="cart">
                                         <i class="feather icon-shopping-cart"></i> <span class="add-to-cart">View Details</span> <a href="app-ecommerce-checkout.html" class="view-in-cart d-none">View In Cart</a>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        
-                  
                     </section>
                     <!-- Ecommerce Products Ends -->
 
@@ -349,33 +341,33 @@
                         var max_fields      = 3; //maximum input boxes allowed
                         var wrapper         = $(".input_fields_wrap"); //Fields wrapper
                         var add_button      = $(".add_field_button"); //Add button ID
-                       
+
                         var x = 1; //initlal text box count
-                        
-                        
+
+
                        $(add_button).click(function(e){ //on add input button click
                             e.preventDefault();
                             if(x < max_fields){ //max input box allowed
-                        
+
                                  //text box increment
                                 $(wrapper).append('<div class="custom-file "><input type="file" class="custom-file-input" name="mytext[]"/><label class="custom-file-label" for="emailAttach" name="mytext[]"  >Upload Image</label><a href="#" class="remove_field">Remove</a></div>'); //add input box
                                 x++;
-                               
+
                           }
-                          
+
                         });
-                       
+
                         $(wrapper).on("click",".remove_field", function(e){ //user click on remove text
-                           
-                            e.preventDefault(); 
-                            $(this).parent('div').remove(); 
+
+                            e.preventDefault();
+                            $(this).parent('div').remove();
                             x--;
                         })
                     });
-                        
+
                         </script>
-                        
-                   
+
+
                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                         <select class="form-control" name="category">
                           
@@ -386,23 +378,23 @@
                         <div class="form-control-position">
                             <i class="feather icon-user"></i>
                         </div>
-                   
+
                 </fieldset>
-                   
+
                     <div  class="form-group mt-2 input_fields_wrap" id="newElementId">
                         <div class="custom-file " >
                             <input type="file" class="custom-file-input" id="emailAttach" >
                             <label class="custom-file-label" for="emailAttach" name="mytext[]"  >Upload Image</label>
                         </div>
-                        
+
                     </div>
-                  
-                     
-                    
-                   
+
+
+
+
                     <button type="button"    class="add_field_button btn mr-1 mb-1 btn-primary btn-sm" style="float: right">Add Another Image</button>
-          
-               
+
+
                 </div>
                 <div class="modal-footer">
                     <button class="btn btn-primary" type="submit" value="submit">Add</button>
@@ -417,13 +409,6 @@
 
     <div class="sidenav-overlay"></div>
     <div class="drag-target"></div>
-    
+
 @endsection
 
-
-@section('scripts')
-    <script src="{{asset('theme/app-assets/vendors/js/ui/prism.min.js')}}"></script>
-    <script src="{{asset('theme/app-assets/vendors/js/extensions/wNumb.js')}}"></script>
-    <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-shop.js')}}"></script>
-    <script src="{{asset('theme/app-assets/vendors/js/extensions/nouislider.min.js')}}"></script>
-@endsection

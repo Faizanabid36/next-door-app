@@ -68,7 +68,7 @@
                                         <p class="px-2">Fill the below form to create a new account.</p><br>
                                         <div class="card-content">
                                             <div class="card-body pt-0">
-                                                <form method="POST" action="{{ route('register') }}">
+                                                <form method="POST" action="{{ route('register_continue') }}">
                                                     @csrf
                                                     {{-- <div class="btn-group mb-1">
                                                         <div class="dropdown">
@@ -82,12 +82,11 @@
                                                             </div>
                                                         </div>
                                                     </div> --}}
-                                                  
+
 
                                                      <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                        <select class="form-control">
-                                                          
-                                                            <option>Select Country</option>
+                                                        <select class="form-control" name="country">
+                                                            <option value="">Select Country</option>
                                                             <option value="AD">Andorra</option>
                                                             <option value="AR">Argentina</option>
                                                             <option value="AS">American Samoa</option>
@@ -159,17 +158,17 @@
                                                             <option value="YT">Mayotte</option>
                                                             <option value="ZA">South Africa</option>
 
-                                                          
-                                                        </select>                                                     
+
+                                                        </select>
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
-                                                   
+
                                                 </fieldset>
 
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                         <input id="postal" type="number" class="form-control" name="postal" required autocomplete="postal">
-                                                   
+
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
@@ -177,7 +176,7 @@
                                                 </fieldset>
                                                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                         <input id="contact" type="number" class="form-control" name="contact" required autocomplete="contact">
-                                                   
+
                                                         <div class="form-control-position">
                                                             <i class="feather icon-user"></i>
                                                         </div>
@@ -186,7 +185,7 @@
 
 
                                                     {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
-                                                
+
                                                     <div class="form-group">
                                                         <label>Gender</label>
                                                         <ul class="list-unstyled mb-0">
@@ -214,16 +213,16 @@
                                                                     </div>
                                                                 </fieldset>
                                                             </li>
-                                                           
+
                                                         </ul>
                                                     </div>
                                                 </fieldset>                                               --}}
-                                                    
-                                                  
+
+
 
                                                 {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                     <input id="address" type="text" class="form-control" name="address" required autocomplete="address">
-                                               
+
                                                     <div class="form-control-position">
                                                         <i class="feather icon-user"></i>
                                                     </div>
@@ -231,7 +230,7 @@
                                             </fieldset> --}}
                                             {{-- <fieldset class="form-label-group form-group position-relative has-icon-left">
                                                 <input id="contact" type="number" class="form-control" name="contact" required autocomplete="contact">
-                                           
+
                                                 <div class="form-control-position">
                                                     <i class="feather icon-user"></i>
                                                 </div>

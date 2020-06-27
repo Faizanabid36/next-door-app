@@ -27,7 +27,8 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
     Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
-Route::get('/signup' , 'RouteViewsController@signup')->name('signup');
+Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
+Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
 Auth::routes();
 
 //Category Group
@@ -50,7 +51,6 @@ Route::group(['middleware' => 'auth'], function () {
     //email
     Route::get('/email','EmailConfigController@send_email')->name('email');
 });
-
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
 //    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
@@ -65,22 +65,7 @@ Route::get('/sale' , 'SaleItemController@item')->name('item');
 Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 
 // ecommerce
-Route::get('/sale-and-business' , 'EcommerceController@main')->name('ecommerce');
 Route::get('/single' , 'EcommerceController@single')->name('single');
 
-
-
-
-
-
-Route::get('postal/{postal}',function ($postal){
-//    $postCode41 = PostcodeApi::create('PostcodeApiNu')->find($postal);
-    $postCode19 = \PostcodeApi::create('Google')->find('75300');
-    return $postCode19;
-});
-
-
-
-Route::get('test','RouteViewsController@test')->name('test');
-Route::post('get_location','UserController@getLocation')->name('test');
+Route::post('get_location/','UserController@update_address')->name('update_postal');
 

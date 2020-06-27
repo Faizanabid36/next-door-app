@@ -1,10 +1,9 @@
 @extends('layouts.main')
 @section('title','Single Product')
 @section('styles')
-   
+
  <script src="{{asset('theme/app-assets/js/scripts/pages/app-ecommerce-details.js')}}"></script>
  <script src="{{asset('theme/app-assets/js/scripts/forms/number-input.js')}}"></script>
- 
  <script src="{{asset('theme/app-assets/vendors/js/forms/spinner/jquery.bootstrap-touchspin.js')}}"></script>
  <script src="{{asset('theme/app-assets/vendors/js/extensions/swiper.min.js')}}"></script>
 @endsection
@@ -57,7 +56,7 @@
                                     </div>
                                     <div class="card-content">
                                         <div class="card-body">
-                                           
+
                                             <div id="carousel-keyboard" class="carousel slide" data-keyboard="true">
                                                 <ol class="carousel-indicators">
                                                     <li data-target="#carousel-keyboard" data-slide-to="0" class="active"></li>
@@ -109,11 +108,11 @@
                                     full-frame sensor delivers outstanding image clarity, and 4K video is possible from this DSLR for powerful
                                     films. Ultra-precise autofocus and huge ISO ranges give you the images you want from this Canon EOS 5D Mk V
                                     24-70mm lens kit.</p>
-                                    
-                                    
+
+
                                 <hr>
                                 <div class="form-group">
-                                   
+
                                     {{-- <ul class="list-unstyled mb-0 product-color-options">
                                         <li class="d-inline-block selected">
                                             <div class="color-option b-primary">
@@ -144,14 +143,14 @@
                                     <span><img class="round"
                                         src="{{asset(auth()->user()->avatar)}}"
                                         alt="avatar" height="60" width="60"> <br><span class="font-weight-bold " > Dennis Clark <br> </span>Australia</span>
-                               
+
                                 </div>
                                 <hr>
-                               
+
 
                                 <div class="d-flex flex-column flex-sm-row">
                                     <button class="btn btn-primary mr-0 mr-sm-1 mb-1 mb-sm-0"><i class="feather icon-message-square mr-25"></i>Message</button>
-                                   
+
                                 </div>
                                 <hr>
                                 {{-- <button type="button" class="btn btn-icon rounded-circle btn-outline-primary mr-1 mb-1"><i class="feather icon-facebook"></i></button>
@@ -355,5 +354,5 @@
     </div>
 </div>
 <!-- END: Content-->
-    
+
 @endsection

@@ -47,13 +47,7 @@ class RouteViewsController extends Controller
         $user= User::whereId(auth()->user()->id)->with('user_extra','family_members')->first();
         // $user=auth()->user()->with('family_members');
         // return $user;
-        return \view('frontend.account.account', compact('user'));
-    }
-
-
-    public function test()
-    {
-        return view('auth.test');
+        return \view('frontend.account.edit_profile', compact('user'));
     }
 
     public function signup()
