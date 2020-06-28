@@ -17,7 +17,7 @@ class CreateEcommercesTable extends Migration
             $table->id();
             $table->string('title');
             $table->integer('price');
-            // $table->nullable('free');
+            $table->string('free')->nullable();
             $table->longText('description');
             $table->integer('category');
             $table->timestamps();
