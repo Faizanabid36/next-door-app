@@ -8,10 +8,19 @@ use App\User;
 
 class SaleItemController extends Controller
 {
-    // public function item()
-    // {
-    //     return User::with('sale_items')->where('id' , 1)->get();
-    // }
+    public function main()
+    {
+        return view('frontend.ecommerce.all_sale_items');
+    }
+    public function add(Request $request)
+    {
+        return view('frontend.ecommerce.all_sale_items');
+    }
+
+    public function single()
+    {
+        return view('frontend.ecommerce.single');
+    }
     
     public function item()
     {
