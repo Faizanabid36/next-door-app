@@ -1,7 +1,6 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-Use App\User;
 //
 /*
 
@@ -17,6 +16,12 @@ Use App\User;
 
 Route::get('/', 'RouteViewsController@login_page')->name('login');
 
+/**
+ * --------------------------------
+ * Admin Routes without prefix
+ * --------------------------------
+ */
+
 Route::group(['middleware' => 'auth' ], function(){
     Route::get('/home', 'RouteViewsController@login_page')->name('login');
     Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
@@ -27,18 +32,28 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('agents_list','HomeController@agents_list')->name('agents_list');
     Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
 });
-Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
-Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
+
+
 Auth::routes();
 
-//Category Group
 Route::group(['middleware' => 'auth'], function () {
-    // category
+
+    /**
+     * ----------------------------
+     * Categories Routes
+     * ----------------------------
+     **/
     Route::get('/add_category', 'RouteViewsController@add_cat')->name('add_category');
     Route::post('/add_category', 'CategoryController@addcategory')->name('add_category');
     Route::get('/view_category', 'CategoryController@viewcategory')->name('view_category');
     Route::get('/view_category/delete_category/{id}', 'CategoryController@deletecategory');
     Route::post('/view_category/edit_category', 'CategoryController@editcategory')->name('edit_category');
+
+    /**
+     * ----------------------------
+     * Profile Setting Routes
+     * ----------------------------
+     **/
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
     Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
@@ -46,20 +61,29 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('update_user_extras/{id}','UserController@update_user_extras')->name('update_user_extras');
     Route::post('edit_family/{id}','UserController@edit_family')->name('edit_family');
     Route::get('delete_family/{id}','UserController@delete_family')->name('delete_family');
+    Route::post('get_location/','UserController@update_address')->name('update_postal');
+
+
+
     // profile
     Route::get('/home/view_profile/{id}', 'HomeController@view_profile')->name('view_profile');
     //email
     Route::get('/email','EmailConfigController@send_email')->name('email');
 });
+
+
+/**
+ * -----------------------------
+ * Admin Routes with prefix
+ * -----------------------------
+ */
+
 Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     Route::get('neighbours', 'HomeController@neighbours_list')->name('neighbours');
-//    Route::get('agents_list','HomeController@delete_user')->name('agents_list');
     Route::get('/create_agent', 'PublicAgentController@agent')->name('create');
     Route::post('/create_agent', 'PublicAgentController@createagent')->name('create_agent');
 });
 
-Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
 Route::get('/sale' , 'SaleItemController@item')->name('item');
 Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
@@ -67,5 +91,13 @@ Route::get('/img' , 'SaleItemsImageController@itemimage')->name('img');
 // ecommerce
 Route::get('/single' , 'EcommerceController@single')->name('single');
 
-Route::post('get_location/','UserController@update_address')->name('update_postal');
 
+/**
+ * ---------------------------------
+ * Login-Register Routes
+ * ---------------------------------
+ */
+Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
+Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
+Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
+Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');

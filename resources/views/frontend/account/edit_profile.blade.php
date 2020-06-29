@@ -67,12 +67,6 @@
                                         Family and Pets
                                     </a>
                                 </li>
-                                <li class="nav-item">
-                                    <a class="nav-link d-flex py-75" id="account-pill-connections" data-toggle="pill" href="#account-vertical-connections" aria-expanded="false">
-                                        <i class="feather icon-globe mr-50 font-medium-3"></i>
-                                        Neighbourhood
-                                    </a>
-                                </li>
                             </ul>
                         </div>
                         <!-- right content section -->
@@ -164,11 +158,33 @@
                                                                 </div>
                                                             </div>
                                                         </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-e-mail">Postal Code</label>
+                                                                    <input type="text" name="postal" class="form-control"
+                                                                           id="account-postal-code"
+                                                                           placeholder="Postal-code"
+                                                                           value="{{$user->postal}}" required
+                                                                           data-validation-required-message="This email field is required">
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="col-12">
+                                                            <div class="form-group">
+                                                                <div class="controls">
+                                                                    <label for="account-e-mail">Address</label>
+                                                                    <input readonly type="text" name="address" class="form-control"
+                                                                           id="account-address" placeholder="Address"
+                                                                           value="{{$user->address}}" required
+                                                                           data-validation-required-message="This email field is required">
+                                                                </div>
+                                                            </div>
+                                                        </div>
                                                         <div
                                                             class="col-12 d-flex flex-sm-row flex-column justify-content-end">
                                                             <input value="Update Profile" type="submit"
-                                                                   class="btn btn-primary mr-sm-1 mb-1 mb-sm-0"></input>
-                                                            {{--                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>--}}
+                                                                   class="btn btn-primary mr-sm-1 mb-1 mb-sm-0"/>
                                                         </div>
                                                     </div>
                                                 </form>
@@ -423,126 +439,6 @@
                                                         </form>
                                                     </div>
                                                 @endforeach
-                                            </div>
-                                            <div class="tab-pane fade" id="account-vertical-connections" role="tabpanel" aria-labelledby="account-pill-connections" aria-expanded="false">
-                                                <form novalidate method="POST"
-                                                      enctype='multipart/form-data'
-                                                      action="{{action('UserController@update_address')}}">
-                                                    <hr>
-                                                    @csrf
-                                                    <input type="hidden" name="id" value="{{$user->id}}">
-                                                    <div class="row">
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <div class="controls">
-                                                                    <label for="account-country">Country</label>
-                                                                    <select class="form-control" name="country">
-                                                                        <option value="" selected disabled>Select Country</option>
-                                                                        <option value="AS">American Samoa</option>
-                                                                        <option value="AD">Andorra</option>
-                                                                        <option value="AR">Argentina</option>
-                                                                        <option value="AU">Australia</option>
-                                                                        <option value="AT">Austria</option>
-                                                                        <option value="BD">Bangladesh</option>
-                                                                        <option value="BE">Belgium</option>
-                                                                        <option value="BR">Brazil</option>
-                                                                        <option value="BG">Bulgaria</option>
-                                                                        <option value="CA">Canada</option>
-                                                                        <option value="HR">Croatia</option>
-                                                                        <option value="CZ">Czech Republic</option>
-                                                                        <option value="DK">Denmark</option>
-                                                                        <option value="DO">Dominican Republic</option>
-                                                                        <option value="FO">Faroe Islands</option>
-                                                                        <option value="FI">Finland</option>
-                                                                        <option value="FR">France</option>
-                                                                        <option value="GF">French Guyana</option>
-                                                                        <option value="RE">French Reunion</option>
-                                                                        <option value="GB">Great Britain</option>
-                                                                        <option value="DE">Germany</option>
-                                                                        <option value="GG">Guernsey</option>
-                                                                        <option value="GL">Greenland</option>
-                                                                        <option value="GP">Guadeloupe</option>
-                                                                        <option value="GT">Guatemala</option>
-                                                                        <option value="GU">Guam</option>
-                                                                        <option value="GY">Guyana</option>
-                                                                        <option value="NL">Holland</option>
-                                                                        <option value="HU">Hungary</option>
-                                                                        <option value="IM">Isle of Man</option>
-                                                                        <option value="IN">India</option>
-                                                                        <option value="IS">Iceland</option>
-                                                                        <option value="IT">Italy</option>
-                                                                        <option value="JE">Jersey</option>
-                                                                        <option value="JP">Japan</option>
-                                                                        <option value="LI">Liechtenstein</option>
-                                                                        <option value="LT">Lithuania</option>
-                                                                        <option value="LU">Luxembourg</option>
-                                                                        <option value="MC">Monaco</option>
-                                                                        <option value="MD">Moldavia</option>
-                                                                        <option value="MH">Marshall Islands</option>
-                                                                        <option value="MK">Macedonia</option>
-                                                                        <option value="MQ">Martinique</option>
-                                                                        <option value="MY">Malaysia</option>
-                                                                        <option value="YT">Mayotte</option>
-                                                                        <option value="MX">Mexico</option>
-                                                                        <option value="NZ">New Zealand</option>
-                                                                        <option value="MP">Northern Mariana Islands</option>
-                                                                        <option value="NO">Norway</option>
-                                                                        <option value="PK">Pakistan</option>
-                                                                        <option value="PH">Phillippines</option>
-                                                                        <option value="PL">Poland</option>
-                                                                        <option value="PR">Puerto Rico</option>
-                                                                        <option value="PT">Portugal</option>
-                                                                        <option value="RU">Russia</option>
-                                                                        <option value="PM">Saint Pierre and Miquelon</option>
-                                                                        <option value="SM">San Marino</option>
-                                                                        <option value="ES">Spain</option>
-                                                                        <option value="SE">Sweden</option>
-                                                                        <option value="SI">Slovenia</option>
-                                                                        <option value="ZA">South Africa</option>
-                                                                        <option value="LK">Sri Lanka</option>
-                                                                        <option value="SK">Slovak Republic</option>
-                                                                        <option value="SJ">Svalbard & Jan Mayen Islands</option>
-                                                                        <option value="CH">Switzerland</option>
-                                                                        <option value="TH">Thailand</option>
-                                                                        <option value="TR">Turkey	</option>
-                                                                        <option value="US">United States</option>
-                                                                        <option value="VA">Vatican</option>
-                                                                        <option value="VI">Virgin Islands</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <div class="controls">
-                                                                    <label for="account-e-mail">Postal Code</label>
-                                                                    <input type="text" name="postal" class="form-control"
-                                                                           id="account-postal-code"
-                                                                           placeholder="Postal-code"
-                                                                           value="{{$user->postal}}" required
-                                                                           data-validation-required-message="This email field is required">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <div class="form-group">
-                                                                <div class="controls">
-                                                                    <label for="account-e-mail">Address</label>
-                                                                    <input readonly type="text" name="address" class="form-control"
-                                                                           id="account-address" placeholder="Address"
-                                                                           value="{{$user->address}}" required
-                                                                           data-validation-required-message="This email field is required">
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                        <div
-                                                            class="col-12 d-flex flex-sm-row flex-column justify-content-end">
-                                                            <input value="Update Profile" type="submit"
-                                                                   class="btn btn-primary mr-sm-1 mb-1 mb-sm-0"></input>
-                                                            {{--                                                        <button type="reset" class="btn btn-outline-warning">Cancel</button>--}}
-                                                        </div>
-                                                    </div>
-                                                </form>
                                             </div>
                                         </div>
                                     </div>
