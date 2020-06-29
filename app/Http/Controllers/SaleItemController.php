@@ -14,7 +14,15 @@ class SaleItemController extends Controller
     }
     public function add(Request $request)
     {
-        return view('frontend.ecommerce.all_sale_items');
+            $item = $request->all();
+            $sale = new SaleItems;
+            $sale->user_id = User::auth()->user()->id;
+            $sale->title = $item['title'];
+            $sale->price = $item['price'];
+            $sale->description = $item['description'];
+            $sale->cat_id = $item['cat_id'];
+            $sale->save();
+            return back()->with('created','Created Successfully');
     }
 
     public function single()

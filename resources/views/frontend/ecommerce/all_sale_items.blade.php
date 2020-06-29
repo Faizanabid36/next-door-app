@@ -291,7 +291,8 @@
             </div>
         </div>
     </div>
-    <form action="" method="POST" >
+    <form action="{{route('add_item')}}" method="POST" >
+        {{ csrf_field() }}
     <div  class="modal fade text-left" id="composeForm" tabindex="-1" role="dialog" aria-labelledby="emailCompose" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" >
             <div class="modal-content">
@@ -321,7 +322,7 @@
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <span class="card-link" name="free"  >Free</span>
+                                    <span class="card-link" name="is_free"  >Free</span>
                                 </div>
                             </fieldset>
                         </div>
@@ -369,7 +370,7 @@
 
 
                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                        <select class="form-control" name="category">
+                        <select class="form-control" name="cat_id">
                           
                             <option>Select Category</option>
                             <option value="1">cameras</option>
