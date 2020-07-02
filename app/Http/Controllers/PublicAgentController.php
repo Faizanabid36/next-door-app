@@ -15,17 +15,14 @@ class PublicAgentController extends Controller
         return view('admin.public_agents.create_user');
     }
 
-    public function createagent(Request $request)
+    public function createagent(ValidateAgent $request)
     {
-        $this->validate($request, [
-            'email' => 'required|unique:users,email',
-            'name' => 'required',
-            'contact' => 'required',
-        ]);
-        \request()->merge(['is_public_agent' => 1, 'avatar' => 'theme\app-assets\images\portrait\small\avatar-s-25.jpg']);
+        
+        
+        $request->merge(['is_public_agent' => 1, 'avatar' => 'theme\app-assets\images\portrait\small\avatar-s-25.jpg']);
         if ($request->isMethod('post')) {
-            request()->merge(['password' => Hash::make(\request('password'))]);
-            User::create(\request()->except('_token'));
+            $request->merge(['password' => Hash::make($request->get('password'))]);
+            User::create($request->except('_token'));
             return back()->with('success', 'Created Successfully');
         }
     }
