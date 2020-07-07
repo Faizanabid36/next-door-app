@@ -101,3 +101,7 @@ Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
 Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+
+
+
+
