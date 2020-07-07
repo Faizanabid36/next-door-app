@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     </section>
+                    
                     <!-- Ecommerce Content Section Starts -->
                     <!-- background Overlay when sidebar is shown  starts-->
                     <div class="shop-content-overlay"></div>
@@ -77,6 +78,16 @@
                             </div>
                         </div>
                     </section>
+                    @if(Session::has('success'))
+                    <div class="alert alert-success mb-2" role="alert">
+                        <strong>Success</strong> {{Session::get('success')}}
+                    </div>
+                @endif
+                @if(Session::has('errors'))
+                <div class="alert alert-danger mb-2" role="alert">
+                    <strong>Error</strong> {{Session::get('errors')->first()}}
+                </div>
+            @endif
                     <!-- Ecommerce Search Bar Ends -->
 
                     <!-- Ecommerce Products Starts -->
@@ -145,6 +156,7 @@
                             </div>
                         </div>
                     </section>
+                  
                     <!-- Ecommerce Pagination Ends -->
 
                 </div>
@@ -291,6 +303,7 @@
             </div>
         </div>
     </div>
+    
     <form action="{{route('add_item')}}" method="POST" >
         {{ csrf_field() }}
     <div  class="modal fade text-left" id="composeForm" tabindex="-1" role="dialog" aria-labelledby="emailCompose" aria-hidden="true">
@@ -302,27 +315,38 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+               
                 <div class="modal-body pt-1">
                     <div class="form-label-group mt-1">
                         <input type="text" id="emailTo" class="form-control" placeholder="Title" name="title">
                         <label for="title">Title</label>
                         </div>
+                        <script type="text/javascript">
+                            function EnableDisableTextBox(chkPassport) {
+                                
+                                var txtPassportNumber = document.getElementById("txtPassportNumber");
+                                txtPassportNumber.disabled = chkPassport.checked ? true : false;
+                                if (!txtPassportNumber.disabled) {
+                                    txtPassportNumber.focus();
+                                }
+                            }
+                        </script>
                         <div>
                      <div class="form-label-group">
-                        <input type="number"  class="form-control" placeholder="Price" name="price">
+                        <input type="number"  class="form-control" placeholder="Price" name="price"  id="txtPassportNumber" enabled="disabled">
                         <label for="price">Price</label>
                         </div>
                         <div class="form-group d-flex justify-content-between align-items-center ">
                         <div class="text-left">
                             <fieldset class="checkbox">
                                 <div class="vs-checkbox-con vs-checkbox-primary">
-                                    <input type="checkbox">
+                                    <input type="checkbox" name="is_free" value="1" id="chkPassport" onclick="EnableDisableTextBox(this)">
                                     <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                    <span class="card-link" name="is_free"  >Free</span>
+                                    <span class="card-link"  >Free</span>
                                 </div>
                             </fieldset>
                         </div>
@@ -371,9 +395,11 @@
 
                     <fieldset class="form-label-group form-group position-relative has-icon-left">
                         <select class="form-control" name="cat_id">
-                          
                             <option>Select Category</option>
-                            <option value="1">cameras</option>
+                            @foreach ($categories as $cat)
+                            <option value={{$cat->id}}>{{$cat->name}}</option>
+                            @endforeach
+                            
                             
                         </select>                                                     
                         <div class="form-control-position">
