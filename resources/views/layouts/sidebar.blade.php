@@ -43,7 +43,7 @@
                 </li>
                 <li class=" navigation-header"><span>pages</span>
                 </li>
-                @if(isset(auth()->user()->id)&&auth()->user()->id==1)
+                @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
                     <li class=" nav-item"><a href="{{ route('admin.neighbours')}}"><i
                                 class="feather icon-users"></i><span class="menu-title"
                                                                      data-i18n="Email">Neighbours</span></a>
@@ -53,7 +53,7 @@
                                 class="menu-title" data-i18n="Email">Neighbours</span></a>
                     </li>
                 @endif
-                @if(isset(auth()->user()->id)&&auth()->user()->id==1)
+                @if(isset(auth()->user()->id)&&auth()->user()->admin==1)
                     @include('layouts.admin_sidebar')
                 @endif
             </ul>

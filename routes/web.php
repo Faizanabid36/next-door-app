@@ -105,3 +105,8 @@ Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallb
 
 
 
+Route::view('test','layouts.salika.index');
+
+
+
+

@@ -25,7 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('country')->nullable();
             $table->string('address')->nullable();
             $table->integer('is_public_agent')->nullable();
-            $table->string('avatar')->nullable()->default(asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg'));
+            $table->string('avatar')->nullable();
             $table->integer('user_extra_id')->nullable();
             $table->rememberToken();
             $table->timestamps();
