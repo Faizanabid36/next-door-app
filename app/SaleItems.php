@@ -12,5 +12,9 @@ class SaleItems extends Model
         return $this->belongsTo(User::class, 'user_id', 'id');
     }
 
-   
+    public function images()
+    {
+        return $this->hasMany(SaleItemsImage::class,'sale_items_id');
+    }
+
 }

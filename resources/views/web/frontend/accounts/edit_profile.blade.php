@@ -52,7 +52,7 @@
                             <strong>Error:</strong> {{Session::get('error')}}
                         </div>
                     @endif
-                    <form class=" p-4" novalidate method="POST"
+                    <form class="p-4" novalidate method="POST"
                           enctype='multipart/form-data'
                           action="{{action('UserController@updateuser',$user->id)}}">
                         @csrf
