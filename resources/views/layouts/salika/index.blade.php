@@ -8,13 +8,14 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Salika">
-    <link rel="icon" href="{{asset('salika/assets/images/favicon.png')}}">
+    <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
     <!-- CSS
     ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/style.css')}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css')}}">
+    <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css')}}">
 
     <!-- icons
     ================================================== -->
@@ -42,12 +43,15 @@
     </div>
 
     <div class="main_content">
-
+        @yield('content')
     </div>
 </div>
 
 <!-- javaScripts
             ================================================== -->
+
+
+@yield('footer_scripts')
 <script src="{{asset('salika/assets/js/framework.js')}}"></script>
 <script src="{{asset('salika/assets/js/jquery-3.3.1.min.js')}}"></script>
 <script src="{{asset('salika/assets/js/simplebar.js')}}"></script>

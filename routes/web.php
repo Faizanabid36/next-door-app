@@ -55,6 +55,8 @@ Route::group(['middleware' => 'auth'], function () {
      * ----------------------------
      **/
     Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
+    Route::get('/edit_profile/change_password' , 'RouteViewsController@account_1')->name('change-password');
+    Route::get('/edit_profile/user_extras' , 'RouteViewsController@account_2')->name('user-extras');
     Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
     Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
     Route::post('/update_family/{id}','UserController@update_family')->name('update_family');
@@ -66,7 +68,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
     // profile
-    Route::get('/home/view_profile/{id}', 'HomeController@view_profile')->name('view_profile');
+    Route::get('/profile/{id}', 'HomeController@view_profile')->name('view_profile');
     //email
     Route::get('/email','EmailConfigController@send_email')->name('email');
 });

@@ -13,13 +13,18 @@
 
             <div class="sections">
                 <ul>
+                    <hr class="mt-90">
+                    <li class="text-center">
+                        <h2 class="text-dark"> {{auth()->user()->address}} </h2>
+                    </li>
+                    <hr>
                     <li>
                         <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/home.png')}}" alt="">
                             <span> News Feed </span>
                         </a>
                     </li>
                     <li>
-                        <a href="homepage.html"> <img src="https://i1.wp.com/bryghtpath.com/wp-content/uploads/2019/08/Government-800x800.png?resize=800%2C600&ssl=1" alt="">
+                        <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}" alt="">
                             <span> Public Agencies </span>
                         </a>
                     </li>
@@ -35,12 +40,12 @@
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="https://image.flaticon.com/icons/svg/1201/1201867.svg" alt="">
+                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
                             <span> Lost Items </span>
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="https://image.flaticon.com/icons/png/512/924/924953.png" alt="">
+                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/crime_safety.png')}}" alt="">
                             <span> Crime and Safety </span>
                         </a>
                     </li>
@@ -76,7 +81,7 @@
                     <li id="more-veiw">
                         <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/market.png')}}"
                                                          alt="">
-                            <span> Sale and Business </span>
+                            <span> Sale and Free </span>
                         </a>
                     </li>
 

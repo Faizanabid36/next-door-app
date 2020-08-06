@@ -7,9 +7,8 @@
         <!-- Logo-->
         <div id="logo">
             {{--                    <a href="homepage.html"> <img src="{{asset('salika/assets/images/logo.png')}}" alt=""></a>--}}
-            <h2 class="mt-3">Salika</h2>
-            <a href="homepage.html"> <img src="{{asset('assets/images/logo-light.png')}}" class="logo-inverse"
-                                          alt=""></a>
+{{--            <h2 class="mt-3">Salika</h2>--}}
+            <a href="{{route('dashboard')}}"> <img src="{{asset('salika/assets/images/salika_logo.png')}}" class="" style="width: 60px" alt=""></a>
         </div>
 
         <!-- form search-->
@@ -68,12 +67,12 @@
                     <!-- notivication header -->
                     <div class="dropdown-notifications-headline">
                         <h4>Messages</h4>
-                        <a href="#">
-                            <i class="icon-feather-settings"
-                               uk-tooltip="title: Message settings ; pos: left"></i>
-                        </a>
+{{--                        <a href="#">--}}
+{{--                            <i class="icon-feather-settings"--}}
+{{--                               uk-tooltip="title: Message settings ; pos: left"></i>--}}
+{{--                        </a>--}}
 
-                        <input type="text" class="uk-input" placeholder="Search in Messages">
+{{--                        <input type="text" class="uk-input" placeholder="Search in Messages">--}}
                     </div>
 
                     <!-- notiviation list -->
@@ -202,10 +201,10 @@
                     <!-- notivication header -->
                     <div class="dropdown-notifications-headline">
                         <h4>Notifications </h4>
-                        <a href="#">
-                            <i class="icon-feather-settings"
-                               uk-tooltip="title: Notifications settings ; pos: left"></i>
-                        </a>
+{{--                        <a href="#">--}}
+{{--                            <i class="icon-feather-settings"--}}
+{{--                               uk-tooltip="title: Notifications settings ; pos: left"></i>--}}
+{{--                        </a>--}}
                     </div>
 
                     <!-- notiviation list -->
@@ -317,21 +316,21 @@
                  class="dropdown-notifications rounded">
 
                 <!-- User Name / Avatar -->
-                <a href="timeline.html">
+                <a href="{{route('view_profile',auth()->user()->id)}}">
 
                     <div class="dropdown-user-details">
                         <div class="dropdown-user-avatar">
-                            <img src="{{asset('salika/assets/images/avatars/avatar-1.jpg')}}" alt="">
+                            <img src="{{auth()->user()->avatar}}" alt="">
                         </div>
-                        <div class="dropdown-user-name"> Dennis Han <span>See your profile</span></div>
+                        <div class="dropdown-user-name"> {{auth()->user()->name}} <span>See your profile</span></div>
                     </div>
 
                 </a>
 
                 <hr class="m-0">
                 <ul class="dropdown-user-menu">
-                    <li><a href="page-setting.html"> <i class="uil-user"></i> My Account </a></li>
-                    <li><a href="page-setting.html"> <i class="uil-cog"></i> Account Settings</a></li>
+{{--                    <li><a href="page-setting.html"> <i class="uil-user"></i> My Account </a></li>--}}
+                    <li><a href="{{route('edit_profile')}}"> <i class="uil-cog"></i> Account Settings</a></li>
                     </li>
                     <li><a href="form-login.html"> <i class="uil-sign-out-alt"></i>Log Out</a>
                     </li>

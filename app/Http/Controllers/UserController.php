@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FamilyMember;
-use App\Http\Requests\ValidateFamilyMember;
+use App\Http\Requests\ValdateFamilyMember;
 use App\User;
 use App\UserExtra;
 use Auth;
@@ -34,7 +34,7 @@ class UserController extends Controller
             $imageName = auth()->user()->id . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/users/avatar/');
             $file->move($destinationPath, $imageName);
-            (\request()->merge(['avatar' => ('users/avatar/' . $imageName)]));
+            (\request()->merge(['avatar' => asset('users/avatar/' . $imageName)]));
         }
         User::whereId($id)->update(\request()->except('_token', 'Picture'));
         try{
@@ -47,6 +47,7 @@ class UserController extends Controller
         }
         catch (\Exception $exception)
         {
+            dd($exception);
             return back()->with('error','Postal Code Does not Exist');
         }
     }
