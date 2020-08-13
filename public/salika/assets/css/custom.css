@@ -20,6 +20,10 @@
     }
 }
 
+.color-black{
+    color: black !important;
+}
+
 
 /*.mr-5, .mx-5 {*/
 /*    margin-right: 0.05rem !important;*/

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Category;
 use App\SaleItems;
 use App\SaleItemsImage;
 use Illuminate\Http\Request;
@@ -11,7 +12,8 @@ class SaleItemController extends Controller
 {
     public function main()
     {
-        return view('web.frontend.sale_and_business.list_items');
+        $items = SaleItems::with(['main_image','category','user'])->get()->groupBy('category.name');
+        return view('web.frontend.sale_and_business.list_items',compact('items'));
 //        return view('frontend.ecommerce.all_sale_items');
     }
 
@@ -70,5 +72,17 @@ class SaleItemController extends Controller
     public function item()
     {
         return SaleItems::with('user')->get();
+    }
+
+    public function byCategory($category)
+    {
+        $category_id=Category::whereCategorySlug($category)->firstOrFail();
+        return SaleItems::whereCatId($category_id->id)->with('user','images')->get();
+//        dd($category);
+    }
+    public function itemByCategory($category,$id)
+    {
+        $category_id=Category::whereCategorySlug($category)->firstOrFail();
+        return SaleItems::whereCatId($category_id->id)->whereId($id)->with('user','images')->get();
     }
 }

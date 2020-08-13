@@ -14,6 +14,7 @@ class CategoryController extends Controller
             $data = $request->all();
             $cat = new Category;
             $cat->name = $data['name'];
+            $cat->category_slug = preg_replace('/\W|\_+/m', '-', $request->input('name'));
             $cat->save();
             return back()->with('created','Created Successfully');
         }
@@ -35,6 +36,7 @@ class CategoryController extends Controller
     {
         Category::whereId($request->input('id'))->update([
             'name' => $request->input('name'),
+            'category_slug' => preg_replace('/\W|\_+/m', '-', $request->input('name'))
         ]);
         return back()->with('updated', 'Updated Successfully');
     }

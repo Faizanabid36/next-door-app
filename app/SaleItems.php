@@ -16,5 +16,12 @@ class SaleItems extends Model
     {
         return $this->hasMany(SaleItemsImage::class,'sale_items_id');
     }
+    public function main_image() {
+        return $this->hasOne(SaleItemsImage::class,'sale_items_id')->oldest();
+    }
+    public function category()
+    {
+        return $this->hasOne(Category::class,'id','cat_id');
+    }
 
 }

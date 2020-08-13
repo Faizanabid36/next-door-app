@@ -26,13 +26,14 @@
 
     <!-- Google font
     ================================================== -->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">
-
-
+{{--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">--}}
+{{--    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>--}}
+    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
+{{--    <link href="webfonts/ss-social-regular.css" rel="stylesheet" />--}}
 </head>
 
-<body>
-
+{{--<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">--}}
+<body style="font-family: 'IBM Plex Sans'">
 <!-- Wrapper -->
 <div id="wrapper">
 

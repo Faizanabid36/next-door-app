@@ -1,10 +1,10 @@
 @extends('layouts.salika.index')
 
 @section('content')
-    <div class="main_content_inner">
+    <div class="main_content_inner" style="color: black!important;">
 
         <div class="uk-flex uk-flex-between">
-            <h1> Free and Sale Items </h1>
+            <h1 class="color-black"> Free and Sale Items </h1>
             <button class="button primary small circle pull-right" data-toggle="modal" data-target="#postNewItem"><i
                     class="uil-plus"> </i> Post New Item
             </button>
@@ -29,206 +29,47 @@
             </div>
         @endif
 
-        <div class="section-header">
-            <div class="section-header-left">
-                <h3> Categories </h3>
-            </div>
-            {{--            <div class="section-header-right">--}}
-            {{--                <a href="#" class="see-all"> See all</a>--}}
-            {{--            </div>--}}
-        </div>
+        @foreach($items as $key => $item)
+            <hr class="my-3 my-sm-2">
+            <div uk-slider="finite: true">
 
-        <div class="uk-position-relative" uk-slider="finite: true">
+                <div class="grid-slider-header">
+                    <div>
+                        <h3 class="color-black"> {{$key}} </h3>
+                    </div>
+                    <div class="grid-slider-header-link">
+                        <a href="{{route('sale_and_free.byCategory',preg_replace('/\W|\_+/m', '-', $key))}}" class="button transparent uk-visible@m"> View all </a>
+                        <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
+                        <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
+                    </div>
+                </div>
 
-            <div class="uk-slider-container pb-3">
-
-                <ul
-                    class="uk-slider-items uk-child-width-1-6@m uk-child-width-1-3@s uk-child-width-1-2 uk-grid-small uk-grid">
-
-                    <li>
-
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/11.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> Shoes </h4>
+                <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-3@s uk-grid-small uk-grid">
+                    @foreach($item as $single)
+                        <li>
+                            <a href="{{route('sale_and_free.byItemInCategory',[preg_replace('/\W|\_+/m', '-', $key),$single->id])}}">
+                                <div class="market-list">
+                                    <div class="item-media">
+                                        <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}}}">
+                                    </div>
+                                    <div class="item-inner">
+                                        <div class="font-weight-bold"><h2 class="color-black">{{$single->title}}</h2></div>
+                                        @if(!is_null($single->price))
+                                            <div class="item-price color-black color-black">Price: {{$single->price}}$</div>
+                                        @else
+                                            <div><button class="primary button small circle">FREE</button></div>
+                                        @endif
+                                        <span class="color-black"> Posted By: {{$single->user->name}}</span>
+                                        <span class="color-black">{{$single->created_at->diffForHumans()}}</span>
+                                    </div>
                                 </div>
-                            </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/1.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> headphones </h4>
-                                </div>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/7.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> Fruits </h4>
-                                </div>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/4.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> Mobiles </h4>
-                                </div>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/13.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> Parfums </h4>
-                                </div>
-                            </div>
-                        </a>
-
-                    </li>
-                    <li>
-
-                        <a href="#">
-                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/15.jpg')}}"
-                                 uk-img>
-                                <div class="group-catagroy-card-content">
-                                    <h4> Oils </h4>
-                                </div>
-                            </div>
-                        </a>
-
-                    </li>
-                    {{--                    <li>--}}
-
-                    {{--                        <a href="#">--}}
-                    {{--                            <div class="group-catagroy-card" data-src="{{asset('salika/assets/images/product/3.jpg')}}" uk-img>--}}
-                    {{--                                <div class="group-catagroy-card-content">--}}
-                    {{--                                    <h4> Laptops </h4>--}}
-                    {{--                                </div>--}}
-                    {{--                            </div>--}}
-                    {{--                        </a>--}}
-
-                    {{--                    </li>--}}
+                            </a>
+                        </li>
+                    @endforeach
                 </ul>
 
-                <a class="uk-position-center-left-out uk-position-small uk-hidden-hover slidenav-prev" href="#"
-                   uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next" href="#"
-                   uk-slider-item="next"></a>
-
             </div>
-        </div>
-
-        <hr class="my-3 my-sm-2">
-        <div uk-slider="finite: true">
-
-            <div class="grid-slider-header">
-                <div>
-                    <h3> Fresh Fruit </h3>
-                </div>
-                <div class="grid-slider-header-link">
-
-                    <a href="#" class="button transparent uk-visible@m"> View all </a>
-                    <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
-                    <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
-                </div>
-            </div>
-
-            <ul class="uk-slider-items uk-child-width-1-3@m uk-child-width-1-3@s uk-grid-small uk-grid">
-                <li>
-                    <a href="m-single-product.html">
-                        <div class="market-list">
-                            <div class="item-media">
-                                <img src="{{asset('salika/assets/images/product/6.jpg')}}" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 42$</div>
-                                <div class="item-title"> Yogur tFruit Vanilla</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i> <span class="count">40</span> likes
-                                            </span>
-                                    <span> <i class="uil-eye"></i> <span class="count">160</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-
-                    <a href="m-single-product.html">
-                        <div class="market-list">
-                            <div class="item-media">
-                                <img src="{{asset('salika/assets/images/product/7.jpg')}}" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 35$</div>
-                                <div class="item-title"> Strawberries Fresh Ripe</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i> <span class="count">2</span> likes
-                                            </span>
-                                    <span> <i class="uil-eye"></i> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="m-single-product.html">
-                        <div class="market-list">
-                            <div class="item-media">
-                                <img src="{{asset('salika/assets/images/product/8.jpg')}}" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 29$</div>
-                                <div class="item-title"> Fruit Basket Grapes</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i> <span class="count">2</span> likes
-                                            </span>
-                                    <span> <i class="uil-eye"></i> <span class="count">106</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-                <li>
-                    <a href="m-single-product.html">
-                        <div class="market-list">
-                            <div class="item-media">
-                                <img src="{{asset('salika/assets/images/product/9.jpg')}}" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 20$</div>
-                                <div class="item-title"> Cocooil baby oil on desk</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i> <span class="count">2</span> likes
-                                            </span>
-                                    <span> <i class="uil-eye"></i> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </li>
-
-            </ul>
-
-        </div>
+        @endforeach
     </div>
 @endsection
 @section('modal')
