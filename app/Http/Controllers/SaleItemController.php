@@ -83,6 +83,7 @@ class SaleItemController extends Controller
     public function itemByCategory($category,$id)
     {
         $category_id=Category::whereCategorySlug($category)->firstOrFail();
-        return SaleItems::whereCatId($category_id->id)->whereId($id)->with('user','images')->get();
+        $item = SaleItems::with(['main_image', 'images'])->whereCatId($category_id->id)->whereId($id)->with('user','images')->firstOrFail();
+        return view('web.frontend.sale_and_business.single_product',compact('item'));
     }
 }

@@ -23,6 +23,21 @@
 .color-black{
     color: black !important;
 }
+.color-links{
+    color: #377dff!important;
+}
+.twitter-color{
+    background-color: #1DA1F2!important;
+}
+.whatsapp-color{
+    background-color:#25D366!important ;
+}
+.linkedin-color{
+    background-color: #2867B2!important;
+}
+.pinterest-color{
+    background-color: #BD081C!important;
+}
 
 
 /*.mr-5, .mx-5 {*/

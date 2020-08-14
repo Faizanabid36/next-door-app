@@ -35,7 +35,7 @@
 
                 <div class="grid-slider-header">
                     <div>
-                        <h3 class="color-black"> {{$key}} </h3>
+                        <h3 class="color-black"> <b>{{ucfirst($key)}}</b> </h3>
                     </div>
                     <div class="grid-slider-header-link">
                         <a href="{{route('sale_and_free.byCategory',preg_replace('/\W|\_+/m', '-', $key))}}" class="button transparent uk-visible@m"> View all </a>
@@ -50,16 +50,20 @@
                             <a href="{{route('sale_and_free.byItemInCategory',[preg_replace('/\W|\_+/m', '-', $key),$single->id])}}">
                                 <div class="market-list">
                                     <div class="item-media">
-                                        <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}}}">
+                                        <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}">
                                     </div>
-                                    <div class="item-inner">
-                                        <div class="font-weight-bold"><h2 class="color-black">{{$single->title}}</h2></div>
+                                    <div class="item-inner" style="margin-top: 40px">
+                                        <div class="font-weight-bold"><h2 style="margin-bottom: 0px" class="color-links">{{ucfirst($single->title)}}</h2>
+                                        </div>
                                         @if(!is_null($single->price))
-                                            <div class="item-price color-black color-black">Price: {{$single->price}}$</div>
+                                            <div class="item-price color-black color-black">Price: {{$single->price}}$
+                                            </div>
                                         @else
-                                            <div><button class="primary button small circle">FREE</button></div>
+                                            <div>
+                                                <button class="primary button small circle">FREE</button>
+                                            </div>
                                         @endif
-                                        <span class="color-black"> Posted By: {{$single->user->name}}</span>
+                                        <span class="color-black"> Posted By: {{ucfirst($single->user->name)}}</span>
                                         <span class="color-black">{{$single->created_at->diffForHumans()}}</span>
                                     </div>
                                 </div>
