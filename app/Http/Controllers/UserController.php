@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\FamilyMember;
+use App\Http\Requests\ValdateFamilyMember;
 use App\User;
 use App\UserExtra;
 use Auth;
@@ -11,16 +12,21 @@ use Illuminate\Http\Request;
 
 class UserController extends Controller
 {
-    // public function dashboard()
-    // {
-    //     return \view('user.user_dashboard');
-    // }
+    /**
+     * ------------------------------------------------
+     * Function for General Tab in Edit Profile
+     *-------------------------------------------------
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \GuzzleHttp\Exception\GuzzleException
+     * @throws \Illuminate\Validation\ValidationException
+     */
     public function updateuser(Request $request, $id)
     {
         $this->validate($request, [
             'name' => 'required|max:54',
             'email' => 'required',
-//            'address' => 'required',
             'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if (request()->hasFile('Picture')) {
@@ -28,16 +34,34 @@ class UserController extends Controller
             $imageName = auth()->user()->id . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/users/avatar/');
             $file->move($destinationPath, $imageName);
-            (\request()->merge(['avatar' => ('users/avatar/' . $imageName)]));
+            (\request()->merge(['avatar' => asset('users/avatar/' . $imageName)]));
         }
         User::whereId($id)->update(\request()->except('_token', 'Picture'));
-        return back()->with('success', 'User Updated Successfuly ');
+        try{
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $request->get('postal'));
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            User::whereId($id)->update(['postal'=>$request->get('postal'),'address'=>$place_name]);
+            return back()->with('success','Settings Updated');
+        }
+        catch (\Exception $exception)
+        {
+            dd($exception);
+            return back()->with('error','Postal Code Does not Exist');
+        }
     }
 
     public function show_user_details($id)
     {
         return User::whereId($id)->with('family_members')->get();
     }
+
+    /**
+     * ------------------------------------------------
+     * Function for Change Password Setting Tab
+     *-------------------------------------------------
+     */
 
     public function changePassword(Request $request, $id)
     {
@@ -59,6 +83,15 @@ class UserController extends Controller
         return back()->with('success', "Password Changed! ");
     }
 
+    /**
+     * ------------------------------------------------
+     * Function for Change Password Setting Tab
+     *-------------------------------------------------
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
+
     public function update_user_extras(Request $request, $id)
     {
         $display_phone = $request->get('display_phone');
@@ -74,19 +107,25 @@ class UserController extends Controller
         UserExtra::where('user_id', $id)->update(\request()->except('_token','display_phone','display_address'));
         return back()->with('success', 'Settings Updated');
     }
-    public function update_family(Request $request,$id)
+
+    /**
+     * ----------------------------------
+     * Create Family Members
+     * ----------------------------------
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+
+    public function update_family(ValidateFamilyMember $request,$id)
     {
-        $this->validate($request, [
-            'member_name' => 'required|max:54',
-            'relation' => 'required|max:54',
-            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-        if (request()->hasFile('Picture')) {
+        if ($request->hasFile('Picture')) {
             $file = $request->file('Picture');
             $imageName = time() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/users/family/');
             $file->move($destinationPath, $imageName);
-            (\request()->merge(['member_image' => ('users/family/' . $imageName)]));
+            ($request->merge(['member_image' => ('users/family/' . $imageName)]));
         }
         $data=new FamilyMember();
         $data->member_name=$request->get('member_name');
@@ -97,19 +136,24 @@ class UserController extends Controller
         $user->family_members()->save($data);
         return back()->with('success', 'Member Created Successfully');
     }
-    public function edit_family(Request $request, $id)
+
+    /**
+     * ----------------------------
+     * Update Family Members Info
+     * ----------------------------
+     * @param Request $request
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Illuminate\Validation\ValidationException
+     */
+    public function edit_family(ValidateFamilyMember $request, $id)
     {
-        $this->validate($request, [
-            'member_name' => 'required|max:54',
-            'relation' => 'required|max:54',
-            'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
-        ]);
-        if (request()->hasFile('Picture')) {
+        if ($request->hasFile('Picture')) {
             $file = $request->file('Picture');
             $imageName = time() . '.' . $file->getClientOriginalExtension();
             $destinationPath = public_path('/users/family/');
             $file->move($destinationPath, $imageName);
-            (\request()->merge(['member_image' => ('users/family/' . $imageName)]));
+            ($request->merge(['member_image' => ('users/family/' . $imageName)]));
         }
         $request->merge(['member_relation'=>$request->get('relation')]);
         $x=FamilyMember::whereId($id)->update($request->except('_token','Picture','relation'));
@@ -118,30 +162,18 @@ class UserController extends Controller
         return back()->with('error', 'Could Not Update Member');
     }
 
+    /**
+     * ------------------------------
+     * Delete Family Member
+     * ------------------------------
+     * @param $id
+     * @return \Illuminate\Http\RedirectResponse
+     */
     public function delete_family($id)
     {
         $d = FamilyMember::whereId($id)->delete();
         if ($d)
             return back()->with('success', 'Member Deleted Successfully');
         return back()->with('error', 'Could Not Delete Member');
-    }
-
-    public function update_address(Request $request)
-    {
-        $this->validate($request,[
-            'postal' => 'required',
-        ]);
-        try{
-            $client = new \GuzzleHttp\Client();
-            $display = $client->request('GET', 'http://api.zippopotam.us/' . $request->get('country') . '/' . $request->get('postal'));
-            $output = json_decode($display->getBody()->getContents());
-            $place_name = $output->places[0]->{'place name'};
-            $user=User::whereId($request->get('id'))->update(['postal'=>$request->get('postal'),'address'=>$place_name,'country'=>$request->get('country')]);
-            return back()->with('success','Address Has Been Updated');
-        }
-        catch (\Exception $exception)
-        {
-            return back()->with('error','Postal Code Does not Exist');
-        }
     }
 }

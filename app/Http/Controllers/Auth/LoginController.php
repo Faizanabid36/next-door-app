@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\SocialIdentity;
 use App\User;
 use Auth;
+use Intervention\Image\Facades\Image;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
 use Laravel\Socialite\Facades\Socialite;
 
@@ -58,7 +59,7 @@ class LoginController extends Controller
 
         $authUser = $this->findOrCreateUser($user, $provider);
         \Auth::login($authUser, true);
-        return redirect(route('dashboard'));
+        return redirect()->route('dashboard');
     }
 
     public function findOrCreateUser($providerUser, $provider)
@@ -71,13 +72,17 @@ class LoginController extends Controller
             return $account->user;
         } else {
             $user = User::whereEmail($providerUser->getEmail())->first();
-
+//            dd($providerUser->avatar);
+//            dd(public_path('users/avatar/'));
             if (!$user) {
+                $path = $providerUser->avatar;
                 $user = User::create([
                     'email' => $providerUser->getEmail(),
                     'name' => $providerUser->getName(),
-                    'avatar' => $providerUser->avatar,
                 ]);
+                $img = Image::make($path)->save(public_path('users/avatar/avatar' . $user->id.'.jpg'));
+                $path_to_avatar = asset('users/avatar/avatar' . $user->id.'.jpg');
+                User::whereId($user->id)->update(['avatar' => $path_to_avatar]);
             }
 
             $user->identities()->create([

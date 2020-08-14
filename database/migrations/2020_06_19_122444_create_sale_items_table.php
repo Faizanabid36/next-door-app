@@ -18,7 +18,7 @@ class CreateSaleItemsTable extends Migration
             $table->integer('user_id');
             $table->string('title');
             $table->longText('description');
-            $table->double('price' , 10 , 3);
+            $table->double('price' , 10 , 3)->nullable();
             $table->string('is_free')->nullable();
             $table->integer('cat_id');
             $table->timestamps();

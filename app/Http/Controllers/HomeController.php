@@ -58,8 +58,10 @@ class HomeController extends Controller
     }
     public function view_profile($id)
     {
-        $profile = User::whereId($id)->with('family_members')->first();
-        return \view('frontend.account.view_profile' , compact('profile'));
+        $profile = User::whereId($id)->with('family_members')->firstOrFail();
+
+        return \view('web.frontend.accounts.view_profile' , compact('profile'));
+//        return \view('frontend.account.view_profile' , compact('profile'));
     }
 
 

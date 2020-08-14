@@ -59,6 +59,7 @@
                             </div>
                         </div>
                     </section>
+                    
                     <!-- Ecommerce Content Section Starts -->
                     <!-- background Overlay when sidebar is shown  starts-->
                     <div class="shop-content-overlay"></div>
@@ -77,6 +78,16 @@
                             </div>
                         </div>
                     </section>
+                    @if(Session::has('success'))
+                    <div class="alert alert-success mb-2" role="alert">
+                        <strong>Success</strong> {{Session::get('success')}}
+                    </div>
+                @endif
+                @if(Session::has('errors'))
+                <div class="alert alert-danger mb-2" role="alert">
+                    <strong>Error</strong> {{Session::get('errors')->first()}}
+                </div>
+            @endif
                     <!-- Ecommerce Search Bar Ends -->
 
                     <!-- Ecommerce Products Starts -->
@@ -145,6 +156,7 @@
                             </div>
                         </div>
                     </section>
+                  
                     <!-- Ecommerce Pagination Ends -->
 
                 </div>
@@ -291,7 +303,9 @@
             </div>
         </div>
     </div>
-    <form action="" >
+    
+    <form action="{{route('add_item')}}" method="POST" >
+        {{ csrf_field() }}
     <div  class="modal fade text-left" id="composeForm" tabindex="-1" role="dialog" aria-labelledby="emailCompose" aria-hidden="true">
         <div class="modal-dialog modal-dialog-scrollable" >
             <div class="modal-content">
@@ -301,42 +315,53 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
+               
                 <div class="modal-body pt-1">
                     <div class="form-label-group mt-1">
-                        <input type="text" id="emailTo" class="form-control" placeholder="Title" name="fname-floating">
-                        <label for="emailTo">Title</label>
-                    </div>
-                    <div>
-                    <div class="form-label-group col-md-6">
-                        <input type="text"  class="form-control" placeholder="Price" name="fname-floating">
-                        <label for="emailCC">Price</label>
-                    </div>
-                        <div class="form-group d-flex justify-content-between align-items-center col-md-6">
-                            <div class="text-left">
-                                <fieldset class="checkbox">
-                                    <div class="vs-checkbox-con vs-checkbox-primary">
-                                        <input type="checkbox">
-                                        <span class="vs-checkbox">
+                        <input type="text" id="emailTo" class="form-control" placeholder="Title" name="title">
+                        <label for="title">Title</label>
+                        </div>
+                        <script type="text/javascript">
+                            function EnableDisableTextBox(chkPassport) {
+                                
+                                var txtPassportNumber = document.getElementById("txtPassportNumber");
+                                txtPassportNumber.disabled = chkPassport.checked ? true : false;
+                                if (!txtPassportNumber.disabled) {
+                                    txtPassportNumber.focus();
+                                }
+                            }
+                        </script>
+                        <div>
+                     <div class="form-label-group">
+                        <input type="number"  class="form-control" placeholder="Price" name="price"  id="txtPassportNumber" enabled="disabled">
+                        <label for="price">Price</label>
+                        </div>
+                        <div class="form-group d-flex justify-content-between align-items-center ">
+                        <div class="text-left">
+                            <fieldset class="checkbox">
+                                <div class="vs-checkbox-con vs-checkbox-primary">
+                                    <input type="checkbox" name="is_free" value="1" id="chkPassport" onclick="EnableDisableTextBox(this)">
+                                    <span class="vs-checkbox">
                                         <span class="vs-checkbox--check">
                                             <i class="vs-icon feather icon-check"></i>
                                         </span>
                                     </span>
-                                        <span class="card-link">Free</span>
-                                    </div>
-                                </fieldset>
-                            </div>
-
+                                    <span class="card-link"  >Free</span>
+                                </div>
+                            </fieldset>
                         </div>
+                       
                      </div>
-                    <section class="">
-
+                     </div>
+                     <section class="">
+                        
                         <fieldset class="form-label-group">
-                            <textarea class="form-control" id="label-textarea" rows="2" placeholder="Description"></textarea>
+                            <textarea class="form-control" id="label-textarea" rows="2" placeholder="Description" name="description"></textarea>
                             <label for="label-textarea">Label in Textarea</label>
                         </fieldset>
-
-                    </section>
-                    <script>
+                        
+                        </section>
+                        <script>
                         $(document).ready(function() {
                         var max_fields      = 3; //maximum input boxes allowed
                         var wrapper         = $(".input_fields_wrap"); //Fields wrapper
@@ -369,17 +394,14 @@
 
 
                     <fieldset class="form-label-group form-group position-relative has-icon-left">
-                        <select class="form-control">
-
+                        <select class="form-control" name="cat_id">
                             <option>Select Category</option>
-                            <option value="AD">Andorra</option>
-                            <option value="AR">Argentina</option>
-                            <option value="AS">American Samoa</option>
-                            <option value="AT">Austria</option>
-                            <option value="AU">Australia</option>
-                            <option value="BD">Bangladesh</option>
-                            <option value="BE">Belgium</option>
-                        </select>
+                            @foreach ($categories as $cat)
+                            <option value={{$cat->id}}>{{$cat->name}}</option>
+                            @endforeach
+                            
+                            
+                        </select>                                                     
                         <div class="form-control-position">
                             <i class="feather icon-user"></i>
                         </div>
@@ -402,7 +424,7 @@
 
                 </div>
                 <div class="modal-footer">
-                    <input type="submit" value="Add" class="btn btn-primary">
+                    <button class="btn btn-primary" type="submit" value="submit">Add</button>
                     <input type="Reset" value="Cancel" class="btn btn-white" data-dismiss="modal">
                 </div>
             </div>
