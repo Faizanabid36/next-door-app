@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
 //
 /*
 
@@ -91,8 +92,13 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
     /**
      * Business Categories Resource Route
      **/
-    Route::resource('business_categories','BusinessCategoryController');
-
+    Route::resource('business_categories', 'BusinessCategoryController');
+    Route::post('edit_business_category', 'BusinessCategoryController@edit_business_category')->name('edit_business_category');
+    Route::get('business_sub_categories', 'BusinessSubCategoryController@index')->name('business_sub_categories.index');
+    Route::get('create/business_sub_categories', 'BusinessSubCategoryController@create_sub_category')->name('business_sub_categories.create');
+    Route::post('create_business_sub_categories', 'BusinessSubCategoryController@store_sub_category')->name('business_sub_categories.store');
+    Route::post('update_business_sub_categories', 'BusinessSubCategoryController@update')->name('business_sub_categories.update');
+    Route::post('delete_business_sub_categories','BusinessSubCategoryController@delete')->name('business_sub_categories.delete');
 });
 
 

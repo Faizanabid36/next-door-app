@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title','Add Business Category')
+@section('title','Add Business Sub-category')
 @section('body_content')
     <div class="app-content content">
         <div class="content-overlay"></div>
@@ -16,19 +16,12 @@
                 </div>
             </div>
             <div class="content-body">
-                <!-- Basic Horizontal form layout section start -->
-
-                <!-- // Basic Horizontal form layout section end -->
-
-                <!-- Basic Vertical form layout section start -->
-
-                <!-- // Basic multiple Column Form section start -->
                 <section id="multiple-column-form">
                     <div class="row match-height">
                         <div class="col-12">
                             <div class="card">
                                 <div class="card-header">
-                                    <h4 class="card-title">Add Category</h4>
+                                    <h4 class="card-title">Add Sub Category</h4>
                                 </div>
                                 <div class="card-content">
                                     <div class="card-body">
@@ -42,8 +35,8 @@
                                                 <strong>Success</strong> Category Created Successfully
                                             </div>
                                         @endif
-                                        <form class="form" action="{{ route('admin.business_categories.store') }}"
-                                              method="POST" enctype="multipart/form-data">
+                                        <form class="form" action="{{ route('admin.business_sub_categories.store') }}"
+                                              method="POST">
                                             {{ csrf_field() }}
                                             <div class="form-body">
                                                 <div class="row">
@@ -56,8 +49,15 @@
                                                     </div>
                                                     <div class="col-md-6 col-12">
                                                         <div class="form-label-group">
-                                                            <input type="file" id="category-column" class="form-control"
-                                                                   placeholder="Upload Icon" name="icon">
+
+                                                            <select name="parent_id" class="form-control">
+                                                                <option value="" selected disabled>Belongs to</option>
+                                                                @foreach($parent_categories as $c)
+                                                                    <option value="{{$c->id}}">
+                                                                        {{$c->b_category_title}}
+                                                                    </option>
+                                                                @endforeach
+                                                            </select>
                                                         </div>
                                                     </div>
                                                     <div class="col-12">
@@ -79,3 +79,4 @@
     </div>
     <!-- END: Content-->
 @endsection
+

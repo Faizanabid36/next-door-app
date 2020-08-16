@@ -15,6 +15,10 @@ class CreateBusinessCategoriesTable extends Migration
     {
         Schema::create('business_categories', function (Blueprint $table) {
             $table->id();
+            $table->string('b_category_title');
+            $table->string('b_category_icon')->default('/salika/assets/images/icons/market.png');
+            $table->string('b_category_slug');
+            $table->string('parent_id')->nullable();
             $table->timestamps();
         });
     }
