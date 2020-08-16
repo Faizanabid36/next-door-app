@@ -54,7 +54,7 @@
 
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{route('edit_category')}}" method="POST">
+                                    <form class="form" action="{{route('admin.edit_category')}}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="row">
@@ -108,7 +108,7 @@
                                                 <span class="" onclick="openEdit({{$num}})">
                                                     <i class="feather icon-edit"></i>
                                                 </span>
-                                                <a href="{{url('view_category/delete_category/'.$num->id)}}">
+                                                <a href="{{url('admin/view_category/delete_category/'.$num->id)}}">
                                                     <span
                                                         id="delete-item-" class="action-delete">
                                                         <i class="feather icon-trash"></i>

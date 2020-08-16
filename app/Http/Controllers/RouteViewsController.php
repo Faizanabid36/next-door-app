@@ -9,7 +9,9 @@ class RouteViewsController extends Controller
     //
     public function user_dashboard()
     {
-        return view('user.user_dashboard');
+        if (auth()->user()->admin)
+            return redirect()->route('admin-dashboard');
+        return view('web.frontend.home');
     }
     public function main_dashboard()
     {

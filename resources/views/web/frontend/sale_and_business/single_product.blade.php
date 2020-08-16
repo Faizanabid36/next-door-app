@@ -111,99 +111,35 @@
             </div>
         </div>
 
-        <h2> Related product</h2>
+        <h2> Related products</h2>
 
         <div class="uk-position-relative mt-5" uk-slider="finite: true">
 
             <div class="uk-slider-container pb-3">
 
                 <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-grid-small uk-grid">
-
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/1.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 20$</div>
-                                <div class="item-title"> Brown headphones</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">4</span> likes </span>
-                                    <span> <span class="count">106</span> views </span>
+                    @foreach($related_items as $rel)
+                        <li>
+                            <div class="market-list">
+                                <div class="item-media">
+                                    <img style="height: 100%" src="{{$rel->main_image->image_url}}" alt="{{$rel->title}}">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-title color-black font-weight-bold"> {{$rel->title}}</div>
+                                    @if(!is_null($rel->price))
+                                        <div class="item-price color-black">Price: {{$rel->price}}$
+                                        </div>
+                                    @else
+                                        <div>
+                                            <button class="primary button small circle">FREE</button>
+                                        </div>
+                                    @endif
+                                    <span class="color-black"> Posted By: {{ucfirst($rel->user->name)}}</span>
+                                    <span class="color-black">{{$rel->created_at->diffForHumans()}}</span>
                                 </div>
                             </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/13.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 12$</div>
-                                <div class="item-title"> Parfum Spray</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">2</span> likes </span>
-                                    <span> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/2.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 23$</div>
-                                <div class="item-title"> Wireless headphones</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">16</span> likes </span>
-                                    <span> <span class="count">202</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/16.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 60$</div>
-                                <div class="item-title"> Paper Coffee Cup</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">12</span> likes </span>
-                                    <span> <span class="count">160</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/17.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 30$</div>
-                                <div class="item-title"> Sed diam nonummy</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">9</span> likes </span>
-                                    <span> <span class="count">136</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li>
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/15.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 10$</div>
-                                <div class="item-title"> Herbal Shampoo</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">2</span> likes </span>
-                                    <span> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
+                        </li>
+                    @endforeach
                 </ul>
 
                 <a class="uk-position-center-left-out uk-position-small uk-hidden-hover slidenav-prev" href="#"

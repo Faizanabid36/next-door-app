@@ -13,7 +13,7 @@
                         <h2 class="content-header-title float-left mb-0">Category</h2>
                         <div class="breadcrumb-wrapper col-12">
                             <ol class="breadcrumb">
-                                <li class="breadcrumb-item"><a href="index.html">Admin Pages</a>
+                                <li class="breadcrumb-item"><a href="#">Admin Pages</a>
                                 </li>
                                 <li class="breadcrumb-item"><a href="#">Category</a>
                                 </li>
@@ -55,7 +55,7 @@
                                             <strong>Success</strong> Category Created Successfully
                                         </div>
                                     @endif
-                                    <form class="form" action="{{ route('add_category') }}" method="POST">
+                                    <form class="form" action="{{ route('admin.add_category') }}" method="POST">
                                         {{ csrf_field() }}
                                         <div class="form-body">
                                             <div class="row">
