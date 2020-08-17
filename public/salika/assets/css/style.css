@@ -15796,7 +15796,7 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
     box-sizing: border-box;
 }
 .group-catagroy-card {
-    border-radius: 0.625pc;
+    border-radius: 0.75pc;
 }
 [class~="group-card-content"] h3 {
     white-space: nowrap;
@@ -15808,7 +15808,7 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
     padding-bottom: 0;
 }
 .group-catagroy-card {
-    height: 101.25pt;
+    height: 120pt;
 }
 .group-catagroy-card {
     background-size: cover;
@@ -15966,13 +15966,13 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
     margin-top: -2px;
 }
 [class~="page-card-media"] img {
-    width: 3.75pc;
+    width: 6pc;
 }
 [class~="page-card-media"] img {
-    height: 60px;
+    height: 90px;
 }
 [class~="page-card-media"] img {
-    border-radius: 6pt;
+    border-radius: 8pt;
 }
 [class~="page-card-innr"] h3 {
     margin-bottom: 3.75pt;
@@ -15988,10 +15988,10 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
 }
 @media (max-width: 965px) {
     [class~="page-card-media"] img {
-        width: 2.5pc;
+        width: 5pc;
     }
     [class~="page-card-media"] img {
-        height: 0.416666667in;
+        height: 0.833333334in;
     }
 }
 [class~="friend-card"] img {

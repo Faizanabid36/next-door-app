@@ -78,8 +78,8 @@
                             <span> Real Estate </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
-                        <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/market.png')}}"
+                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':'test'}}">
+                        <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/sale_and_free.png')}}"
                                                          alt="">
                             <span> Sale and Free </span>
                         </a>
@@ -90,9 +90,9 @@
 {{--                            <span> Books </span>--}}
 {{--                        </a>--}}
 {{--                    </li>--}}
-                    <li id="more-veiw">
-                        <a href="blog.html"> <img src="{{asset('salika/assets/images/icons/document.png')}}" alt="">
-                            <span> Documents </span>
+                    <li id="more-veiw" class="{{Request::is('business/list')?'active':'test'}}">
+                        <a href="{{route('business.list')}}"> <img src="{{asset('salika/assets/images/icons/market.png')}}" alt="">
+                            <span> Business </span>
                         </a>
                     </li>
                     <li>
@@ -101,11 +101,11 @@
                             <span> Questions </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
-                        <a href="gallery.html"> <img src="{{asset('salika/assets/images/icons/photo.png')}}" alt="">
-                            <span> Gallery </span>
-                        </a>
-                    </li>
+{{--                    <li id="more-veiw">--}}
+{{--                        <a href="gallery.html"> <img src="{{asset('salika/assets/images/icons/photo.png')}}" alt="">--}}
+{{--                            <span> Gallery </span>--}}
+{{--                        </a>--}}
+{{--                    </li>--}}
 
 {{--                    <li id="more-veiw">--}}
 {{--                        <a href="movies.html"> <img src="{{asset('salika/assets/images/icons/movies.png')}}" alt="">--}}

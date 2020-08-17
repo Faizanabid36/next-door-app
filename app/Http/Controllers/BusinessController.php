@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Business;
+use App\BusinessCategory;
 use Illuminate\Http\Request;
 
 class BusinessController extends Controller
@@ -15,6 +16,8 @@ class BusinessController extends Controller
     public function index()
     {
         //
+        $business_categories = BusinessCategory::WhereNull('parent_id')->get();
+        return view('web.frontend.business.all_business',compact('business_categories'));
     }
 
     /**

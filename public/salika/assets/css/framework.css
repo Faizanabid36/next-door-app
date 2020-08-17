@@ -3114,7 +3114,7 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
-    background: #fff;
+    background: #F0F0F0;
     color: #474747;
     box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }

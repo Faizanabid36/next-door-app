@@ -109,7 +109,7 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * ----------------------------
  */
 Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
-    Route::get('list','BusinessController@show')->name('list');
+    Route::get('list','BusinessController@index')->name('list');
 });
 
 

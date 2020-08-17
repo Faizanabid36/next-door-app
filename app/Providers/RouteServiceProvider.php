@@ -82,7 +82,7 @@ class RouteServiceProvider extends ServiceProvider
 
     protected function mapSaleWebRoutes()
     {
-        Route::prefix('sale-and-business')
+        Route::prefix('sale-and-free')
             ->middleware(['web','auth'])
             ->namespace($this->namespace)
             ->group(base_path('routes/sale.php'));
