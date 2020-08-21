@@ -139,7 +139,9 @@
                                          data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
                                          data-size="large">
                                     <div class="fb-share-button"
-                                         data-href="{{url()->current()}}"
+                                         data-href="{{url()->current()}}?"
+                                         data-title="This is the business Page"
+                                         data-image="{{auth()->user()->avatar}}"
                                          data-layout="button_count">
 {{--                                        <a target="_blank" style="color: green"--}}
 {{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
