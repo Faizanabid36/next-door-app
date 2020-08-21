@@ -308,34 +308,37 @@
 
 
             <!-- profile -image -->
-            <a class="opts_account" href="#"> <img src="{{auth()->user()->avatar}}"
-                                                   alt=""></a>
+            @if(isset(auth()->user()->id))
+                <a class="opts_account" href="#"> <img src="{{auth()->user()->avatar}}"
+                                                       alt=""></a>
 
-            <!-- profile dropdown-->
-            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                 class="dropdown-notifications rounded">
+                <!-- profile dropdown-->
+                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                     class="dropdown-notifications rounded">
 
-                <!-- User Name / Avatar -->
-                <a href="{{route('view_profile',auth()->user()->id)}}">
+                    <!-- User Name / Avatar -->
+                    <a href="{{route('view_profile',auth()->user()->id)}}">
 
-                    <div class="dropdown-user-details">
-                        <div class="dropdown-user-avatar">
-                            <img src="{{auth()->user()->avatar}}" alt="">
+                        <div class="dropdown-user-details">
+                            <div class="dropdown-user-avatar">
+                                <img src="{{auth()->user()->avatar}}" alt="">
+                            </div>
+                            <div class="dropdown-user-name"> {{auth()->user()->name}} <span>See your profile</span></div>
                         </div>
-                        <div class="dropdown-user-name"> {{auth()->user()->name}} <span>See your profile</span></div>
-                    </div>
 
-                </a>
+                    </a>
 
-                <hr class="m-0">
-                <ul class="dropdown-user-menu">
-{{--                    <li><a href="page-setting.html"> <i class="uil-user"></i> My Account </a></li>--}}
-                    <li><a href="{{route('edit_profile')}}"> <i class="uil-cog"></i> Account Settings</a></li>
-                    </li>
-                    <li><a href="form-login.html"> <i class="uil-sign-out-alt"></i>Log Out</a>
-                    </li>
-                </ul>
-            </div>
+                    <hr class="m-0">
+                    <ul class="dropdown-user-menu">
+                        {{--                    <li><a href="page-setting.html"> <i class="uil-user"></i> My Account </a></li>--}}
+                        <li><a href="{{route('edit_profile')}}"> <i class="uil-cog"></i> Account Settings</a></li>
+                        </li>
+                        <li><a href="form-login.html"> <i class="uil-sign-out-alt"></i>Log Out</a>
+                        </li>
+                    </ul>
+                </div>
+            @endif
+
 
 
         </div>
