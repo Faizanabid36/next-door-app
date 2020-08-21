@@ -2,7 +2,7 @@
 
 @section('meta')
     <meta property="og:url"           content="{{url()->current()}}" />
-    <meta property="og:type"          content="Salika" />
+    <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{$item->title}}" />
     <meta property="og:description"   content="{{$item->description}}" />
     <meta property="og:image"         content="{{$item->main_image->image_url}}" />
