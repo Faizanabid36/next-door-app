@@ -108,7 +108,7 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * Business page Routes
  * ----------------------------
  */
-Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
+Route::name('business.')->prefix('business')->group(function (){
     Route::get('list','BusinessController@index')->name('list');
 });
 
