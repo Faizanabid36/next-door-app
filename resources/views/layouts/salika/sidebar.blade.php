@@ -15,7 +15,7 @@
                 <ul>
                     <hr class="mt-90">
                     <li class="text-center">
-                        <h2 class="text-dark"> {{auth()->user()->address}} </h2>
+                        <h2 class="text-dark"> {{isset(auth()->user()->id)?auth()->user()->address:''}} </h2>
                     </li>
                     <hr>
                     <li>
