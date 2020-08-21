@@ -68,7 +68,15 @@
                             </span>
                         </button>
                         <div class="fb-share-button"
-                             data-href="{{url()->current()}}?"
+                             data-href="{{rawurlencode(url()->current())}}?"
+                             data-layout="button_count">
+                            {{--                                        <a target="_blank" style="color: green"--}}
+                            {{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
+                            {{--                                            Facebook--}}
+                            {{--                                        </a>--}}
+                        </div>
+                        <div class="fb-share-button"
+                             data-href="{{rawurldecode(url()->current())}}?"
                              data-layout="button_count">
                             {{--                                        <a target="_blank" style="color: green"--}}
                             {{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
