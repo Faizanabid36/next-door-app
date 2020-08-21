@@ -67,22 +67,6 @@
                                 </a>
                             </span>
                         </button>
-                        <div class="fb-share-button"
-                             data-href="{{rawurlencode(url()->current())}}?"
-                             data-layout="button_count">
-                            {{--                                        <a target="_blank" style="color: green"--}}
-                            {{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
-                            {{--                                            Facebook--}}
-                            {{--                                        </a>--}}
-                        </div>
-                        <div class="fb-share-button"
-                             data-href="{{rawurldecode(url()->current())}}?"
-                             data-layout="button_count">
-                            {{--                                        <a target="_blank" style="color: green"--}}
-                            {{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
-                            {{--                                            Facebook--}}
-                            {{--                                        </a>--}}
-                        </div>
                         <button class="button primary icon-label whatsapp-color">
                             <span class="inner-icon"><i class="icon-brand-whatsapp"></i></span>
                             <span class="inner-text">
