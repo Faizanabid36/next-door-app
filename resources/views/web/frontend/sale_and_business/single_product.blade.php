@@ -73,11 +73,11 @@
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
                             <span class="inner-text">
-                                <a target="_blank" style="color: white"
+                                <div style="color: white"
 {{--                                   href="http://www.facebook.com/sharer.php?u={{url()->current()}}">--}}
                                     data-href="{{url()->current()}}?">
                                     Facebook
-                                </a>
+                                </div>
                             </span>
                         </button>
                         <button class="button primary icon-label whatsapp-color">
