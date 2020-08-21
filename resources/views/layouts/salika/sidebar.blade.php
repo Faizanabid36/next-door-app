@@ -45,8 +45,8 @@
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/crime_safety.png')}}" alt="">
-                            <span> Crime and Safety </span>
+                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/police.png')}}" alt="">
+                            <span> Crime Awareness </span>
                         </a>
                     </li>
 {{--                    <li>--}}
@@ -74,14 +74,20 @@
 {{--                        </a>--}}
 {{--                    </li>--}}
                     <li>
-                        <a href="jobs.html"> <img src="{{asset('salika/assets/images/icons/bag.png')}}" alt="">
+                        <a href="jobs.html"> <img src="{{asset('salika/assets/images/icons/real_estate_icon.png')}}" alt="">
                             <span> Real Estate </span>
                         </a>
                     </li>
                     <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':'test'}}">
                         <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/sale_and_free.png')}}"
                                                          alt="">
-                            <span> Sale and Free </span>
+                            <span> Free and 4 Sale </span>
+                        </a>
+                    </li>
+                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':'test'}}">
+                        <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/eye.png')}}"
+                                                                alt="">
+                            <span> Global </span>
                         </a>
                     </li>
 
@@ -96,7 +102,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="questions.html"> <img src="{{asset('salika/assets/images/icons/info.png')}}"
+                        <a href="questions.html"> <img src="{{asset('salika/assets/images/icons/question.png')}}"
                                                        alt="">
                             <span> Questions </span>
                         </a>

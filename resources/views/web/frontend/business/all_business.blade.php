@@ -1,4 +1,11 @@
 @extends('layouts.salika.index')
+@section('meta')
+    <meta property="og:url"           content="{{url()->current()}}" />
+    <meta property="og:type"          content="website" />
+    <meta property="og:title"         content="Your Website Title" />
+    <meta property="og:description"   content="Your description" />
+{{--    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />--}}
+@endsection
 @section('content')
     <div class="main_content_inner">
 
@@ -68,6 +75,76 @@
                             <div class="uk-flex uk-flex-middle mt-2">
                                 <div class="uk-width-expand pl-1">
                                     <p> <strong>Recommended by:</strong> 3 people </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-card-btn">
+                            <a href="#" class="button primary">
+                                <i class="uil-eye"></i>
+                                View Page
+                            </a>
+                            <a href="#" class="button danger">
+                                <i class="uil-heart"></i>
+                                Recommend
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pages-card">
+                        <div class="page-card-media"><img
+                                src="{{asset('salika/assets/images/brand/brand-avatar-4.png')}}" alt="">
+                        </div>
+                        <div class="page-card-innr">
+                            <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> Phase Designers 2</h3>
+                            <p style="margin-bottom: 0px" class="font-weight-bold pl-1"> Design</p>
+                            <h6 style="margin-bottom: 0px" class="pl-1">Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed quis nostrud exerci
+                                diam nonummy nibh euismod erat volutpat..</h6>
+
+                            <div class="uk-flex uk-flex-middle mt-2">
+                                <div class="uk-width-expand pl-1">
+                                    <p><strong>Recommended by:</strong> 1 people </p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="page-card-btn">
+                            <a href="#" class="button primary">
+                                <i class="uil-eye"></i>
+                                View Page
+                            </a>
+                            <a href="#" class="button danger">
+                                <i class="uil-heart"></i>
+                                Recommend
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <div class="pages-card">
+                        <div class="page-card-media"><img
+                                src="{{asset('salika/assets/images/brand/brand-avatar-4.png')}}" alt="">
+                        </div>
+                        <div class="page-card-innr">
+                            <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> Phase Designers 3</h3>
+                            <p style="margin-bottom: 0px" class="font-weight-bold pl-1"> Design</p>
+                            <h6 style="margin-bottom: 0px" class="pl-1">Lorem ipsum dolor sit amet, consectetuer
+                                adipiscing elit, sed quis nostrud exerci
+                                diam nonummy nibh euismod erat volutpat..</h6>
+
+                            <div class="uk-flex uk-flex-middle mt-2">
+                                <div class="uk-width-expand pl-1">
+                                    <p><strong>Recommended by:</strong> 3 people </p>
+                                    <div class="fb-share-button"
+                                         data-href="https://developers.facebook.com/docs/plugins/" data-layout="button"
+                                         data-size="large">
+                                    <div class="fb-share-button"
+                                         data-href="{{url()->current()}}"
+                                         data-layout="button_count">
+{{--                                        <a target="_blank" style="color: green"--}}
+{{--                                           href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&display=popup">--}}
+{{--                                            Facebook--}}
+{{--                                        </a>--}}
                                 </div>
                             </div>
                         </div>

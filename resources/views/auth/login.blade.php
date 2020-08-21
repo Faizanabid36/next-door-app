@@ -49,7 +49,8 @@
                         <div class="card bg-authentication rounded-0 mb-0">
                             <div class="row m-0">
                                 <div class="col-lg-6 d-lg-block d-none text-center align-self-center px-1 py-0">
-                                    <img src="{{asset('theme/app-assets/images/pages/login.png')}}" alt="branding logo">
+{{--                                    <img src="{{asset('theme/app-assets/images/pages/login.png')}}" alt="branding logo">--}}
+                                    <img width="350" height="100" src="{{asset('salika/assets/images/salika_logo.png')}}" alt="branding logo">
                                 </div>
                                 <div class="col-lg-6 col-12 p-0">
                                     <div class="card rounded-0 mb-0 px-2">
@@ -127,10 +128,12 @@
                                             <div class="divider">
                                                 <div class="divider-text">OR</div>
                                             </div>
-                                            <div class="footer-btn d-inline">
-                                                <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
-                                                <a href="#" class="btn btn-twitter white"><span class="fa fa-twitter"></span></a>
-                                                <a href="{{ url('/login/google') }}" class="btn btn-google"><span class="fa fa-google"></span></a>
+                                            <div style="text-align: center">
+                                                <div class="footer-btn d-inline">
+                                                    <a href="{{ url('/login/facebook') }}" class="btn btn-facebook" class="btn btn-facebook"><i class="fa fa-facebook"></i></a>
+                                                    {{--                                                <a href="#" class="btn btn-twitter white"><span class="fa fa-twitter"></span></a>--}}
+                                                    <a href="{{ url('/login/google') }}" class="btn btn-google"><span class="fa fa-google"></span></a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
