@@ -79,7 +79,7 @@
                                 {{--                                    Facebook--}}
                                 {{--                                </a>--}}
                                 <a target="_blank"
-                                   href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&displaypopup&amp;src=sdkpreparse"
+                                   href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u={{url()->current()}}&display=popup&ref=plugin&src=share_button"
                                    class="fb-xfbml-parse-ignore">Facebook</a>
                     </div>
                     </span>
