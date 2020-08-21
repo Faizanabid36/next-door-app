@@ -65,6 +65,10 @@
                     </div>
                     <hr>
                     <div class="mt-5">
+                        <div class="fb-share-button"
+                             data-href="{{url()->current()}}?"
+                             data-layout="button_count">
+                        </div>
                         <h5 class="mb-4 color-black">Share on Social Media:</h5>
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
