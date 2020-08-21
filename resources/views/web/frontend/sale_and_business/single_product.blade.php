@@ -73,20 +73,15 @@
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
                             <span class="inner-text">
-{{--                                <a style="color: white" class="fb-share-button"--}}
-                                {{--                                   href="http://www.facebook.com/sharer.php?u={{url()->current()}}">--}}
-                                {{--                                    data-href="{{url()->current()}}?">--}}
-                                {{--                                    Facebook--}}
-                                {{--                                </a>--}}
-                                <a target="_blank"
-                                   href="https://www.facebook.com/sharer/sharer.php?kid_directed_site=0&sdk=joey&u={{url()->current()}}&display=popup&ref=plugin&src=share_button"
-                                   class="fb-xfbml-parse-ignore">Facebook</a>
-                    </div>
-                    </span>
-                    </button>
-                    <button class="button primary icon-label whatsapp-color">
-                        <span class="inner-icon"><i class="icon-brand-whatsapp"></i></span>
-                        <span class="inner-text">
+                                <a style="color: white" class="fb-share-button"
+                                   href="http://www.facebook.com/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse">
+                                    Facebook
+                                </a>
+                            </span>
+                        </button>
+                        <button class="button primary icon-label whatsapp-color">
+                            <span class="inner-icon"><i class="icon-brand-whatsapp"></i></span>
+                            <span class="inner-text">
                                 <a target="_blank" style="color: white"
                                    href="https://wa.me/?text={{$item->title}}+{{url()->current()}}">
                                     Whatsapp
