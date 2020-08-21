@@ -65,10 +65,10 @@
                     </div>
                     <hr>
                     <div class="mt-5">
-{{--                        <div class="fb-share-button"--}}
-                        {{--                             --}}
-                        {{--                             data-layout="button_count">--}}
-                        {{--                        </div>--}}
+                        <div class="fb-share-button"
+                             data-href="{{url()->current()}}"
+                             data-layout="button_count">
+                        </div>
                         <h5 class="mb-4 color-black">Share on Social Media:</h5>
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
@@ -79,7 +79,7 @@
                                 {{--                                    Facebook--}}
                                 {{--                                </a>--}}
                                 <a target="_blank"
-                                   href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse"
+                                   href="https://www.facebook.com/sharer/sharer.php?u={{url()->current()}}&displaypopup&amp;src=sdkpreparse"
                                    class="fb-xfbml-parse-ignore">Facebook</a>
                     </div>
                     </span>
