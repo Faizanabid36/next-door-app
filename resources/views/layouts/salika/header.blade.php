@@ -1,8 +1,11 @@
 <header>
     <div class="header-innr">
         <!-- Logo-->
-        <div class="header-btn-traiger" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible">
-            <span></span></div>
+        @auth()
+            <div class="header-btn-traiger" uk-toggle="target: #wrapper ; cls: collapse-sidebar mobile-visible">
+                <span></span>
+            </div>
+        @endauth
 
         <!-- Logo-->
         <div id="logo">
@@ -323,17 +326,24 @@
                             <div class="dropdown-user-avatar">
                                 <img src="{{auth()->user()->avatar}}" alt="">
                             </div>
-                            <div class="dropdown-user-name"> {{auth()->user()->name}} <span>See your profile</span></div>
+                            <div class="dropdown-user-name"> {{ucfirst(auth()->user()->name)}} <span>See your profile</span></div>
                         </div>
 
                     </a>
 
                     <hr class="m-0">
                     <ul class="dropdown-user-menu">
-                        {{--                    <li><a href="page-setting.html"> <i class="uil-user"></i> My Account </a></li>--}}
                         <li><a href="{{route('edit_profile')}}"> <i class="uil-cog"></i> Account Settings</a></li>
                         </li>
-                        <li><a href="form-login.html"> <i class="uil-sign-out-alt"></i>Log Out</a>
+                        <li>
+                            <a class="dropdown-item" href="{{ route('logout') }}"
+                               onclick="event.preventDefault();  document.getElementById('logout-form').submit();">
+                                <i class="uil-sign-out-alt"></i>{{ __('Logout') }}
+                            </a>
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                  style="display: none;">
+                                @csrf
+                            </form>
                         </li>
                     </ul>
                 </div>

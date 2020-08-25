@@ -41,6 +41,26 @@
 .pinterest-color{
     background-color: #BD081C!important;
 }
+.google-color{
+    background-color: #DB4437!important;
+}
+
+.or-container {
+    align-items: center;
+    color: #ccc;
+    display: flex;
+    margin: 25px 0;
+}
+.line-separator {
+    background-color: #ccc;
+    flex-grow: 5;
+    height: 1px;
+}
+.or-label {
+    flex-grow: 1;
+    margin: 0 15px;
+    text-align: center;
+}
 
 
 /*.mr-5, .mx-5 {*/

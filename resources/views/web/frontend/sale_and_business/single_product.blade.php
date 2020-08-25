@@ -63,17 +63,22 @@
                             <span class="inner-text">Contact Seller</span>
                         </button>
                     </div>
-                    <hr>
+                    <div class="or-container">
+                        <div class="line-separator text-dark"></div>
+                        <div class="or-label text-dark">Share on Social Media</div>
+                        <div class="line-separator text-dark"></div>
+                    </div>
                     <div class="mt-5">
-                        <div class="fb-share-button"
-                             data-href="{{url()->current()}}"
-                             data-layout="button_count">
-                        </div>
-                        <h5 class="mb-4 color-black">Share on Social Media:</h5>
+                        <button class="button primary icon-label bg-facebook">
+                            <div class="fb-share-button"
+                                 data-href="{{url()->current()}}"
+                                 data-layout="button_count">
+                            </div>
+                        </button>
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
                             <span class="inner-text">
-                                <a style="color: white" class="fb-share-button"
+                                <a style="color: white" target="_blank"
                                    href="http://www.facebook.com/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse">
                                     Facebook
                                 </a>

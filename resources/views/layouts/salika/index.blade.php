@@ -39,7 +39,9 @@
 <div id="wrapper">
 
     <!-- sidebar -->
-        @include('layouts.salika.sidebar')
+        @auth()
+            @include('layouts.salika.sidebar')
+        @endauth
     <!-- sidebar -->
 
     <!-- header -->
