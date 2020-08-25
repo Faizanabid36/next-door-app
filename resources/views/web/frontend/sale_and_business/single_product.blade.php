@@ -91,7 +91,7 @@
                             <span class="inner-icon"><i class="icon-brand-linkedin-in"></i></span>
                             <span class="inner-text">
                                 <a target="_blank" style="color: white"
-                                   href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&summary={{$item->title}}">
+                                   href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$item->title}}">
                                     LinkedIn
                                 </a>
                             </span>
