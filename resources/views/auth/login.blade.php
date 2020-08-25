@@ -40,7 +40,7 @@
         <div class="form-media-content uk-light">
             <div class="logo"><img src="{{asset('salika/assets/images/salika_logo.png')}}" alt=""></div>
 
-            <h1> Start Your Own Social Network <br> with Socialte Template</h1>
+            <h1> Tagline of the business <br> goes here</h1>
 
 
             <div class="form-media-footer">

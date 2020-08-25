@@ -78,13 +78,13 @@
                             <span> Real Estate </span>
                         </a>
                     </li>
-                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':'test'}}">
+                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':''}}">
                         <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/sale_and_free.png')}}"
                                                          alt="">
                             <span> Free and 4 Sale </span>
                         </a>
                     </li>
-                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':'test'}}">
+                    <li id="more-veiw" >
                         <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/eye.png')}}"
                                                                 alt="">
                             <span> Global </span>

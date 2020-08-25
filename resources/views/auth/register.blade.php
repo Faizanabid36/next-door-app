@@ -8,7 +8,7 @@
     <title>Register</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="Socialite is - Professional A unique and beautiful collection of UI elements">
+    <meta name="description" content="Salika - Professional A unique and beautiful collection of UI elements">
     <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
     <!-- CSS
@@ -40,7 +40,7 @@
         <div class="form-media-content uk-light">
             <div class="logo"><img src="{{asset('salika/assets/images/salika_logo.png')}}" alt="Salika"></div>
 
-            <h1> Start Your Own Social Network <br> with Socialte Template</h1>
+            <h1> Tagline of the business <br> goes here</h1>
 
 
             <div class="form-media-footer">

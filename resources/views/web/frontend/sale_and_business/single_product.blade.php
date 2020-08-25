@@ -69,12 +69,6 @@
                         <div class="line-separator text-dark"></div>
                     </div>
                     <div class="mt-5">
-                        <button class="button primary icon-label bg-facebook">
-                            <div class="fb-share-button"
-                                 data-href="{{url()->current()}}"
-                                 data-layout="button_count">
-                            </div>
-                        </button>
                         <button type="button" class="button primary icon-label bg-facebook">
                             <span class="inner-icon"><i class="icon-brand-facebook-f"></i></span>
                             <span class="inner-text">
@@ -97,28 +91,8 @@
                             <span class="inner-icon"><i class="icon-brand-linkedin-in"></i></span>
                             <span class="inner-text">
                                 <a target="_blank" style="color: white"
-                                   href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&summary={{$item->single}}">
+                                   href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&summary={{$item->title}}">
                                     LinkedIn
-                                </a>
-                            </span>
-                        </button>
-                    </div>
-                    <div class="mt-4">
-                        <button data-url="" type="button" class="button primary icon-label bg-twitter twitter-color">
-                            <span class="inner-icon"><i class="icon-brand-twitter"></i></span>
-                            <span class="inner-text">
-                                <a target="_blank" style="color: white"
-                                   href="http://twitter.com/share?url={{url()->current()}}&text={{$item->title}}&hashtags=salika">
-                                    Twitter
-                                </a>
-                            </span>
-                        </button>
-                        <button data-url="" type="button" class="button primary icon-label pinterest-color">
-                            <span class="inner-icon"><i class="icon-brand-pinterest"></i></span>
-                            <span class="inner-text">
-                                <a target="_blank" style="color: white"
-                                   href="https://pinterest.com/pin/create/button/?media={{$item->main_image->image_url}}&url={{url()->current()}}&description={{$item->title}}">
-                                    Pinterest
                                 </a>
                             </span>
                         </button>
