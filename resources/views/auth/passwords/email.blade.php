@@ -90,7 +90,7 @@
                     <strong>{{ $message }}</strong>
                 </div>
                 @enderror
-                <button type="submit" class="button primary large block mb-4">Login</button>
+                <button type="submit" class="button primary large block mb-4">Get Password Reset Link</button>
                 {{--                <a href="#" class="text-center uk-display-block">--}}
                 {{--                    <label><input class="uk-checkbox mr-2" type="checkbox"> I Agree terms </label>--}}
                 {{--                </a>--}}
