@@ -1,47 +1,118 @@
-@extends('layouts.app')
+<!doctype html>
+<html lang="en">
 
-@section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Reset Password') }}</div>
+<head>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    <!-- Basic Page Needs
+    ================================================== -->
+    <title>Socialite Network HTML Template</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Socialite is - Professional A unique and beautiful collection of UI elements">
+    <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
-                    <form method="POST" action="{{ route('password.email') }}">
-                        @csrf
+    <!-- CSS
+    ================================================== -->
+    <link rel="stylesheet" href="{{asset('salika/assets/css/style.css')}}">
+    <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css')}}">
+    <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css')}}">
 
-                        <div class="form-group row">
-                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+    <!-- icons
+    ================================================== -->
+    <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
 
-                            <div class="col-md-6">
-                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+    <!-- Google font
+    ================================================== -->
+    {{--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">--}}
 
-                                @error('email')
-                                    <span class="invalid-feedback" role="alert">
-                                        <strong>{{ $message }}</strong>
-                                    </span>
-                                @enderror
-                            </div>
-                        </div>
 
-                        <div class="form-group row mb-0">
-                            <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
-                                    {{ __('Send Password Reset Link') }}
-                                </button>
-                            </div>
-                        </div>
-                    </form>
-                </div>
+</head>
+
+<body style="font-family: Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif">
+
+
+<!-- Content
+================================================== -->
+<div uk-height-viewport class="uk-flex uk-flex-middle uk-grid-collapse uk-grid-match" uk-grid>
+    <div class="form-media uk-width-2-3@m uk-width-1-2@s uk-visible@s uk-height-viewport uk-background-cover"
+         data-src="{{asset('salika/assets/images/login_page.jpg')}}" uk-img>
+
+        <div class="form-media-content uk-light">
+            <div class="logo"><img src="{{asset('salika/assets/images/salika_logo.png')}}" alt=""></div>
+
+            <h1> Tagline of the business <br> goes here</h1>
+
+
+            <div class="form-media-footer">
+                <ul>
+                    <li><a href="#"> About </a></li>
+                    <li><a href="#"> Contact </a></li>
+                    <li><a href="#"> About </a></li>
+                    <li><a href="#"> Contact </a></li>
+                    <li><a href="#"> About </a></li>
+                    <li><a href="#"> Contact </a></li>
+                </ul>
             </div>
+
         </div>
+
+    </div>
+    <div class="uk-width-1-3@m uk-width-1-2@s uk-animation-slide-right-medium">
+        <div class="px-5" style="margin-top: -50px">
+            <div class="my-4 uk-text-center">
+                <h1 class="mb-2 text-dark"> {{ __('Reset Password') }}</h1>
+                <p class="my-2 text-dark">Don't have an account?
+                    <a href="{{ route('register') }}" class="uk-link text-primary">
+                        Register Here
+                    </a>
+                </p>
+            </div>
+            @if (session('status'))
+                <div class="bg-gradient-success shadow-success uk-light text-white text-center" uk-alert>
+                    <a class="uk-alert-close color-white" uk-close></a>
+                    <strong>Success:</strong> {{Session::get('status')}}
+                </div>
+            @endif
+
+            <form method="POST" action="{{ route('password.email') }}">
+                @csrf
+                <div class="uk-form-group">
+                    <div class="uk-position-relative">
+                        <input type="email" class="uk-input bg-secondary @error('email') is-invalid @enderror"
+                               id="email"
+                               placeholder="{{ __('E-Mail Address') }}" name="email" value="{{ old('email') }}" required autocomplete="email"
+                               autofocus>
+                    </div>
+                </div>
+
+                @error('email')
+                <div class="text-center text-danger mb-1">
+                    <strong>{{ $message }}</strong>
+                </div>
+                @enderror
+                <button type="submit" class="button primary large block mb-4">Login</button>
+                {{--                <a href="#" class="text-center uk-display-block">--}}
+                {{--                    <label><input class="uk-checkbox mr-2" type="checkbox"> I Agree terms </label>--}}
+                {{--                </a>--}}
+            </form>
+
+        </div>
+
     </div>
 </div>
-@endsection
+
+<!-- Content -End
+================================================== -->
+
+
+<!-- javaScripts
+ ================================================== -->
+<script src="{{asset('salika/assets/js/framework.js')}}"></script>
+<script src="{{asset('salika/assets/js/jquery-3.3.1.min.js')}}"></script>
+<script src="{{asset('salika/assets/js/simplebar.js')}}"></script>
+<script src="{{asset('salika/assets/js/main.js')}}"></script>
+
+
+</body>
+
+</html>

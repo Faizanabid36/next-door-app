@@ -26,8 +26,9 @@ class RouteViewsController extends Controller
         else {
             if (auth()->user()->admin)
                 return view('admin.main_dashboard');
-            else
-                return view('user.user_dashboard');
+            else{
+                return view('web.frontend.home');
+            }
         }
     }
 
