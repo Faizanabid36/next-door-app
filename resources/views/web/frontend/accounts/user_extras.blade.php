@@ -24,7 +24,7 @@
 
                 <div class="uk-card-default rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> Change Password </h5>
+                        <h5 class="mb-0 text-dark"> Change Password </h5>
                     </div>
                     <hr class="m-0">
                     @if(Session::has('success'))
@@ -51,19 +51,19 @@
                           action="{{action('UserController@update_user_extras',$user->id)}}">
                         @csrf
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Enter Bio </h5>
-                            <textarea name="bio" class="uk-textarea" rows="5" placeholder="Tell people more about you...">{{$user->user_extra->bio}}</textarea>
+                            <h5 class="uk-text-bold mb-2 text-dark"> Enter Bio </h5>
+                            <textarea name="bio" class="uk-textarea text-dark" rows="5" placeholder="Tell people more about you...">{{$user->user_extra->bio}}</textarea>
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Emergency Contact </h5>
-                            <input value="{{$user->user_extra->emergency_contact}}" type="text" name="emergency_contact" class="uk-input" placeholder="Emergency Contact">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Emergency Contact </h5>
+                            <input value="{{$user->user_extra->emergency_contact}}" type="text" name="emergency_contact" class="uk-input text-dark" placeholder="Emergency Contact">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Birth Date </h5>
-                            <input value="{{$user->user_extra->birthdate}}" type="date" name="birthdate" class="uk-input" placeholder="Birth Date">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Birth Date </h5>
+                            <input value="{{$user->user_extra->birthdate}}" type="date" name="birthdate" class="uk-input text-dark" placeholder="Birth Date">
                         </div>
                         <div class="mb-3">
-                            <h5>
+                            <h5 class="text-dark">
                                 <input name="display_phone" class="uk-checkbox" type="checkbox"
                                        <?php
                                        if($user->user_extra->hide_phone == 0){?>
@@ -76,8 +76,8 @@
                             </h5>
                         </div>
                         <div class="mb-3">
-                            <h5>
-                                <input name="display_address" class="uk-checkbox" type="checkbox"
+                            <h5 class="text-dark">
+                                <input name="display_address" class="uk-checkbox text-dark" type="checkbox"
 {{--                                       {{dd($user->user_extra)}}--}}
                                        <?php
                                        if($user->user_extra->hide_address == 0){?>

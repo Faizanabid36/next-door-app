@@ -3,7 +3,7 @@
 @section('content')
     <div class="main_content_inner p-sm-0 ml-sm-4">
 
-        <h1 class="text-dark"> Account Settings </h1>
+        <h1 class="text-dark"> Business Page </h1>
 
         <div class="uk-position-relative" uk-grid>
             <div class="uk-width-1-4@m uk-flex-last@m pl-sm-0">
@@ -23,7 +23,7 @@
 
                 <div class="uk-card-default rounded">
                     <div class="p-3">
-                        <h5 class="mb-0 text-dark"> Update Profile info </h5>
+                        <h5 class="mb-0 text-dark"> Create your personal business page </h5>
                     </div>
                     <hr class="m-0">
                     @if(Session::has('success'))
@@ -47,12 +47,12 @@
                     @endif
                     <form class="p-4" novalidate method="POST"
                           enctype='multipart/form-data'
-                          action="{{action('UserController@updateuser',$user->id)}}">
+                          action="{{route('business.store_business_page')}}">
                         @csrf
                         <div class="mb-5 media-upload-image">
                             <a href="javascript: void(0);">
-                                <img src="{{asset($user->avatar)}}"
-                                     id="avatar_picture"
+                                <img src="{{asset('salika/assets/images/icons/market.png')}}"
+                                     id="display_banner"
                                      class="rounded mr-75" alt="profile image" height="64"
                                      width="80">
                             </a>
@@ -64,7 +64,7 @@
                                         for="account-upload">
                                         Upload new photo
                                     </label>
-                                    <input onchange="loadFile(event)" type="file" name="Picture"
+                                    <input onchange="loadFile(event)" type="file" name="banner_1"
                                            id="account-upload"
                                            hidden>
                                 </div>
@@ -77,29 +77,48 @@
                             <hr class="mt-2">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2 text-dark"> Username </h5>
-                            <input value="{{$user->name}}" type="text" name="name" class="uk-input text-dark" placeholder="Username">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Business Title </h5>
+                            <input value="{{old('title')}}" type="text" name="title" class="uk-input text-dark"
+                                   placeholder="Enter Business Title">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2 text-dark"> Email Address </h5>
-                            <input value="{{$user->email}}" type="email" name="email" class="uk-input text-dark" placeholder="Email Address">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Business Description </h5>
+                            <textarea name="description" class="uk-textarea text-dark" rows="5"
+                                      placeholder="Tell people more about your business...">{{old('description')}}</textarea>
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2 text-dark"> Contact </h5>
-                            <input value="{{$user->contact}}" type="text" name="contact" class="uk-input text-dark" placeholder="Contact Number">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Business Email </h5>
+                            <input value="{{old('email')}}" type="text" name="email" class="uk-input text-dark"
+                                   placeholder="Enter Business Email">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
-                            <input value="{{$user->postal}}" type="text" name="postal" class="uk-input text-dark" placeholder="Postal Code">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Select Business Category </h5>
+                            <select name="business_category_id" class="uk-input text-dark">
+                                <option value="" disabled selected>Choose Category</option>
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{ucfirst($category->b_category_title)}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Primary Contact Number </h5>
+                            <input value="{{old('contact_1')}}" type="text" name="contact_1" class="uk-input text-dark"
+                                   placeholder="Primary Contact Number">
+                        </div>
+                        <div class="mb-3">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Secondary Contact Number </h5>
+                            <input value="{{old('contact_2')}}" type="text" name="contact_2" class="uk-input text-dark"
+                                   placeholder="Secondary Contact Number">
                         </div>
                         <div class="mb-1">
-                            <h5 class="uk-text-bold mb-2 text-dark"> Address </h5>
-                            <input value="{{$user->address}}" type="text" readonly style="background-color: #f5f5f1;" name="address" class="uk-input text-dark" placeholder="Address">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
+                            <input value="{{old('postal_code')}}" type="text" name="postal_code"
+                                   class="uk-input text-dark" placeholder="Postal Code">
                         </div>
                         <br>
                         <br>
                         <div class="uk-flex">
-                            <button class="button primary">Update Profile</button>
+                            <button class="button primary">Publish My Page</button>
                         </div>
                     </form>
                 </div>
@@ -111,23 +130,9 @@
 @endsection
 @section('footer_scripts')
     <script type="text/javascript">
-        {{--$( document ).ready(function() {--}}
-        {{--    console.log( "ready!" );--}}
-        {{--    @foreach($user->family_members as $family_member)--}}
-        {{--    $("#{{$family_member->id}}").change(function(){--}}
-        {{--        console.log(event.target.files[0])--}}
-        {{--        let image = document.getElementById("member_picture{{$family_member->id}}")--}}
-        {{--        image.src = URL.createObjectURL(event.target.files[0]);--}}
-        {{--    });--}}
-        {{--    @endforeach--}}
-        {{--});--}}
         let loadFile = function (event) {
-            let image = document.getElementById('avatar_picture');
+            let image = document.getElementById('display_banner');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
-        // let loadMemberPicture = function(event){
-        //     let image = document.getElementById('member_picture');
-        //     image.src = URL.createObjectURL(event.target.files[0]);
-        // }
     </script>
 @endsection

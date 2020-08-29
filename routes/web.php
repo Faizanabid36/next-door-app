@@ -108,18 +108,23 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * Business page Routes
  * ----------------------------
  */
-Route::name('business.')->prefix('business')->group(function (){
+Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
+
     Route::get('list','BusinessController@index')->name('list');
+    Route::get('list/{b_category_slug}','BusinessController@list_by_category')->name('list_by_category');
+    Route::get('view/page/{business_id}','BusinessController@view_business_page')->name('view_business_page');
+    Route::get('create/page','BusinessController@create_business_page')->name('create_business_page');
+    Route::get('edit/page/{business}','BusinessController@edit_business_page')->name('edit_business_page');
+    Route::post('store/page','BusinessController@store_business_page')->name('store_business_page');
+
 });
-
-
-
 
 /**
  * ---------------------------------
  * Login-Register Routes
  * ---------------------------------
  */
+
 Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
 Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');

@@ -22,4 +22,5 @@ class BusinessCategory extends Model
     {
         return $this->belongsTo(static::class, 'parent_id');
     }
+
 }

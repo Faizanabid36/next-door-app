@@ -21,7 +21,7 @@
                     class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-3 uk-grid-small uk-grid">
                     @foreach($business_categories as $category)
                         <li>
-                            <a href="#">
+                            <a href="{{route('business.list_by_category',$category->b_category_slug)}}">
                                 <div class="group-catagroy-card animate-this"
                                      data-src="{{asset($category->b_category_icon)}}" uk-img>
                                     <div class="group-catagroy-card-content">
@@ -50,7 +50,7 @@
                     <h3 class="uk-card-title font-weight-bold color-black mb-2">Business owners: Create your free business page today!</h3>
                     <h6 class="color-black mb-0">Connect with local customers on Nextdoor and become your neighborhood's favorite.</h6>
                     <button class="button primary mt-3 ">
-                        <a href="#" class="color-white">
+                        <a href="{{route('business.create_business_page')}}" class="color-white">
                             Get Started
                         </a>
                     </button>
