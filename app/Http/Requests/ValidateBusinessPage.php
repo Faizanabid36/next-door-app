@@ -27,7 +27,7 @@ class ValidateBusinessPage extends FormRequest
             'title' => 'required|string|max:90',
             'description' => 'required|string|max:2000',
             'business_category_id' => 'required',
-            'email' => 'required|email|string|unique:businesses',
+            'email' => 'required|email|string',
             'contact_1' => 'required|max:18',
             'contact_2' => 'required|sometimes|max:18',
             'postal_code' => 'required|max:6',

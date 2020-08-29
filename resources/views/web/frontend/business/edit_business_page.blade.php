@@ -23,7 +23,7 @@
 
                 <div class="uk-card-default rounded">
                     <div class="p-3">
-                        <h5 class="mb-0 text-dark"> Create your personal business page </h5>
+                        <h5 class="mb-0 text-dark"> Update your  business page </h5>
                     </div>
                     <hr class="m-0">
                     @if(Session::has('success'))
@@ -47,7 +47,7 @@
                     @endif
                     <form class="p-4" novalidate method="POST"
                           enctype='multipart/form-data'
-                          action="{{route('business.store_business_page')}}">
+                          action="{{route('business.update_business_page',$business->id)}}">
                         @csrf
                         <div class="mb-5 media-upload-image">
                             <a href="javascript: void(0);">
@@ -84,7 +84,7 @@
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Business Description </h5>
                             <textarea name="description" class="uk-textarea text-dark" rows="5"
-                                      placeholder="Tell people more about your business...">{{old('description')}}</textarea>
+                                      placeholder="Tell people more about your business...">{{$business->description}}</textarea>
                         </div>
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Business Email </h5>
@@ -96,29 +96,33 @@
                             <select name="business_category_id" class="uk-input text-dark">
                                 <option value="" disabled selected>Choose Category</option>
                                 @foreach($categories as $category)
-                                    <option value="{{$category->id}}">{{ucfirst($category->b_category_title)}}</option>
+                                    <option
+                                        value="{{$category->id}}"
+                                        {{$category->id==$business->business_category_id?'selected':''}}>
+                                        {{ucfirst($category->b_category_title)}}
+                                    </option>
                                 @endforeach
                             </select>
                         </div>
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Primary Contact Number </h5>
-                            <input value="{{old('contact_1')}}" type="text" name="contact_1" class="uk-input text-dark"
+                            <input value="{{$business->contact_1}}" type="text" name="contact_1" class="uk-input text-dark"
                                    placeholder="Primary Contact Number">
                         </div>
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Secondary Contact Number </h5>
-                            <input value="{{old('contact_2')}}" type="text" name="contact_2" class="uk-input text-dark"
+                            <input value="{{$business->contact_2}}" type="text" name="contact_2" class="uk-input text-dark"
                                    placeholder="Secondary Contact Number">
                         </div>
                         <div class="mb-1">
                             <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
-                            <input value="{{old('postal_code')}}" type="text" name="postal_code"
+                            <input value="{{$business->postal_code}}" type="text" name="postal_code"
                                    class="uk-input text-dark" placeholder="Postal Code">
                         </div>
                         <br>
                         <br>
                         <div class="uk-flex">
-                            <button class="button primary">Publish My Page</button>
+                            <button class="button primary">Update Page Info</button>
                         </div>
                     </form>
                 </div>

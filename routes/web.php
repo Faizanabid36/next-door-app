@@ -116,8 +116,24 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
     Route::get('create/page','BusinessController@create_business_page')->name('create_business_page');
     Route::get('edit/page/{business}','BusinessController@edit_business_page')->name('edit_business_page');
     Route::post('store/page','BusinessController@store_business_page')->name('store_business_page');
+    Route::post('update/page/{business}','BusinessController@update_business_page')->name('update_business_page');
 
 });
+
+/**
+ *-----------------------------
+ * Reviews Routes
+ * ----------------------------
+ */
+Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function(){
+    Route::post('store_review','UserBusinessRecommendationController@store')->name('store_review');
+    Route::get('delete_review/{id}','UserBusinessRecommendationController@delete')->name('delete_review');
+});
+
+
+
+
+
 
 /**
  * ---------------------------------
