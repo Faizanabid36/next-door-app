@@ -1,17 +1,14 @@
 @extends('layouts.salika.index')
 
 @section('content')
-
     <div class="course-intro-banner">
-
         <img src="{{$business->cover_banner}}" class="course-intro-banner-img" alt="">
-
-
         <div class="course-intro-banner-info uk-light main_content_inner" style="max-width: 1160px">
             <h6> {{$business->category->b_category_title}} </h6>
-            <h1 class="mb-lg-6"> {{$business->title}}
+            <h1 class=""> {{$business->title}}
                 <hr class="uk-visible@m">
             </h1>
+            <h3 class="">{{$business->recommendations_count}} Recommendations</h3>
 
             <p><a href="#course-intro" class="uk-link-reset" uk-scroll> View Page details </a></p>
 
@@ -36,30 +33,6 @@
                         {{$business->description}}
                     </p>
                 </div>
-                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark"> Reviews </span></h2>
-                <div class="comments mt-4">
-                    <ul>
-                        @foreach($reviews as $review)
-                            <li>
-                                <div class="comments-avatar"><img src="{{$review->user->avatar}}" alt="">
-                                </div>
-                                <div class="comment-content">
-                                    <div class="comment-by">{{$review->user->name}}
-                                    </div>
-                                    <p>{{$review->review}}
-                                        @if($review->user->id==auth()->user()->id)
-                                            <a href="{{route('reviews.delete_review',$review->id)}}">
-                                                <span class="text-danger uil-trash"></span>
-                                            </a>
-                                        @endif
-                                    </p>
-                                </div>
-                            </li>
-                        @endforeach
-                    </ul>
-
-                </div>
-
                 <hr>
                 <div class="comments">
                     <h3 class="text-dark">Add Review </h3>
@@ -69,7 +42,8 @@
                                 <img src="{{auth()->user()->avatar}}" alt="">
                             </div>
                             <div class="comment-content">
-                                <form class="uk-grid-small uk-grid" action="{{route('reviews.store_review')}}" method="POST" uk-grid="">
+                                <form class="uk-grid-small uk-grid" action="{{route('reviews.store_review')}}"
+                                      method="POST" uk-grid="">
                                     @csrf
                                     <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
                                         <label class="uk-form-label">Your Review</label>
@@ -77,7 +51,7 @@
                                                   required
                                                   name="review"
                                                   placeholder="Add your review here"
-                                                  style=" height:100px"></textarea>
+                                                  style=" height:75px"></textarea>
                                     </div>
                                     <input type="hidden" name="business_id" value="{{$business->id}}">
                                     <div class="uk-grid-margin uk-first-column">
@@ -89,8 +63,34 @@
                         </li>
                     </ul>
                 </div>
-
-
+                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark"> Reviews </span></h2>
+                <div class="comments mt-4">
+                    <ul>
+                        @if(count($reviews)>0)
+                            @foreach($reviews as $review)
+                                <li>
+                                    <div class="comments-avatar"><img src="{{$review->user->avatar}}" alt="">
+                                    </div>
+                                    <div class="comment-content">
+                                        <div class="comment-by">{{$review->user->name}}
+                                        </div>
+                                        <p>{{$review->review}}
+                                            @if($review->user->id==auth()->user()->id)
+                                                <a href="{{route('reviews.delete_review',$review->id)}}">
+                                                    <span class="text-danger uil-trash"></span>
+                                                </a>
+                                            @endif
+                                        </p>
+                                    </div>
+                                </li>
+                            @endforeach
+                        @else
+                            <li class="text-dark">
+                                No Review Added Yet
+                            </li>
+                        @endif
+                    </ul>
+                </div>
             </div>
 
 
@@ -102,16 +102,25 @@
                         <img src="{{$business->display_banner}}" alt="{{$business->title}}">
                     </div>
                     <div class="course-intro-card-innr">
-                        <div class="text-center">
-                            <a href="#" class="button danger mb-2">
-                                <i class="uil-heart"></i>
-                                Recommend Our Business Here
-                            </a>
-                        </div>
+                        @if(!$iRecommended)
+                            <div class="text-center">
+                                <a title="Recommend" href="{{route('reviews.add_recommendation',$business->id)}}" class="button danger mb-2">
+                                    <i class="uil-heart"></i>
+                                    Recommend Our Business Here
+                                </a>
+                            </div>
+                        @else
+                            <div class="text-center">
+                                <a title="Un-recommend" href="{{route('reviews.remove_recommendation',$business->id)}}" class="button primary mb-2">
+                                    <i class="uil-heart-sign"></i>
+                                    You've Already Recommended
+                                </a>
+                            </div>
+                        @endif
                         <h4 class=""> Business Info </h4>
                         <div class="uk-child-width-2-2 uk-grid-small uk-text-small" uk-grid>
                             <div>
-                                <span> <i class="uil-mailbox"></i> {{$business->email}}</span>
+                                <span> <i class="uil-envelope"></i> {{$business->email}}</span>
                             </div>
                             <div>
                                 <span> <i class="uil-phone"></i> {{$business->contact_1}} </span>
@@ -120,7 +129,7 @@
                                 <span> <i class="uil-phone"></i> {{$business->contact_2}} </span>
                             </div>
                             <div>
-                                <span> <i class="uil-globe"></i> {{$business->address}} </span>
+                                <span> <i class="uil-envelope-send"></i> {{$business->address}} </span>
                             </div>
                         </div>
                     </div>
@@ -128,4 +137,44 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer_scripts')
+    <script>
+        $(document).ready(function () {
+            @if(Session::has('review_added'))
+                UIkit.notification({
+                    message: '<span class=\'uil-check\'></span>{{Session::get('review_added')}}',
+                    status: 'success',
+                    pos: 'top-center',
+                    timeout: 5000
+                })
+            @endif
+            @if(Session::has('review_deleted'))
+                UIkit.notification({
+                    message: '<span class=\'uil-check\'></span>{{Session::get('review_deleted')}}',
+                    status: 'success',
+                    pos: 'top-center',
+                    timeout: 5000
+                })
+            @endif
+            @if(Session::has('recommendation_added'))
+                UIkit.notification({
+                    message: '<span class=\'uil-check\'></span>{{Session::get('recommendation_added')}}',
+                    status: 'success',
+                    pos: 'top-center',
+                    timeout: 5000
+                })
+            @endif
+            @if(Session::has('recommendation_removed'))
+                UIkit.notification({
+                    message: '<span class=\'uil-check\'></span>{{Session::get('recommendation_removed')}}',
+                    status: 'danger',
+                    pos: 'top-center',
+                    timeout: 5000
+                })
+            @endif
+
+        })
+    </script>
 @endsection

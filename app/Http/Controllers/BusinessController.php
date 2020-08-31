@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business;
 use App\BusinessCategory;
+use App\BusinessRecommendations;
 use App\Http\Requests\ValidateBusinessPage;
 use App\UserBusinessRecommendation;
 use Illuminate\Http\Request;
@@ -20,89 +21,11 @@ class BusinessController extends Controller
     {
         //
         $business_categories = BusinessCategory::WhereNull('parent_id')->get();
-        return view('web.frontend.business.all_business',compact('business_categories'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Business $business)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Business $business)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Business  $business
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Business $business)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param \App\Business $business
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Business $business)
-    {
-        //
-    }
-
-    public function view_business_page($business_id)
-    {
-        $business = Business::with(['business_owner', 'category'])->whereId($business_id)->firstOrFail();
-        $reviews = UserBusinessRecommendation::whereBusinessId($business->id)->latest()->get();
-        return view('web.frontend.business.view_page', compact('business','reviews'));
-    }
-
-    public function list_by_category($b_category_slug)
-    {
-        $category_id = BusinessCategory::whereBCategorySlug($b_category_slug)->firstOrFail()->pluck('id');
-        $businesses = Business::with('business_owner')->with('category')
-            ->whereBusinessCategoryId($category_id)
-            ->latest()->paginate(10);
-        return view('web.frontend.business.business_by_category', compact('businesses'));
+        $businesses = Business::withCount('recommendations')
+            ->with('category')
+            ->orderBy('recommendations_count','desc')->paginate(10);
+//        return $businesses;
+        return view('web.frontend.business.all_business',compact('business_categories','businesses'));
     }
 
     public function create_business_page()
@@ -133,6 +56,16 @@ class BusinessController extends Controller
         return back()->withSuccess('Your Page Has Been Published.');
     }
 
+    public function view_business_page($business_id)
+    {
+        $business = Business::with(['business_owner', 'category'])
+            ->withCount('recommendations')
+            ->whereId($business_id)->firstOrFail();
+        $iRecommended = is_null(BusinessRecommendations::whereBusinessId($business->id)->whereUserId(auth()->user()->id)->first()) ? false : true;
+        $reviews = UserBusinessRecommendation::whereBusinessId($business->id)->latest()->get();
+        return view('web.frontend.business.view_page', compact('business', 'reviews', 'iRecommended'));
+    }
+
     public function edit_business_page(Business $business)
     {
         $categories = BusinessCategory::all();
@@ -153,5 +86,36 @@ class BusinessController extends Controller
         }
         Business::whereId($business)->update($request->except(['_token', 'banner_1']));
         return back()->withSuccess('Page Updated Successfully');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param \App\Business $business
+     * @return \Illuminate\Http\Response
+     */
+    public function delete_business_page(Business $business)
+    {
+        //
+        $business->delete();
+        return back()->withSuccess('Page Deleted');
+    }
+
+
+    public function list_by_category($b_category_slug)
+    {
+        $category_id = BusinessCategory::whereBCategorySlug($b_category_slug)->firstOrFail()->pluck('id');
+        $businesses = Business::with('business_owner')->with('category')
+            ->withCount('recommendations')
+            ->whereBusinessCategoryId($category_id)
+            ->latest()->paginate(10);
+        return view('web.frontend.business.business_by_category', compact('businesses'));
+    }
+
+    public function my_business()
+    {
+        $businesses = Business::whereCreatedBy(auth()->user()->id)->get();
+        $categories = BusinessCategory::all();
+        return view('web.frontend.business.my_pages',compact('businesses','categories'));
     }
 }

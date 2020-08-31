@@ -110,6 +110,7 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  */
 Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
 
+    Route::get('my_business','BusinessController@my_business')->name('my_business');
     Route::get('list','BusinessController@index')->name('list');
     Route::get('list/{b_category_slug}','BusinessController@list_by_category')->name('list_by_category');
     Route::get('view/page/{business_id}','BusinessController@view_business_page')->name('view_business_page');
@@ -117,6 +118,7 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
     Route::get('edit/page/{business}','BusinessController@edit_business_page')->name('edit_business_page');
     Route::post('store/page','BusinessController@store_business_page')->name('store_business_page');
     Route::post('update/page/{business}','BusinessController@update_business_page')->name('update_business_page');
+    Route::get('delete/page/{business}','BusinessController@delete_business_page')->name('delete_business_page');
 
 });
 
@@ -128,6 +130,8 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
 Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function(){
     Route::post('store_review','UserBusinessRecommendationController@store')->name('store_review');
     Route::get('delete_review/{id}','UserBusinessRecommendationController@delete')->name('delete_review');
+    Route::get('add_recommendation/{id}','UserBusinessRecommendationController@add_recommendation')->name('add_recommendation');
+    Route::get('remove_recommendation/{id}','UserBusinessRecommendationController@remove_recommendation')->name('remove_recommendation');
 });
 
 

@@ -9,31 +9,6 @@
             </div>
         </div>
         <hr>
-        {{--        <div class="uk-position-relative" uk-slider="finite: true">--}}
-        {{--            <div class="uk-slider-container py-3">--}}
-        {{--                <ul--}}
-        {{--                    class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-child-width-1-3 uk-grid-small uk-grid">--}}
-        {{--                    @foreach($business_categories as $category)--}}
-        {{--                        <li>--}}
-        {{--                            <a href="{{route('business.list_by_category',$category->b_category_slug)}}">--}}
-        {{--                                <div class="group-catagroy-card animate-this"--}}
-        {{--                                     data-src="{{asset($category->b_category_icon)}}" uk-img>--}}
-        {{--                                    <div class="group-catagroy-card-content">--}}
-        {{--                                        <h4> {{$category->b_category_title}} </h4>--}}
-        {{--                                    </div>--}}
-        {{--                                </div>--}}
-        {{--                            </a>--}}
-        {{--                        </li>--}}
-        {{--                    @endforeach--}}
-        {{--                </ul>--}}
-
-        {{--                <a class="uk-position-center-left-out uk-position-small uk-hidden-hover slidenav-prev" href="#"--}}
-        {{--                   uk-slider-item="previous"></a>--}}
-        {{--                <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next" href="#"--}}
-        {{--                   uk-slider-item="next"></a>--}}
-        {{--            </div>--}}
-        {{--        </div>--}}
-        {{--        <hr>--}}
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-grid mt-2" uk-grid="">
             <div class="uk-card-media-left uk-cover-container uk-first-column">
                 <img src="{{asset('salika/assets/images/business/business_image.jpg')}}" alt="" uk-cover=""
@@ -68,12 +43,12 @@
                                 <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> {{ucfirst($business->title)}} </h3>
                                 <p style="margin-bottom: 0px" class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
                                 <h6 style="margin-bottom: 0px" class="pl-1">
-                                    {{ucfirst($business->description)}}
+                                    {{substr(ucfirst($business->description),0,180)}}...
                                 </h6>
 
                                 <div class="uk-flex uk-flex-middle mt-2">
                                     <div class="uk-width-expand pl-1">
-                                        <p><strong>Recommended by:</strong> 3 people </p>
+                                        <p><strong>Recommended by:</strong> {{$business->recommendations_count}} people </p>
                                     </div>
                                 </div>
                             </div>
@@ -82,10 +57,10 @@
                                     <i class="uil-eye"></i>
                                     View Page
                                 </a>
-                                <a href="#" class="button danger">
-                                    <i class="uil-heart"></i>
-                                    Recommend
-                                </a>
+{{--                                <a href="#" class="button danger">--}}
+{{--                                    <i class="uil-heart"></i>--}}
+{{--                                    Recommend--}}
+{{--                                </a>--}}
                             </div>
                         </div>
                     </div>

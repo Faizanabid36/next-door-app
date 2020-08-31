@@ -1,24 +1,14 @@
 @extends('layouts.salika.index')
 
 @section('content')
+
     <div class="main_content_inner p-sm-0 ml-sm-4">
 
         <h1 class="text-dark"> Business Page </h1>
 
         <div class="uk-position-relative" uk-grid>
-            <div class="uk-width-1-4@m uk-flex-last@m pl-sm-0">
 
-                <nav class="responsive-tab style-3 setting-menu"
-                     uk-sticky="top:30 ; offset:100; media:@m ;bottom:true; animation: uk-animation-slide-top">
-                    <ul>
-                        <li class="uk-active"><a href="#"> <i class="uil-cog"></i> General </a></li>
-                        <li><a href="{{route('change-password')}}"> <i class="uil-unlock-alt"></i> Password </a></li>
-                        <li><a href="{{route('user-extras')}}"> <i class="uil-info-circle"></i> User Extras</a></li>
-                    </ul>
-                </nav>
-
-            </div>
-
+            @include('web.frontend.business.components.setting_sidebar')
             <div class="uk-width-2-3@m mt-sm-3 pl-sm-0 p-sm-4">
 
                 <div class="uk-card-default rounded">
