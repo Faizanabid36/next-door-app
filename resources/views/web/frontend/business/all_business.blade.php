@@ -84,7 +84,7 @@
                                 </div>
                             </div>
                             <div class="page-card-btn">
-                                <a href="#" class="button primary">
+                                <a href="{{route('business.view_business_page',$business->id)}}" class="button primary">
                                     <i class="uil-eye"></i>
                                     View Page
                                 </a>

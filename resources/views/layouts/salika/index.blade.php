@@ -12,8 +12,8 @@
     {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 
 <!-- CSS ================================================== -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
-          integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"--}}
+    <link rel="stylesheet" href="{{asset('salika/assets/css/bootstrap.min.css')}}">
 
     <link rel="stylesheet" href="{{asset('salika/assets/css/style.css?v='.now())}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">
@@ -72,19 +72,19 @@
 <script src="{{asset('salika/assets/js/main.js?v='.now())}}"></script>
 
 
+{{--<div id="fb-root"></div>--}}
+{{--<script>(function (d, s, id) {--}}
+{{--        var js, fjs = d.getElementsByTagName(s)[0];--}}
+{{--        if (d.getElementById(id)) return;--}}
+{{--        js = d.createElement(s);--}}
+{{--        js.id = id;--}}
+{{--        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";--}}
+{{--        fjs.parentNode.insertBefore(js, fjs);--}}
+{{--    }(document, 'script', 'facebook-jssdk'));</script>--}}
+{{--<script async defer crossorigin="anonymous"--}}
+{{--        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"--}}
+{{--        nonce="GLWZhynL"></script>--}}
 @yield('modal')
-<div id="fb-root"></div>
-<script>(function (d, s, id) {
-        var js, fjs = d.getElementsByTagName(s)[0];
-        if (d.getElementById(id)) return;
-        js = d.createElement(s);
-        js.id = id;
-        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
-        fjs.parentNode.insertBefore(js, fjs);
-    }(document, 'script', 'facebook-jssdk'));</script>
-<script async defer crossorigin="anonymous"
-        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"
-        nonce="GLWZhynL"></script>
 
 </body>
 </html>
