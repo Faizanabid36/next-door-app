@@ -36,19 +36,26 @@
                         </div>
                     @endif
                     <div class="p-4">
-                        @foreach($businesses as $key => $business)
-                            <h3 class="uk-heading-line ">
-                                <img src="{{$business->display_banner}}"
-                                     width="60" alt=""
-                                     style="z-index: 99999;border-radius: 5px">
-                                <a href="{{route('business.view_business_page',$business->id)}}" class="font-weight-bold btn-link">{{$business->title}}</a>
-                            </h3>
-                            <div>
-                                <span class="pull-left">Created: {{$business->created_at->diffForHumans()}}</span>
-                                <a title="Delete" href="{{route('business.delete_business_page',$business->id)}}" style="float: right"><span class="p-1 uil-trash text-danger"> </span></a>
-                                <a title="Edit" href="{{route('business.edit_business_page',$business->id)}}" style="float: right"><span class="p-1 uil-edit text-primary"> </span></a>
-                            </div>
-                        @endforeach
+                        @if(count($businesses) > 0)
+                            @foreach($businesses as $key => $business)
+                                <h3 class="uk-heading-line ">
+                                    <img src="{{$business->display_banner}}"
+                                         width="60" alt=""
+                                         style="z-index: 99999;border-radius: 5px">
+                                    <a href="{{route('business.view_business_page',$business->id)}}" class="font-weight-bold btn-link">{{$business->title}}</a>
+                                </h3>
+                                <div>
+                                    <span class="pull-left">Created: {{$business->created_at->diffForHumans()}}</span>
+                                    <a title="Delete" href="{{route('business.delete_business_page',$business->id)}}" style="float: right"><span class="p-1 uil-trash text-danger"> </span></a>
+                                    <a title="Edit" href="{{route('business.edit_business_page',$business->id)}}" style="float: right"><span class="p-1 uil-edit text-primary"> </span></a>
+                                </div>
+                            @endforeach
+                        @else
+                            <h2 class="text-dark">
+                                You have not created any business page yet.
+                            </h2>
+                            <a class="btn-link" href=""><span class="uil-location-arrow"><u>Create one now</u></span></a>
+                        @endif
                     </div>
                 </div>
             </div>
