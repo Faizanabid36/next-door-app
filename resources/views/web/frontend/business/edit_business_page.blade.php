@@ -91,7 +91,8 @@
                         <br>
                         <br>
                         <div class="uk-flex">
-                            <button class="button primary">Update Page Info</button>
+                            <button class="button primary"><span class="uil-check"></span> Update Page Info</button>
+                            <button class="ml-90 button success"><span class="uil-image-check mr-10"></span>Visit Gallery</button>
                         </div>
                     </form>
                 </div>

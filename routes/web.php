@@ -110,15 +110,19 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  */
 Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
 
-    Route::get('my_business','BusinessController@my_business')->name('my_business');
-    Route::get('list','BusinessController@index')->name('list');
-    Route::get('list/{b_category_slug}','BusinessController@list_by_category')->name('list_by_category');
-    Route::get('view/page/{business_id}','BusinessController@view_business_page')->name('view_business_page');
-    Route::get('create/page','BusinessController@create_business_page')->name('create_business_page');
-    Route::get('edit/page/{business}','BusinessController@edit_business_page')->name('edit_business_page');
-    Route::post('store/page','BusinessController@store_business_page')->name('store_business_page');
-    Route::post('update/page/{business}','BusinessController@update_business_page')->name('update_business_page');
-    Route::get('delete/page/{business}','BusinessController@delete_business_page')->name('delete_business_page');
+    Route::get('my_business', 'BusinessController@my_business')->name('my_business');
+    Route::get('list', 'BusinessController@index')->name('list');
+    Route::get('list/{b_category_slug}', 'BusinessController@list_by_category')->name('list_by_category');
+    Route::get('view/page/{business_id}', 'BusinessController@view_business_page')->name('view_business_page');
+    Route::get('create/page', 'BusinessController@create_business_page')->name('create_business_page');
+    Route::get('edit/page/{business}', 'BusinessController@edit_business_page')->name('edit_business_page');
+    Route::post('store/page', 'BusinessController@store_business_page')->name('store_business_page');
+    Route::post('update/page/{business}', 'BusinessController@update_business_page')->name('update_business_page');
+    Route::get('delete/page/{business}', 'BusinessController@delete_business_page')->name('delete_business_page');
+
+    Route::get('settings/gallery/{business_id}', 'BusinessController@gallery_settings')->name('gallery_settings');
+    Route::post('settings/store_business_image', 'BusinessController@store_business_image')->name('store_business_image');
+    Route::get('settings/delete_business_image/{image_id}', 'BusinessController@delete_business_image')->name('delete_business_image');
 
 });
 

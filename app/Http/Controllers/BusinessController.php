@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business;
 use App\BusinessCategory;
+use App\BusinessImages;
 use App\BusinessRecommendations;
 use App\Http\Requests\ValidateBusinessPage;
 use App\UserBusinessRecommendation;
@@ -116,6 +117,35 @@ class BusinessController extends Controller
     {
         $businesses = Business::whereCreatedBy(auth()->user()->id)->get();
         $categories = BusinessCategory::all();
-        return view('web.frontend.business.my_pages',compact('businesses','categories'));
+        return view('web.frontend.business.my_pages', compact('businesses', 'categories'));
+    }
+
+    public function gallery_settings($business_id)
+    {
+        $business_images = BusinessImages::whereBusinessId($business_id)->whereUserId(auth()->user()->id)->get();
+        return view('web.frontend.business.gallery_settings', compact('business_images', 'business_id'));
+    }
+
+    public function store_business_image(Request $request)
+    {
+        $this->validate($request, [
+            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+        ]);
+        if (!Storage::disk('public')->exists('business_pages/business-' . $request->input('business_id'))) {
+            Storage::disk('public')->makeDirectory('business_pages/business-' . $request->input('business_id'));
+        }
+        $path = storeImage($request->file('Picture'), 'business_pages/business-' . $request->input('business_id'));
+        $bi = new BusinessImages();
+        $bi->business_id = $request->input('business_id');
+        $bi->image_url = $path;
+        $bi->user_id = auth()->user()->id;
+        $bi->save();
+        return back()->withSuccess('Image Uploaded');
+    }
+
+    public function delete_business_image($image_id)
+    {
+        BusinessImages::whereId($image_id)->whereUserId(auth()->user()->id)->delete();
+        return back()->withSuccess('Image Removed');
     }
 }

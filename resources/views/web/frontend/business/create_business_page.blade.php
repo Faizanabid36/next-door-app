@@ -90,7 +90,7 @@
                         <br>
                         <br>
                         <div class="uk-flex">
-                            <button class="button primary">Publish My Page</button>
+                            <button class="button primary"><span class="uil-check"></span> Publish My Page</button>
                         </div>
                     </form>
                 </div>

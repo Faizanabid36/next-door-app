@@ -20,6 +20,9 @@
                     <ul>
                         <li> Edit Page <a href="{{route('business.edit_business_page',$business->id)}}">Here </a></li>
                     </ul>
+                    <ul>
+                        <li> Edit Gallery <a href="{{route('business.gallery_settings',$business->id)}}">Here </a></li>
+                    </ul>
                 @endif
             </div>
         </div>
@@ -34,35 +37,38 @@
                     </p>
                 </div>
                 <hr>
-                <div class="comments">
-                    <h3 class="text-dark">Add Review </h3>
-                    <ul>
-                        <li>
-                            <div class="comments-avatar">
-                                <img src="{{auth()->user()->avatar}}" alt="">
-                            </div>
-                            <div class="comment-content">
-                                <form class="uk-grid-small uk-grid" action="{{route('reviews.store_review')}}"
-                                      method="POST" uk-grid="">
-                                    @csrf
-                                    <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
-                                        <label class="uk-form-label">Your Review</label>
-                                        <textarea class="uk-textarea"
-                                                  required
-                                                  name="review"
-                                                  placeholder="Add your review here"
-                                                  style=" height:75px"></textarea>
-                                    </div>
-                                    <input type="hidden" name="business_id" value="{{$business->id}}">
-                                    <div class="uk-grid-margin uk-first-column">
-                                        <input type="submit" value="Add Review" class="button primary">
-                                    </div>
-                                </form>
+                @if(auth()->user()->id!=$business->created_by)
+                    <div class="comments">
+                        <h3 class="text-dark">Add Review </h3>
+                        <ul>
+                            <li>
+                                <div class="comments-avatar">
+                                    <img src="{{auth()->user()->avatar}}" alt="">
+                                </div>
+                                <div class="comment-content">
+                                    <form class="uk-grid-small uk-grid" action="{{route('reviews.store_review')}}"
+                                          method="POST" uk-grid="">
+                                        @csrf
+                                        <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
+                                            <label class="uk-form-label">Your Review</label>
+                                            <textarea class="uk-textarea"
+                                                      required
+                                                      name="review"
+                                                      placeholder="Add your review here"
+                                                      style=" height:75px"></textarea>
+                                        </div>
+                                        <input type="hidden" name="business_id" value="{{$business->id}}">
+                                        <div class="uk-grid-margin uk-first-column">
+                                            <input type="submit" value="Add Review" class="button primary">
+                                        </div>
+                                    </form>
 
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                @endif
+
                 <h2 class="uk-heading-line mt-lg-5"><span class="text-dark"> Reviews </span></h2>
                 <div class="comments mt-4">
                     <ul>
@@ -102,21 +108,27 @@
                         <img src="{{$business->display_banner}}" alt="{{$business->title}}">
                     </div>
                     <div class="course-intro-card-innr">
-                        @if(!$iRecommended)
-                            <div class="text-center">
-                                <a title="Recommend" href="{{route('reviews.add_recommendation',$business->id)}}" class="button danger mb-2">
-                                    <i class="uil-heart"></i>
-                                    Recommend Our Business Here
-                                </a>
-                            </div>
-                        @else
-                            <div class="text-center">
-                                <a title="Un-recommend" href="{{route('reviews.remove_recommendation',$business->id)}}" class="button primary mb-2">
-                                    <i class="uil-heart-sign"></i>
-                                    You've Already Recommended
-                                </a>
-                            </div>
+                        @if(auth()->user()->id!=$business->created_by)
+                            @if(!$iRecommended)
+                                <div class="text-center">
+                                    <a title="Recommend" href="{{route('reviews.add_recommendation',$business->id)}}"
+                                       class="button danger mb-2">
+                                        <i class="uil-heart"></i>
+                                        Recommend Our Business Here
+                                    </a>
+                                </div>
+                            @else
+                                <div class="text-center">
+                                    <a title="Un-recommend"
+                                       href="{{route('reviews.remove_recommendation',$business->id)}}"
+                                       class="button primary mb-2">
+                                        <i class="uil-heart-sign"></i>
+                                        You've Already Recommended
+                                    </a>
+                                </div>
+                            @endif
                         @endif
+
                         <h4 class=""> Business Info </h4>
                         <div class="uk-child-width-2-2 uk-grid-small uk-text-small" uk-grid>
                             <div>
