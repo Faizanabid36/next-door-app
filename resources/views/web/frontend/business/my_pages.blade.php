@@ -54,7 +54,7 @@
                             <h2 class="text-dark">
                                 You have not created any business page yet.
                             </h2>
-                            <a class="btn-link" href=""><span class="uil-location-arrow"><u>Create one now</u></span></a>
+                            <a class="btn-link" href="{{route('business.create_business_page')}}"><span class="uil-location-arrow"><u>Create one now</u></span></a>
                         @endif
                     </div>
                 </div>
