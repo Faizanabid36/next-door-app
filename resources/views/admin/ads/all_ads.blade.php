@@ -94,6 +94,8 @@
                                         <th>Logo</th>
                                         <th>Heading</th>
                                         <th>Text</th>
+                                        <th>Posted in neighbourhood</th>
+                                        <th>Posted for days</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
@@ -104,7 +106,9 @@
                                                 <img width="50" src="{{$ad->ad_media}}" alt="">
                                             </td>
                                             <td id="category-{{$ad->id}}">{{$ad->ad_heading}}</td>
-                                            <td id="category-{{$ad->id}}">{{$ad->text}}</td>
+                                            <td id="category-text-{{$ad->id}}">{{$ad->ad_text}}</td>
+                                            <td id="category-visibility-{{$ad->id}}">{{$ad->visible_to_neighbourhood}}</td>
+                                            <td id="category-duration-{{$ad->id}}">{{$ad->hide_after}}</td>
                                             <td>
                                                 <form action="{{route('ads.destroy',$ad->id)}}"
                                                       method="POST">
