@@ -20,7 +20,7 @@
         <span class="menu-title" data-i18n="Card">Ads</span></a>
     <ul class="menu-content">
         <li><a href="{{ route('ads.index')}}"><i class="feather icon-circle"></i><span
-                    class="menu-item" data-i18n="Basic">View Current Ads</span></a>
+                    class="menu-item" data-i18n="Basic">Manage Ads</span></a>
         </li>
         <li><a href="{{ route('ads.create')}}"><i class="feather icon-circle"></i><span
                     class="menu-item" data-i18n="Basic">Create Ad</span></a>
