@@ -93,9 +93,12 @@ class AdminAdController extends Controller
      * @param \App\AdminAd $adminAd
      * @return \Illuminate\Http\Response
      */
-    public function destroy(AdminAd $adminAd)
+    public function destroy($adminAd)
     {
-        //
+        $ad = AdminAd::find($adminAd);
+        \File::delete(public_path('storage/ads/' . basename($ad->ad_media)));
+        $ad->delete();
+        return back()->withDeleted('Deleted');
     }
 
     public function update_ad(ValidateAds $request)
