@@ -56,6 +56,27 @@
                                                                    placeholder="Enter Text" name="ad_text">
                                                         </div>
                                                     </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="text" id="category-column" class="form-control"
+                                                                   placeholder="Enter Postal Code Where You Want to Display Ad"
+                                                                   name="visible_to_neighbourhood">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="number" id="category-column"
+                                                                   class="form-control"
+                                                                   placeholder="Visible for Days"
+                                                                   name="hide_after">
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-6 col-12">
+                                                        <div class="form-label-group">
+                                                            <input type="file" id="category-column" class="form-control"
+                                                                   placeholder="Enter Text" name="Picture">
+                                                        </div>
+                                                    </div>
                                                     <div class="col-12">
                                                         <button type="submit" class="btn btn-primary mr-1 mb-1">
                                                             Create Ad
