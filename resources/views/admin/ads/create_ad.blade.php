@@ -40,7 +40,7 @@
                                                 <strong>Success</strong> Ad Created Successfully
                                             </div>
                                         @endif
-                                        <form class="form" action="{{ route('admin.add_category') }}" method="POST">
+                                        <form class="form" action="{{ route('ads.store') }}" enctype="multipart/form-data" method="POST">
                                             {{ csrf_field() }}
                                             <div class="form-body">
                                                 <div class="row">
@@ -67,6 +67,7 @@
                                                         <div class="form-label-group">
                                                             <input type="number" id="category-column"
                                                                    class="form-control"
+                                                                   min="0"
                                                                    placeholder="Visible for Days"
                                                                    name="hide_after">
                                                         </div>

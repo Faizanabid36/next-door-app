@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\AdminAd;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class AdminAdController extends Controller
 {
@@ -36,7 +37,21 @@ class AdminAdController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'Picture' => 'required|image|mimes:jpeg,png,jpg,svg|max:2048',
+            'hide_after' => 'required',
+            'visible_to_neighbourhood' => 'required',
+            'ad_text' => 'required',
+            'ad_heading' => 'required'
+        ]);
+        if (!Storage::disk('public')->exists('ads'))
+            Storage::disk('public')->makeDirectory('ads');
+        $request->merge([
+            'ad_media' => storeImage($request->file('Picture'), 'ads'),
+            'user_id' => auth()->user()->id
+        ]);
+        AdminAd::create($request->except('_token', 'Picture'));
+        return back()->withCreated('Ad Created Successfully');
     }
 
     /**
