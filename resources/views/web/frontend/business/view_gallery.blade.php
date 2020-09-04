@@ -14,7 +14,7 @@
                     style="border-radius: 25px;  overflow: hidden;" uk-lightbox="animation: scale" uk-grid>
                     @foreach($gallery_images as $img)
                         <div>
-                            <a href="{{asset($img->image_url)}}" data-caption="Image caption">
+                            <a href="{{asset($img->image_url)}}" data-caption="{{$img->business->title}}">
                                 <div class="photo-card" data-src="{{asset($img->image_url)}}" uk-img>
                                     <div class="photo-card-content">
                                         <div>
