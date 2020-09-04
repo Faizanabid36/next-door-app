@@ -22,8 +22,8 @@
         <li><a href="{{ route('admin.add_category')}}"><i class="feather icon-circle"></i><span
                     class="menu-item" data-i18n="Basic">View Current Ads</span></a>
         </li>
-        <li><a href="{{ route('admin.view_category')}}"><i class="feather icon-circle"></i><span
-                    class="menu-item" data-i18n="Basic">Ads List</span></a>
+        <li><a href="{{ route('ads.create')}}"><i class="feather icon-brand-pagelines"></i><span
+                    class="menu-item" data-i18n="Basic">Create Ad</span></a>
         </li>
 
     </ul>

@@ -25,6 +25,7 @@ class AdminAdController extends Controller
     public function create()
     {
         //
+        if (auth()->user()->admin) return view('admin.ads.create_ad');
     }
 
     /**
