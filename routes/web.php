@@ -130,6 +130,7 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
  * -----------------------------
  */
 Route::resource('ads', 'AdminAdController')->middleware('auth');
+Route::post('update_ad','AdminAdController@update_ad')->middleware('auth')->name('ads.update_ad');
 
 
 /**

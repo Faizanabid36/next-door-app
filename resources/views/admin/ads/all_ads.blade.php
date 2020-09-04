@@ -32,7 +32,7 @@
 
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{route('ads.update',1)}}" method="POST"
+                                    <form class="form" action="{{route('ads.update_ad')}}" method="POST"
                                           enctype="multipart/form-data">
                                         {{ csrf_field() }}
                                         <div class="form-body">
@@ -53,14 +53,14 @@
                                                                placeholder="Visibility Duration"
                                                                name="hide_after">
 
-                                                        <input type="file" id="category-column"
+                                                        <input type="file" id="category-column5"
                                                                class="form-control mt-4" name="Picture">
                                                     </div>
                                                 </div>
 
                                                 <div class="col-12">
                                                     <button type="submit" class="btn btn-primary mr-1 mb-1">Update
-                                                        Category
+                                                        Ad
                                                     </button>
                                                 </div>
                                             </div>
@@ -145,6 +145,8 @@
             $(".overlay-bg").addClass("show");
             $('#category-column').val(ad.ad_heading);
             $('#category-column2').val(ad.ad_text);
+            $('#category-column3').val(ad.visible_to_neighbourhood);
+            $('#category-column4').val(ad.hide_after);
             $('#category-column-id').val(ad.id)
         }
     </script>
