@@ -109,7 +109,6 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * ----------------------------
  */
 Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
-
     Route::get('my_business', 'BusinessController@my_business')->name('my_business');
     Route::get('list', 'BusinessController@index')->name('list');
     Route::get('list/{b_category_slug}', 'BusinessController@list_by_category')->name('list_by_category');
@@ -119,24 +118,30 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
     Route::post('store/page', 'BusinessController@store_business_page')->name('store_business_page');
     Route::post('update/page/{business}', 'BusinessController@update_business_page')->name('update_business_page');
     Route::get('delete/page/{business}', 'BusinessController@delete_business_page')->name('delete_business_page');
-
     Route::get('settings/gallery/{business_id}', 'BusinessController@gallery_settings')->name('gallery_settings');
     Route::get('view/gallery/{business_id}', 'BusinessController@view_gallery')->name('view_gallery');
     Route::post('settings/store_business_image', 'BusinessController@store_business_image')->name('store_business_image');
     Route::get('settings/delete_business_image/{image_id}', 'BusinessController@delete_business_image')->name('delete_business_image');
 
 });
+/**
+ * -----------------------------
+ * Admin Ads Routes
+ * -----------------------------
+ */
+Route::resource('ads', 'AdminAdController')->middleware('auth');
+
 
 /**
  *-----------------------------
  * Reviews Routes
  * ----------------------------
  */
-Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function(){
-    Route::post('store_review','UserBusinessRecommendationController@store')->name('store_review');
-    Route::get('delete_review/{id}','UserBusinessRecommendationController@delete')->name('delete_review');
-    Route::get('add_recommendation/{id}','UserBusinessRecommendationController@add_recommendation')->name('add_recommendation');
-    Route::get('remove_recommendation/{id}','UserBusinessRecommendationController@remove_recommendation')->name('remove_recommendation');
+Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function () {
+    Route::post('store_review', 'UserBusinessRecommendationController@store')->name('store_review');
+    Route::get('delete_review/{id}', 'UserBusinessRecommendationController@delete')->name('delete_review');
+    Route::get('add_recommendation/{id}', 'UserBusinessRecommendationController@add_recommendation')->name('add_recommendation');
+    Route::get('remove_recommendation/{id}', 'UserBusinessRecommendationController@remove_recommendation')->name('remove_recommendation');
 });
 
 
