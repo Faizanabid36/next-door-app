@@ -16,6 +16,8 @@ class AdminAdController extends Controller
     public function index()
     {
         //
+        $ads = AdminAd::all();
+        return view('admin.ads.all_ads',compact('ads'));
     }
 
     /**
