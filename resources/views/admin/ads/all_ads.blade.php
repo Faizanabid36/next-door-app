@@ -40,21 +40,25 @@
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="hidden" id="category-column-id" name="id">
-                                                        <input type="text" id="category-column" class="form-control"
+                                                        <input type="text" id="category-column"
+                                                               class="form-control mb-1"
                                                                placeholder="Enter Ad Heading"
                                                                name="ad_heading">
-                                                        <input type="text" id="category-column2" class="form-control"
+                                                        <input type="text" id="category-column2"
+                                                               class="form-control mt-1 mb-1"
                                                                placeholder="Enter Ad Text"
                                                                name="ad_text">
-                                                        <input type="text" id="category-column3" class="form-control"
+                                                        <input type="text" id="category-column3"
+                                                               class="form-control mt-1 mb-1"
                                                                placeholder="Post in neighbourhood"
                                                                name="visible_to_neighbourhood">
-                                                        <input type="text" id="category-column4" class="form-control"
+                                                        <input type="text" id="category-column4"
+                                                               class="form-control mt-1 mb-1"
                                                                placeholder="Visibility Duration"
                                                                name="hide_after">
 
                                                         <input type="file" id="category-column5"
-                                                               class="form-control mt-4" name="Picture">
+                                                               class="form-control mt-1 mb-1" name="Picture">
                                                     </div>
                                                 </div>
 
@@ -73,7 +77,7 @@
                         <div class="card-body">
                             @if(Session::has('deleted'))
                                 <div class="alert alert-primary mb-2" role="alert">
-                                    <strong>Success</strong> Category Deleted Successfully
+                                    <strong>Success</strong> Ad Deleted Successfully
                                 </div>
                             @endif
                             @if(Session::has('error'))
@@ -81,9 +85,14 @@
                                     <strong>Error</strong> This Category has Sub-categories. Delete Sub-categories First
                                 </div>
                             @endif
+                            @if(Session::has('errors'))
+                                <div class="alert alert-danger mb-2" role="alert">
+                                    <strong>Error</strong> {{Session::get('errors')->first()}}
+                                </div>
+                            @endif
                             @if(Session::has('updated'))
                                 <div class="alert alert-primary mb-2" role="alert">
-                                    <strong>Success</strong> Category Updated Successfully
+                                    <strong>Success</strong> Ad Updated Successfully
                                 </div>
                         @endif
                         <!-- Table with outer spacing -->

@@ -146,7 +146,7 @@ class BusinessController extends Controller
     public function delete_business_image($image_id)
     {
         $bi = BusinessImages::find($image_id);
-        $x = \File::delete(public_path('storage/business_pages/business-' . $bi->business_id . '/business_pages/' . basename($bi->image_url)));
+        \File::delete(public_path('storage/business_pages/business-' . $bi->business_id . '/business_pages/' . basename($bi->image_url)));
         $bi->delete();
         return back()->withSuccess('Image Removed');
     }
