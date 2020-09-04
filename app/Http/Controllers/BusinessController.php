@@ -153,8 +153,7 @@ class BusinessController extends Controller
 
     public function view_gallery($business_id)
     {
-//        return BusinessImages::whereBusinessId($business_id)->with('business')->get();
-        $gallery_images = BusinessImages::whereBusinessId($business_id)->latest()->get();
+        $gallery_images = BusinessImages::whereBusinessId($business_id)->latest()->get()    ;
         return view('web.frontend.business.view_gallery', compact('gallery_images'));
     }
 }
