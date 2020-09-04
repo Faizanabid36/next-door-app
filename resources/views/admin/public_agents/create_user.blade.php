@@ -50,7 +50,7 @@
                                                                 <h5 class="mb-1"> <a class=" d-flex " id="account-tab" data-toggle="tab">
                                                                     <i class="feather icon-user mr-25"></i><span class="d-none d-sm-block">Username</span>
                                                                 </a></h5>
-                                                                <input type="text" name="name" class="form-control birthdate-picker" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="Username" data-validation-required-message="This birthdate field is required">
+                                                                <input type="text" name="name" class="form-control" class="form-control @error('name') is-invalid @enderror" name="name" value="{{ old('name') }}" required placeholder="Username" data-validation-required-message="This birthdate field is required">
                                                             </div>
                                                         </div>
                                                     </div>
@@ -71,68 +71,6 @@
                                                         <input type="password"  class="form-control" name="password" placeholder="Password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="new-password">
                                                     </div>
                                                 </div>
-                                                 <div class="form-group">
-                                                    <h5 class="mb-1"> <a class=" d-flex " id="account-tab" data-toggle="tab">
-                                                        <i class="feather icon-users mr-25"></i><span class="d-none d-sm-block">Gender</span>
-                                                    </a></h5>
-                                                    <ul class="list-unstyled mb-0">
-                                                        <li class="d-inline-block mr-2">
-                                                            <fieldset>
-                                                                <div class="vs-radio-con">
-                                                                    <input id="male" type="radio" name="gender" value="0" {{ (old('sex') == 'male') ? 'checked' : '' }} >
-                                                                    <span class="vs-radio">
-                                                                        <span class="vs-radio--border"></span>
-                                                                        <span class="vs-radio--circle"></span>
-                                                                    </span>
-                                                                    Male
-                                                                </div>
-                                                            </fieldset>
-                                                        </li>
-                                                        <li class="d-inline-block mr-2">
-                                                            <fieldset>
-                                                                <div class="vs-radio-con">
-                                                                    <input  id="female" type="radio" name="gender" value="1" {{ (old('sex') == 'female') ? 'checked' : '' }}>
-                                                                    <span class="vs-radio">
-                                                                        <span class="vs-radio--border"></span>
-                                                                        <span class="vs-radio--circle"></span>
-                                                                    </span>
-                                                                    Female
-                                                                </div>
-                                                            </fieldset>
-                                                        </li>
-
-                                                    </ul>
-                                                </div>
-                                                {{-- <div class="form-group">
-                                                    <label>Contact Options</label>
-                                                    <ul class="list-unstyled mb-0">
-                                                        <li class="d-inline-block mr-2">
-                                                            <fieldset>
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" checked name="customCheck1" id="customCheck1">
-                                                                    <label class="custom-control-label" for="customCheck1">Email</label>
-                                                                </div>
-                                                            </fieldset>
-                                                        </li>
-                                                        <li class="d-inline-block mr-2">
-                                                            <fieldset>
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" checked name="customCheck2" id="customCheck2">
-                                                                    <label class="custom-control-label" for="customCheck2">Message</label>
-                                                                </div>
-                                                            </fieldset>
-                                                        </li>
-                                                        <li class="d-inline-block mr-2">
-                                                            <fieldset>
-                                                                <div class="custom-control custom-checkbox">
-                                                                    <input type="checkbox" class="custom-control-input" name="customCheck3" id="customCheck3">
-                                                                    <label class="custom-control-label" for="customCheck3">Phone</label>
-                                                                </div>
-                                                            </fieldset>
-                                                        </li>
-                                                    </ul>
-                                                </div> --}}
-
                                             </div>
                                             <div class="col-12 col-sm-6">
 
