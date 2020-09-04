@@ -37,6 +37,13 @@
                     </p>
                 </div>
                 <hr>
+                <div>
+                    <button class="button primary transition-3d-hover">
+                        <span class="uil-image"></span>
+                        <a href="{{route('business.view_gallery',$business->id)}}"
+                           class="text-white ml-30">View Media Gallery</a>
+                    </button>
+                </div>
                 @if(auth()->user()->id!=$business->created_by)
                     <div class="comments">
                         <h3 class="text-dark">Add Review </h3>
@@ -78,17 +85,19 @@
                                     <div class="comments-avatar"><img src="{{$review->user->avatar}}" alt="">
                                     </div>
                                     <div class="comment-content">
-                                        <div class="comment-by">{{$review->user->name}}
+                                        <div class="comment-by font-weight-bold">{{$review->user->name}}
                                         </div>
-                                        <p>{{$review->review}}
-                                            @if($review->user->id==auth()->user()->id)
-                                                <a href="{{route('reviews.delete_review',$review->id)}}">
-                                                    <span class="text-danger uil-trash"></span>
-                                                </a>
-                                            @endif
-                                        </p>
+                                        <span class="font-weight-bold">{{$review->review}}</span>
+                                        @if($review->user->id==auth()->user()->id)
+                                            <a href="{{route('reviews.delete_review',$review->id)}}">
+                                                <span class="text-danger uil-trash"></span>
+                                            </a>
+                                        @endif
+                                        <br>
+                                        <sub class="uk-text-small">{{$review->created_at->diffForHumans()}}</sub>
                                     </div>
                                 </li>
+                                <hr>
                             @endforeach
                         @else
                             <li class="text-dark">

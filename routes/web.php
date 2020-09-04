@@ -121,6 +121,7 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
     Route::get('delete/page/{business}', 'BusinessController@delete_business_page')->name('delete_business_page');
 
     Route::get('settings/gallery/{business_id}', 'BusinessController@gallery_settings')->name('gallery_settings');
+    Route::get('view/gallery/{business_id}', 'BusinessController@view_gallery')->name('view_gallery');
     Route::post('settings/store_business_image', 'BusinessController@store_business_image')->name('store_business_image');
     Route::get('settings/delete_business_image/{image_id}', 'BusinessController@delete_business_image')->name('delete_business_image');
 

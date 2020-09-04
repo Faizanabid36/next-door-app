@@ -145,7 +145,15 @@ class BusinessController extends Controller
 
     public function delete_business_image($image_id)
     {
-        BusinessImages::whereId($image_id)->whereUserId(auth()->user()->id)->delete();
+        $bi = BusinessImages::find($image_id);
+        $x = \File::delete(public_path('storage/business_pages/business-' . $bi->business_id . '/business_pages/' . basename($bi->image_url)));
+        $bi->delete();
         return back()->withSuccess('Image Removed');
+    }
+
+    public function view_gallery($business_id)
+    {
+        $gallery_images = BusinessImages::whereBusinessId($business_id)->latest()->get();
+        return view('web.frontend.business.view_gallery', compact('gallery_images'));
     }
 }

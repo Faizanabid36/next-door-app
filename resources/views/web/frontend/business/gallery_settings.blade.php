@@ -72,12 +72,12 @@
                                     </p>
                                 </div>
                             @endforeach
-                        @else
-                            <h2>
-                                You haven't uploaded any picture yet
-                            </h2>
-                        @endif
                     </div>
+                    @else
+                        <h2>
+                            You haven't uploaded any picture yet
+                        </h2>
+                    @endif
                 </div>
             </div>
 
