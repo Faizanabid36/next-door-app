@@ -32,20 +32,29 @@
 
                             <div class="card-content">
                                 <div class="card-body">
-                                    <form class="form" action="{{route('ads.update')}}" method="POST"
+                                    <form class="form" action="{{route('ads.update',1)}}" method="POST"
                                           enctype="multipart/form-data">
                                         {{ csrf_field() }}
-                                        <input type="hidden" value="PUT" name="_method">
                                         <div class="form-body">
                                             <div class="row">
                                                 <div class="col-md-12 col-12">
                                                     <div class="form-label-group">
                                                         <input type="hidden" id="category-column-id" name="id">
                                                         <input type="text" id="category-column" class="form-control"
-                                                               placeholder="Enter Category Name"
-                                                               name="b_category_title">
+                                                               placeholder="Enter Ad Heading"
+                                                               name="ad_heading">
+                                                        <input type="text" id="category-column2" class="form-control"
+                                                               placeholder="Enter Ad Text"
+                                                               name="ad_text">
+                                                        <input type="text" id="category-column3" class="form-control"
+                                                               placeholder="Post in neighbourhood"
+                                                               name="visible_to_neighbourhood">
+                                                        <input type="text" id="category-column4" class="form-control"
+                                                               placeholder="Visibility Duration"
+                                                               name="hide_after">
+
                                                         <input type="file" id="category-column"
-                                                               class="form-control mt-4" name="icon">
+                                                               class="form-control mt-4" name="Picture">
                                                     </div>
                                                 </div>
 
@@ -83,30 +92,28 @@
                                     <thead>
                                     <tr>
                                         <th>Logo</th>
-                                        <th>Name</th>
+                                        <th>Heading</th>
+                                        <th>Text</th>
                                         <th>Action</th>
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach ($categories as $num)
+                                    @foreach ($ads as $ad)
                                         <tr>
                                             <td>
-                                                <img width="50" src="{{$num->b_category_icon}}" alt="">
+                                                <img width="50" src="{{$ad->ad_media}}" alt="">
                                             </td>
-                                            <td id="category-{{$num->id}}">{{$num->b_category_title}}</td>
+                                            <td id="category-{{$ad->id}}">{{$ad->ad_heading}}</td>
+                                            <td id="category-{{$ad->id}}">{{$ad->text}}</td>
                                             <td>
-                                                <form action="{{route('admin.business_categories.destroy',$num->id)}}"
+                                                <form action="{{route('ads.destroy',$ad->id)}}"
                                                       method="POST">
                                                     @csrf
-                                                    <span class="" onclick="openEdit({{$num}})">
+                                                    <span class="" onclick="openEdit({{$ad}})">
                                                         <i class="feather icon-edit"></i>
                                                     </span>
                                                     <input type="hidden" name="_method" value="DELETE">
                                                     <input type="submit" value="Delete" class="btn btn-danger"/>
-                                                    {{--                                                    <span--}}
-                                                    {{--                                                        id="delete-item-" class="action-delete">--}}
-                                                    {{--                                                        <i class="feather icon-trash"></i>--}}
-                                                    {{--                                                    </span>--}}
                                                 </form>
                                             </td>
                                         </tr>
@@ -129,11 +136,12 @@
 @endsection
 @section('footer_scripts')
     <script>
-        function openEdit(category) {
+        function openEdit(ad) {
             $(".add-new-data").addClass("show");
             $(".overlay-bg").addClass("show");
-            $('#category-column').val(category.b_category_title);
-            $('#category-column-id').val(category.id)
+            $('#category-column').val(ad.ad_heading);
+            $('#category-column2').val(ad.ad_text);
+            $('#category-column-id').val(ad.id)
         }
     </script>
 @endsection
