@@ -91,6 +91,9 @@ body{
 .m-header-messaging{
   background: #fff;
 	box-shadow: 0px 5px 6px rgba(0, 0, 0, 0.06);
+    border-bottom: 5px #377dff solid;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 4px;
 }
 .m-header svg{
 	margin: 0px 8px;
@@ -184,7 +187,7 @@ body{
 .messenger-list-item td b{
 	float: right;
 	color: #fff;
-	padding: 0px 4px;
+	padding: 3px 7px;
 	border-radius: 20px;
 	font-size: 13px;
 }

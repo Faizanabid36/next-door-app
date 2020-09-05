@@ -16,7 +16,7 @@
             <input type="text" class="messenger-search" placeholder="Search" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
-                <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
+                <a href="#" @if($route == 'user') class="active-tab font-weight-bold" @endif data-view="users">
                     <span class="far fa-user"></span> Contacts List</a>
 {{--                <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">--}}
 {{--                    <span class="fas fa-users"></span> Groups</a>--}}
@@ -71,9 +71,9 @@
                 </div>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#" class="add-to-favorite"><i class="fas fa-star"></i></a>
-                    <a href="{{ route('dashboard') }}"><i class="fas fa-home"></i></a>
-                    <a href="#" class="show-infoSide"><i class="fas fa-info-circle"></i></a>
+                    <a href="#" class="add-to-favorite mt-1"><i class="fas fa-star fa-5x"></i></a>
+                    <a class="ml-4" href="{{ route('dashboard') }}"><img src="{{asset('salika/assets/images/icons/home.png')}}" width="25"></a>
+                    <a href="#" class="show-infoSide ml-4 mr-2"><img src="{{asset('salika/assets/images/icons/info.png')}}" width="25"></a>
                 </nav>
             </nav>
         </div>

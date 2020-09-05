@@ -20,8 +20,7 @@
 {{-- -------------------- All users/group list -------------------- --}}
 @if($get == 'users')
 <table
-    style="background-color: {{$unseenCounter > 0 ? "#e8f0fe" : ''}};
-        border-radius:15px"
+    style="border-radius:15px"
     class="messenger-list-item border-darker @if($user->id == $id && $id != "0") m-list-active @endif" data-contact="{{ $user->id }}">
     <tr data-action="0">
         {{-- Avatar side --}}
