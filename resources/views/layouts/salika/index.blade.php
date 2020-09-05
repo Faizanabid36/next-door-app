@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Salika">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     @yield('meta')
     <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
     {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
@@ -70,6 +71,8 @@
 <script src="{{asset('salika/assets/js/jquery-3.3.1.min.js?v='.now())}}"></script>
 <script src="{{asset('salika/assets/js/simplebar.js?v='.now())}}"></script>
 <script src="{{asset('salika/assets/js/main.js?v='.now())}}"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
 
 {{--<div id="fb-root"></div>--}}
@@ -85,6 +88,15 @@
 {{--        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"--}}
 {{--        nonce="GLWZhynL"></script>--}}
 @yield('modal')
+
+
+<script>
+    window.Echo.private('private-chatify')
+        .listen('messaging', (e) => {
+            //push to feed variable
+            console.log(e)
+        });
+</script>
 
 </body>
 </html>
