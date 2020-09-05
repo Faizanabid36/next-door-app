@@ -35,7 +35,6 @@
         </td>
         {{-- center side --}}
         <td>
-
         <p data-id="{{ $type.'_'.$user->id }}" class="text-dark" style="font-size: {{$unseenCounter > 0 ? "17px" : '16px'}}">
             {{ strlen($user->name) > 12 ? trim(substr(ucfirst($user->name),0,12)).'..' : ucfirst($user->name) }}
             <span class="text-dark font-weight-normal">{{ $lastMessage->created_at->diffForHumans() }}</span></p>
