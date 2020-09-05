@@ -13,7 +13,7 @@
                 </nav>
             </nav>
             {{-- Search input --}}
-            <input type="text" class="messenger-search" placeholder="Search" />
+            <input type="text" class="messenger-search text-dark" placeholder="Search Neighbour" />
             {{-- Tabs --}}
             <div class="messenger-listView-tabs">
                 <a href="#" @if($route == 'user') class="active-tab font-weight-bold" @endif data-view="users">
@@ -26,7 +26,7 @@
         <div class="m-body">
            {{-- Lists [Users/Group] --}}
            {{-- ---------------- [ User Tab ] ---------------- --}}
-           <div class="@if($route == 'user') show @endif messenger-tab app-scroll" data-view="users">
+           <div class="@if($route == 'user') show @endif messenger-tab app-scroll mt-4" data-view="users">
 
                {{-- Favorites --}}
                <p class="messenger-title text-dark">Favorites</p>
