@@ -78,7 +78,7 @@
             </nav>
         </div>
         {{-- Internet connection --}}
-        <div class="internet-connection">
+        <div class="internet-connection mt-2">
             <span class="ic-connected">Connected</span>
             <span class="ic-connecting">Connecting...</span>
             <span class="ic-noInternet">No internet access</span>
