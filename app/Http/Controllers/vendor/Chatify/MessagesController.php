@@ -30,6 +30,9 @@ class MessagesController extends Controller
                 'name' => Auth::user()->name
             ]
         ]);
+
+
+        
         // check if user authorized
         if (Auth::check()) {
             return Chatify::pusherAuth(
