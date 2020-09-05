@@ -84,9 +84,11 @@
             <span class="ic-noInternet">No internet access</span>
         </div>
         {{-- Messaging area --}}
-        <div class="m-body app-scroll">
+        <div class="m-body app-scroll" style="background: rgba(154, 161, 170, 0.13)">
             <div class="messages">
-                <p class="message-hint" style="margin-top: calc(30% - 126.2px);"><span>Please select a chat to start messaging</span></p>
+                <h3 class="message-hint" style="margin-top: calc(30% - 126.2px);">
+                    <span class="text-dark">Please select a chat to start messaging</span>
+                </h3>
             </div>
             {{-- Typing indicator --}}
             <div class="typing-indicator">
