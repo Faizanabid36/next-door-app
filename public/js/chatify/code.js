@@ -337,6 +337,10 @@ function IDinfo(id, type) {
  * Send message function
  *-------------------------------------------------------------
  */
+
+
+
+
 function sendMessage() {
     temporaryMsgId += 1;
     let tempID = 'temp_' + temporaryMsgId;
