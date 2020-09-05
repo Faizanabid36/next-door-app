@@ -26,8 +26,9 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
 Route::group(['middleware' => 'auth' ], function(){
     Route::get('/home', 'RouteViewsController@login_page')->name('login');
     Route::get('/news_feed', 'RouteViewsController@feed')->name('feed');
-    Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
-    Route::get('/admin-dashboard' , 'RouteViewsController@main_dashboard')->name('admin-dashboard');
+    Route::get('/dashboard', 'RouteViewsController@user_dashboard')->name('dashboard');
+    Route::get('/my-dashboard', 'RouteViewsController@user_dashboard')->name('home');
+    Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
     Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
@@ -108,9 +109,44 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * Business page Routes
  * ----------------------------
  */
-Route::name('business.')->prefix('business')->group(function (){
-    Route::get('list','BusinessController@index')->name('list');
+Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
+    Route::get('my_business', 'BusinessController@my_business')->name('my_business');
+    Route::get('list', 'BusinessController@index')->name('list');
+    Route::get('list/{b_category_slug}', 'BusinessController@list_by_category')->name('list_by_category');
+    Route::get('view/page/{business_id}', 'BusinessController@view_business_page')->name('view_business_page');
+    Route::get('create/page', 'BusinessController@create_business_page')->name('create_business_page');
+    Route::get('edit/page/{business}', 'BusinessController@edit_business_page')->name('edit_business_page');
+    Route::post('store/page', 'BusinessController@store_business_page')->name('store_business_page');
+    Route::post('update/page/{business}', 'BusinessController@update_business_page')->name('update_business_page');
+    Route::get('delete/page/{business}', 'BusinessController@delete_business_page')->name('delete_business_page');
+    Route::get('settings/gallery/{business_id}', 'BusinessController@gallery_settings')->name('gallery_settings');
+    Route::get('view/gallery/{business_id}', 'BusinessController@view_gallery')->name('view_gallery');
+    Route::post('settings/store_business_image', 'BusinessController@store_business_image')->name('store_business_image');
+    Route::get('settings/delete_business_image/{image_id}', 'BusinessController@delete_business_image')->name('delete_business_image');
+
 });
+/**
+ * -----------------------------
+ * Admin Ads Routes
+ * -----------------------------
+ */
+Route::resource('ads', 'AdminAdController')->middleware('auth');
+Route::post('update_ad','AdminAdController@update_ad')->middleware('auth')->name('ads.update_ad');
+
+
+/**
+ *-----------------------------
+ * Reviews Routes
+ * ----------------------------
+ */
+Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function () {
+    Route::post('store_review', 'UserBusinessRecommendationController@store')->name('store_review');
+    Route::get('delete_review/{id}', 'UserBusinessRecommendationController@delete')->name('delete_review');
+    Route::get('add_recommendation/{id}', 'UserBusinessRecommendationController@add_recommendation')->name('add_recommendation');
+    Route::get('remove_recommendation/{id}', 'UserBusinessRecommendationController@remove_recommendation')->name('remove_recommendation');
+});
+
+
 
 
 
@@ -120,6 +156,7 @@ Route::name('business.')->prefix('business')->group(function (){
  * Login-Register Routes
  * ---------------------------------
  */
+
 Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
 Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');

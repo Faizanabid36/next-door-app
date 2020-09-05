@@ -12,21 +12,23 @@
 <li class=" nav-item">
     <a href="#">
         <i class="feather icon-user-check"></i>
-        <span class="menu-title" data-i18n="Email">Manage Ads</span>
-    </a>
-</li>
-<li class=" nav-item">
-    <a href="#">
-        <i class="feather icon-user-check"></i>
-        <span class="menu-title" data-i18n="Email">Post New Ads</span>
-    </a>
-</li>
-<li class=" nav-item">
-    <a href="#">
-        <i class="feather icon-user-check"></i>
         <span class="menu-title" data-i18n="Email">Customer Queries</span>
     </a>
 </li>
+<li class=" nav-item"><a href="#">
+        <i class="feather icon-credit-card"></i>
+        <span class="menu-title" data-i18n="Card">Ads</span></a>
+    <ul class="menu-content">
+        <li><a href="{{ route('ads.index')}}"><i class="feather icon-circle"></i><span
+                    class="menu-item" data-i18n="Basic">View Current Ads</span></a>
+        </li>
+        <li><a href="{{ route('ads.create')}}"><i class="feather icon-circle"></i><span
+                    class="menu-item" data-i18n="Basic">Create Ad</span></a>
+        </li>
+
+    </ul>
+</li>
+
 <li class=" nav-item"><a href="#">
         <i class="feather icon-credit-card"></i>
         <span class="menu-title" data-i18n="Card">Sale & Free Categories</span></a>
@@ -40,6 +42,7 @@
 
     </ul>
 </li>
+
 
 <li class=" nav-item"><a href="#">
         <i class="feather icon-credit-card"></i>

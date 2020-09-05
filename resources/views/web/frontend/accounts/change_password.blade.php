@@ -24,45 +24,27 @@
 
                 <div class="uk-card-default rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> Change Password </h5>
+                        <h5 class="mb-0 text-dark"> Change Password </h5>
                     </div>
                     <hr class="m-0">
-                    @if(Session::has('success'))
-                        <div class="bg-gradient-success shadow-success uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Success:</strong> {{Session::get('success')}}
-                        </div>
-                    @endif
-
-                    @if(Session::has('errors'))
-                        <div class="bg-gradient-danger shadow-danger uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Error:</strong> {{Session::get('errors')->first()}}
-                        </div>
-                    @endif
-                    @if(Session::has('error'))
-                        <div class="bg-gradient-danger shadow-danger uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Error:</strong> {{Session::get('error')}}
-                        </div>
-                    @endif
+                    @include('web.frontend.accounts.components.session_messages')
                     <form class=" p-4" novalidate method="POST"
                           enctype='multipart/form-data'
                           action="{{ action('UserController@changePassword',$user->id)}}">
                         @csrf
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Old Password </h5>
-                            <input required type="password" name="old_password" class="uk-input uk-form-small"
+                            <h5 class="uk-text-bold mb-2 text-dark"> Old Password </h5>
+                            <input required type="password" name="old_password" class="uk-input uk-form-small text-dark"
                                    placeholder="Old Password">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> New Password </h5>
-                            <input required type="password" name="new_password" class="uk-input uk-form-small"
+                            <h5 class="uk-text-bold mb-2 text-dark"> New Password </h5>
+                            <input required type="password" name="new_password" class="uk-input uk-form-small text-dark"
                                    placeholder="New Password">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Retype New Password </h5>
-                            <input required type="password" name="confirm_password" class="uk-input uk-form-small"
+                            <h5 class="uk-text-bold mb-2 text-dark"> Retype New Password </h5>
+                            <input required type="password" name="confirm_password" class="uk-input uk-form-small text-dark"
                                    placeholder="Confirm Password">
                         </div>
                         <br>

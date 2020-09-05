@@ -20,6 +20,72 @@
     }
 }
 
+.pagination {
+    display: flex;
+    /* 1 */
+    flex-wrap: wrap;
+    /* 2 */
+    margin-left: -20px;
+    /* 3 */
+    padding: 0;
+    list-style: none;
+    justify-content: center!important;
+}
+
+.pagination > * {
+    /* 1 */
+    flex: none;
+    /* 2 */
+    padding-left: 20px;
+    /* 3 */
+    position: relative;
+}
+/* Items
+ ========================================================================== */
+/*
+ * 1. Prevent gap if child element is `inline-block`, e.g. an icon
+ * 2. Style
+ */
+.pagination > * > * {
+    /* 1 */
+    display: block;
+    /* 2 */
+    transition: color 0.1s ease-in-out;
+    line-height: 1.25;
+    color: #77838f;
+    background-color: #fff;
+    border: 0 solid #77838f;
+    padding: 0.5rem 0.75rem;
+    border-radius: 5px;
+    font-weight: 600;
+}
+/* Hover + Focus */
+.pagination > * > :hover,
+.pagination > * > :focus {
+    text-decoration: none;
+    color: #1a73e8;
+    background-color: rgb(232, 240, 254);
+    border-color: rgba(9, 27, 18, 0.1);
+}
+/* Active */
+.pagination > .active > * {
+    text-decoration: none;
+    color: #ffffff;
+    background-color: #1a73e8;
+    border-color: #3e416d;
+}
+/* Disabled */
+.pagination > .disabled > * {
+    text-decoration: none;
+    color: #3e416d;
+    background-color: rgb(232, 240, 254);
+    border-color: rgba(12, 22, 39, 0.1);
+}
+.pagination span {
+    display: inline-flex;
+}
+
+
 .color-black{
     color: black !important;
 }

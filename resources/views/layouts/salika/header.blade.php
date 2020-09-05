@@ -46,38 +46,24 @@
                         <li class="list-footer"><a href="your-history.html"> Searches History </a>
                         </li>
                     </ul>
-
                 </div>
-
-
             </form>
         </div>
-
         <!-- user icons -->
         <div class="head_user">
             <!-- Message  notificiation dropdown -->
             <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
                 <img src="{{asset('salika/assets/images/icons/chat.svg')}}" alt=""> <span>4</span>
             </a>
-
             <!-- Message  notificiation dropdown -->
             <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
                  class="dropdown-notifications">
-
                 <!-- notification contents -->
                 <div class="dropdown-notifications-content" data-simplebar>
-
                     <!-- notivication header -->
                     <div class="dropdown-notifications-headline">
                         <h4>Messages</h4>
-{{--                        <a href="#">--}}
-{{--                            <i class="icon-feather-settings"--}}
-{{--                               uk-tooltip="title: Message settings ; pos: left"></i>--}}
-{{--                        </a>--}}
-
-{{--                        <input type="text" class="uk-input" placeholder="Search in Messages">--}}
                     </div>
-
                     <!-- notiviation list -->
                     <ul>
                         <li>
@@ -204,12 +190,7 @@
                     <!-- notivication header -->
                     <div class="dropdown-notifications-headline">
                         <h4>Notifications </h4>
-{{--                        <a href="#">--}}
-{{--                            <i class="icon-feather-settings"--}}
-{{--                               uk-tooltip="title: Notifications settings ; pos: left"></i>--}}
-{{--                        </a>--}}
                     </div>
-
                     <!-- notiviation list -->
                     <ul>
                         <li>
@@ -334,6 +315,8 @@
                     <hr class="m-0">
                     <ul class="dropdown-user-menu">
                         <li><a href="{{route('edit_profile')}}"> <i class="uil-cog"></i> Account Settings</a></li>
+                        </li>
+                        <li><a href="{{route('business.my_business')}}"> <i class="uil-document"></i> My Business Pages</a></li>
                         </li>
                         <li>
                             <a class="dropdown-item" href="{{ route('logout') }}"

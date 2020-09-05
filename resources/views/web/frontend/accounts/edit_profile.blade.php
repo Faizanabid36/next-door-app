@@ -12,15 +12,8 @@
                      uk-sticky="top:30 ; offset:100; media:@m ;bottom:true; animation: uk-animation-slide-top">
                     <ul>
                         <li class="uk-active"><a href="#"> <i class="uil-cog"></i> General </a></li>
-{{--                        <li><a href="#"> <i class="uil-user"></i> Profile </a></li>--}}
-{{--                        <li><a href="#"> <i class="uil-usd-circle"></i> Monetization</a></li>--}}
                         <li><a href="{{route('change-password')}}"> <i class="uil-unlock-alt"></i> Password </a></li>
                         <li><a href="{{route('user-extras')}}"> <i class="uil-info-circle"></i> User Extras</a></li>
-{{--                        <li><a href="#"> <i class="uil-scenery"></i> Avatar & Cover</a></li>--}}
-{{--                        <li><a href="#"> <i class="uil-shield-check"></i> Security</a></li>--}}
-{{--                        <li><a href="#"> <i class="uil-bolt"></i> Membarship</a></li>--}}
-{{--                        <li><a href="#"> <i class="uil-history"></i> Manage Sessions</a></li>--}}
-{{--                        <li><a href="#"> <i class="uil-trash-alt"></i> Delete account</a></li>--}}
                     </ul>
                 </nav>
 
@@ -30,28 +23,10 @@
 
                 <div class="uk-card-default rounded">
                     <div class="p-3">
-                        <h5 class="mb-0"> Update Profile info </h5>
+                        <h5 class="mb-0 text-dark"> Update Profile info </h5>
                     </div>
                     <hr class="m-0">
-                    @if(Session::has('success'))
-                        <div class="bg-gradient-success shadow-success uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Success:</strong> {{Session::get('success')}}
-                        </div>
-                    @endif
-
-                    @if(Session::has('errors'))
-                        <div class="bg-gradient-danger shadow-danger uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Error:</strong> {{Session::get('errors')->first()}}
-                        </div>
-                    @endif
-                    @if(Session::has('error'))
-                        <div class="bg-gradient-danger shadow-danger uk-light text-white" uk-alert>
-                            <a class="uk-alert-close" uk-close></a>
-                            <strong>Error:</strong> {{Session::get('error')}}
-                        </div>
-                    @endif
+                    @include('web.frontend.accounts.components.session_messages')
                     <form class="p-4" novalidate method="POST"
                           enctype='multipart/form-data'
                           action="{{action('UserController@updateuser',$user->id)}}">
@@ -75,7 +50,7 @@
                                            id="account-upload"
                                            hidden>
                                 </div>
-                                <p class="text-muted ml-75 mt-50"><small>Allowed JPG, GIF or
+                                <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
                                         PNG.
                                         Max
                                         size of
@@ -84,24 +59,24 @@
                             <hr class="mt-2">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Username </h5>
-                            <input value="{{$user->name}}" type="text" name="name" class="uk-input" placeholder="Username">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Username </h5>
+                            <input value="{{$user->name}}" type="text" name="name" class="uk-input text-dark" placeholder="Username">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Email Address </h5>
-                            <input value="{{$user->email}}" type="email" name="email" class="uk-input" placeholder="Email Address">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Email Address </h5>
+                            <input value="{{$user->email}}" type="email" name="email" class="uk-input text-dark" placeholder="Email Address">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Contact </h5>
-                            <input value="{{$user->contact}}" type="text" name="contact" class="uk-input" placeholder="Contact Number">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Contact </h5>
+                            <input value="{{$user->contact}}" type="text" name="contact" class="uk-input text-dark" placeholder="Contact Number">
                         </div>
                         <div class="mb-3">
-                            <h5 class="uk-text-bold mb-2"> Postal Code </h5>
-                            <input value="{{$user->postal}}" type="text" name="postal" class="uk-input" placeholder="Postal Code">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
+                            <input value="{{$user->postal}}" type="text" name="postal" class="uk-input text-dark" placeholder="Postal Code">
                         </div>
                         <div class="mb-1">
-                            <h5 class="uk-text-bold mb-2"> Address </h5>
-                            <input value="{{$user->address}}" type="text" readonly style="background-color: #f5f5f1;" name="address" class="uk-input" placeholder="Address">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Address </h5>
+                            <input value="{{$user->address}}" type="text" readonly style="background-color: #f5f5f1;" name="address" class="uk-input text-dark" placeholder="Address">
                         </div>
                         <br>
                         <br>

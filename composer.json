@@ -17,6 +17,7 @@
         "laravel/socialite": "^4.4",
         "laravel/tinker": "^2.0",
         "laravel/ui": "^2.0",
+        "munafio/chatify": "^1.0",
         "nickurt/laravel-postcodeapi": "^1.14"
     },
     "require-dev": {

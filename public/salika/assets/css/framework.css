@@ -3114,9 +3114,10 @@ select.uk-form-width-xsmall {
  * Note: Header and Footer are only implemented for the default style
  */
 .uk-card-default {
-    background: #F0F0F0;
+    /*background: #F0F0F0;*/
     color: #474747;
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+    /*box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);*/
+    box-shadow: lightgray 0px 0px 10px;
 }
 .uk-card-default .uk-card-title {
     color: #333;
@@ -6175,24 +6176,28 @@ ul.uk-nav-sub {
  */
 .uk-notification-message-primary {
     color: #1e87f0;
+    font-weight: 900;
 }
 /*
  * Success
  */
 .uk-notification-message-success {
     color: #32d296;
+    font-weight: 900;
 }
 /*
  * Warning
  */
 .uk-notification-message-warning {
     color: #faa05a;
+    font-weight: 900;
 }
 /*
  * Danger
  */
 .uk-notification-message-danger {
     color: #f0506e;
+    font-weight: 900;
 }
 /* ========================================================================
    Component: Tooltip
