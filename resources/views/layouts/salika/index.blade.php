@@ -91,11 +91,34 @@
 
 
 <script>
-    window.Echo.private('private-chatify')
-        .listen('messaging', (e) => {
-            //push to feed variable
-            console.log(e)
-        });
+    // Pusher.logToConsole = true;
+    var pusher = new Pusher("{{ config('chatify.pusher.key') }}", {
+        encrypted: true,
+        cluster: "{{ config('chatify.pusher.options.cluster') }}",
+        authEndpoint: '{{route("pusher.auth")}}',
+        auth: {
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        }
+    });
+    var channel = pusher.subscribe('private-chatify');
+    channel.bind('messaging', function (data) {
+        // console.info(data.from_id+' - '+data.to_id+'\n'+auth_id+' - '+messenger);
+        // if (data.from_id == messenger.split('_')[1] && data.to_id == auth_id) {
+        //     // remove message hint
+        //     $(".message-hint").remove();
+        //     // append message
+        //     messagesContainer.find('.messages').append(data.message);
+        //     // scroll to bottom
+        //     scrollBottom(messagesContainer);
+        //     // trigger seen event
+        //     makeSeen(true);
+        //     // remove unseen counter for the user from the contacts list
+        //     $('.messenger-list-item[data-contact=' + messenger.split('_')[1] + ']').find('tr>td>b').remove();
+        // }
+        console.log(data.message)
+    });
 </script>
 
 </body>

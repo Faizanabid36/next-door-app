@@ -1,5 +1,7 @@
 <?php
 
+use App\User;
+use Chatify\Http\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 //
@@ -165,8 +167,13 @@ Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallb
 
 
 
-Route::view('test','layouts.salika.index');
+//Route::view('test','layouts.salika.index');
 
 
+Route::get('/new',function (){
+    $userCollection = User::whereId(auth()->user()->id)->first();
+
+    return Message::whereToId(auth()->user()->id)->whereSeen(0)->get();
+});
 
 
