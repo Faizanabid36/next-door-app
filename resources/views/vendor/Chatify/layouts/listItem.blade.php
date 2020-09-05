@@ -19,7 +19,10 @@
 
 {{-- -------------------- All users/group list -------------------- --}}
 @if($get == 'users')
-<table class="messenger-list-item @if($user->id == $id && $id != "0") m-list-active @endif" data-contact="{{ $user->id }}">
+<table
+    style="background-color: {{$unseenCounter > 0 ? "#e8f0fe" : ''}};
+        border-radius:15px"
+    class="messenger-list-item border-darker @if($user->id == $id && $id != "0") m-list-active @endif" data-contact="{{ $user->id }}">
     <tr data-action="0">
         {{-- Avatar side --}}
         <td style="position: relative">
@@ -32,14 +35,16 @@
         </td>
         {{-- center side --}}
         <td>
-        <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
-            <span>{{ $lastMessage->created_at->diffForHumans() }}</span></p>
-        <span>
+
+        <p data-id="{{ $type.'_'.$user->id }}" class="text-dark" style="font-size: {{$unseenCounter > 0 ? "17px" : '16px'}}">
+            {{ strlen($user->name) > 12 ? trim(substr(ucfirst($user->name),0,12)).'..' : ucfirst($user->name) }}
+            <span class="text-dark font-weight-normal">{{ $lastMessage->created_at->diffForHumans() }}</span></p>
+        <span class="font-weight-bold {{$unseenCounter > 0 ? "text-dark" : ''}}"
+              style="font-size:{{$unseenCounter > 0 ? "14px" : '13px'}}">
             {{-- Last Message user indicator --}}
             {!!
                 $lastMessage->from_id == Auth::user()->id
-                ? '<span class="lastMessageIndicator">You :</span>'
+                ? '<span class="font-weight-bold">You :</span>'
                 : ''
             !!}
             {{-- Last message body --}}
@@ -74,7 +79,7 @@
         {{-- center side --}}
         <td>
         <p data-id="{{ $type.'_'.$user->id }}">
-            {{ strlen($user->name) > 12 ? trim(substr($user->name,0,12)).'..' : $user->name }}
+            {{ strlen($user->name) > 12 ? trim(substr(ucfirst($user->name),0,12)).'..' : ucfirst($user->name) }}
         </td>
 
     </tr>

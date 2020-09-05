@@ -3,6 +3,7 @@
 <meta name="route" content="{{ $route }}">
 <meta name="csrf-token" content="{{ csrf_token() }}">
 <meta name="url" content="{{ url('').'/'.config('chatify.path') }}" data-user="{{ Auth::user()->id }}">
+<link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
 {{-- scripts --}}
 <script src="{{ asset('js/chatify/font.awesome.min.js') }}"></script>
