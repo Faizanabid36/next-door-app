@@ -564,8 +564,8 @@ body{
   cursor: pointer;
 }
 .activeStatus{
-  width: 12px;
-  height: 12px;
+  width: 17px;
+  height: 17px;
   background: #4CAF50;
   border-radius: 20px;
   position: absolute;
