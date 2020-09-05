@@ -8,7 +8,7 @@
                 <a href="#"><i class="fas fa-inbox"></i> <span class="messenger-headTitle">MESSAGES</span> </a>
                 {{-- header buttons --}}
                 <nav class="m-header-right">
-                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>
+{{--                    <a href="#"><i class="fas fa-cog settings-btn"></i></a>--}}
                     <a href="#" class="listView-x"><i class="fas fa-times"></i></a>
                 </nav>
             </nav>
@@ -18,8 +18,8 @@
             <div class="messenger-listView-tabs">
                 <a href="#" @if($route == 'user') class="active-tab" @endif data-view="users">
                     <span class="far fa-user"></span> People</a>
-                <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">
-                    <span class="fas fa-users"></span> Groups</a>
+{{--                <a href="#" @if($route == 'group') class="active-tab" @endif data-view="groups">--}}
+{{--                    <span class="fas fa-users"></span> Groups</a>--}}
             </div>
         </div>
         {{-- tabs and lists --}}
@@ -37,7 +37,7 @@
 
                {{-- Contact --}}
                <div class="listOfContacts" style="width: 100%;height: calc(100% - 200px);"></div>
-               
+
            </div>
 
            {{-- ---------------- [ Group Tab ] ---------------- --}}

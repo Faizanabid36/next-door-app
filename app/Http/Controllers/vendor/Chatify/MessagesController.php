@@ -2,14 +2,14 @@
 
 namespace Chatify\Http\Controllers;
 
+use App\User;
+use Chatify\Facades\ChatifyMessenger as Chatify;
+use Chatify\Http\Models\Favorite;
+use Chatify\Http\Models\Message;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Response;
-use Chatify\Http\Models\Message;
-use Chatify\Http\Models\Favorite;
-use Chatify\Facades\ChatifyMessenger as Chatify;
-use App\User;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Response;
 use Illuminate\Support\Str;
 
 
@@ -85,7 +85,7 @@ class MessagesController extends Controller
         return Response::json([
             'favorite' => $favorite,
             'fetch' => $fetch,
-            'user_avatar' => asset('/storage/' . config('chatify.user_avatar.folder') . '/' . $fetch->avatar),
+            'user_avatar' => asset($fetch->avatar),
         ]);
     }
 
@@ -125,8 +125,8 @@ class MessagesController extends Controller
             $allowed        = array_merge($allowed_images, $allowed_files);
 
             $file = $request->file('file');
-            // if size less than 150MB
-            if ($file->getSize() < 150000000) {
+            // if size less than 10MB
+            if ($file->getSize() < 10000000) {
                 if (in_array($file->getClientOriginalExtension(), $allowed)) {
                     // get attachment name
                     $attachment_title = $file->getClientOriginalName();
@@ -258,7 +258,7 @@ class MessagesController extends Controller
 
         // send the response
         return Response::json([
-            'contacts' => $users->count() > 0 ? $contacts : '<br><p class="message-hint"><span>Your contatct list is empty</span></p>',
+            'contacts' => $users->count() > 0 ? $contacts : '<br><p class="message-hint"><span>Your contact list is empty</span></p>',
         ], 200);
     }
 

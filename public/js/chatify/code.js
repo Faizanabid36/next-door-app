@@ -297,8 +297,8 @@ function IDinfo(id, type) {
             dataType: 'JSON',
             success: (data) => {
                 // avatar photo
-                $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.user_avatar + '")');
-                $('.header-avatar').css('background-image', 'url("' + data.user_avatar + '")');
+                $('.messenger-infoView').find('.avatar').css('background-image', 'url("' + data.fetch.avatar + '")');
+                $('.header-avatar').css('background-image', 'url("' + data.fetch.avatar + '")');
                 // Show shared and actions
                 $('.messenger-infoView-btns .delete-conversation').show();
                 $('.messenger-infoView-shared').show();

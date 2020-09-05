@@ -26,8 +26,9 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
 Route::group(['middleware' => 'auth' ], function(){
     Route::get('/home', 'RouteViewsController@login_page')->name('login');
     Route::get('/news_feed', 'RouteViewsController@feed')->name('feed');
-    Route::get('/dashboard' , 'RouteViewsController@user_dashboard')->name('dashboard');
-    Route::get('/admin-dashboard' , 'RouteViewsController@main_dashboard')->name('admin-dashboard');
+    Route::get('/dashboard', 'RouteViewsController@user_dashboard')->name('dashboard');
+    Route::get('/my-dashboard', 'RouteViewsController@user_dashboard')->name('home');
+    Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
     Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
