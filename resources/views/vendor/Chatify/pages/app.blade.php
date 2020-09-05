@@ -51,7 +51,7 @@
                 {{-- items --}}
                 <p class="messenger-title">Search</p>
                 <div class="search-records">
-                    <p class="message-hint"><span>Type to search..</span></p>
+                    <h5 class="message-hint"><span class="text-dark">Type to search...</span></h5>
                 </div>
              </div>
         </div>
