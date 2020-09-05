@@ -15,6 +15,7 @@
 <link href="{{ asset('css/chatify/style.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/chatify/'.$dark_mode.'.mode.css') }}" rel="stylesheet" />
 <link href="{{ asset('css/app_new.css') }}" rel="stylesheet" />
+<link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
 
 {{-- Messenger Color Style--}}
 @include('Chatify::layouts.messengerColor')
