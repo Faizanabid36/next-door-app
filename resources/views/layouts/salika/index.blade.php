@@ -104,19 +104,6 @@
     });
     var channel = pusher.subscribe('private-chatify');
     channel.bind('messaging', function (data) {
-        // console.info(data.from_id+' - '+data.to_id+'\n'+auth_id+' - '+messenger);
-        // if (data.from_id == messenger.split('_')[1] && data.to_id == auth_id) {
-        //     // remove message hint
-        //     $(".message-hint").remove();
-        //     // append message
-        //     messagesContainer.find('.messages').append(data.message);
-        //     // scroll to bottom
-        //     scrollBottom(messagesContainer);
-        //     // trigger seen event
-        //     makeSeen(true);
-        //     // remove unseen counter for the user from the contacts list
-        //     $('.messenger-list-item[data-contact=' + messenger.split('_')[1] + ']').find('tr>td>b').remove();
-        // }
         console.log(data.message)
     });
 </script>
