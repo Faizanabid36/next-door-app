@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Business;
 use App\BusinessRecommendations;
+use App\User;
 use App\UserBusinessRecommendation;
 use Illuminate\Http\Request;
 
@@ -13,7 +14,9 @@ class UserBusinessRecommendationController extends Controller
     public function store(Request $request)
     {
         $request->merge(['user_id' => auth()->user()->id]);
-        UserBusinessRecommendation::create($request->except('_token'));
+        $user = User::whereId($request->input('owner'))->first();
+        $review = UserBusinessRecommendation::create($request->except('_token','owner'));
+        $user->notify(new \App\Notifications\BusinessReview($review));
         return back()->withReviewAdded('Your Review Has Been Added');
     }
 

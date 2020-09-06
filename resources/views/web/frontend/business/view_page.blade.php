@@ -56,6 +56,7 @@
                                     <form class="uk-grid-small uk-grid" action="{{route('reviews.store_review')}}"
                                           method="POST" uk-grid="">
                                         @csrf
+                                        <input type="hidden" name="owner" value="{{$business->created_by}}">
                                         <div class="uk-width-1-1@s uk-grid-margin uk-first-column">
                                             <label class="uk-form-label">Your Review</label>
                                             <textarea class="uk-textarea"

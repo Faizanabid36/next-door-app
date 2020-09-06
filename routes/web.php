@@ -170,10 +170,17 @@ Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallb
 //Route::view('test','layouts.salika.index');
 
 
-Route::get('/new',function (){
+Route::get('/new', function () {
     $userCollection = User::whereId(auth()->user()->id)->first();
 
     return Message::whereToId(auth()->user()->id)->whereSeen(0)->get();
 });
 
+
+Route::get('notification', function () {
+    $user = \App\User::whereid(4)->first();
+    $review = \App\UserBusinessRecommendation::first();
+    return $user->notify(new \App\Notifications\BusinessReview($review));
+    return [$user, $review];
+});
 
