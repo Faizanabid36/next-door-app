@@ -205,9 +205,12 @@
                                     @if($notification->data['type']=='review-notification')
                                         <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
+                                    @elseif($notification->data['type']=='recommendation-notification')
+                                        <span class="notification-icon bg-gradient-danger">
+                                                <i class="icon-feather-heart"></i></span>
                                     @endif
                                     <span class="notification-text">
-                                        <strong>{{$notification->data['user']['name']}}</strong>
+                                        <strong>{{$notification->data['user']['name']}}.</strong>
                                         {{$notification->data['body']}}
                                         <br>
                                         <span class="time-ago">

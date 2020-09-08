@@ -12,7 +12,6 @@ class BusinessRecommendation extends Notification implements ShouldQueue
 {
     use Queueable;
 
-    public $user_id = 0;
     public $business_id = 0;
     public $user = [];
 
@@ -24,9 +23,7 @@ class BusinessRecommendation extends Notification implements ShouldQueue
     public function __construct(BusinessRecommendations $bc)
     {
         $this->user = $bc->recommended_by;
-        //
-        dd($this->user);
-
+        $this->business_id = $bc->business_id;
     }
 
     /**
@@ -61,10 +58,10 @@ class BusinessRecommendation extends Notification implements ShouldQueue
      * @param  mixed  $notifiable
      * @return array
      */
-    public function toArray($notifiable)
+    public function toDatabase($notifiable)
     {
         return [
-            'body' => ' left a review on your business page',
+            'body' => ' recommended your business page',
             'url' => route('business.view_business_page', $this->business_id),
             'user' => $this->user,
             'type' => 'recommendation-notification'

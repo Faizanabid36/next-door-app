@@ -20,3 +20,7 @@ Broadcast::channel('App.User.{id}', function ($user, $id) {
 Broadcast::channel('review-added-on-business.{ownerId}', function ($user,$ownerId) {
     return auth()->check() && (int) $ownerId === (int) $user->id;
 });
+
+Broadcast::channel('recommendation-added-on-business.{ownerId}', function ($user,$ownerId) {
+    return auth()->check() && (int) $ownerId === (int) $user->id;
+});
