@@ -176,7 +176,10 @@
 
             <!-- notificiation icon  -->
             <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt=""> <span>3</span>
+                <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
+                <span id="notification-counter">
+                    {{auth()->user()->unReadNotifications->count()}}
+                </span>
             </a>
 
 
@@ -192,97 +195,28 @@
                         <h4>Notifications </h4>
                     </div>
                     <!-- notiviation list -->
-                    <ul>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-2.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-primary">
-                                                <i class="icon-feather-thumbs-up"></i></span>
-                                <span class="notification-text">
-                                                <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                                <span class="text-primary">Learn Prototype Faster</span>
-                                                <br> <span class="time-ago"> 9 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-danger">
+                    <ul id="notification-list">
+                        @foreach(auth()->user()->unReadNotifications as $notification)
+                            <li>
+                                <a href="{{$notification->data['url']}}">
+                                    <span class="notification-avatar">
+                                        <img src="{{$notification->data['user']['avatar']}}" alt="">
+                                    </span>
+                                    @if($notification->data['type']=='review-notification')
+                                        <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
-                                <span class="notification-text">
-                                                <strong>Alex Dolgove</strong> Added New Review In Video
-                                                <span class="text-primary">Full Stack PHP Developer</span>
-                                                <br> <span class="time-ago"> 19 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-4.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-success">
-                                                <i class="icon-feather-message-circle"></i></span>
-                                <span class="notification-text">
-                                                <strong>Stella John</strong> Replay Your Comment in
-                                                <span class="text-primary">Adobe XD Tutorial</span>
-                                                <br> <span class="time-ago"> 12 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-2.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-primary">
-                                                <i class="icon-feather-thumbs-up"></i></span>
-                                <span class="notification-text">
-                                                <strong>Adrian Moh.</strong> Like Your Comment On Video
-                                                <span class="text-primary">Learn Prototype Faster</span>
-                                                <br> <span class="time-ago"> 9 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-warning">
-                                                <i class="icon-feather-star"></i></span>
-                                <span class="notification-text">
-                                                <strong>Alex Dolgove</strong> Added New Review In Video
-                                                <span class="text-primary">Full Stack PHP Developer</span>
-                                                <br> <span class="time-ago"> 19 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-4.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <span class="notification-icon bg-gradient-success">
-                                                <i class="icon-feather-message-circle"></i></span>
-                                <span class="notification-text">
-                                                <strong>Stella John</strong> Replay Your Comment in
-                                                <span class="text-primary">Adobe XD Tutorial</span>
-                                                <br> <span class="time-ago"> 12 hours ago </span>
-                                            </span>
-                            </a>
-                        </li>
+                                    @endif
+                                    <span class="notification-text">
+                                        <strong>{{$notification->data['user']['name']}}</strong>
+                                        {{$notification->data['body']}}
+                                        <br>
+                                        <span class="time-ago">
+                                            {{$notification->created_at->diffForHumans()}}
+                                        </span>
+                                    </span>
+                                </a>
+                            </li>
+                        @endforeach
                     </ul>
 
                 </div>
@@ -331,9 +265,6 @@
                     </ul>
                 </div>
             @endif
-
-
-
         </div>
 
     </div> <!-- / heaader-innr -->

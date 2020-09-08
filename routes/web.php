@@ -178,9 +178,27 @@ Route::get('/new', function () {
 
 
 Route::get('notification', function () {
-    $user = \App\User::whereid(4)->first();
-    $review = \App\UserBusinessRecommendation::first();
-    return $user->notify(new \App\Notifications\BusinessReview($review));
-    return [$user, $review];
+    foreach (auth()->user()->unReadNotifications as $not) {
+        dd($not->data['user']['avatar']);
+    };
+});
+
+Route::get('/properties', function () {
+    $curl = curl_init();
+
+    curl_setopt_array($curl, array(
+        CURLOPT_URL => "https://api.simplyrets.com/properties",
+        CURLOPT_RETURNTRANSFER => true,
+        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
+        CURLOPT_CUSTOMREQUEST => "GET",
+        CURLOPT_HTTPHEADER =>
+            array(
+                "Authorization: Basic '" . base64_encode('simplyrets:simplyrets') . "'",
+            ),
+    ));
+
+
+    $response = curl_exec($curl);
+    return $response;
 });
 

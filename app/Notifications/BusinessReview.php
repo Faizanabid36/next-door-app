@@ -40,7 +40,7 @@ class BusinessReview extends Notification
      */
     public function via($notifiable)
     {
-        return ['database','mail'];
+        return ['database'];
     }
 
     /**
@@ -74,10 +74,10 @@ class BusinessReview extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'review' => $this->review,
-            'user_id' => $this->user_id,
-            'business_id' => $this->business_id,
+            'body' => ' left a review on your business page',
+            'url' => route('business.view_business_page', $this->business_id),
             'user' => $this->user,
+            'type' => 'review-notification'
         ];
     }
 }

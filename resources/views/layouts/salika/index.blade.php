@@ -8,14 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Salika">
     <meta name="csrf-token" content="{{ csrf_token() }}">
+    <meta name="auth_id" content="{{auth()->user()->id}}">
     @yield('meta')
     <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
-    {{--    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>--}}
 
-<!-- CSS ================================================== -->
-{{--    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"--}}
+    <!-- CSS ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/bootstrap.min.css')}}">
-
     <link rel="stylesheet" href="{{asset('salika/assets/css/style.css?v='.now())}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css?v='.now())}}">
@@ -25,12 +23,9 @@
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
 
     <!-- Google font ================================================== -->
-    {{--    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet">--}}
-    {{--    <link href='https://fonts.googleapis.com/css?family=Arvo' rel='stylesheet'>--}}
     <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
 </head>
 
-{{--<body style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';">--}}
 <body style="font-family: 'IBM Plex Sans' , Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif">
 <!-- Wrapper -->
 <div id="wrapper" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
@@ -71,6 +66,7 @@
 <script src="{{asset('salika/assets/js/jquery-3.3.1.min.js?v='.now())}}"></script>
 <script src="{{asset('salika/assets/js/simplebar.js?v='.now())}}"></script>
 <script src="{{asset('salika/assets/js/main.js?v='.now())}}"></script>
+<script src="{{asset('salika/assets/js/moment.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
@@ -91,7 +87,6 @@
 
 
 <script>
-    // Pusher.logToConsole = true;
     var pusher = new Pusher("{{ config('chatify.pusher.key') }}", {
         encrypted: true,
         cluster: "{{ config('chatify.pusher.options.cluster') }}",
@@ -106,7 +101,9 @@
     channel.bind('messaging', function (data) {
         console.log(data.message)
     });
+    const auth_id = document.querySelector('meta[name="auth_id"]').content || 0
 </script>
+<script src="{{asset('salika/assets/js/listeners/notifications_from_api.js')}}"></script>
 
 </body>
 </html>

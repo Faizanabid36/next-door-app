@@ -2,6 +2,7 @@
 
 namespace App\Notifications;
 
+use App\BusinessRecommendations;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
@@ -11,14 +12,21 @@ class BusinessRecommendation extends Notification implements ShouldQueue
 {
     use Queueable;
 
+    public $user_id = 0;
+    public $business_id = 0;
+    public $user = [];
+
     /**
      * Create a new notification instance.
      *
      * @return void
      */
-    public function __construct()
+    public function __construct(BusinessRecommendations $bc)
     {
+        $this->user = $bc->recommended_by;
         //
+        dd($this->user);
+
     }
 
     /**
@@ -29,7 +37,7 @@ class BusinessRecommendation extends Notification implements ShouldQueue
      */
     public function via($notifiable)
     {
-        return ['mail'];
+        return ['database'];
     }
 
     /**
@@ -41,9 +49,10 @@ class BusinessRecommendation extends Notification implements ShouldQueue
     public function toMail($notifiable)
     {
         return (new MailMessage)
-                    ->line('The introduction to the notification.')
-                    ->action('Notification Action', url('/'))
-                    ->line('Thank you for using our application!');
+            ->subject('Your business was recommended.')
+            ->line(ucfirst($this->user->name) . ' left a review on your business page')
+            ->action('Click to View', url('/'))
+            ->line('Thank you for using our application!');
     }
 
     /**
@@ -55,7 +64,10 @@ class BusinessRecommendation extends Notification implements ShouldQueue
     public function toArray($notifiable)
     {
         return [
-            //
+            'body' => ' left a review on your business page',
+            'url' => route('business.view_business_page', $this->business_id),
+            'user' => $this->user,
+            'type' => 'recommendation-notification'
         ];
     }
 }
