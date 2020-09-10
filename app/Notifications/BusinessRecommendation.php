@@ -48,7 +48,7 @@ class BusinessRecommendation extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Your business was recommended.')
             ->line(ucfirst($this->user->name) . ' left a review on your business page')
-            ->action('Click to View', url('/'))
+            ->action('Click to View', route('business.view_business_page', $this->business_id))
             ->line('Thank you for using our application!');
     }
 

@@ -3,33 +3,25 @@
 namespace App\Notifications;
 
 use App\User;
-use App\UserBusinessRecommendation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class BusinessReview extends Notification
+class UserRegisteredNotification extends Notification
 {
     use Queueable;
 
-//    public $review;
-    public $user_id = 0;
-    public $business_id = 0;
-    public $review = '';
-    public $user = [];
+    public $user;
 
     /**
      * Create a new notification instance.
      *
-     * @param UserBusinessRecommendation $review
+     * @param User $user
      */
-    public function __construct(UserBusinessRecommendation $review)
+    public function __construct(User $user)
     {
         //
-        $this->user_id = $review->user_id;
-        $this->business_id = $review->business_id;
-        $this->review = $review->review;
-        $this->user = User::whereId($this->user_id)->first();
+        $this->user = $user;
     }
 
     /**
@@ -40,7 +32,7 @@ class BusinessReview extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['mail', 'database'];
     }
 
     /**
@@ -52,9 +44,10 @@ class BusinessReview extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->subject('A new review was added to your business.')
-            ->line(ucfirst($this->user->name) . ' left a review on your business page')
-            ->action('Click to View', route('business.view_business_page', $this->business_id))
+            ->subject('Your Account has been registered')
+            ->line('You\'ve successfully registered your account.')
+            ->line('Add your postal code to connect to your neighbours')
+            ->action('Notification Action', route('edit_profile'))
             ->line('Thank you for using our application!');
     }
 
@@ -74,9 +67,9 @@ class BusinessReview extends Notification
     public function toDatabase($notifiable)
     {
         return [
-            'body' => ' left a review on your business page',
-            'url' => route('business.view_business_page', $this->business_id),
-            'user' => $this->user,
+            'body' => 'Complete Your Profile Now',
+            'url' => route('edit_profile'),
+            'user' => $this->user->id,
             'type' => 'review-notification'
         ];
     }

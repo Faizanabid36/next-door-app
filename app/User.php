@@ -56,6 +56,8 @@ class User extends Authenticatable
             $user_extra->hide_phone = 0;
             $user_extra->hide_address = 0;
             $user_extra->save();
+
+            $user->notify(new \App\Notifications\UserRegisteredNotification($user));
         });
 
         // Deletes all the relations associated with user whenever a User is deleted via $user->delete()
