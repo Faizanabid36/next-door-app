@@ -196,7 +196,8 @@
                     </div>
                     <!-- notiviation list -->
                     <ul id="notification-list">
-                        @foreach(auth()->user()->unReadNotifications as $notification)
+                        @foreach(auth()->user()->notifications as $notification)
+                            {{dd($notification)}}
                             <li>
                                 <a href="{{$notification->data['url']}}">
                                     @if($notification->data['type']=='registeration-notification')
