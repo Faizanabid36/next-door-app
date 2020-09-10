@@ -214,7 +214,7 @@
                                                 <i class="icon-feather-heart"></i></span>
                                     @endif
                                     <span class="notification-text">
-                                        <strong>{{$notification->data['user']['name']}}.</strong>
+{{--                                        <strong>{{$notification->data['user']['name']}}.</strong>--}}
                                         {{$notification->data['body']}}
                                         <br>
                                         <span class="time-ago">
