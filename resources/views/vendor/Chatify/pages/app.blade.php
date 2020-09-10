@@ -88,7 +88,9 @@
             <div class="messages">
                 <h3 class="message-hint" style="margin-top: calc(30% - 126.2px);">
                     @if(Request::is(config('chatify.path').'/*'))
-                        <span class="text-dark">Please Wait, the chat is being loaded</span>
+                        <span class="text-dark" style="color: black!important;">
+                            Please Wait while the chat is being loaded...
+                        </span>
                     @else
                         <span class="text-dark">Please select a chat to start messaging</span>
                     @endif
