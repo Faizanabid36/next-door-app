@@ -87,7 +87,11 @@
         <div class="m-body app-scroll" style="background: rgba(154, 161, 170, 0.13)">
             <div class="messages">
                 <h3 class="message-hint" style="margin-top: calc(30% - 126.2px);">
-                    <span class="text-dark">Please select a chat to start messaging</span>
+                    @if(Request::is(config('chatify.path').'/*'))
+                        <span class="text-dark">Please Wait, the chat is being loaded</span>
+                    @else
+                        <span class="text-dark">Please select a chat to start messaging</span>
+                    @endif
                 </h3>
             </div>
             {{-- Typing indicator --}}

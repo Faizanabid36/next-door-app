@@ -58,8 +58,10 @@
                     <div>
                         {{--                        <button class="button primary"><span class="icon-feather-message-square"></span> Contact Seller </button>--}}
                         <button type="button" class="button primary icon-label bg-facebook">
-                            <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
-                            <span class="inner-text">Contact Seller</span>
+                            <a href="{{route('user',$item->user_id)}}" class="text-white">
+                                <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
+                                <span class="inner-text">Contact Seller</span>
+                            </a>
                         </button>
                         @if(auth()->user()->id == $item->user_id)
                             <button type="button" class="button primary icon-label bg-danger">
