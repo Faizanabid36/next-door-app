@@ -70,7 +70,7 @@ class UserRegisteredNotification extends Notification
             'body' => 'Complete Your Profile Now',
             'url' => route('edit_profile'),
             'user' => $this->user->id,
-            'type' => 'review-notification'
+            'type' => 'registeration-notification'
         ];
     }
 }

@@ -199,9 +199,12 @@
                         @foreach(auth()->user()->unReadNotifications as $notification)
                             <li>
                                 <a href="{{$notification->data['url']}}">
+                                    @if($notification->data['type']=='registeration-notification')
+                                    @else
                                     <span class="notification-avatar">
                                         <img src="{{$notification->data['user']['avatar']}}" alt="">
                                     </span>
+                                    @endif
                                     @if($notification->data['type']=='review-notification')
                                         <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
