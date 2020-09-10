@@ -69,7 +69,7 @@ class UserRegisteredNotification extends Notification
         return [
             'body' => 'Complete Your Profile Now',
             'url' => route('edit_profile'),
-            'user' => $this->user->id,
+            'user' => $this->user,
             'type' => 'registeration-notification'
         ];
     }

@@ -200,12 +200,12 @@
 {{--                            {{dd($notification->data)}}--}}
                             <li>
                                 <a href="{{$notification->data['url']}}">
-                                    @if($notification->data['type']=='registeration-notification')
-                                    @else
+{{--                                    @if($notification->data['type']=='registeration-notification')--}}
+{{--                                    @else--}}
                                     <span class="notification-avatar">
                                         <img src="{{$notification->data['user']['avatar']}}" alt="">
                                     </span>
-                                    @endif
+{{--                                    @endif--}}
                                     @if($notification->data['type']=='review-notification')
                                         <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
@@ -214,7 +214,7 @@
                                                 <i class="icon-feather-heart"></i></span>
                                     @endif
                                     <span class="notification-text">
-{{--                                        <strong>{{$notification->data['user']['name']}}.</strong>--}}
+                                        <strong>{{$notification->data['user']['name']}}.</strong>
                                         {{$notification->data['body']}}
                                         <br>
                                         <span class="time-ago">
