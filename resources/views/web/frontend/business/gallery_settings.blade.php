@@ -61,7 +61,9 @@
                         @if(count($business_images)>0)
                             @foreach($business_images as $bi)
                                 <div class="">
-                                    <img style="border-radius: 15px"
+                                    <img style="border-radius: 15px;
+                                                width: 100%;
+                                                height: 75%;"
                                          class="shadow mb-30"
                                          src="{{$bi->image_url}}" alt="">
                                     <p class="font-weight-bold text-center">

@@ -18,11 +18,36 @@ class UserSeeder extends Seeder
                 'name' => 'admin',
                 'email' => 'admin@mail.com',
                 'password' => \Hash::make('1234567890'),
-//                'address' => 'asdf-gh-021',
-//                'contact' => '12312312',
-//                'postal' => '123',
                 'admin' => 1,
-                'avatar' => ('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+            ],
+            [
+                'name' => 'John Star',
+                'email' => 'john@mail.com',
+                'password' => \Hash::make('1234567890'),
+                'admin' => 0,
+                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+            ],
+            [
+                'name' => 'Mark Henry',
+                'email' => 'mark@mail.com',
+                'password' => \Hash::make('1234567890'),
+                'admin' => 0,
+                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+            ],
+            [
+                'name' => 'Faizan Abid',
+                'email' => 'faizanabid36@gmail.com',
+                'password' => \Hash::make('1234567890'),
+                'admin' => 0,
+                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+            ],
+            [
+                'name' => 'Noel',
+                'email' => 'noel@mail.com',
+                'password' => \Hash::make('1234567890'),
+                'admin' => 1,
+                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
             ],
 //            [
 //                'name' => 'Zain',

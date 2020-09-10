@@ -71,18 +71,18 @@
 <script src="https://js.pusher.com/5.0/pusher.min.js"></script>
 
 
-{{--<div id="fb-root"></div>--}}
-{{--<script>(function (d, s, id) {--}}
-{{--        var js, fjs = d.getElementsByTagName(s)[0];--}}
-{{--        if (d.getElementById(id)) return;--}}
-{{--        js = d.createElement(s);--}}
-{{--        js.id = id;--}}
-{{--        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";--}}
-{{--        fjs.parentNode.insertBefore(js, fjs);--}}
-{{--    }(document, 'script', 'facebook-jssdk'));</script>--}}
-{{--<script async defer crossorigin="anonymous"--}}
-{{--        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"--}}
-{{--        nonce="GLWZhynL"></script>--}}
+<div id="fb-root"></div>
+<script>(function (d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s);
+        js.id = id;
+        js.src = "https://connect.facebook.net/en_US/sdk.js#xfbml=1&version=v3.0";
+        fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+<script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"
+        nonce="GLWZhynL"></script>
 @yield('modal')
 
 

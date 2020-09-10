@@ -20,6 +20,33 @@
                         @csrf
                         <div class="mb-5 media-upload-image">
                             <a href="javascript: void(0);">
+                                <img src="{{$business->cover_banner}}"
+                                     id="display_cover_picture"
+                                     class="rounded mr-75" alt="profile image" height="64"
+                                     width="125">
+                            </a>
+                            <div class="media-body">
+                                <div
+                                    class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                    <label
+                                        class="btn btn-sm small button primary cursor-pointer ml-50 mb-50 mb-sm-0 text-white"
+                                        for="cover-upload">
+                                        Upload new cover photo
+                                    </label>
+                                    <input onchange="loadCover(event)" type="file" name="banner_2"
+                                           id="cover-upload"
+                                           hidden>
+                                </div>
+                                <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
+                                        PNG.
+                                        Max
+                                        size of
+                                        5MB</small></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-5 media-upload-image">
+                            <a href="javascript: void(0);">
                                 <img src="{{$business->display_banner}}"
                                      id="display_banner"
                                      class="rounded mr-75" alt="profile image" height="64"
@@ -75,12 +102,14 @@
                         </div>
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Primary Contact Number </h5>
-                            <input value="{{$business->contact_1}}" type="text" name="contact_1" class="uk-input text-dark"
+                            <input value="{{$business->contact_1}}" type="text" name="contact_1"
+                                   class="uk-input text-dark"
                                    placeholder="Primary Contact Number">
                         </div>
                         <div class="mb-3">
                             <h5 class="uk-text-bold mb-2 text-dark"> Secondary Contact Number </h5>
-                            <input value="{{$business->contact_2}}" type="text" name="contact_2" class="uk-input text-dark"
+                            <input value="{{$business->contact_2}}" type="text" name="contact_2"
+                                   class="uk-input text-dark"
                                    placeholder="Secondary Contact Number">
                         </div>
                         <div class="mb-1">
@@ -88,11 +117,19 @@
                             <input value="{{$business->postal_code}}" type="text" name="postal_code"
                                    class="uk-input text-dark" placeholder="Postal Code">
                         </div>
+                        <div class="mb-1">
+                            <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
+                            <input value="{{$business->address}}" type="text" disabled
+                                   class="uk-input text-dark disabled" placeholder="Address">
+                        </div>
                         <br>
                         <br>
                         <div class="uk-flex">
                             <button class="button primary"><span class="uil-check"></span> Update Page Info</button>
-                            <button class="ml-90 button success"><span class="uil-image-check mr-10"></span>Visit Gallery</button>
+                            <button class="ml-90 button success">
+                                <span class="uil-image-check mr-10"></span>
+                                <a href="{{route('business.gallery_settings',$business->id)}}" class='text-white'>Visit Gallery</a>
+                            </button>
                         </div>
                     </form>
                 </div>
@@ -106,6 +143,10 @@
     <script type="text/javascript">
         let loadFile = function (event) {
             let image = document.getElementById('display_banner');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
+        let loadCover = function (event) {
+            let image = document.getElementById('display_cover_picture');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
     </script>

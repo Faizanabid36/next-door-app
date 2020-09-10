@@ -45,10 +45,8 @@ class UserController extends Controller
             User::whereId($id)->update(['postal'=>$request->get('postal'),'address'=>$place_name]);
             return back()->with('success','Settings Updated');
         }
-        catch (\Exception $exception)
-        {
-            dd($exception);
-            return back()->with('error','Postal Code Does not Exist');
+        catch (\Exception $exception) {
+            return back()->with('error', 'Postal Code Does not Exist');
         }
     }
 

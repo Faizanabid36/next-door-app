@@ -14,7 +14,6 @@ class SaleItemController extends Controller
     {
         $items = SaleItems::with(['main_image','category','user'])->get()->groupBy('category.name');
         return view('web.frontend.sale_and_business.list_items',compact('items'));
-//        return view('frontend.ecommerce.all_sale_items');
     }
 
     public function add(Request $request)
@@ -76,15 +75,23 @@ class SaleItemController extends Controller
 
     public function byCategory($category)
     {
-        $category_id=Category::whereCategorySlug($category)->firstOrFail();
-        return SaleItems::whereCatId($category_id->id)->with('user','images')->get();
-//        dd($category);
+        $category_id = Category::whereCategorySlug($category)->firstOrFail();
+        return SaleItems::whereCatId($category_id->id)->with('user', 'images')->get();
     }
-    public function itemByCategory($category,$id)
+
+    public function itemByCategory($category, $id)
     {
         $category_id = Category::whereCategorySlug($category)->firstOrFail();
         $item = SaleItems::with(['main_image', 'images'])->whereCatId($category_id->id)->whereId($id)->with('user', 'images')->firstOrFail();
-        $related_items = SaleItems::with('main_image','user')->where('id', '!=', $item->id)->where('cat_id', $item->cat_id)->get();
-        return view('web.frontend.sale_and_business.single_product', compact('item','related_items'));
+        $related_items = SaleItems::with('main_image', 'user')->where('id', '!=', $item->id)->where('cat_id', $item->cat_id)->get();
+        return view('web.frontend.sale_and_business.single_product', compact('item', 'related_items'));
+    }
+
+    public function delete(SaleItems $saleItem)
+    {
+        if(!isset(auth()->user()->id) && auth()->user()->id != $saleItem->user_id)
+            return back();
+        $saleItem->delete();
+        return back();
     }
 }

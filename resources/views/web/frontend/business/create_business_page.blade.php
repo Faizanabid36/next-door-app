@@ -24,6 +24,33 @@
                         <div class="mb-5 media-upload-image">
                             <a href="javascript: void(0);">
                                 <img src="{{asset('salika/assets/images/icons/market.png')}}"
+                                     id="display_cover_picture"
+                                     class="rounded mr-75" alt="profile image" height="64"
+                                     width="125">
+                            </a>
+                            <div class="media-body">
+                                <div
+                                    class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                    <label
+                                        class="btn btn-sm small button primary cursor-pointer ml-50 mb-50 mb-sm-0 text-white"
+                                        for="cover-upload">
+                                        Upload new cover photo
+                                    </label>
+                                    <input onchange="loadCover(event)" type="file" name="banner_2"
+                                           id="cover-upload"
+                                           hidden>
+                                </div>
+                                <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
+                                        PNG.
+                                        Max
+                                        size of
+                                        5MB</small></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-5 media-upload-image">
+                            <a href="javascript: void(0);">
+                                <img src="{{asset('salika/assets/images/icons/market.png')}}"
                                      id="display_banner"
                                      class="rounded mr-75" alt="profile image" height="64"
                                      width="80">
@@ -33,11 +60,11 @@
                                     class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
                                     <label
                                         class="btn btn-sm small button primary cursor-pointer ml-50 mb-50 mb-sm-0 text-white"
-                                        for="account-upload">
+                                        for="image-upload">
                                         Upload new photo
                                     </label>
                                     <input onchange="loadFile(event)" type="file" name="banner_1"
-                                           id="account-upload"
+                                           id="image-upload"
                                            hidden>
                                 </div>
                                 <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
@@ -88,7 +115,6 @@
                                    class="uk-input text-dark" placeholder="Postal Code">
                         </div>
                         <br>
-                        <br>
                         <div class="uk-flex">
                             <button class="button primary"><span class="uil-check"></span> Publish My Page</button>
                         </div>
@@ -106,5 +132,9 @@
             let image = document.getElementById('display_banner');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
+        let loadCover = function (event) {
+            let cover_image = document.getElementById('display_cover_picture');
+            cover_image.src = URL.createObjectURL(event.target.files[0]);
+        }
     </script>
 @endsection

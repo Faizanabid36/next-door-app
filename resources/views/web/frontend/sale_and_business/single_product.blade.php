@@ -39,7 +39,6 @@
                         </ul>
                     </div>
                 </div>
-
             </div>
             <div>
                 <h1 class="color-black">{{ucfirst($item->title)}}</h1>
@@ -62,6 +61,14 @@
                             <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
                             <span class="inner-text">Contact Seller</span>
                         </button>
+                        @if(auth()->user()->id == $item->user_id)
+                            <button type="button" class="button primary icon-label bg-danger">
+                                <a href="{{route('delete_item',$item->id)}}" class="text-white">
+                                    <span class="inner-icon"><i class="icon-feather-trash"></i></span>
+                                    <span class="inner-text">Remove Item</span>
+                                </a>
+                            </button>
+                        @endif
                     </div>
                     <div class="or-container">
                         <div class="line-separator text-dark"></div>

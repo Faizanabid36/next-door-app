@@ -1,7 +1,5 @@
 <?php
 
-use App\User;
-use Chatify\Http\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 //
@@ -149,7 +147,7 @@ Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function (
 });
 
 
-
+Route::get('item/delete/{saleItem}', 'SaleItemController@delete')->name('delete_item');
 
 
 
@@ -165,16 +163,6 @@ Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
 
-
-
-//Route::view('test','layouts.salika.index');
-
-
-Route::get('/new', function () {
-    $userCollection = User::whereId(auth()->user()->id)->first();
-
-    return Message::whereToId(auth()->user()->id)->whereSeen(0)->get();
-});
 
 
 Route::get('notification', function () {

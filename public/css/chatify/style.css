@@ -74,8 +74,8 @@ body{
 	width: 100%;
 }
 .messenger-messagingView .m-body{
-    padding-top: 15px;
-    height: calc(100% - 90px);
+    /*padding-top: 15px;*/
+    height: calc(100% - 115px);
     overflow-x: hidden;
     overflow-y: auto;
 }
@@ -482,7 +482,7 @@ body{
     display: none;
 }
 .messages{
-    padding: 5px 0px;
+    padding: 25px 5px;
 }
 .message-hint{
     margin: 0;

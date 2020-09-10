@@ -9,14 +9,13 @@ use App\BusinessRecommendations;
 use App\Http\Requests\ValidateBusinessPage;
 use App\UserBusinessRecommendation;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
 
 class BusinessController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
@@ -25,7 +24,6 @@ class BusinessController extends Controller
         $businesses = Business::withCount('recommendations')
             ->with('category')
             ->orderBy('recommendations_count','desc')->paginate(10);
-//        return $businesses;
         return view('web.frontend.business.all_business',compact('business_categories','businesses'));
     }
 
@@ -41,26 +39,36 @@ class BusinessController extends Controller
         if (!($request->hasFile('banner_1'))) {
             $request->merge(['display_banner' => asset('salika/assets/images/icons/market.png')]);
         } else {
-            if (!Storage::disk('public')->exists('business_pages')) {
-                Storage::disk('public')->makeDirectory('business_pages');
-            }
             $path = storeImage($request->file('banner_1'), 'business_pages');
             $request->merge(['display_banner' => $path]);
         }
         if (!($request->hasFile('banner_2'))) {
             $request->merge(['cover_banner' => asset('salika/assets/images/avatars/profile-cover.jpg')]);
+        } else {
+            $path = storeImage($request->file('banner_2'), 'business_pages');
+            $request->merge(['cover_banner' => $path]);
         }
         $request->merge([
             'created_by' => auth()->user()->id,
         ]);
-        $business = Business::create($request->except(['_token', 'banner_1']));
-        return back()->withSuccess('Your Page Has Been Published.');
+        $business = Business::create($request->except(['_token', 'banner_1', 'banner_2', 'postal_code']));
+        try {
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $request->get('postal_code'));
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            Business::whereId($business->id)->update(['postal_code' => $request->get('postal_code'), 'address' => $place_name]);
+            return back()->withSuccess('Your Page Has Been Published.');
+        } catch (\Exception $exception) {
+            return back()->with('error', 'Postal Code Does not Exist, but the page is created');
+        }
     }
 
     public function view_business_page($business_id)
     {
         $business = Business::with(['business_owner', 'category'])
             ->withCount('recommendations')
+            ->with('front_page_business_images')
             ->whereId($business_id)->firstOrFail();
         $iRecommended = is_null(BusinessRecommendations::whereBusinessId($business->id)->whereUserId(auth()->user()->id)->first()) ? false : true;
         $reviews = UserBusinessRecommendation::whereBusinessId($business->id)->latest()->get();
@@ -75,7 +83,7 @@ class BusinessController extends Controller
 
     public function update_business_page(ValidateBusinessPage $request, $business)
     {
-        $b=Business::whereId($business)->firstOrFail();
+        $b = Business::whereId($business)->firstOrFail();
         if (!($request->hasFile('banner_1'))) {
             $request->merge(['display_banner' => $b->display_banner]);
         } else {
@@ -83,10 +91,22 @@ class BusinessController extends Controller
             $request->merge(['display_banner' => $path]);
         }
         if (!($request->hasFile('banner_2'))) {
-            $request->merge(['cover_banner' => asset('salika/assets/images/avatars/profile-cover.jpg')]);
+            $request->merge(['cover_banner' => $b->cover_banner]);
+        } else {
+            $cover_path = storeImage($request->file('banner_2'), 'business_pages');
+            $request->merge(['cover_banner' => $cover_path]);
         }
-        Business::whereId($business)->update($request->except(['_token', 'banner_1']));
-        return back()->withSuccess('Page Updated Successfully');
+        Business::whereId($business)->update($request->except(['_token', 'postal_code', 'banner_1', 'banner_2']));
+        try {
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $request->get('postal_code'));
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            Business::whereId($business)->update(['postal_code' => $request->get('postal_code'), 'address' => $place_name]);
+            return back()->withSuccess('Page Updated Successfully');
+        } catch (\Exception $exception) {
+            return back()->with('error', 'Postal Code Does not Exist, other settings saved');
+        }
     }
 
     /**
@@ -131,9 +151,6 @@ class BusinessController extends Controller
         $this->validate($request, [
             'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
         ]);
-        if (!Storage::disk('public')->exists('business_pages/business-' . $request->input('business_id'))) {
-            Storage::disk('public')->makeDirectory('business_pages/business-' . $request->input('business_id'));
-        }
         $path = storeImage($request->file('Picture'), 'business_pages/business-' . $request->input('business_id'));
         $bi = new BusinessImages();
         $bi->business_id = $request->input('business_id');
@@ -146,7 +163,7 @@ class BusinessController extends Controller
     public function delete_business_image($image_id)
     {
         $bi = BusinessImages::find($image_id);
-        \File::delete(public_path('storage/business_pages/business-' . $bi->business_id . '/business_pages/' . basename($bi->image_url)));
+        \File::delete(public_path('storage/business_pages/business-' . $bi->business_id . '/' . basename($bi->image_url)));
         $bi->delete();
         return back()->withSuccess('Image Removed');
     }
