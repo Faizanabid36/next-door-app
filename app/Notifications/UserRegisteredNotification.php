@@ -47,7 +47,7 @@ class UserRegisteredNotification extends Notification
             ->subject('Your Account has been registered')
             ->line('You\'ve successfully registered your account.')
             ->line('Add your postal code to connect to your neighbours')
-            ->action('Notification Action', route('edit_profile'))
+            ->action('Complete Profile', route('edit_profile'))
             ->line('Thank you for using our application!');
     }
 
