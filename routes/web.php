@@ -46,23 +46,24 @@ Route::group(['middleware' => 'auth'], function () {
      * Profile Setting Routes
      * ----------------------------
      **/
-    Route::get('/edit_profile' , 'RouteViewsController@account')->name('edit_profile');
-    Route::get('/edit_profile/change_password' , 'RouteViewsController@account_1')->name('change-password');
-    Route::get('/edit_profile/user_extras' , 'RouteViewsController@account_2')->name('user-extras');
-    Route::post('/update_user/{id}','UserController@updateuser')->name('update_user');
-    Route::post('/changePassword/{id}','UserController@changePassword')->name('change_password');
-    Route::post('/update_family/{id}','UserController@update_family')->name('update_family');
-    Route::post('update_user_extras/{id}','UserController@update_user_extras')->name('update_user_extras');
-    Route::post('edit_family/{id}','UserController@edit_family')->name('edit_family');
-    Route::get('delete_family/{id}','UserController@delete_family')->name('delete_family');
-    Route::post('get_location/','UserController@update_address')->name('update_postal');
-
+    Route::get('/edit_profile', 'RouteViewsController@account')->name('edit_profile');
+    Route::get('/edit_profile/change_password', 'RouteViewsController@account_1')->name('change-password');
+    Route::get('/edit_profile/user_extras', 'RouteViewsController@account_2')->name('user-extras');
+    Route::post('/update_user/{id}', 'UserController@updateuser')->name('update_user');
+    Route::post('/changePassword/{id}', 'UserController@changePassword')->name('change_password');
+    Route::post('/update_family/{id}', 'UserController@update_family')->name('update_family');
+    Route::post('update_user_extras/{id}', 'UserController@update_user_extras')->name('update_user_extras');
+    Route::post('edit_family/{id}', 'UserController@edit_family')->name('edit_family');
+    Route::get('delete_family/{id}', 'UserController@delete_family')->name('delete_family');
+    Route::post('get_location/', 'UserController@update_address')->name('update_postal');
 
 
     // profile
     Route::get('/profile/{id}', 'HomeController@view_profile')->name('view_profile');
     //email
-    Route::get('/email','EmailConfigController@send_email')->name('email');
+    Route::get('/email', 'EmailConfigController@send_email')->name('email');
+
+    Route::post('readNotifications', 'HomeController@read_notifications');
 });
 
 

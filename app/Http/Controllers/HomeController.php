@@ -2,9 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
 
 
 class HomeController extends Controller
@@ -52,16 +51,24 @@ class HomeController extends Controller
     public function agents_list()
     {
         $users = User::whereNotNull('is_public_agent')->get();
-        if(auth()->user()->admin)
-            return \view('admin.public_agents.user_list' , compact('users'));
-        return \view('frontend.public_agencies.user_list' , compact('users'));
+        if (auth()->user()->admin)
+            return \view('admin.public_agents.user_list', compact('users'));
+        return \view('frontend.public_agencies.user_list', compact('users'));
     }
+
     public function view_profile($id)
     {
         $profile = User::whereId($id)->with('family_members')->firstOrFail();
 
-        return \view('web.frontend.accounts.view_profile' , compact('profile'));
+        return \view('web.frontend.accounts.view_profile', compact('profile'));
 //        return \view('frontend.account.view_profile' , compact('profile'));
+    }
+
+    public function read_notifications(Request $request)
+    {
+        $notification = auth()->user()->notifications()->where('id', $request->notification_id)->first();
+        $notification->markAsRead();
+        return ['url' => $notification->data['url']];
     }
 
 

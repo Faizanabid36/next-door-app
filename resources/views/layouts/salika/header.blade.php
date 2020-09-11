@@ -197,15 +197,14 @@
                     <!-- notiviation list -->
                     <ul id="notification-list">
                         @foreach(auth()->user()->notifications as $notification)
-{{--                            {{dd($notification->data)}}--}}
-                            <li>
-                                <a href="{{$notification->data['url']}}">
-{{--                                    @if($notification->data['type']=='registeration-notification')--}}
-{{--                                    @else--}}
+                            <li id="{{$notification->id}}"
+                                style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
+                                <a
+{{--                                    href="{{$notification->data['url']}}"--}}
+                                   onclick="readNotification('{{$notification->id}}')">
                                     <span class="notification-avatar">
                                         <img src="{{$notification->data['user']['avatar']}}" alt="">
                                     </span>
-{{--                                    @endif--}}
                                     @if($notification->data['type']=='review-notification')
                                         <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
