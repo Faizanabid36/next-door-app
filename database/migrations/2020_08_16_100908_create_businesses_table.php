@@ -21,7 +21,7 @@ class CreateBusinessesTable extends Migration
             $table->string('email')->nullable();
             $table->string('contact_1');
             $table->string('contact_2')->nullable();
-            $table->string('postal_code');
+            $table->string('postal_code')->nullable();
             $table->string('address')->nullable();
             $table->string('cover_banner');
             $table->string('display_banner');

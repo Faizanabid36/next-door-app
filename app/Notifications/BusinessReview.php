@@ -5,10 +5,11 @@ namespace App\Notifications;
 use App\User;
 use App\UserBusinessRecommendation;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Notifications\Messages\MailMessage;
 use Illuminate\Notifications\Notification;
 
-class BusinessReview extends Notification
+class BusinessReview extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -40,7 +41,7 @@ class BusinessReview extends Notification
      */
     public function via($notifiable)
     {
-        return ['database'];
+        return ['database', 'mail'];
     }
 
     /**
