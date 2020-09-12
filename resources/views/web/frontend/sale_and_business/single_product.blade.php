@@ -111,7 +111,7 @@
             </div>
         </div>
 
-        <h2> Related products</h2>
+        <h2> @if(count($related_items)>0)Related products@endif</h2>
 
         <div class="uk-position-relative mt-5" uk-slider="finite: true">
 

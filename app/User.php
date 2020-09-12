@@ -52,7 +52,7 @@ class User extends Authenticatable
             $user_extra = new UserExtra();
             $user_extra->user_id = $user->id;
             $user_extra->emergency_contact = '';
-            $user_extra->bio = 'Faltu ka Bio';
+            $user_extra->bio = '';
             $user_extra->hide_phone = 0;
             $user_extra->hide_address = 0;
             $user_extra->save();

@@ -26,10 +26,12 @@ class HomeController extends Controller
 
     public function neighbours_list()
     {
-        $users = User::whereNull('is_public_agent')->orderBy('name','ASC')->get();
-        if(auth()->user()->admin)
-            return \view('admin.neighbours.user_list' , compact('users'));
-        return \view('frontend.neighbours.user_list' , compact('users'));
+        $users = User::whereNull('is_public_agent')
+            ->where('id', '!=', auth()->user()->id)
+            ->orderBy('name', 'ASC')->get();
+        if (auth()->user()->admin)
+            return \view('admin.neighbours.user_list', compact('users'));
+        return \view('web.frontend.neighbours.neighbours', compact('users'));
     }
 
     public function delete_user()
@@ -58,9 +60,8 @@ class HomeController extends Controller
 
     public function view_profile($id)
     {
-        $profile = User::whereId($id)->with('family_members')->firstOrFail();
-
-        return \view('web.frontend.accounts.view_profile', compact('profile'));
+        $user = User::whereId($id)->with('family_members')->firstOrFail();
+        return \view('web.frontend.neighbours.view_profile', compact('user'));
 //        return \view('frontend.account.view_profile' , compact('profile'));
     }
 

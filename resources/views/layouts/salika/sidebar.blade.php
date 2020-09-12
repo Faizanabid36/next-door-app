@@ -24,13 +24,15 @@
                         </a>
                     </li>
                     <li>
-                        <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}" alt="">
+                        <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}"
+                                                      alt="">
                             <span> Public Agencies </span>
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="friends.html"> <img src="{{asset('salika/assets/images/icons/friends.png')}}"
-                                                     alt="">
+                        <a href="{{route('neighbours')}}"> <img
+                                src="{{asset('salika/assets/images/icons/friends.png')}}"
+                                alt="">
                             <span> Neighbours </span>
                         </a>
                     </li>

@@ -36,7 +36,7 @@ class Business extends Model
 
     public function front_page_business_images()
     {
-        return $this->hasMany(BusinessImages::class, 'business_id')->take(2)->latest();
+        return $this->hasMany(BusinessImages::class, 'business_id')->take(4)->latest();
     }
 
     protected static function boot()
