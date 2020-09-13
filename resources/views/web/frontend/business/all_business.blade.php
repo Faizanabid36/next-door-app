@@ -76,7 +76,10 @@
 
                                 <div class="uk-flex uk-flex-middle mt-2">
                                     <div class="uk-width-expand pl-1">
-                                        <p><strong>Recommended by:</strong> {{$business->recommendations_count}} people
+                                        <p>
+                                            <i>
+                                                <strong>Recommended by:</strong> {{$business->recommendations_count}} people
+                                            </i>
                                         </p>
                                     </div>
                                 </div>
