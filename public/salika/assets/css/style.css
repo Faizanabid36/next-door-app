@@ -16366,7 +16366,7 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
     border-left-style: solid;
 }
 [class~="market-list"] [class~="item-inner"] {
-    padding-bottom: 10px;
+    padding-bottom: 0px;
 }
 [class~="story-card"]:before {
     background-blend-mode: color-burn;
@@ -16509,7 +16509,7 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
     margin-right: 0;
 }
 .market-list .item-media img {
-    height: 125%;
+    height: 90%;
 }
 .story-card > i {
     border-left-style: solid;
@@ -16519,7 +16519,7 @@ header [class~="icon-browse"] [class~="icon-menu-item"] i {
 }
 [class~="story-card-content"],
 .market-list .item-media img {
-    width: 100%;
+    width: 85%;
 }
 [class~="market-list"] [class~="item-inner"] [class~="item-statistic"],
 [class~="story-card"],
