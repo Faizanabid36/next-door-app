@@ -42,7 +42,9 @@
                                     <img src="{{$business->display_banner}}"
                                          width="60" alt=""
                                          style="z-index: 99999;border-radius: 5px">
-                                    <a href="{{route('business.view_business_page',$business->id)}}" class="font-weight-bold btn-link">{{$business->title}}</a>
+                                    <a href="{{route('business.view_business_page',$business->id)}}" class="font-weight-bold btn-link">
+                                        <i>{{$business->title}}</i>
+                                    </a>
                                 </h3>
                                 <div>
                                     <span class="pull-left">Created: {{$business->created_at->diffForHumans()}}</span>
