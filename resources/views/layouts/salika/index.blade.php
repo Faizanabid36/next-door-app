@@ -23,10 +23,10 @@
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
 
     <!-- Google font ================================================== -->
-    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>
+{{--    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>--}}
 </head>
 
-<body style="font-family: 'IBM Plex Sans' , Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif">
+<body style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif">
 <!-- Wrapper -->
 <div id="wrapper" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
 

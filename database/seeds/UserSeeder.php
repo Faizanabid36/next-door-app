@@ -21,13 +21,13 @@ class UserSeeder extends Seeder
                 'admin' => 1,
                 'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
             ],
-            [
-                'name' => 'Faizan Abid',
-                'email' => 'faizanabid36@gmail.com',
-                'password' => \Hash::make('1234567890'),
-                'admin' => 0,
-                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
-            ],
+//            [
+//                'name' => 'Faizan Abid',
+//                'email' => 'faizanabid36@gmail.com',
+//                'password' => \Hash::make('1234567890'),
+//                'admin' => 0,
+//                'avatar' => asset('theme\app-assets\images\portrait\small\avatar-s-25.jpg')
+//            ],
         ];
         foreach ($user as $u)
             User::create($u);
