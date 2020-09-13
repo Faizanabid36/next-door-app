@@ -4,7 +4,7 @@
     <div class="course-intro-banner">
         <img src="{{$business->cover_banner}}" class="course-intro-banner-img" alt="">
         <div class="course-intro-banner-info uk-light main_content_inner" style="max-width: 1160px">
-            <h6><i>{{$business->category->b_category_title}}</i></h6>
+            <h6>{{$business->category->b_category_title}}</h6>
             <h1 style="text-shadow: 1px 2px 10px black;font-style: italic;"> {{$business->title}}
                 <hr class="uk-visible@m">
             </h1>
@@ -33,7 +33,7 @@
         <div class="uk-grid-large" uk-grid>
             <div class="uk-width-2-3@m">
                 <div class="course-description-content" id="course-intro">
-                    <h3 class="text-dark italic">Our Story</h3>
+                    <h3 class="text-dark"><i>Our Story</i></h3>
                     <p class="text-dark">
                         {{$business->description}}
                     </p>
@@ -64,7 +64,7 @@
                 </div>
                 @if(auth()->user()->id!=$business->created_by)
                     <div class="comments">
-                        <h3 class="text-dark italic">Tell people what's good about us </h3>
+                        <h3 class="text-dark"><i>Tell people what's good about us</i> </h3>
                         <ul>
                             <li>
                                 <div class="comments-avatar">
@@ -95,7 +95,7 @@
                     </div>
                 @endif
 
-                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark italic"> Why neighbours love us </span></h2>
+                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark italic"> <i>Why neighbours love us</i> </span></h2>
                 <div class="comments mt-4">
                     <ul>
                         @if(count($reviews)>0)
