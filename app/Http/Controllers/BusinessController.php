@@ -125,7 +125,7 @@ class BusinessController extends Controller
 
     public function list_by_category($b_category_slug)
     {
-        $category_id = BusinessCategory::whereBCategorySlug($b_category_slug)->firstOrFail()->get('id');
+        $category_id = BusinessCategory::whereBCategorySlug($b_category_slug)->firstOrFail();
         dd($category_id);
         $businesses = Business::with('business_owner')->with('category')
             ->withCount('recommendations')
