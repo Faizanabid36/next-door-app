@@ -8,7 +8,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Salika">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <meta name="auth_id" content="{{auth()->user()->id}}">
+    <meta name="auth_id" content="{{auth()->user()->id??-1}}">
     @yield('meta')
     <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
