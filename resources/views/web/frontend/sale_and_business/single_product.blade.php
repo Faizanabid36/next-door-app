@@ -17,7 +17,6 @@
 
         <div class="uk-child-width-1-2@m" uk-grid>
             <div>
-
                 <!-- slideshow -->
                 <div class="uk-position-relative"
                      uk-slideshow="animation: fade;min-height: 400; max-height: 600">
@@ -119,7 +118,6 @@
                 Related products
             </h2>
         @endif
-
         <div class="uk-position-relative mt-5" uk-slider="finite: true">
 
             <div class="uk-slider-container pb-3">
