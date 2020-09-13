@@ -126,12 +126,10 @@ class BusinessController extends Controller
     public function list_by_category($b_category_slug)
     {
         $category_id = BusinessCategory::whereBCategorySlug($b_category_slug)->firstOrFail();
-        dd($category_id);
         $businesses = Business::with('business_owner')->with('category')
             ->withCount('recommendations')
-            ->whereBusinessCategoryId($category_id)
+            ->whereBusinessCategoryId($category_id->id)
             ->latest()->paginate(10);
-        dd($businesses);
         return view('web.frontend.business.business_by_category', compact('businesses'));
     }
 
