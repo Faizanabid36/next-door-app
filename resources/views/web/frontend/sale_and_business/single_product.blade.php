@@ -111,7 +111,11 @@
             </div>
         </div>
 
-        <h2> @if(count($related_items)>0)Related products@endif</h2>
+        @if(count($related_items)>0)
+            <h2>
+                Related products
+            </h2>
+        @endif
 
         <div class="uk-position-relative mt-5" uk-slider="finite: true">
 
@@ -122,7 +126,8 @@
                         <li>
                             <div class="market-list">
                                 <div class="item-media">
-                                    <img style="height: 100%" src="{{$rel->main_image->image_url}}" alt="{{$rel->title}}">
+                                    <img style="height: 100%" src="{{$rel->main_image->image_url}}"
+                                         alt="{{$rel->title}}">
                                 </div>
                                 <div class="item-inner">
                                     <div class="item-title color-black font-weight-bold"> {{$rel->title}}</div>
