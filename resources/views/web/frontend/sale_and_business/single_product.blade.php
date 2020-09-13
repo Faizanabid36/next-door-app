@@ -5,7 +5,10 @@
     <meta property="og:type"          content="website" />
     <meta property="og:title"         content="{{$item->title}}" />
     <meta property="og:description"   content="{{$item->description}}" />
-    <meta property="og:image"         content="{{$item->main_image->image_url}}" />
+    <meta property="og:image"         content="{{$item->main_image->image_url}}"/>
+    <meta property="og:image:url"     content="{{$item->main_image->image_url}}"/>
+    <meta property="og:site_name"     content="Salika">
+    <meta name="twitter:image:alt"    content="{{$item->title}}">
 @endsection
 
 @section('content')
@@ -131,7 +134,7 @@
                                 </div>
                                 <div class="item-inner pt-0 mt-0">
                                     <div class="item-title">
-                                        <h2 class="color-black font-weight-bold">
+                                        <h2 class="color-black font-weight-bold mb-0 mt-0">
                                             <a href="{{route('sale_and_free.byItemInCategory',[$rel->category->category_slug,$rel->id])}}">
                                                 {{$rel->title}}
                                             </a>

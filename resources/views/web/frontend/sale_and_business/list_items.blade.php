@@ -35,7 +35,7 @@
 
                 <div class="grid-slider-header">
                     <div>
-                        <h3 class="color-black"> <b>{{ucfirst($key)}}</b> </h3>
+                        <h3 class="color-black font-weight-normal"> <b>{{ucfirst($key)}}</b> </h3>
                     </div>
                     <div class="grid-slider-header-link">
                         <a href="{{route('sale_and_free.byCategory',preg_replace('/\W|\_+/m', '-', $key))}}" class="button transparent uk-visible@m"> View all </a>
