@@ -130,6 +130,7 @@ class BusinessController extends Controller
             ->withCount('recommendations')
             ->whereBusinessCategoryId($category_id)
             ->latest()->paginate(10);
+        dd($businesses);
         return view('web.frontend.business.business_by_category', compact('businesses'));
     }
 

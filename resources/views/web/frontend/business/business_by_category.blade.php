@@ -4,7 +4,7 @@
 
         <div class="section-header pb-0">
             <div class="section-header-left">
-                <h1 class="color-black" style="margin-bottom: 0px"> List of All Businesses </h1>
+                <h1 class="color-black" style="margin-bottom: 0px"><i>List of All Businesses</i></h1>
                 {{--                <p class="color-black font-weight-normal"> Find Business <span class="uk-visible@s"> By Browsing Categories </span></p>--}}
             </div>
         </div>
@@ -17,13 +17,16 @@
             </div>
             <div>
                 <div class="uk-card-body">
-                    <h3 class="uk-card-title font-weight-bold color-black mb-2">Business owners: Create your free
-                        business page today!</h3>
+                    <h3 class="uk-card-title font-weight-bold color-black mb-2">
+                        <i>Business owners: Create your free
+                            business page today!
+                        </i>
+                    </h3>
                     <h6 class="color-black mb-0">Connect with local customers on Nextdoor and become your neighborhood's
                         favorite.</h6>
                     <button class="button primary mt-3 ">
                         <a href="{{route('business.create_business_page')}}" class="color-white">
-                            Get Started
+                            <i>Get Started</i>
                         </a>
                     </button>
                 </div>
@@ -40,7 +43,7 @@
                                     src="{{$business->display_banner}}" alt="">
                             </div>
                             <div class="page-card-innr">
-                                <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> {{ucfirst($business->title)}} </h3>
+                                <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> <i>{{ucfirst($business->title)}}</i> </h3>
                                 <p style="margin-bottom: 0px" class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
                                 <h6 style="margin-bottom: 0px" class="pl-1">
                                     {{substr(ucfirst($business->description),0,180)}}...
@@ -57,10 +60,6 @@
                                     <i class="uil-eye"></i>
                                     View Page
                                 </a>
-{{--                                <a href="#" class="button danger">--}}
-{{--                                    <i class="uil-heart"></i>--}}
-{{--                                    Recommend--}}
-{{--                                </a>--}}
                             </div>
                         </div>
                     </div>

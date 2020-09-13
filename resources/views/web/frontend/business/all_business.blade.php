@@ -57,8 +57,7 @@
         </div>
         <hr>
         <div class="section-small">
-            <h3 class="color-black"> Most Recommended Business </h3>
-
+            <h3 class="color-black"><i><u>Most Recommended Business</u></i></h3>
             <div class="uk-child-width-1-1@m uk-grid-collapse" uk-grid>
                 @foreach($businesses as $business)
                     <div>
@@ -94,7 +93,6 @@
                     </div>
                     <hr>
             @endforeach
-
             <!-- pagination menu -->
                 <ul class="uk-flex-center my-5">
                     {{$businesses->links()}}
