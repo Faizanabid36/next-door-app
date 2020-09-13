@@ -126,10 +126,10 @@
                         <li>
                             <div class="market-list">
                                 <div class="item-media">
-                                    <img style="height: 100%" src="{{$rel->main_image->image_url}}"
+                                    <img style="height: 100%;width: 100%" src="{{$rel->main_image->image_url}}"
                                          alt="{{$rel->title}}">
                                 </div>
-                                <div class="item-inner">
+                                <div class="item-inner pt-0 mt-0">
                                     <div class="item-title color-black font-weight-bold"> {{$rel->title}}</div>
                                     @if(!is_null($rel->price))
                                         <div class="item-price color-black">Price: {{$rel->price}}$
