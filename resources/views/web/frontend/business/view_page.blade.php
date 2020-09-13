@@ -56,11 +56,13 @@
                            uk-slider-item="next"></a>
 
                     </div>
-                    <button class="button primary transition-3d-hover mt-5">
-                        <span class="uil-image"></span>
-                        <a href="{{route('business.view_gallery',$business->id)}}"
-                           class="text-white ml-30">View Media Gallery</a>
-                    </button>
+                    @if(count($business->front_page_business_images)>0)
+                        <button class="button primary transition-3d-hover mt-5">
+                            <span class="uil-image"></span>
+                            <a href="{{route('business.view_gallery',$business->id)}}"
+                               class="text-white ml-30">View Media Gallery</a>
+                        </button>
+                    @endif
                 </div>
                 @if(auth()->user()->id!=$business->created_by)
                     <div class="comments">
