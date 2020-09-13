@@ -1,18 +1,12 @@
 @extends('layouts.salika.index')
-@section('meta')
-    <meta property="og:url"           content="{{url()->current()}}" />
-    <meta property="og:type"          content="website" />
-    <meta property="og:title"         content="Your Website Title" />
-    <meta property="og:description"   content="Your description" />
-{{--    <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />--}}
-@endsection
 @section('content')
     <div class="main_content_inner">
 
         <div class="section-header pb-0">
             <div class="section-header-left">
-                <h3 class="color-black" style="margin-bottom: 0px"> Business List </h3>
-                <p class="color-black font-weight-normal"> Find Business <span class="uk-visible@s"> By Browsing Categories </span></p>
+                <h2 class="color-black" style="margin-bottom: 0px"><i>Business List</i></h2>
+                <p class="color-black font-weight-normal"> Find Business <span class="uk-visible@s"> By Browsing Categories </span>
+                </p>
             </div>
         </div>
         <div class="uk-position-relative" uk-slider="finite: true">
@@ -42,16 +36,20 @@
         <hr>
         <div class="uk-card uk-card-default uk-grid-collapse uk-child-width-1-2@s uk-margin uk-grid mt-2" uk-grid="">
             <div class="uk-card-media-left uk-cover-container uk-first-column">
-                <img src="{{asset('salika/assets/images/business/business_image.jpg')}}" alt="" uk-cover="" class="uk-cover" style="height: 272px; width: 408px;">
+                <img src="{{asset('salika/assets/images/business/business_image.jpg')}}" alt="" uk-cover=""
+                     class="uk-cover" style="height: 272px; width: 408px;">
                 <canvas width="600" height="300"></canvas>
             </div>
             <div>
                 <div class="uk-card-body">
-                    <h3 class="uk-card-title font-weight-bold color-black mb-2">Business owners: Create your free business page today!</h3>
-                    <h6 class="color-black mb-0">Connect with local customers on Nextdoor and become your neighborhood's favorite.</h6>
+                    <h3 class="uk-card-title font-weight-bold color-black mb-2">
+                        <i>Business owners: Create your free business page today!</i>
+                    </h3>
+                    <h6 class="color-black mb-0">Connect with local customers on Nextdoor and become your neighborhood's
+                        favorite.</h6>
                     <button class="button primary mt-3 ">
                         <a href="{{route('business.create_business_page')}}" class="color-white">
-                            Get Started
+                            <i>Get Started</i>
                         </a>
                     </button>
                 </div>
@@ -70,7 +68,7 @@
                             </div>
                             <div class="page-card-innr">
                                 <h3 style="margin-bottom: 0px"
-                                    class="color-black font-weight-bold"> {{ucfirst($business->title)}} </h3>
+                                    class="color-black font-weight-bold"><i>{{ucfirst($business->title)}}</i></h3>
                                 <p style="margin-bottom: 0px"
                                    class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
                                 <h6 style="margin-bottom: 0px"
@@ -88,10 +86,6 @@
                                     <i class="uil-eye"></i>
                                     View Page
                                 </a>
-                                {{--                            <a href="#" class="button danger">--}}
-                                {{--                                <i class="uil-heart"></i>--}}
-                                {{--                                Recommend--}}
-                                {{--                            </a>--}}
                             </div>
                         </div>
                     </div>
