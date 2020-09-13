@@ -175,44 +175,43 @@
             </div>
 
             <!-- notificiation icon  -->
-            <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
-                <span id="notification-counter">
+        @auth()
+                <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
+                    <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
+                    <span id="notification-counter">
                     {{auth()->user()->unReadNotifications->count()}}
                 </span>
-            </a>
+                </a>
+                <!-- notificiation dropdown -->
+                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                     class="dropdown-notifications">
 
+                    <!-- notification contents -->
+                    <div class="dropdown-notifications-content" data-simplebar>
 
-            <!-- notificiation dropdown -->
-            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                 class="dropdown-notifications">
-
-                <!-- notification contents -->
-                <div class="dropdown-notifications-content" data-simplebar>
-
-                    <!-- notivication header -->
-                    <div class="dropdown-notifications-headline">
-                        <h4>Notifications </h4>
-                    </div>
-                    <!-- notiviation list -->
-                    <ul id="notification-list">
-                        @foreach(auth()->user()->notifications as $notification)
-                            <li id="{{$notification->id}}"
-                                style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
-                                <a
-{{--                                    href="{{$notification->data['url']}}"--}}
-                                   onclick="readNotification('{{$notification->id}}')">
+                        <!-- notivication header -->
+                        <div class="dropdown-notifications-headline">
+                            <h4>Notifications </h4>
+                        </div>
+                        <!-- notiviation list -->
+                        <ul id="notification-list">
+                            @foreach(auth()->user()->notifications as $notification)
+                                <li id="{{$notification->id}}"
+                                    style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
+                                    <a
+                                        {{--                                    href="{{$notification->data['url']}}"--}}
+                                        onclick="readNotification('{{$notification->id}}')">
                                     <span class="notification-avatar">
                                         <img src="{{$notification->data['user']['avatar']}}" alt="">
                                     </span>
-                                    @if($notification->data['type']=='review-notification')
-                                        <span class="notification-icon bg-gradient-warning">
+                                        @if($notification->data['type']=='review-notification')
+                                            <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
-                                    @elseif($notification->data['type']=='recommendation-notification')
-                                        <span class="notification-icon bg-gradient-danger">
+                                        @elseif($notification->data['type']=='recommendation-notification')
+                                            <span class="notification-icon bg-gradient-danger">
                                                 <i class="icon-feather-heart"></i></span>
-                                    @endif
-                                    <span class="notification-text">
+                                        @endif
+                                        <span class="notification-text">
                                         <strong>{{$notification->data['user']['name']}}.</strong>
                                         {{$notification->data['body']}}
                                         <br>
@@ -220,18 +219,19 @@
                                             {{$notification->created_at->diffForHumans()}}
                                         </span>
                                     </span>
-                                </a>
-                            </li>
-                        @endforeach
-                    </ul>
+                                    </a>
+                                </li>
+                            @endforeach
+                        </ul>
+
+                    </div>
+
 
                 </div>
+        @endauth
 
 
-            </div>
-
-
-            <!-- profile -image -->
+        <!-- profile -image -->
             @if(isset(auth()->user()->id))
                 <a class="opts_account" href="#"> <img src="{{auth()->user()->avatar}}"
                                                        alt=""></a>
