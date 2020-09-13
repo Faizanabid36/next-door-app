@@ -63,7 +63,7 @@
                                 <span class="inner-text">Contact Seller</span>
                             </a>
                         </button>
-                        @if(auth()->user()->id == $item->user_id)
+                        @if(isset(auth()->user()->id) && auth()->user()->id == $item->user_id)
                             <button type="button" class="button primary icon-label bg-danger">
                                 <a href="{{route('delete_item',$item->id)}}" class="text-white">
                                     <span class="inner-icon"><i class="icon-feather-trash"></i></span>
