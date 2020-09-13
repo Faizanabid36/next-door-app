@@ -115,28 +115,28 @@
                 </div>
                 <!-- sidebar -->
                 <div class="uk-width-expand ml-lg-2">
-                    <h3 class="text-dark"> About </h3>
+                    <h3 class="text-dark"><i>About</i></h3>
                     @if(!$user->user_extra->hide_address)
-                        <div class="list-group-items">
+                        <div class="list-group-items" style="font-style: italic">
                             <i class="uil-home-alt"></i>
                             <h5> Lives in <span> {{$user->address??'Unavailable'}} </span></h5>
                         </div>
                     @endif
 
                     @if(!$user->user_extra->hide_phone)
-                        <div class="list-group-items">
+                        <div class="list-group-items" style="font-style: italic">
                             <i class="uil-phone-volume"></i>
                             <h5> Contact <span> {{$user->contact??'Unavailable'}} </span></h5>
                         </div>
                     @endif
 
-                    <div class="list-group-items">
+                    <div class="list-group-items" style="font-style: italic">
                         <i class="uil-phone-times"></i>
                         <h5> Emergency Phone <span> {{$user->user_extra->emergency_contact??'Unavailable'}} </span>
                         </h5>
                     </div>
                     @if(!is_null($user->user_extra->birthdate))
-                        <div class="list-group-items">
+                        <div class="list-group-items" style="font-style: italic">
                             <i class="icon-line-awesome-birthday-cake"></i>
                             <h5> DOB <span> {{($user->user_extra->birthdate)}} </span></h5>
                         </div>

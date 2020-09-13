@@ -75,7 +75,7 @@
                     </div>
                     <div class="or-container">
                         <div class="line-separator text-dark"></div>
-                        <div class="or-label text-dark">Share on Social Media</div>
+                        <div class="or-label text-dark"><i>Share on Social Media</i></div>
                         <div class="line-separator text-dark"></div>
                     </div>
                     <div class="mt-5">
