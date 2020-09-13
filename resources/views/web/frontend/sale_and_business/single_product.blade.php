@@ -123,14 +123,17 @@
 
                 <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-grid-small uk-grid">
                     @foreach($related_items as $rel)
+                        {{dd($rel)}}
                         <li>
                             <div class="market-list">
                                 <div class="item-media">
-                                    <img style="height: 100%;width: 100%" src="{{$rel->main_image->image_url}}"
+                                    <img style="height: 85%;width: 100%" src="{{$rel->main_image->image_url}}"
                                          alt="{{$rel->title}}">
                                 </div>
                                 <div class="item-inner pt-0 mt-0">
-                                    <div class="item-title color-black font-weight-bold"> {{$rel->title}}</div>
+                                    <div class="item-title color-black font-weight-bold">
+                                        <a href="#">{{$rel->title}}</a>
+                                    </div>
                                     @if(!is_null($rel->price))
                                         <div class="item-price color-black">Price: {{$rel->price}}$
                                         </div>
