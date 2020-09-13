@@ -15,6 +15,8 @@ class BusinessCategoryController extends Controller
     public function index()
     {
         //
+        if (!auth()->user()->admin)
+            abort(404);
         $categories = BusinessCategory::whereNull('parent_id')->get();
         return view('admin.business.view_categories', compact('categories'));
     }
