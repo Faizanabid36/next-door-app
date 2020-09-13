@@ -52,9 +52,8 @@
                                     <div class="item-media">
                                         <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}">
                                     </div>
-                                    <div class="item-inner pt-0 mt-0">
-                                        <div class="font-weight-bold color-black"><h2 style="margin-bottom: 0px"
-                                                                                      class="color-links">{{ucfirst($single->title)}}</h2>
+                                    <div class="item-inner" style="margin-top: 40px">
+                                        <div class="font-weight-bold color-black"><h2 style="margin-bottom: 0px" class="color-links">{{ucfirst($single->title)}}</h2>
                                         </div>
                                         @if(!is_null($single->price))
                                             <div class="item-price color-black color-black">Price: {{$single->price}}$
