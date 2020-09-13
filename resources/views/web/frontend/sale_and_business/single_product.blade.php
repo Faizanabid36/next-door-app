@@ -131,7 +131,9 @@
                                 </div>
                                 <div class="item-inner pt-0 mt-0">
                                     <div class="item-title color-black font-weight-bold">
-                                        <a href="{{route('sale_and_free.byItemInCategory',$rel->category->category_slug,$rel->id)}}">{{$rel->title}}</a>
+                                        <a href="{{route('sale_and_free.byItemInCategory',[$rel->category->category_slug,$rel->id])}}">
+                                            {{$rel->title}}
+                                        </a>
                                     </div>
                                     @if(!is_null($rel->price))
                                         <div class="item-price color-black">Price: {{$rel->price}}$
