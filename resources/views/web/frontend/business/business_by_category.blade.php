@@ -34,7 +34,8 @@
         </div>
         <hr>
         <div class="section-small">
-            <h3 class="primary card-link"> Category: {{str_replace('-',' ',last(explode('/',url()->current())))}} </h3>
+            <h3 class="primary card-link"><i>Category: {{str_replace('-',' ',last(explode('/',url()->current())))}}</i>
+            </h3>
             <div class="uk-child-width-1-1@m uk-grid-collapse" uk-grid>
                 @foreach($businesses as $business)
                     <div>
@@ -43,8 +44,10 @@
                                     src="{{$business->display_banner}}" alt="">
                             </div>
                             <div class="page-card-innr">
-                                <h3 style="margin-bottom: 0px" class="color-black font-weight-bold"> <i>{{ucfirst($business->title)}}</i> </h3>
-                                <p style="margin-bottom: 0px" class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
+                                <h3 style="margin-bottom: 0px" class="color-black font-weight-bold">
+                                    <i>{{ucfirst($business->title)}}</i></h3>
+                                <p style="margin-bottom: 0px"
+                                   class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
                                 <h6 style="margin-bottom: 0px" class="pl-1">
                                     {{substr(ucfirst($business->description),0,180)}}...
                                 </h6>

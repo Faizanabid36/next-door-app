@@ -43,7 +43,7 @@
                 </div>
             </div>
             <div>
-                <h1 class="color-black">{{ucfirst($item->title)}}</h1>
+                <h1 class="color-black"><i>{{ucfirst($item->title)}}</i></h1>
                 <h5 class="mb-2 color-black">Description:</h5>
                 <p class="color-black">{{ucfirst($item->description)}}
                 </p>
@@ -58,7 +58,6 @@
                 </div>
                 <div class="mb-4">
                     <div>
-                        {{--                        <button class="button primary"><span class="icon-feather-message-square"></span> Contact Seller </button>--}}
                         <button type="button" class="button primary icon-label bg-facebook">
                             <a href="{{route('user',$item->user_id)}}" class="text-white">
                                 <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
@@ -114,8 +113,8 @@
         </div>
 
         @if(count($related_items)>0)
-            <h2>
-                Related products
+            <h2 class="mt-5">
+                <i>Related products</i>
             </h2>
         @endif
         <div class="uk-position-relative mt-5" uk-slider="finite: true">
@@ -133,8 +132,8 @@
                                 <div class="item-inner pt-0 mt-0">
                                     <div class="item-title">
                                         <h2 class="color-black font-weight-bold mb-0 mt-0">
-                                            <a href="{{route('sale_and_free.byItemInCategory',[$rel->category->category_slug,$rel->id])}}">
-                                                {{$rel->title}}
+                                            <a class="text-dark" href="{{route('sale_and_free.byItemInCategory',[$rel->category->category_slug,$rel->id])}}">
+                                               <i> {{$rel->title}}</i>
                                             </a>
                                         </h2>
                                     </div>

@@ -4,7 +4,7 @@
     <div class="main_content_inner" style="color: black!important;">
 
         <div class="uk-flex uk-flex-between">
-            <h1 class="color-black"> Free and Sale Items </h1>
+            <h1 class="color-black"> <i>Free & Sale Items</i> </h1>
             <button class="button primary small circle pull-right" data-toggle="modal" data-target="#postNewItem"><i
                     class="uil-plus"> </i> Post New Item
             </button>
@@ -53,8 +53,10 @@
                                         <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}">
                                     </div>
                                     <div class="item-inner pt-0 mt-0">
-                                        <div class="font-weight-bold color-black"><h2 style="margin-bottom: 0px"
-                                                                                      class="color-links">{{ucfirst($single->title)}}</h2>
+                                        <div class="font-weight-bold color-black">
+                                            <h2 style="margin-bottom: 0px" class="color-links">
+                                                <i>{{ucfirst($single->title)}}</i>
+                                            </h2>
                                         </div>
                                         @if(!is_null($single->price))
                                             <div class="item-price color-black color-black">Price: {{$single->price}}$
