@@ -52,7 +52,7 @@
                                     <div class="item-media">
                                         <img src="{{asset($single->main_image->image_url)}}" alt="{{$single->title}}">
                                     </div>
-                                    <div class="item-inner">
+                                    <div class="item-inner pt-0 mt-0">
                                         <div class="font-weight-bold color-black"><h2 style="margin-bottom: 0px"
                                                                                       class="color-links">{{ucfirst($single->title)}}</h2>
                                         </div>
