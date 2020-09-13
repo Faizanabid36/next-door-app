@@ -4,17 +4,19 @@
     <div class="course-intro-banner">
         <img src="{{$business->cover_banner}}" class="course-intro-banner-img" alt="">
         <div class="course-intro-banner-info uk-light main_content_inner" style="max-width: 1160px">
-            <h6> {{$business->category->b_category_title}} </h6>
-            <h1 class=""> {{$business->title}}
+            <h6><i>{{$business->category->b_category_title}}</i></h6>
+            <h1 style="text-shadow: 1px 2px 10px black;font-style: italic;"> {{$business->title}}
                 <hr class="uk-visible@m">
             </h1>
             <h3 class="">{{$business->recommendations_count}} Recommendations</h3>
 
-            <p><a href="#course-intro" class="uk-link-reset" uk-scroll> View Page details </a></p>
+            <p><a href="#course-intro" class="uk-link-reset" uk-scroll> Read our story </a></p>
 
             <div class="course-details-info">
                 <ul>
-                    <li> By <a href="{{route('view_profile',$business->business_owner->id)}}">{{$business->business_owner->name}} </a></li>
+                    <li> By <a
+                            href="{{route('view_profile',$business->business_owner->id)}}">{{$business->business_owner->name}} </a>
+                    </li>
                 </ul>
                 @if($business->created_by==auth()->user()->id)
                     <ul>
@@ -31,8 +33,8 @@
         <div class="uk-grid-large" uk-grid>
             <div class="uk-width-2-3@m">
                 <div class="course-description-content" id="course-intro">
-                    <h3> Description</h3>
-                    <p>
+                    <h3 class="text-dark italic">Our Story</h3>
+                    <p class="text-dark">
                         {{$business->description}}
                     </p>
                 </div>
@@ -44,7 +46,6 @@
                             @foreach($business->front_page_business_images as $img)
                                 <li>
                                     <img src="{{$img->image_url}}">
-{{--                                    <div class="uk-position-center uk-panel"></div>--}}
                                 </li>
                             @endforeach
                         </ul>
@@ -63,7 +64,7 @@
                 </div>
                 @if(auth()->user()->id!=$business->created_by)
                     <div class="comments">
-                        <h3 class="text-dark">Add Review </h3>
+                        <h3 class="text-dark italic">Tell people what's good about us </h3>
                         <ul>
                             <li>
                                 <div class="comments-avatar">
@@ -94,7 +95,7 @@
                     </div>
                 @endif
 
-                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark"> Reviews </span></h2>
+                <h2 class="uk-heading-line mt-lg-5"><span class="text-dark italic"> Why neighbours love us </span></h2>
                 <div class="comments mt-4">
                     <ul>
                         @if(count($reviews)>0)

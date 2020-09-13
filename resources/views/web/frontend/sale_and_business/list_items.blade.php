@@ -38,7 +38,7 @@
                         <h3 class="color-black font-weight-normal"> <b>{{ucfirst($key)}}</b> </h3>
                     </div>
                     <div class="grid-slider-header-link">
-                        <a href="{{route('sale_and_free.byCategory',preg_replace('/\W|\_+/m', '-', $key))}}" class="button transparent uk-visible@m"> View all </a>
+{{--                        <a href="{{route('sale_and_free.byCategory',preg_replace('/\W|\_+/m', '-', $key))}}" class="button transparent uk-visible@m"> View all </a>--}}
                         <a href="#" class="slide-nav-prev" uk-slider-item="previous"></a>
                         <a href="#" class="slide-nav-next" uk-slider-item="next"></a>
                     </div>
