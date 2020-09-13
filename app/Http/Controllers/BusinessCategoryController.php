@@ -41,6 +41,8 @@ class BusinessCategoryController extends Controller
     public function store(Request $request)
     {
         //
+        if (!auth()->user()->admin)
+            abort(404);
         $this->validate($request, [
             'category_title' => 'required',
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
@@ -100,8 +102,9 @@ class BusinessCategoryController extends Controller
     public function destroy($id)
     {
         //
+        if (!auth()->user()->admin)
+            abort(404);
         $businessCategory=BusinessCategory::with('children')->whereId($id)->firstOrFail();
-
         if (count($businessCategory->children) > 0)
             return back()->with('error', 'Cannot Delete Category');
         $businessCategory->delete();
@@ -111,6 +114,8 @@ class BusinessCategoryController extends Controller
 
     public function edit_business_category(Request $request)
     {
+        if (!auth()->user()->admin)
+            abort(404);
         $this->validate($request, [
             'b_category_title' => 'required',
         ]);

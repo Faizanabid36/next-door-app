@@ -28,16 +28,22 @@ class CategoryController extends Controller
     }
     public function deletecategory($id)
     {
-        Category::where(['id'=>$id])->delete();
-        return back()->with('deleted','Category Deleted');
+        if (auth()->user()->admin) {
+            Category::where(['id' => $id])->delete();
+            return back()->with('deleted', 'Category Deleted');
+        }
+        return back();
     }
 
     public function editcategory(Request $request , $id=null)
     {
-        Category::whereId($request->input('id'))->update([
-            'name' => $request->input('name'),
-            'category_slug' => preg_replace('/\W|\_+/m', '-', $request->input('name'))
-        ]);
-        return back()->with('updated', 'Updated Successfully');
+        if (auth()->user()->admin) {
+            Category::whereId($request->input('id'))->update([
+                'name' => $request->input('name'),
+                'category_slug' => preg_replace('/\W|\_+/m', '-', $request->input('name'))
+            ]);
+            return back()->with('updated', 'Updated Successfully');
+        }
+        return back();
     }
 }
