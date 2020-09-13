@@ -17,33 +17,25 @@ class CategorySeeder extends Seeder
                 'category_slug' => 'clothing',
             ],
             [
-                'name' => 'electronics',
+                'name' => 'Electronics',
                 'category_slug' => 'electronics',
             ],
             [
-                'name' => 'Automotive',
-                'category_slug' => 'automotive',
+                'name' => 'Accessories',
+                'category_slug' => 'accessories',
             ],
             [
-                'name' => 'Bank and Financial Services',
-                'category_slug' => 'bank-and-financial-services',
+                'name' => 'Footwear',
+                'category_slug' => 'footwear',
             ],
             [
-                'name' => 'Food',
+                'name' => 'Furniture',
                 'category_slug' => 'food',
             ],
             [
-                'name' => 'Home and Garden',
-                'category_slug' => 'home-and-garden',
+                'name' => 'Watches',
+                'category_slug' => 'watches',
             ],
-            [
-                'name' => 'School',
-                'category_slug' => 'school',
-            ],
-            [
-                'name' => 'Real Estate',
-                'category_slug' => 'real-estate',
-            ]
         ];
         foreach ($b_category as $b_cat)
             \App\Category::create($b_cat);
