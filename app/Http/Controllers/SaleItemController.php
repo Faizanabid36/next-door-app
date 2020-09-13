@@ -84,6 +84,7 @@ class SaleItemController extends Controller
         $category_id = Category::whereCategorySlug($category)->firstOrFail();
         $item = SaleItems::with(['main_image', 'images'])->whereCatId($category_id->id)->whereId($id)->with('user', 'images')->firstOrFail();
         $related_items = SaleItems::with('main_image', 'user')
+            ->with('category')
             ->where('id', '!=', $item->id)
             ->where('cat_id', $item->cat_id)->get();
 
