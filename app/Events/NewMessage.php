@@ -60,7 +60,6 @@ class NewMessage implements ShouldBroadcast
         return [
             new PrivateChannel('App.User.' . $this->to),
             new PrivateChannel('new-message.' . $this->to),
-            new PrivateChannel('new-message.' . $this->from),
         ];
     }
 }
