@@ -99,10 +99,6 @@
             }
         }
     });
-    {{--var channel = pusher.subscribe('private-chatify');--}}
-    {{--channel.bind('messaging', function (data) {--}}
-    {{--    console.log(data.message)--}}
-    {{--});--}}
 </script>
 <script src="{{asset('salika/assets/js/code/ajaxRequests.js')}}"></script>
 <script src="{{asset('salika/assets/js/code/notifications_from_api.js')}}"></script>

@@ -58,9 +58,9 @@ class NewMessage implements ShouldBroadcast
     public function broadcastOn()
     {
         return [
-            new PrivateChannel('App.User.' . $this->to),
+//            new PrivateChannel('App.User.' . $this->to),
             new PrivateChannel('new-message.' . $this->to),
-            new PrivateChannel('new-message.' . $this->from),
+//            new PrivateChannel('new-message.' . $this->from),
         ];
     }
 }
