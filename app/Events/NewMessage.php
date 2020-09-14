@@ -8,23 +8,25 @@ use Illuminate\Contracts\Broadcasting\ShouldBroadcast;
 use Illuminate\Foundation\Events\Dispatchable;
 use Illuminate\Queue\SerializesModels;
 
-class ReviewAddedOnBusiness implements ShouldBroadcast
+class NewMessage implements ShouldBroadcast
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-
-    public $review;
-    public $user;
+    public $messageData;
+    public $from;
+    public $to;
 
     /**
      * Create a new event instance.
      *
      * @return void
      */
-    public function __construct($review, $user)
+    public function __construct($messageData, $from, $to)
     {
-        $this->review = $review;
-        $this->user = $user;
+        //
+        $this->messageData = $messageData;
+        $this->from = $from;
+        $this->to = $to;
     }
 
     /**
@@ -35,8 +37,8 @@ class ReviewAddedOnBusiness implements ShouldBroadcast
     public function broadcastOn()
     {
         return [
-            new PrivateChannel('review-added-on-business.' . $this->user->id),
-            new PrivateChannel('App.User.' . $this->user->id),
+            new PrivateChannel('new-message.' . $this->to),
+            new PrivateChannel('new-message.' . $this->from),
         ];
     }
 }

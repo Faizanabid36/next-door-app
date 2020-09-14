@@ -1,4 +1,10 @@
 $(document).ready(function () {
+
+    Echo.private('new-message.' + auth_id)
+        .listen('NewMessage', (e) => function () {
+            console.log(e);
+        })
+
     Echo.private('review-added-on-business.' + auth_id)
         .listen('ReviewAddedOnBusiness', (e) => {
                 let newNotification = $('<li>\n' +

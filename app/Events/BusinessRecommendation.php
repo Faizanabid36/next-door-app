@@ -32,7 +32,6 @@ class BusinessRecommendation implements ShouldBroadcast
         $this->businessOwner = $businessRecommendations->business->with('business_owner')->first()->business_owner;
         $this->business_id =$businessRecommendations->business_id;
         $this->created_at =$businessRecommendations->created_at;
-        $this->businessOwner->notify(new \App\Notifications\BusinessRecommendation($businessRecommendations));
 
     }
 

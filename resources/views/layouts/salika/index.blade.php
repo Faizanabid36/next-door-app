@@ -88,6 +88,7 @@
 
 <script>
     const auth_id = document.querySelector('meta[name="auth_id"]').content || 0
+
     var pusher = new Pusher("{{ config('chatify.pusher.key') }}", {
         encrypted: true,
         cluster: "{{ config('chatify.pusher.options.cluster') }}",
@@ -98,10 +99,10 @@
             }
         }
     });
-    var channel = pusher.subscribe('private-chatify');
-    channel.bind('messaging', function (data) {
-        console.log(data.message)
-    });
+    {{--var channel = pusher.subscribe('private-chatify');--}}
+    {{--channel.bind('messaging', function (data) {--}}
+    {{--    console.log(data.message)--}}
+    {{--});--}}
 </script>
 <script src="{{asset('salika/assets/js/code/ajaxRequests.js')}}"></script>
 <script src="{{asset('salika/assets/js/code/notifications_from_api.js')}}"></script>

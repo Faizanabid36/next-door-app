@@ -1,7 +1,8 @@
 <?php
 
-namespace Chatify\Http\Controllers;
+namespace App\Http\Controllers;
 
+use App\Events\NewMessage;
 use App\User;
 use Chatify\Facades\ChatifyMessenger as Chatify;
 use Chatify\Http\Models\Favorite;
@@ -162,6 +163,7 @@ class MessagesController extends Controller
                 'to_id' => $request['id'],
                 'message' => Chatify::messageCard($messageData, 'default')
             ]);
+            event(new NewMessage($messageData,\auth()->user()->id, $request['id']));
         }
 
         // send the response

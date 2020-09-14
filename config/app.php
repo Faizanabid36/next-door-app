@@ -177,7 +177,7 @@ return [
         App\Providers\RouteServiceProvider::class,
 
 
-        \Chatify\ChatifyServiceProvider::class,
+//        \Chatify\ChatifyServiceProvider::class,
 
 
 //      Social Login Package
@@ -234,7 +234,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'Socialite' => Laravel\Socialite\Facades\Socialite::class,
         'Image' => Intervention\Image\Facades\Image::class,
-        'Chatify' => Chatify\Facades\ChatifyMessenger::class,
+//        'Chatify' => Chatify\Facades\ChatifyMessenger::class,
     ],
 
 ];

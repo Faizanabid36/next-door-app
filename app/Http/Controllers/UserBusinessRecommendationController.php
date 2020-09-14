@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Business;
 use App\BusinessRecommendations;
 use App\Events\BusinessRecommendation;
-use App\Events\ReviewAddedOnBusiness;
 use App\User;
 use App\UserBusinessRecommendation;
 use Illuminate\Http\Request;
@@ -18,7 +17,7 @@ class UserBusinessRecommendationController extends Controller
         $request->merge(['user_id' => auth()->user()->id]);
         $user = User::whereId($request->input('owner'))->first();
         $review = UserBusinessRecommendation::create($request->except('_token', 'owner'));
-        event(new ReviewAddedOnBusiness($review, $user));
+        $user->notify(new \App\Notifications\BusinessReview($review));
         return back()->withReviewAdded('Your Review Has Been Added');
     }
 
@@ -38,6 +37,7 @@ class UserBusinessRecommendationController extends Controller
             'user_id' => auth()->user()->id,
             'business_id' => $id
         ]);
+        $business->business_owner->notify(new \App\Notifications\BusinessRecommendation($recommendation));
         event(new BusinessRecommendation($recommendation));
         return back()->withRecommendationAdded('You Recommended This Business');
     }
