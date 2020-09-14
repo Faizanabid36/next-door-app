@@ -2,6 +2,7 @@ $(document).ready(function () {
 
     Echo.private('new-message.' + auth_id)
         .listen('NewMessage', (e) => {
+            console.log(e)
             let chatItem = $(e.messageBody)
             $(`#user-${e.from}`).remove()
             $('#chat-panel').prepend(chatItem)
