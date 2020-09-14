@@ -32,22 +32,23 @@ class UserController extends Controller
         if (request()->hasFile('Picture')) {
             $file = $request->file('Picture');
             $imageName = auth()->user()->id . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/users/avatar/');
-            $file->move($destinationPath, $imageName);
-            (\request()->merge(['avatar' => asset('users/avatar/' . $imageName)]));
+            $destinationPath = storeImage($request->file('Picture'), 'users/' . auth()->user()->id);
+            (\request()->merge(['avatar' => $destinationPath]));
         }
         User::whereId($id)->update(\request()->except('_token', 'Picture'));
-        try{
-            $client = new \GuzzleHttp\Client();
-            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $request->get('postal'));
-            $output = json_decode($display->getBody()->getContents());
-            $place_name = $output->places[0]->{'place name'};
-            User::whereId($id)->update(['postal'=>$request->get('postal'),'address'=>$place_name]);
-            return back()->with('success','Settings Updated');
+        if (!empty($request->get('postal'))) {
+            try {
+                $client = new \GuzzleHttp\Client();
+                $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $request->get('postal'));
+                $output = json_decode($display->getBody()->getContents());
+                $place_name = $output->places[0]->{'place name'};
+                User::whereId($id)->update(['postal' => $request->get('postal'), 'address' => $place_name]);
+                return back()->with('success', 'Settings Updated');
+            } catch (\Exception $exception) {
+                return back()->with('error', 'Postal Code Does not Exist');
+            }
         }
-        catch (\Exception $exception) {
-            return back()->with('error', 'Postal Code Does not Exist');
-        }
+        return back()->with('success', 'Settings Updated');
     }
 
     public function show_user_details($id)
