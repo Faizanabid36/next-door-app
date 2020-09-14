@@ -99,6 +99,12 @@
             }
         }
     });
+    window.Echo = new Echo({
+        broadcaster: 'pusher',
+        key: '91e80a4a2eb5064b5e3e',
+        cluster: 'ap1',
+        forceTLS: true
+    });
     {{--var channel = pusher.subscribe('private-chatify');--}}
     {{--channel.bind('messaging', function (data) {--}}
     {{--    console.log(data.message)--}}
