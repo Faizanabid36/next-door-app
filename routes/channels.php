@@ -25,6 +25,6 @@ Broadcast::channel('recommendation-added-on-business.{ownerId}', function ($user
     return auth()->check() && (int)$ownerId === (int)$user->id;
 });
 
-Broadcast::channel('new-message.{to}', function ($user, $to) {
-    return (int)$to === (int)$user->id;
-});
+//Broadcast::channel('new-message.{to}', function ($user, $to) {
+//    return (int)$to === (int)$user->id;
+//});
