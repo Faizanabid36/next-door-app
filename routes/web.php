@@ -164,30 +164,9 @@ Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
 
-
-
-Route::get('notification', function () {
-    foreach (auth()->user()->unReadNotifications as $not) {
-        dd($not->data['user']['avatar']);
-    };
-});
-
-Route::get('/properties', function () {
-    $curl = curl_init();
-
-    curl_setopt_array($curl, array(
-        CURLOPT_URL => "https://api.simplyrets.com/properties",
-        CURLOPT_RETURNTRANSFER => true,
-        CURLOPT_HTTP_VERSION => CURL_HTTP_VERSION_1_1,
-        CURLOPT_CUSTOMREQUEST => "GET",
-        CURLOPT_HTTPHEADER =>
-            array(
-                "Authorization: Basic '" . base64_encode('simplyrets:simplyrets') . "'",
-            ),
-    ));
-
-
-    $response = curl_exec($curl);
-    return $response;
+Route::get('/chat', function () {
+    $total = auth()->user()->messages->count();
+    $unread = auth()->user()->messages->where('seen', 0)->count();
+    return compact('total', 'unread');
 });
 

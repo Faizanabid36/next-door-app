@@ -2,6 +2,7 @@
 
 namespace App;
 
+use Chatify\Http\Models\Message;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
@@ -103,5 +104,10 @@ class User extends Authenticatable
     public function sale_items()
     {
         return $this->hasMany(SaleItems::class,'user_id','id');
+    }
+
+    public function messages()
+    {
+        return $this->hasMany(Message::class,'to_id','id');
     }
 }

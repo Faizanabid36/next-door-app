@@ -1,8 +1,12 @@
 $(document).ready(function () {
 
     Echo.private('new-message.' + auth_id)
-        .listen('NewMessage', (e) => function () {
-            console.log(e);
+        .listen('NewMessage', (e) => {
+            let chatItem = $(e.messageBody)
+            $(`#user-${e.from}`).remove()
+            $('#chat-panel').prepend(chatItem)
+            let messageCounter = document.getElementById('unread-messages-counter').innerText
+            document.getElementById('unread-messages-counter').innerText = parseInt(messageCounter) + 1
         })
 
     Echo.private('review-added-on-business.' + auth_id)
@@ -44,7 +48,9 @@ $(document).ready(function () {
                 '    </a>\n' +
                 '</li>')
             $('#notification-list').prepend(newNotification)
-            let notificationCounter = document.getElementById('notification-counter').innerText
-            document.getElementById('notification-counter').innerText = parseInt(notificationCounter) + 1
+
         })
+    function incrementcounter() {
+
+    }
 });

@@ -52,130 +52,44 @@
         <!-- user icons -->
         <div class="head_user">
             <!-- Message  notificiation dropdown -->
-            <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
-                <img src="{{asset('salika/assets/images/icons/chat.svg')}}" alt=""> <span>4</span>
-            </a>
-            <!-- Message  notificiation dropdown -->
-            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                 class="dropdown-notifications">
-                <!-- notification contents -->
-                <div class="dropdown-notifications-content" data-simplebar>
-                    <!-- notivication header -->
-                    <div class="dropdown-notifications-headline">
-                        <h4>Messages</h4>
+            @auth()
+                <a href="#" class="opts_icon" uk-tooltip="title: Messages ; pos: bottom ;offset:7">
+                    <img src="{{asset('salika/assets/images/icons/chat.svg')}}" alt="">
+                    <span id="unread-messages-counter">{{auth()->user()->messages->where('seen', 0)->count()}}</span>
+                </a>
+                <!-- Message  notificiation dropdown -->
+                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                     class="dropdown-notifications">
+                    <!-- notification contents -->
+                    <div class="dropdown-notifications-content" data-simplebar>
+                        <!-- notivication header -->
+                        <div class="dropdown-notifications-headline">
+                            <h4>Messages</h4>
+                        </div>
+                        <!-- notiviation list -->
+                        <ul id="chat-panel">
+                            <li id="user-id">
+                                <a href="#">
+                                <span class="notification-avatar">
+                                    <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}" alt="">
+                                </span>
+                                    <div class="notification-text notification-msg-text">
+                                        <strong class="text-dark" style="font-size: 16px">Stella Johnson</strong>
+                                        <p class="text-dark mt-0 mb-0"> Alex will explain you how ... <span class="time-ago"> 3 h </span>
+                                        </p>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
                     </div>
-                    <!-- notiviation list -->
-                    <ul>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar status-online">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-2.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Jonathan Madano</strong>
-                                    <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span></p>
-
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Stella Johnson</strong>
-                                    <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar status-online">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-1.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Alex Dolgove</strong>
-                                    <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar status-online">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-4.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Adrian Mohani</strong>
-                                    <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-2.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Jonathan Madano</strong>
-                                    <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span></p>
-
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Stella Johnson</strong>
-                                    <p> Alex will explain you how ... <span class="time-ago"> 3 h </span>
-                                    </p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-1.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Alex Dolgove</strong>
-                                    <p> Alia just joined Messenger! <span class="time-ago"> 3 h </span></p>
-                                </div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#">
-                                            <span class="notification-avatar">
-                                                <img src="{{asset('salika/assets/images/avatars/avatar-4.jpg')}}"
-                                                     alt="">
-                                            </span>
-                                <div class="notification-text notification-msg-text">
-                                    <strong>Adrian Mohani</strong>
-                                    <p>Thanks for The Answer ... <span class="time-ago"> 2 h </span></p>
-                                </div>
-                            </a>
-                        </li>
-                    </ul>
-
+                    <div class="dropdown-notifications-footer">
+                        <a href="{{route('chat/neighbourhood')}}"> See all Messages</a>
+                    </div>
                 </div>
-                <div class="dropdown-notifications-footer">
-                    <a href="#"> See all in Messages</a>
-                </div>
-            </div>
+            @endauth
 
             <!-- notificiation icon  -->
-        @auth()
+            @auth()
                 <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
                     <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
                     <span id="notification-counter">
@@ -195,7 +109,7 @@
                         </div>
                         <!-- notiviation list -->
                         <ul id="notification-list">
-                            @foreach(auth()->user()->notifications as $notification)
+                            @foreach(auth()->user()->notifications->take(10) as $notification)
                                 <li id="{{$notification->id}}"
                                     style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
                                     <a
@@ -223,12 +137,13 @@
                                 </li>
                             @endforeach
                         </ul>
-
+                    </div>
+                    <div class="dropdown-notifications-footer">
+                        <a href="#"> See all Notifications</a>
                     </div>
 
-
                 </div>
-        @endauth
+            @endauth
 
 
         <!-- profile -image -->

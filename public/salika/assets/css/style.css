@@ -9934,7 +9934,7 @@ ul[class~="dropdown-search-list"] li a {
     width: 100%;
 }
 [class~="dropdown-notifications-content"] {
-    height: 42vw !important;
+    height: 35vw !important;
 }
 [class~="dropdown-notifications-content"] [class~="notification-image"],
 [class~="notification-text"] {
@@ -11741,6 +11741,7 @@ ul[class~="dropdown-user-menu"] li a:hover {
     border-image: none;
 }
 [class~="notification-avatar"]:after {
+    display: none;
     border-radius: 50%;
 }
 [class~="message-action"],
