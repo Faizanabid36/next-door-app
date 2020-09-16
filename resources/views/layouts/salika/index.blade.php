@@ -10,7 +10,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="auth_id" content="{{auth()->user()->id??0}}">
     @yield('meta')
-    <link rel="icon" href="{{asset('salika/assets/images/salika_logo.jpg')}}">
+    <link rel="icon" href="{{asset('salika/assets/images/salika_logo.png')}}">
 
     <!-- CSS ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/bootstrap.min.css')}}">
