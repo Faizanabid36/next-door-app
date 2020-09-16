@@ -1,5 +1,6 @@
 @include('Chatify::layouts.headLinks')
-<div class="messenger" style="font-family: 'IBM Plex Sans' , Helvetica, Arial, 'lucida grande', tahoma, verdana, arial, sans-serif">
+<div class="messenger"
+     style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif">
     {{-- ----------------------Users/Groups lists side---------------------- --}}
     <div class="messenger-listView">
         {{-- Header and search bar --}}
