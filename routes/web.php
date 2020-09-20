@@ -164,9 +164,33 @@ Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
 Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
 
 
-Route::get('/chat', function () {
-    $total = auth()->user()->messages->count();
-    $unread = auth()->user()->messages->where('seen', 0)->count();
-    return compact('total', 'unread');
+Route::get('/testing', function () {
+    $sentToUsers = \Chatify\Http\Models\Message::whereFromId(auth()->user()->id)
+        ->where('to_id', '!=', auth()->user()->id)
+        ->orWhere('to_id', auth()->user()->id)
+//        ->distinct('to_id')
+        ->latest()->first();
+    $x = Chatify\Http\Models\Message::whereFromId(auth()->user()->id)
+        ->orWhere('to_id', auth()->user()->id)
+        ->latest()
+        ->distinct('from_id');
+
+//    Working Perfect for those whom I sent message
+//    $users = Chatify\Http\Models\Message::latest()
+//        ->whereFromId(auth()->user()->id)->whereToId(3)
+//        ->first();
+    $usersList = Chatify\Http\Models\Message::where('from_id', auth()->user()->id)
+        ->orWhere('to_id', auth()->user()->id)
+        ->where('to_id', '!=', auth()->user()->id)
+        ->distinct('from_id', 'to_id')
+        ->pluck('to_id');
+    foreach ($usersList as $u) {
+        $messages[] = Chatify\Http\Models\Message::latest()
+            ->whereFromId(auth()->user()->id)->whereToId($u)
+            ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
+            ->first();
+    }
+
+    return compact('messages');
 });
 

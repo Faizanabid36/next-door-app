@@ -26,11 +26,17 @@ class NewMessage implements ShouldBroadcast
     public function __construct($messageData, $from, $to)
     {
         //
+
         $this->messageData = $messageData;
         $this->from = $from;
         $this->to = $to;
         $from_user = User::whereId($from)->first();
-        $text = strlen($this->messageData['message']) > 35 ? substr($this->messageData['message'], 0, 35) . '...' : $this->messageData['message'];
+        if ($messageData['attachment'][2] == 'file')
+            $text = 'Sent an attachment';
+        elseif ($messageData['attachment'][2] == 'image')
+            $text = 'Sent an image';
+        else
+            $text = strlen($this->messageData['message']) > 35 ? substr($this->messageData['message'], 0, 35) . '...' : $this->messageData['message'];
         $this->messageBody =
             '<li id="user-' . $this->from . '">' .
             '<a href="' . route("user", $from) . '">' .
