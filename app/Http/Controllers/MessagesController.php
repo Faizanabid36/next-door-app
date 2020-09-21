@@ -137,6 +137,7 @@ class MessagesController extends Controller
 //                } else {
 //                    $error_msg = "File extension not allowed!";
 //                }
+                dd($attachment);
             } else {
                 $error_msg = "File size is too long!";
             }
@@ -156,7 +157,6 @@ class MessagesController extends Controller
 
             // fetch message to send it with the response
             $messageData = Chatify::fetchMessage($messageID);
-            dd($messageData);
             // send to user using pusher
             Chatify::push('private-chatify', 'messaging', [
                 'from_id' => Auth::user()->id,
