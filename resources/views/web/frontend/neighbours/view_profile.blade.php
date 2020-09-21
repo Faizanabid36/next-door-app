@@ -119,7 +119,7 @@
                     @if(!$user->user_extra->hide_address)
                         <div class="list-group-items" style="font-style: italic">
                             <i class="uil-home-alt"></i>
-                            <h5> Lives in <span> {{$user->address??'Unavailable'}} </span></h5>
+                            <h5> Community <span> {{$user->address??'Unavailable'}} </span></h5>
                         </div>
                     @endif
 

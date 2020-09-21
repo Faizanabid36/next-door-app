@@ -128,15 +128,15 @@ class MessagesController extends Controller
             $file = $request->file('file');
             // if size less than 10MB
             if ($file->getSize() < 10000000) {
-                if (in_array($file->getClientOriginalExtension(), $allowed)) {
+//                if (in_array($file->getClientOriginalExtension(), $allowed)) {
                     // get attachment name
                     $attachment_title = $file->getClientOriginalName();
                     // upload attachment and store the new name
                     $attachment = Str::uuid() . "." . $file->getClientOriginalExtension();
                     $file->storeAs("public/" . config('chatify.attachments.folder'), $attachment);
-                } else {
-                    $error_msg = "File extension not allowed!";
-                }
+//                } else {
+//                    $error_msg = "File extension not allowed!";
+//                }
             } else {
                 $error_msg = "File size is too long!";
             }
