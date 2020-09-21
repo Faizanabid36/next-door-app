@@ -31,10 +31,8 @@ class NewMessage implements ShouldBroadcast
         $this->from = $from;
         $this->to = $to;
         $from_user = User::whereId($from)->first();
-        if ($messageData['attachment'][2] == 'file')
+        if ($messageData['attachment'][2] == 'file' || $messageData['attachment'][2] == 'image')
             $text = 'Sent an attachment';
-        elseif ($messageData['attachment'][2] == 'image')
-            $text = 'Sent an image';
         else
             $text = strlen($this->messageData['message']) > 35 ? substr($this->messageData['message'], 0, 35) . '...' : $this->messageData['message'];
         $this->messageBody =

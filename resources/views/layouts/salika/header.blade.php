@@ -67,65 +67,97 @@
                             <h4>Messages</h4>
                         </div>
                         <!-- notiviation list -->
-                        <ul id="chat-panel">
-                            <li id="user-id">
-                                <a href="#">
-                                <span class="notification-avatar">
-                                    <img src="{{asset('salika/assets/images/avatars/avatar-3.jpg')}}" alt="">
-                                </span>
-                                    <div class="notification-text notification-msg-text">
-                                        <strong class="text-dark" style="font-size: 16px">Stella Johnson</strong>
-                                        <p class="text-dark mt-0 mb-0"> Alex will explain you how ... <span class="time-ago"> 3 h </span>
-                                        </p>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="dropdown-notifications-footer">
-                        <a href="{{route('chat/neighbourhood')}}"> See all Messages</a>
-                    </div>
-                </div>
-            @endauth
+                        @if(isset(auth()->user()->id) && count($messages)>0)
+                            <ul id="chat-panel">
+                                @foreach($messages as $message)
+                                    <li id="user-{{$message->from_id==auth()->user()->id?$message->to_id:$message->from_id}}">
+                                        <a href="{{route('user',$message->from_id==auth()->user()->id?$message->to_id:$message->from_id)}}">
+                                            <?php
+                                            $user = \App\User::
+                                            whereId($message->from_id == auth()->user()->id ? $message->to_id : $message->from_id)
+                                                ->first();
+                                            echo '<span class="notification-avatar">
+                                                <img src="' . $user->avatar . '">
+                                            </span>';
 
-            <!-- notificiation icon  -->
-            @auth()
-                <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
-                    <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
-                    <span id="notification-counter">
+                                            echo '<div class="notification-text notification-msg-text">
+                                                <strong class="text-dark" style="font-size: 16px">
+                                                    ' . $user->name . '
+                                                </strong>
+                                                <br>';
+                                            ?>
+                                            <p class="text-dark mt-0 mb-0">
+                                                @if($message->from_id == auth()->user()->id)
+                                                    You:
+                                                @endif
+                                                @if (!is_null($message->attachment))
+                                                    @if($message->from_id != auth()->user()->id && $message->seen==0)
+                                                        <b>Sent an attachment</b>
+                                                    @else
+                                                        Sent an attachment
+                                                    @endif
+                                                @else
+                                                    @if($message->from_id != auth()->user()->id && $message->seen==0)
+                                                        <b>{{strlen($message->body)>35?substr($message->body,0,35).'...':$message->body}}</b>
+                                                    @else
+                                                        {{strlen($message->body)>35?substr($message->body,0,35).'...':$message->body}}
+                                                    @endif
+                                                @endif
+                                                <span class="time-ago">
+                                                        {{$message->created_at->diffForHumans()}}
+                                                </span>
+                                            </p>
+                    </div>
+                    </a>
+                    </li>
+                    @endforeach
+                    </ul>
+                    @endif
+                </div>
+                <div class="dropdown-notifications-footer">
+                    <a href="{{route('chat/neighbourhood')}}"> See all Messages</a>
+                </div>
+        </div>
+        @endauth
+
+    <!-- notificiation icon  -->
+        @auth()
+            <a href="#" class="opts_icon" uk-tooltip="title: Notifications ; pos: bottom ;offset:7">
+                <img src="{{asset('salika/assets/images/icons/bell.svg')}}" alt="">
+                <span id="notification-counter">
                     {{auth()->user()->unReadNotifications->count()}}
                 </span>
-                </a>
-                <!-- notificiation dropdown -->
-                <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
-                     class="dropdown-notifications">
+            </a>
+            <!-- notificiation dropdown -->
+            <div uk-dropdown="mode:click ; animation: uk-animation-slide-bottom-small"
+                 class="dropdown-notifications">
 
-                    <!-- notification contents -->
-                    <div class="dropdown-notifications-content" data-simplebar>
+                <!-- notification contents -->
+                <div class="dropdown-notifications-content" data-simplebar>
 
-                        <!-- notivication header -->
-                        <div class="dropdown-notifications-headline">
-                            <h4>Notifications </h4>
-                        </div>
-                        <!-- notiviation list -->
-                        <ul id="notification-list">
-                            @foreach(auth()->user()->notifications->take(10) as $notification)
-                                <li id="{{$notification->id}}"
-                                    style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
-                                    <a
-                                        {{--                                    href="{{$notification->data['url']}}"--}}
-                                        onclick="readNotification('{{$notification->id}}')">
+                    <!-- notivication header -->
+                    <div class="dropdown-notifications-headline">
+                        <h4>Notifications </h4>
+                    </div>
+                    <!-- notiviation list -->
+                    <ul id="notification-list">
+                        @foreach(auth()->user()->notifications->take(10) as $notification)
+                            <li id="{{$notification->id}}"
+                                style="background-color: {{!is_null($notification->read_at)?'#f0f0f0':'white'}}">
+                                <a
+                                    {{--                                    href="{{$notification->data['url']}}"--}}
+                                    onclick="readNotification('{{$notification->id}}')">
                                     <span class="notification-avatar">
                                         <img src="{{$notification->data['user']['avatar']}}" alt="">
                                     </span>
-                                        @if($notification->data['type']=='review-notification')
-                                            <span class="notification-icon bg-gradient-warning">
+                                    @if($notification->data['type']=='review-notification')
+                                        <span class="notification-icon bg-gradient-warning">
                                                 <i class="icon-feather-star"></i></span>
-                                        @elseif($notification->data['type']=='recommendation-notification')
-                                            <span class="notification-icon bg-gradient-danger">
+                                    @elseif($notification->data['type']=='recommendation-notification')
+                                        <span class="notification-icon bg-gradient-danger">
                                                 <i class="icon-feather-heart"></i></span>
-                                        @endif
-                                        <span class="notification-text">
+                                    @endif
+                                    <span class="notification-text">
                                         <strong>{{$notification->data['user']['name']}}.</strong>
                                         {{$notification->data['body']}}
                                         <br>
@@ -133,17 +165,17 @@
                                             {{$notification->created_at->diffForHumans()}}
                                         </span>
                                     </span>
-                                    </a>
-                                </li>
-                            @endforeach
-                        </ul>
-                    </div>
-                    <div class="dropdown-notifications-footer">
-                        <a href="#"> See all Notifications</a>
-                    </div>
-
+                                </a>
+                            </li>
+                        @endforeach
+                    </ul>
                 </div>
-            @endauth
+                <div class="dropdown-notifications-footer">
+                    <a href="#"> See all Notifications</a>
+                </div>
+
+            </div>
+        @endauth
 
 
         <!-- profile -image -->

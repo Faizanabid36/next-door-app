@@ -3,11 +3,10 @@
 namespace App\Providers;
 
 use App\Category;
-use App\User;
+use Chatify\Http\Models\Message;
 use Illuminate\Support\Facades\Cache;
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Support\ServiceProvider;
-use Chatify\Http\Models\Message;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -35,6 +34,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('categories', $categories);
         });
 
+
         \View::composer(['layouts.salika.header'],function ($view){
             $usersList = Message::where('from_id', auth()->user()->id)
                 ->orWhere('to_id', auth()->user()->id)
@@ -47,6 +47,8 @@ class AppServiceProvider extends ServiceProvider
                     ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
                     ->first();
             }
+            $view->with('messages', $messages);
+
         });
 
         Schema::defaultStringLength(191);
