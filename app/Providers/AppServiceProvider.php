@@ -36,6 +36,7 @@ class AppServiceProvider extends ServiceProvider
 
 
         \View::composer(['layouts.salika.header'],function ($view){
+            $messages=[];
             $usersList = Message::where('from_id', auth()->user()->id)
                 ->orWhere('to_id', auth()->user()->id)
                 ->where('to_id', '!=', auth()->user()->id)
