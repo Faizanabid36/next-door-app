@@ -118,6 +118,7 @@ class MessagesController extends Controller
         // default variables
         $error_msg = $attachment = $attachment_title = null;
 
+        dd($request->all());
         // if there is attachment [file]
         if ($request->hasFile('file')) {
             // allowed extensions
@@ -127,7 +128,6 @@ class MessagesController extends Controller
 
             $file = $request->file('file');
             // if size less than 25MB
-            dd($file);
             if ($file->getSize() < 26000000) {
 //                if (in_array($file->getClientOriginalExtension(), $allowed)) {
                     // get attachment name
