@@ -118,7 +118,7 @@ class MessagesController extends Controller
         // default variables
         $error_msg = $attachment = $attachment_title = null;
 
-        dd($request->file('file'));
+        dd($request->input('file'));
         // if there is attachment [file]
         if ($request->hasFile('file')) {
             // allowed extensions
