@@ -126,8 +126,8 @@ class MessagesController extends Controller
             $allowed        = array_merge($allowed_images, $allowed_files);
 
             $file = $request->file('file');
-            // if size less than 10MB
-            if ($file->getSize() < 10000000) {
+            // if size less than 25MB
+            if ($file->getSize() < 26000000) {
 //                if (in_array($file->getClientOriginalExtension(), $allowed)) {
                     // get attachment name
                     $attachment_title = $file->getClientOriginalName();
@@ -137,7 +137,6 @@ class MessagesController extends Controller
 //                } else {
 //                    $error_msg = "File extension not allowed!";
 //                }
-                dd($attachment);
             } else {
                 $error_msg = "File size is too long!";
             }
