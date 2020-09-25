@@ -37,7 +37,7 @@
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/events.png')}}" alt="">
+                        <a href="{{route('event.index')}}"> <img src="{{asset('salika/assets/images/icons/events.png')}}" alt="">
                             <span> Events </span>
                         </a>
                     </li>

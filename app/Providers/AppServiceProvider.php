@@ -27,7 +27,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \View::composer(['web.frontend.sale_and_business.list_items','frontend.ecommerce.all_sale_items'], function ($view) {
+        \View::composer(['web.frontend.sale_and_business.list_items', 'frontend.ecommerce.all_sale_items'], function ($view) {
             $categories = Cache::remember('articles', 15, function () {
                 return Category::all();
             });
@@ -35,8 +35,8 @@ class AppServiceProvider extends ServiceProvider
         });
 
 
-        \View::composer(['layouts.salika.header'],function ($view){
-            $messages=[];
+        \View::composer(['layouts.salika.header', 'layouts.salika.chat_sidebar'], function ($view) {
+            $messages = [];
             $usersList = Message::where('from_id', auth()->user()->id)
                 ->orWhere('to_id', auth()->user()->id)
                 ->where('to_id', '!=', auth()->user()->id)
@@ -48,8 +48,8 @@ class AppServiceProvider extends ServiceProvider
                     ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
                     ->first();
             }
-            $view->with('messages', $messages);
-
+            $users = \App\User::whereIn('id', $usersList)->orderBy('name', 'ASC')->get();
+            $view->with(['messages' => $messages, 'users' => $users]);
         });
 
         Schema::defaultStringLength(191);

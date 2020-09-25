@@ -49,12 +49,9 @@ class BusinessCategoryController extends Controller
             'category_title' => 'required',
             'icon' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
-        $file = $request->file('icon');
-        $imageName = $request->get('category_title') . '.' . $file->getClientOriginalExtension();
-        $destinationPath = public_path('/business_icons');
-        $file->move($destinationPath, $imageName);
+        $destinationPath = storeImage($request->file('business_icons'));
         $bc = new BusinessCategory();
-        $bc->b_category_icon = asset('/business_icons/' . $imageName);
+        $bc->b_category_icon = $destinationPath;
         $bc->b_category_title = $request->get('category_title');
         $bc->b_category_slug = preg_replace('/\W|\_+/m', '-', $request->input('category_title'));
         $bc->save();
@@ -122,11 +119,8 @@ class BusinessCategoryController extends Controller
             'b_category_title' => 'required',
         ]);
         if (request()->hasFile('icon')) {
-            $file = $request->file('icon');
-            $imageName = $request->get('b_category_title') . '.' . $file->getClientOriginalExtension();
-            $destinationPath = public_path('/business_icons');
-            $file->move($destinationPath, $imageName);
-            (\request()->merge(['b_category_icon' => asset('/business_icons/' . $imageName)]));
+            $destinationPath = storeImage($request->file('business_icons'));
+            \request()->merge(['b_category_icon' => $destinationPath]);
         }
         \request()->merge(['b_category_slug' => preg_replace('/\W|\_+/m', '-', $request->input('b_category_title'))]);
 

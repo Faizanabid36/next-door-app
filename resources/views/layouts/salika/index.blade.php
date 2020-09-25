@@ -44,10 +44,17 @@
     <div class="main_content">
         @yield('content')
     </div>
+
+    @auth()
+        @include('layouts.salika.chat_sidebar')
+    @endauth
 </div>
 
-<!-- javaScripts
-            ================================================== -->
+<!--
+==================================================
+                    javaScripts
+==================================================
+-->
 
 <script src="{{asset('salika/assets/js/jquery.min.js?v='.now())}}"></script>
 @yield('footer_scripts')
@@ -82,7 +89,8 @@
     }(document, 'script', 'facebook-jssdk'));</script>
 <script async defer crossorigin="anonymous"
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"
-        nonce="GLWZhynL"></script>
+        nonce="GLWZhynL">
+</script>
 @yield('modal')
 
 

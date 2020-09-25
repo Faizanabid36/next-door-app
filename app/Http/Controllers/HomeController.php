@@ -72,5 +72,17 @@ class HomeController extends Controller
         return ['url' => $notification->data['url']];
     }
 
+    public function check_postal_code($code)
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $code);
+            $output = json_decode($display->getBody()->getContents());
+            $place_name = $output->places[0]->{'place name'};
+            return ['success' => $place_name];
+        } catch (\Exception $exception) {
+            return ['error' => 'Postal Code Not Found'];
+        }
+    }
 
 }
