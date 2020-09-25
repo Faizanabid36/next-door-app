@@ -51,30 +51,6 @@
                             <span> Crime Awareness </span>
                         </a>
                     </li>
-{{--                    <li>--}}
-{{--                        <a href="chats.html"> <img src="{{asset('salika/assets/images/icons/chat.png')}}" alt="">--}}
-{{--                            <span> Chats </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a href="pages.html"> <img src="{{asset('salika/assets/images/icons/flag.png')}}" alt="">--}}
-{{--                            <span> Pages </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a href="videos.html"> <img src="{{asset('salika/assets/images/icons/video.png')}}" alt="">--}}
-{{--                            <span> Videos </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li class="active">--}}
-{{--                        <a href="groups.html"> <img src="{{asset('salika/assets/images/icons/group.png')}}" alt="">--}}
-{{--                            <span> Groups </span> </a>--}}
-{{--                    </li>--}}
-{{--                    <li>--}}
-{{--                        <a href="courses.html"> <img src="{{asset('salika/assets/images/icons/pen.png')}}" alt="">--}}
-{{--                            <span> Courses </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
                     <li>
                         <a href="jobs.html"> <img src="{{asset('salika/assets/images/icons/real_estate_icon.png')}}"
                                                   alt="">
@@ -95,11 +71,6 @@
                     {{--                        </a>--}}
                     {{--                    </li>--}}
 
-                    {{--                    <li id="more-veiw">--}}
-                    {{--                        <a href="book.html"> <img src="{{asset('salika/assets/images/icons/book.png')}}" alt="">--}}
-                    {{--                            <span> Books </span>--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
                     <li id="more-veiw" class="{{Request::is('business/list')?'active':'test'}}">
                         <a href="{{route('business.list')}}"> <img
                                 src="{{asset('salika/assets/images/icons/market.png')}}" alt="">
@@ -112,22 +83,6 @@
                             <span> Questions </span>
                         </a>
                     </li>
-                    {{--                    <li id="more-veiw">--}}
-                    {{--                        <a href="gallery.html"> <img src="{{asset('salika/assets/images/icons/photo.png')}}" alt="">--}}
-                    {{--                            <span> Gallery </span>--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
-
-                    {{--                    <li id="more-veiw">--}}
-{{--                        <a href="movies.html"> <img src="{{asset('salika/assets/images/icons/movies.png')}}" alt="">--}}
-{{--                            <span> Movies </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
-{{--                    <li id="more-veiw">--}}
-{{--                        <a href="games.html"> <img src="{{asset('salika/assets/images/icons/game.png')}}" alt="">--}}
-{{--                            <span> Games </span>--}}
-{{--                        </a>--}}
-{{--                    </li>--}}
                 </ul>
             </div>
         </div>

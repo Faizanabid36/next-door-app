@@ -19,9 +19,11 @@ class CreateEventsTable extends Migration
             $table->string('event_title');
             $table->string('event_description');
             $table->string('event_postal_code');
+            $table->string('event_location')->nullable();
             $table->date('event_date');
             $table->time('start_time');
             $table->time('end_time');
+            $table->integer('user_id');
             $table->string('event_cover_photo');
             $table->timestamps();
         });

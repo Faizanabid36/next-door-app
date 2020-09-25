@@ -149,7 +149,7 @@ class BusinessController extends Controller
     public function store_business_image(Request $request)
     {
         $this->validate($request, [
-            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
+            'Picture' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ]);
         $path = storeImage($request->file('Picture'), 'business_pages/business-' . $request->input('business_id'));
         $bi = new BusinessImages();

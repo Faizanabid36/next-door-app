@@ -17,3 +17,18 @@ if (!function_exists('storeImage')) {
         return asset(Storage::url($folderName . '/' . $imagename));
     }
 }
+
+
+if (!function_exists('get_address')) {
+    function get_address($postal_code)
+    {
+        try {
+            $client = new \GuzzleHttp\Client();
+            $display = $client->request('GET', 'http://api.zippopotam.us/ph/' . $postal_code);
+            $output = json_decode($display->getBody()->getContents());
+            return $output->places[0]->{'place name'};
+        } catch (\Exception $exception) {
+            return ['error' => 'Postal Code Not Found'];
+        }
+    }
+}

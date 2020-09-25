@@ -12,8 +12,7 @@
         </div>
         <div class="uk-grid-large mt-5" uk-grid>
             <div class="uk-width-expand">
-
-
+                @include('web.frontend.events.components.session_messages')
                 <!-- Blog Post -->
                 <a href="#" class="blog-post">
                     <!-- Blog Post Thumbnail -->

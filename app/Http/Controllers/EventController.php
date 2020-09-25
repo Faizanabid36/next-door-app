@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Event;
 use App\EventCategory;
+use App\Http\Requests\ValidateEvent;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -36,10 +37,17 @@ class EventController extends Controller
      * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ValidateEvent $request)
     {
-        //
-        dd($request->all());
+        $path = storeImage($request->file('banner_2'), 'events/' . auth()->user()->id);
+        $addr = get_address($request->get('event_postal_code'));
+        if (isset($addr['error']))
+            $request->merge(['event_location' => null]);
+        else
+            $request->merge(['event_location' => $addr]);
+        $data = $request->merge(['event_cover_photo' => $path,'user_id'=>auth()->user()->id])->except('banner_2');
+        Event::create($data);
+        return back()->withSuccess('Event Posted Successfully');
     }
 
     /**
