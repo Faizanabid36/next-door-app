@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Event;
+use App\EventCategory;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -15,7 +16,8 @@ class EventController extends Controller
     public function index()
     {
         //
-        return view('web.frontend.events.view_events');
+        $categories = EventCategory::all();
+        return view('web.frontend.events.view_events',compact('categories'));
     }
 
     /**

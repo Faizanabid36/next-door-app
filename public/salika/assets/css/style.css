@@ -20538,7 +20538,7 @@ span[class~="blog-post-info-tag"] {
     transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
 span[class~="blog-post-info-tag"] {
-    height: 0.15625in;
+    height: 0.275in;
 }
 [class~="blog-post-date"],
 [class~="blog-post-info"] {

@@ -31,8 +31,8 @@ class ValidateBusinessPage extends FormRequest
             'contact_1' => 'required|max:18',
             'contact_2' => 'required|sometimes|max:18',
             'postal_code' => 'required|max:6',
-            'banner_1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-//            'banner_2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
+            'banner_1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
+//            'banner_2' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120'
         ];
     }
 }

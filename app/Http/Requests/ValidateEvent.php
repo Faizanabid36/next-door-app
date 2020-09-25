@@ -4,7 +4,7 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class ValidateFamilyMember extends FormRequest
+class ValidateEvent extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,10 +24,14 @@ class ValidateFamilyMember extends FormRequest
     public function rules()
     {
         return [
-            //
-            'member_name' => 'required|max:54',
-            'relation' => 'required|max:54',
-            'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120'
+            'event_category_id' => 'required',
+            'event_title' => 'required',
+            'event_description' => 'required',
+            'event_postal_code' => 'required',
+            'event_date' => 'required',
+            'start_time' => 'required',
+            'end_time' => 'required',
+            'banner_1' => 'image|mimes:jpeg,png,jpg,gif,svg|max:5120',
         ];
     }
 }

@@ -4,11 +4,119 @@
     <div class="main_content_inner" style="color: black!important;">
 
         <div class="uk-flex uk-flex-between">
-            <h1 class="color-black"><i>Free & Sale Items</i></h1>
+            <h1 class="color-black"><i>Events in your community</i></h1>
             <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"
                     data-target="#postNewEvent">
-                <i class="uil-plus"> </i> Post New Item
+                <i class="uil-plus"> </i> Post An Event
             </button>
+        </div>
+        <div class="uk-grid-large mt-5" uk-grid>
+            <div class="uk-width-expand">
+
+
+                <!-- Blog Post -->
+                <a href="#" class="blog-post">
+                    <!-- Blog Post Thumbnail -->
+                    <div class="blog-post-thumbnail">
+                        <div class="blog-post-thumbnail-inner">
+                            <span class="blog-item-tag">Tips</span>
+                            <img src="{{asset('salika/assets/images/blog/img-1.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <!-- Blog Post Content -->
+                    <div class="blog-post-content">
+                        <div class="blog-post-content-info">
+                            <span class="blog-post-info-tag button soft-danger"> Softwares </span>
+                            <span class="blog-post-info-date">10 June</span>
+                        </div>
+                        <h3>10 amazing web demos and experiments </h3>
+                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id
+                            quod mazim placerat facer possim... </p>
+                    </div>
+                </a>
+
+                <!-- Blog Post -->
+                <a href="#" class="blog-post">
+                    <!-- Blog Post Thumbnail -->
+                    <div class="blog-post-thumbnail">
+                        <div class="blog-post-thumbnail-inner">
+                            <span class="blog-item-tag">Tools</span>
+                            <img src="{{asset('salika/assets/images/blog/img-2.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <!-- Blog Post Content -->
+                    <div class="blog-post-content">
+                        <div class="blog-post-content-info">
+                            <span class="blog-post-info-tag button soft-primary"> Softwares </span>
+                            <span class="blog-post-info-date">10 June</span>
+                        </div>
+                        <h3>10 Awesome Web Dev Tools and Resources For 2020</h3>
+                        <p>Nam liber tempor cum soluta nobis nihil imperdiet doming id tempor cum soluta nobis
+                            quod mazim placerat facer possim soluta.. </p>
+                    </div>
+                </a>
+
+                <!-- Blog Post -->
+                <a href="#" class="blog-post">
+                    <!-- Blog Post Thumbnail -->
+                    <div class="blog-post-thumbnail">
+                        <div class="blog-post-thumbnail-inner">
+                            <img src="{{asset('salika/assets/images/blog/img-3.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <!-- Blog Post Content -->
+                    <div class="blog-post-content">
+                        <div class="blog-post-content-info">
+                            <span class="blog-post-info-tag button soft-warning"> Softwares </span>
+                            <span class="blog-post-info-date">10 June</span>
+                        </div>
+                        <h3>10 Interesting JavaScript and CSS Libraries </h3>
+                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id
+                            quod mazim placerat facer possim... </p>
+                    </div>
+                </a>
+
+                <!-- Blog Post -->
+                <a href="#" class="blog-post">
+                    <!-- Blog Post Thumbnail -->
+                    <div class="blog-post-thumbnail">
+                        <div class="blog-post-thumbnail-inner">
+                            <img src="{{asset('salika/assets/images/blog/img-4.jpg')}}" alt="">
+                        </div>
+                    </div>
+                    <!-- Blog Post Content -->
+                    <div class="blog-post-content">
+                        <div class="blog-post-content-info">
+                            <span class="blog-post-info-tag button soft-primary"> Programming </span>
+                            <span class="blog-post-info-date">10 June</span>
+                        </div>
+                        <h3>10 Interesting JavaScript and CSS libraries for 2020 </h3>
+                        <p>Nam liber tempor cum soluta nobis nihil imperdiet doming id tempor cum soluta nobis
+                            quod mazim placerat facer possim soluta.. </p>
+                    </div>
+                </a>
+
+            </div>
+            <div class="uk-width-1-3@s">
+
+                <div uk-sticky="offset:86;media: @m ; bottom:true">
+
+                    <div class="uk-card-default rounded uk-overflow-hidden">
+                        <div class="p-4 text-center">
+
+                            <h4 class="uk-text-bold"> Subsicribe </h4>
+                            <p> Get the Latest Posts and Article for us On Your Email</p>
+
+                            <form class="mt-3">
+                                <input type="text" class="uk-input uk-form-small"
+                                       placeholder="Enter your email address">
+                                <input type="submit" value="Subscirbe" class="button button-default block mt-3">
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
@@ -16,10 +124,11 @@
     <form novalidate method="POST"
           enctype='multipart/form-data'
           action="{{route('event.store')}}">
-        <div class="modal fade" id="postNewEvent" tabindex="-1" role="dialog" aria-labelledby="postNewEventTitle"
+        <div class="modal fade" id="postNewEvent" tabindex="-1" role="dialog"
+             aria-labelledby="postNewEventTitle"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="modal-content" style="width:94%;margin: 0px auto">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle ">Post New Item</h5>
                         <button class="close" data-dismiss="modal" aria-label="Close">
@@ -33,9 +142,10 @@
                             <h5 class="uk-text-bold mb-1">Event Category </h5>
                             <select name="event_category_id" id="event_category_id" class="uk-input uk-form-small">
                                 <option value="" disabled selected>Choose Category</option>
-                                <option value="c1">Concert</option>
-                                <option value="c2">Concert 2</option>
-                                <option value="c3">Concert 3</option>
+                                {{--                                {{dd($categories)}}--}}
+                                @foreach($categories as $category)
+                                    <option value="{{$category->id}}">{{$category->name}}</option>
+                                @endforeach
                             </select>
                         </div>
                         <div class="mb-2">
@@ -46,7 +156,7 @@
                         <div class="mb-2">
                             <h5 class="uk-text-bold mb-1"> Description </h5>
                             <textarea name="event_description" id="event_description" class="uk-textarea uk-form-small"
-                                      rows="6" placeholder="Event Description">{{old('event_description')}}</textarea>
+                                      rows="5" placeholder="Event Description">{{old('event_description')}}</textarea>
                         </div>
 
                     </div>
@@ -64,7 +174,7 @@
         <div class="modal fade" id="postNewEvent-2" tabindex="-1" role="dialog" aria-labelledby="postNewEvent2Title"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content">
+                <div class="modal-content" style="width: 97%; margin: 0px auto">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Post New Item</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -100,7 +210,7 @@
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">
                             Previous
                         </button>
-                        <button type="button" class="btn btn-primary" id="modal_button2" data-toggle="modal"
+                        <button type="button" class="btn btn-primary" id="modal_button2" disabled data-toggle="modal"
                                 data-target="#postNewEvent-3">
                             Next
                         </button>
@@ -111,7 +221,7 @@
         <div class="modal fade" id="postNewEvent-3" tabindex="-1" role="dialog" aria-labelledby="postNewEvent3Title"
              aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
-                <div class="modal-content" style="height: 450px;">
+                <div class="modal-content" c>
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLongTitle">Post New Event</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -119,34 +229,42 @@
                         </button>
                     </div>
                     <div class="modal-body">
-                        <div class="mb-2">
-                            <h5 class="uk-text-bold mb-1"> Event My Address </h5>
-                            <input type="text" name="event_postal_code" value="{{old('event_postal_code')}}"
-                                   class="uk-input uk-form-small" placeholder="Event Postal Code">
+                        <div id="error_message"></div>
+                        <div class="mb-5 media-upload-image">
+                            <a href="javascript: void(0);">
+                                <img src="{{asset('salika/assets/images/icons/market.png')}}"
+                                     id="display_cover_picture"
+                                     class="rounded mr-75" alt="profile image" height="150"
+                                     width="350"
+                                     style="margin: 0px auto;">
+                            </a>
                         </div>
-                        <div class="mb-2">
-                            <h5 class="uk-text-bold mb-1"> Event Date </h5>
-                            <input type="date" name="event_date" class="uk-input uk-form-small"
-                                   placeholder="Date">
+                        <div class="media-body">
+                            <div
+                                class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                <label
+                                    class="btn btn-sm small button primary cursor-pointer ml-50 mb-50 mb-sm-0 text-white"
+                                    for="cover-upload">
+                                    Upload new cover photo
+                                </label>
+                                <input onchange="loadCover(event)" type="file" name="banner_2"
+                                       id="cover-upload"
+                                       hidden>
+                            </div>
+                            <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
+                                    PNG.
+                                    Max
+                                    size of
+                                    5MB</small>
+                            </p>
                         </div>
-                        <div class="mb-2">
-                            <h5 class="uk-text-bold mb-1"> Start Time </h5>
-                            <input type="time" name="start_time" class="uk-input uk-form-small"
-                                   placeholder="Date">
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" id="modal_previous_button1"
+                                    data-dismiss="modal">Previous
+                            </button>
+                            <input id="submit_button" type="submit" value="Post Event" style="float: right"
+                                   class="uk-button rounded button primary">
                         </div>
-                        <div class="mb-2">
-                            <h5 class="uk-text-bold mb-1"> End Time </h5>
-                            <input type="time" name="end_time" class="uk-input uk-form-small"
-                                   placeholder="Date">
-                        </div>
-
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" id="modal_previous_button1"
-                                data-dismiss="modal">Previous
-                        </button>
-                        <input type="submit" value="Post Item" style="float: right"
-                               class="uk-button rounded button primary">
                     </div>
                 </div>
             </div>
@@ -155,6 +273,10 @@
 @endsection
 @section('footer_scripts')
     <script>
+        let loadCover = function (event) {
+            let cover_image = document.getElementById('display_cover_picture');
+            cover_image.src = URL.createObjectURL(event.target.files[0]);
+        }
         $(document).ready(function () {
             console.log("ready!");
             let event_title = document.getElementById('event_title')
@@ -195,22 +317,23 @@
                 });
             })
 
-
-            $(".custom-file-input").on("change", function () {
-                var fileName = $(this).val().split("\\").pop();
-                console.log(fileName)
-                $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
-            });
-            $(".file-input-0").on("change", function () {
-                var fileName = $(this).val().split("\\").pop();
-                console.log(fileName)
-                $(this).siblings(".file-label-0").addClass("selected").html(fileName);
-            });
-            $(".file-input-1").on("change", function () {
-                var fileName = $(this).val().split("\\").pop();
-                console.log(fileName)
-                $(this).siblings(".file-label-1").addClass("selected").html(fileName);
-            });
+            let event_postal_code = document.getElementById('event_postal_code')
+            let event_date = document.getElementById('event_date')
+            let start_time = document.getElementById('start_time')
+            let end_time = document.getElementById('end_time')
+            let button2 = document.getElementById('modal_button2');
+            document.getElementById('event_postal_code').onkeyup = function () {
+                button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
+            }
+            document.getElementById('event_date').onchange = function () {
+                button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
+            }
+            document.getElementById('start_time').onchange = function () {
+                button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
+            }
+            document.getElementById('end_time').onchange = function () {
+                button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
+            }
         });
     </script>
 @endsection
