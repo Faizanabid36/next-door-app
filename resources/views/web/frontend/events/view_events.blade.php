@@ -45,7 +45,7 @@
                             <div class="mt-3">
                                 <div style="width: 35%; float: left;" class="uk-flex-inline">
                                     <button id="going_event_id-{{$event['id']}}"
-                                            onclick="goingToEvent('going_event_id-{{$event['id']}}')"
+                                            onclick="goingToEvent('going','going_event_id-{{$event['id']}}')"
                                             class="mr-1 button primary small going-button">
                                         @if($event['isGoing']==1)
                                             <i class="uil-check-circle going_event_id-{{$event['id']}}-icon"></i>
@@ -53,13 +53,19 @@
                                         <span class="going_event_id-{{$event['id']}}-text">Going</span>
                                     </button>
                                     <button id="maybe_event_id-{{$event['id']}}"
+                                            onclick="goingToEvent('maybe','maybe_event_id-{{$event['id']}}')"
                                             class="ml-1 button warning small maybe-button">
-                                        <i class="uil-check maybe_event_id-{{$event['id']}}-icon"></i>Maybe
+                                        @if($event['isMaybe']==1)
+                                            <i class="uil-check maybe_event_id-{{$event['id']}}-icon"></i>
+                                        @endif
+                                        <span class="maybe_event_id-{{$event['id']}}-text">Maybe</span>
                                     </button>
                                 </div>
                                 <div style="float: right" class="mt-1">
-                                    <span style="">{{$event['totalGoing']}} Going</span>
-                                    <span style="">{{$event['totalMaybe']}} Maybe</span>
+                                    <span style=""><span
+                                            id="count_going_{{$event['id']}}">{{$event['totalGoing']}}</span> Going</span>
+                                    <span style=""><span
+                                            id="count_maybe_{{$event['id']}}">{{$event['totalMaybe']}}</span> Maybe</span>
                                 </div>
                             </div>
                         </div>
@@ -111,7 +117,6 @@
                             <h5 class="uk-text-bold mb-1">Event Category </h5>
                             <select name="event_category_id" id="event_category_id" class="uk-input uk-form-small">
                                 <option value="" disabled selected>Choose Category</option>
-                                {{--                                {{dd($categories)}}--}}
                                 @foreach($categories as $category)
                                     <option value="{{$category->id}}">{{$category->name}}</option>
                                 @endforeach
@@ -303,27 +308,51 @@
             document.getElementById('end_time').onchange = function () {
                 button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
             }
-
-            // $('.going-button').on('click', function (event) {
-            //     event.preventDefault()
-            //     let id = event.target.id;
-            //     let event_id = id.split('-')[1]
-            //     console.log(event.target.id)
-            //
-            // })
         });
 
-        function goingToEvent(id) {
+        function goingToEvent(idk, id) {
+            console.log(id)
+            let type = 1;
+            if (idk === 'maybe')
+                type = 2;
             let event_id = id.split('-')[1]
             $.ajax({
                 type: 'GET',
-                url: window.location.origin + '/event_interest/' + event_id,
+                url: window.location.origin + '/going_to_event/' + event_id + '/' + type,
                 success: function (data) {
+                    console.log(data)
                     if (data.notGoing) {
+                        let num = $(`#count_going_${event_id}`).text();
+                        let x = parseInt(num);
+                        x = x - 1;
+                        $(`#count_going_${event_id}`).html(x)
+                        console.log(x)
+                        $(`.${id}-icon`).remove()
+                    } else if (data.notMaybe) {
+                        let num = $(`#count_maybe_${event_id}`).text();
+                        let x = parseInt(num);
+                        x = x - 1;
+                        $(`#count_maybe_${event_id}`).html(x)
+                        console.log(x)
                         $(`.${id}-icon`).remove()
                     } else if (data.isGoing) {
+                        $(`.maybe_event_id-${event_id}-icon`).remove()
                         $(`.${id}-text`).remove()
+                        let num = $(`#count_going_${event_id}`).text();
+                        let x = parseInt(num);
+                        x = x + 1;
+                        $(`#count_going_${event_id}`).html(x)
+                        console.log(x)
                         $(`<i class="uil-check-circle ${id}-icon"></i><span class="${id}-text">Going</span>`).appendTo('#' + id)
+                    } else if (data.isMaybe) {
+                        $(`.going_event_id-${event_id}-icon`).remove()
+                        $(`.${id}-text`).remove()
+                        let num = $(`#count_maybe_${event_id}`).text();
+                        let x = parseInt(num);
+                        x = x + 1;
+                        $(`#count_maybe_${event_id}`).html(x)
+                        console.log(x)
+                        $(`<i class="uil-check ${id}-icon"></i><span class="${id}-text">Maybe</span>`).appendTo('#' + id)
                     }
                 },
                 error: function (data) {

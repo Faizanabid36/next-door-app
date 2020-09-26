@@ -154,7 +154,7 @@ Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function (
  * ----------------------------
  */
 Route::resource('event', 'EventController')->middleware('auth');
-Route::get('event_interest/{event_id}', 'EventController@event_interest')->middleware('auth');
+Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event')->middleware('auth');
 
 
 Route::get('item/delete/{saleItem}', 'SaleItemController@delete')->name('delete_item');

@@ -18,22 +18,16 @@ class EventController extends Controller
     public function index()
     {
         //
-//        $user = auth()->user()->whereHas('going_to_events', function ($q) {
-//            return $q->where('interested_or_going', 1);
-////        })->get();
-//        $interests = auth()->user()->going_to_events->whereNotNull('interested_or_going')->get('');
-//        return compact('interests');
         $categories = EventCategory::all();
         $events = Event::with('category')->get();
         $events = collect($events)->map(function ($event) {
             $interest = EventInterest::whereEventId($event->id)->get();
-            $totalGoing = $interest->where('interested_or_going', 1)->count();
-            $totalMaybe = $interest->where('interested_or_going', 2)->count();
             $isGoing = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();
-            $isMaybe = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 2)->count();
-            return collect($event)->merge(['isGoing' => $isGoing, 'isMaybe' => $isMaybe, 'totalGoing' => $totalGoing, 'totalMaybe' => $totalMaybe]);
+            return collect($event)->merge(['isGoing' => $isGoing,
+                'isMaybe' => $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 2)->count(),
+                'totalGoing' => $interest->where('interested_or_going', 1)->count(),
+                'totalMaybe' => $interest->where('interested_or_going', 2)->count()]);
         });
-//        return compact('events');
         return view('web.frontend.events.view_events', compact('categories', 'events'));
     }
 
@@ -111,19 +105,19 @@ class EventController extends Controller
         //
     }
 
-    public function event_interest($event_id)
+    public function going_to_event($event_id, $type)
     {
         $int = EventInterest::whereUserId(auth()->user()->id)->whereEventId($event_id)->first();
-        if (is_null($int) || is_null($int->interested_or_going)) {
-            EventInterest::updateOrCreate(
-                ['event_id' => $event_id, 'user_id' => auth()->user()->id],
-                ['event_id' => $event_id, 'user_id' => auth()->user()->id, 'interested_or_going' => 1]);
-            return ['isGoing' => true];
-        } else {
+        if ($int->interested_or_going == $type) {
             EventInterest::updateOrCreate(
                 ['event_id' => $event_id, 'user_id' => auth()->user()->id],
                 ['event_id' => $event_id, 'user_id' => auth()->user()->id, 'interested_or_going' => null]);
-            return ['notGoing' => true];
+            return $type == 2 ? ['notMaybe' => true] : ['notGoing' => true];
+        } else {
+            EventInterest::updateOrCreate(
+                ['event_id' => $event_id, 'user_id' => auth()->user()->id],
+                ['event_id' => $event_id, 'user_id' => auth()->user()->id, 'interested_or_going' => (int)$type]);
+            return $type == 2 ? ['isMaybe' => true] : ['isGoing' => true];
         }
     }
 }
