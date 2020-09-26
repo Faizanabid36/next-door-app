@@ -12,89 +12,39 @@
         </div>
         <div class="uk-grid-large mt-5" uk-grid>
             <div class="uk-width-expand">
-                @include('web.frontend.events.components.session_messages')
-                <!-- Blog Post -->
-                <a href="#" class="blog-post">
-                    <!-- Blog Post Thumbnail -->
-                    <div class="blog-post-thumbnail">
-                        <div class="blog-post-thumbnail-inner">
-                            <span class="blog-item-tag">Tips</span>
-                            <img src="{{asset('salika/assets/images/blog/img-1.jpg')}}" alt="">
+            @include('web.frontend.events.components.session_messages')
+            <!-- Blog Post -->
+                @foreach($events as $event)
+                    <a href="#" class="blog-post">
+                        <!-- Blog Post Thumbnail -->
+                        <div class="blog-post-thumbnail">
+                            <div class="blog-post-thumbnail-inner">
+                                @if(auth()->user()->id == $event->user_id)
+                                    <span class="blog-item-tag text-danger">
+                                        <i class="uil-trash"></i>Delete
+                                    </span>
+                                @endif
+                                <img src="{{asset('salika/assets/images/blog/img-1.jpg')}}" alt="">
+                            </div>
                         </div>
-                    </div>
-                    <!-- Blog Post Content -->
-                    <div class="blog-post-content">
-                        <div class="blog-post-content-info">
-                            <span class="blog-post-info-tag button soft-danger"> Softwares </span>
-                            <span class="blog-post-info-date">10 June</span>
+                        <!-- Blog Post Content -->
+                        <div class="blog-post-content">
+                            <div class="blog-post-content-info">
+                                <span class="blog-post-info-tag button soft-danger">
+                                    {{$event->category->name}}
+                                </span>
+                                <span class="blog-post-info-date">Posted: {{$event->created_at->diffForHumans()}}</span>
+                            </div>
+                            <h4 class="text-dark mb-1">{{$event->event_title}}</h4>
+                            <p>
+                                {{\Carbon\Carbon::parse($event->event_date. ' '.$event->start_time)
+                                    ->isoFormat('ddd, MMM Do Y, h:mma')}}
+                                <br>
+                                {{$event->event_location}}
+                            </p>
                         </div>
-                        <h3>10 amazing web demos and experiments </h3>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id
-                            quod mazim placerat facer possim... </p>
-                    </div>
-                </a>
-
-                <!-- Blog Post -->
-                <a href="#" class="blog-post">
-                    <!-- Blog Post Thumbnail -->
-                    <div class="blog-post-thumbnail">
-                        <div class="blog-post-thumbnail-inner">
-                            <span class="blog-item-tag">Tools</span>
-                            <img src="{{asset('salika/assets/images/blog/img-2.jpg')}}" alt="">
-                        </div>
-                    </div>
-                    <!-- Blog Post Content -->
-                    <div class="blog-post-content">
-                        <div class="blog-post-content-info">
-                            <span class="blog-post-info-tag button soft-primary"> Softwares </span>
-                            <span class="blog-post-info-date">10 June</span>
-                        </div>
-                        <h3>10 Awesome Web Dev Tools and Resources For 2020</h3>
-                        <p>Nam liber tempor cum soluta nobis nihil imperdiet doming id tempor cum soluta nobis
-                            quod mazim placerat facer possim soluta.. </p>
-                    </div>
-                </a>
-
-                <!-- Blog Post -->
-                <a href="#" class="blog-post">
-                    <!-- Blog Post Thumbnail -->
-                    <div class="blog-post-thumbnail">
-                        <div class="blog-post-thumbnail-inner">
-                            <img src="{{asset('salika/assets/images/blog/img-3.jpg')}}" alt="">
-                        </div>
-                    </div>
-                    <!-- Blog Post Content -->
-                    <div class="blog-post-content">
-                        <div class="blog-post-content-info">
-                            <span class="blog-post-info-tag button soft-warning"> Softwares </span>
-                            <span class="blog-post-info-date">10 June</span>
-                        </div>
-                        <h3>10 Interesting JavaScript and CSS Libraries </h3>
-                        <p>Nam liber tempor cum soluta nobis eleifend option congue nihil imperdiet doming id
-                            quod mazim placerat facer possim... </p>
-                    </div>
-                </a>
-
-                <!-- Blog Post -->
-                <a href="#" class="blog-post">
-                    <!-- Blog Post Thumbnail -->
-                    <div class="blog-post-thumbnail">
-                        <div class="blog-post-thumbnail-inner">
-                            <img src="{{asset('salika/assets/images/blog/img-4.jpg')}}" alt="">
-                        </div>
-                    </div>
-                    <!-- Blog Post Content -->
-                    <div class="blog-post-content">
-                        <div class="blog-post-content-info">
-                            <span class="blog-post-info-tag button soft-primary"> Programming </span>
-                            <span class="blog-post-info-date">10 June</span>
-                        </div>
-                        <h3>10 Interesting JavaScript and CSS libraries for 2020 </h3>
-                        <p>Nam liber tempor cum soluta nobis nihil imperdiet doming id tempor cum soluta nobis
-                            quod mazim placerat facer possim soluta.. </p>
-                    </div>
-                </a>
-
+                    </a>
+                @endforeach
             </div>
             <div class="uk-width-1-3@s">
 
