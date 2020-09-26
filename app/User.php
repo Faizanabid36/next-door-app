@@ -103,11 +103,16 @@ class User extends Authenticatable
 
     public function sale_items()
     {
-        return $this->hasMany(SaleItems::class,'user_id','id');
+        return $this->hasMany(SaleItems::class, 'user_id', 'id');
     }
 
     public function messages()
     {
-        return $this->hasMany(Message::class,'to_id','id');
+        return $this->hasMany(Message::class, 'to_id', 'id');
+    }
+
+    public function going_to_events()
+    {
+        return $this->hasMany(EventInterest::class, 'user_id', 'id');
     }
 }

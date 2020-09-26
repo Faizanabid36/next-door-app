@@ -15,33 +15,53 @@
             @include('web.frontend.events.components.session_messages')
             <!-- Blog Post -->
                 @foreach($events as $event)
-                    <a href="#" class="blog-post">
-                        <!-- Blog Post Thumbnail -->
+                    <a class="blog-post">
+                    <!-- Blog Post Thumbnail -->
                         <div class="blog-post-thumbnail">
                             <div class="blog-post-thumbnail-inner">
-                                @if(auth()->user()->id == $event->user_id)
+                                @if(auth()->user()->id == $event['user_id'])
                                     <span class="blog-item-tag text-danger">
                                         <i class="uil-trash"></i>Delete
                                     </span>
                                 @endif
-                                <img src="{{asset('salika/assets/images/blog/img-1.jpg')}}" alt="">
+                                <img src="{{$event['event_cover_photo']}}" alt="">
                             </div>
                         </div>
                         <!-- Blog Post Content -->
                         <div class="blog-post-content">
                             <div class="blog-post-content-info">
                                 <span class="blog-post-info-tag button soft-danger">
-                                    {{$event->category->name}}
+                                    {{$event['category']['name']}}
                                 </span>
-                                <span class="blog-post-info-date">Posted: {{$event->created_at->diffForHumans()}}</span>
+                                <span class="blog-post-info-date">Posted: {{\Carbon\Carbon::parse($event['created_at'])->diffForHumans()}}</span>
                             </div>
-                            <h4 class="text-dark mb-1">{{$event->event_title}}</h4>
+                            <h4 class="text-dark mb-1">{{$event['event_title']}}</h4>
                             <p>
-                                {{\Carbon\Carbon::parse($event->event_date. ' '.$event->start_time)
+                                {{\Carbon\Carbon::parse($event['event_date']. ' '.$event['start_time'])
                                     ->isoFormat('ddd, MMM Do Y, h:mma')}}
                                 <br>
-                                {{$event->event_location}}
+                                {{$event['event_location']}}
                             </p>
+                            <div class="mt-3">
+                                <div style="width: 35%; float: left;" class="uk-flex-inline">
+                                    <button id="going_event_id-{{$event['id']}}"
+                                            onclick="goingToEvent('going_event_id-{{$event['id']}}')"
+                                            class="mr-1 button primary small going-button">
+                                        @if($event['isGoing']==1)
+                                            <i class="uil-check-circle going_event_id-{{$event['id']}}-icon"></i>
+                                        @endif
+                                        <span class="going_event_id-{{$event['id']}}-text">Going</span>
+                                    </button>
+                                    <button id="maybe_event_id-{{$event['id']}}"
+                                            class="ml-1 button warning small maybe-button">
+                                        <i class="uil-check maybe_event_id-{{$event['id']}}-icon"></i>Maybe
+                                    </button>
+                                </div>
+                                <div style="float: right" class="mt-1">
+                                    <span style="">{{$event['totalGoing']}} Going</span>
+                                    <span style="">{{$event['totalMaybe']}} Maybe</span>
+                                </div>
+                            </div>
                         </div>
                     </a>
                 @endforeach
@@ -283,6 +303,33 @@
             document.getElementById('end_time').onchange = function () {
                 button2.disabled = !(event_postal_code.value.length > 0 && event_date.value.length > 0 && start_time.value.length > 0 && end_time.value.length > 0);
             }
+
+            // $('.going-button').on('click', function (event) {
+            //     event.preventDefault()
+            //     let id = event.target.id;
+            //     let event_id = id.split('-')[1]
+            //     console.log(event.target.id)
+            //
+            // })
         });
+
+        function goingToEvent(id) {
+            let event_id = id.split('-')[1]
+            $.ajax({
+                type: 'GET',
+                url: window.location.origin + '/event_interest/' + event_id,
+                success: function (data) {
+                    if (data.notGoing) {
+                        $(`.${id}-icon`).remove()
+                    } else if (data.isGoing) {
+                        $(`.${id}-text`).remove()
+                        $(`<i class="uil-check-circle ${id}-icon"></i><span class="${id}-text">Going</span>`).appendTo('#' + id)
+                    }
+                },
+                error: function (data) {
+                    alert('Some Error Occured. Try again')
+                }
+            });
+        }
     </script>
 @endsection

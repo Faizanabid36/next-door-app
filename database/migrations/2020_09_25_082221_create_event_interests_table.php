@@ -16,7 +16,7 @@ class CreateEventInterestsTable extends Migration
         Schema::create('event_interests', function (Blueprint $table) {
             $table->id();
             $table->integer('event_id');
-            $table->integer('user_id');
+            $table->integer('user_id')->unique();
             $table->integer('interested_or_going')->nullable();
             $table->timestamps();
         });

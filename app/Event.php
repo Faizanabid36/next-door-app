@@ -11,7 +11,7 @@ class Event extends Model
 
     public function interests()
     {
-        return $this->hasMany(EventInterest::class, 'id', 'event_id');
+        return $this->hasMany(EventInterest::class, 'event_id', 'id');
     }
 
     public function category()
