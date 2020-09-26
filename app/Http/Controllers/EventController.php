@@ -18,6 +18,8 @@ class EventController extends Controller
     {
         //
         $categories = EventCategory::all();
+        $events = Event::with('category')->get();
+        return compact('events');
         return view('web.frontend.events.view_events',compact('categories'));
     }
 
