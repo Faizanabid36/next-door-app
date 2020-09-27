@@ -28,6 +28,13 @@
                 <h5>
                     {{$event->event_description}}
                 </h5>
+                <h5>
+                    <hr>
+                    <i class="uil-users-alt"></i>
+                    Going: {{$totalGoing}}
+                    -
+                    Maybe: {{$totalMaybe}}
+                </h5>
             </div>
             <div class="uk-width-1-3@m mt-3 mb-3">
                 <div>
@@ -38,10 +45,42 @@
                         <img src="{{$event->creator->avatar}}" alt="">
                     </div>
                     <div class="user-details-card-name">
-                        <h5 class="mb-0">{{$event->creator->name}}</h5> <span> {{$event->created_at->diffForHumans()}} </span>
+                        <h4 class="mb-0">
+                            <a class="text-dark" href="{{route('view_profile',$event->creator->id)}}">{{$event->creator->name}}</a>
+                        </h4>
+                        <span> {{$event->created_at->diffForHumans()}} </span>
                     </div>
                 </div>
             </div>
         </div>
+
+        <div class="uk-card-default rounded mt-lg-4" uk-grid>
+            <div class="uk-width-2-3@m mt-3 mb-3">
+                <h2 class="text-dark"><i>People who showed interest</i></h2>
+                <h5>
+                    <i class="uil-users-alt"></i>
+                    Going: {{$totalGoing}}
+                    -
+                    Maybe: {{$totalMaybe}}
+                </h5>
+            </div>
+            <div class="uk-width-1-3@m mt-3 mb-3">
+                <div>
+                    <h5 class="mb-1">Posted By:</h5>
+                </div>
+                <div class="user-details-card pt-0">
+                    <div class="user-details-card-avatar" style="max-width: 50px">
+                        <img src="{{$event->creator->avatar}}" alt="">
+                    </div>
+                    <div class="user-details-card-name">
+                        <h4 class="mb-0">
+                            <a class="text-dark" href="{{route('view_profile',$event->creator->id)}}">{{$event->creator->name}}</a>
+                        </h4>
+                        <span> {{$event->created_at->diffForHumans()}} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
     </div>
 @endsection
