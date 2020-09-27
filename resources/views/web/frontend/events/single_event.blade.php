@@ -75,7 +75,8 @@
                         <div style="width: 20%; float:right;">
                             <button data-toggle="modal"
                                     data-target="#messageModal"
-                                    class="text-right button primary small rounded mt-1">
+                                    id="message-{{$user->name}}-{{$user->id}}"
+                                    class="sendMessageButton text-right button primary small rounded mt-1">
                                 <i class="uil-message"></i>
                                 Message
                             </button>
@@ -105,6 +106,7 @@
                     @csrf
                     <div class="mb-2">
                         <h5 class="uk-text-bold mb-1"> Message Body </h5>
+                        <input type="hidden" name="to_user" value="">
                         <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
                                   rows="5" placeholder="Event Description">{{old('message_body')}}</textarea>
                     </div>
@@ -113,7 +115,7 @@
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="close_all" data-dismiss="modal">Close
                     </button>
-                    <button type="button" disabled class="btn btn-primary" id="send_message">
+                    <button type="button" class="btn btn-primary" id="send_message">
                         <i class="uil-message"></i>
                         Send Message
                     </button>
@@ -121,4 +123,17 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('footer_scripts')
+    <script>
+        $(document).ready(function () {
+            $('.sendMessageButton').on('click', function (event) {
+                let id = event.target.id
+                let name = id.split('-')[1]
+                let user_id = id.split('-')[2]
+                $('#sendMessageTo').text(`Send message to ${name}`)
+            })
+        })
+    </script>
 @endsection
