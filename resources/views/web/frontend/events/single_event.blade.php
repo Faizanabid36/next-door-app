@@ -57,12 +57,11 @@
         <div class="uk-card-default rounded mt-lg-4" uk-grid>
             <div class="uk-width-2-3@m mt-3 mb-3">
                 <h2 class="text-dark"><i>People who showed interest</i></h2>
-                <h5>
-                    <i class="uil-users-alt"></i>
-                    Going: {{$totalGoing}}
-                    -
-                    Maybe: {{$totalMaybe}}
-                </h5>
+                @foreach($usersGoing  as $user)
+                    <h1>
+                        {{$user->name}}
+                    </h1>
+                @endforeach
             </div>
             <div class="uk-width-1-3@m mt-3 mb-3">
                 <div>
