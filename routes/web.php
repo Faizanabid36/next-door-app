@@ -1,5 +1,6 @@
 <?php
 
+use Chatify\Http\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 //
@@ -157,6 +158,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('event', 'EventController');
     Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event');
     Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove');
+    Route::post('message', 'EventController@message')->name('event.message');
 });
 
 
@@ -169,10 +171,29 @@ Route::get('item/delete/{saleItem}', 'SaleItemController@delete')->name('delete_
  * ---------------------------------
  */
 
-Route::get('/auth/register' , 'RouteViewsController@signup')->name('signup2');
-Route::get('/auth/register_continue' , 'UserController@register_continue')->name('register_continue');
+Route::get('/auth/register', 'RouteViewsController@signup')->name('signup2');
+Route::get('/auth/register_continue', 'UserController@register_continue')->name('register_continue');
 Route::get('login/{provider}', 'Auth\LoginController@redirectToProvider');
-Route::get('login/{provider}/callback','Auth\LoginController@handleProviderCallback');
+Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCallback');
 
 
 Route::get('/check_postal_code/{code}', 'HomeController@check_postal_code');
+
+
+Route::get('testing', function () {
+    $messages = [];
+    $fromMe = Message::whereFromId(auth()->user()->id)->distinct('to_id')->pluck('to_id')->first();
+    $usersList[] = $fromMe;
+    $toMe = Message::whereToId(auth()->user()->id)->distinct('from_id')->pluck('from_id')->first();
+    $usersList[] = $toMe;
+    foreach ($usersList as $u) {
+        if (!is_null($u))
+            $messages[] = Message::latest()
+                ->whereFromId(auth()->user()->id)->whereToId($u)
+                ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
+                ->first();
+    }
+    $messages = collect($messages)->filter(function ($value, $key) {
+        return $value != null;
+    })->values();
+});

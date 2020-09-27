@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\EventCategory;
 use App\EventInterest;
+use App\Events\NewMessage;
 use App\Http\Requests\ValidateEvent;
+use Chatify\Facades\ChatifyMessenger as Chatify;
 use Illuminate\Http\Request;
 
 class EventController extends Controller
@@ -138,5 +140,29 @@ class EventController extends Controller
                 ['event_id' => $event_id, 'user_id' => auth()->user()->id, 'interested_or_going' => (int)$type]);
             return $type == 2 ? ['isMaybe' => true] : ['isGoing' => true];
         }
+    }
+
+    public function message(Request $request)
+    {
+        $messageID = mt_rand(9, 999999999) + time();
+
+        Chatify::newMessage([
+            'id' => $messageID,
+            'type' => 'user',
+            'from_id' => \auth()->user()->id,
+            'to_id' => $request->to_user,
+            'body' => trim(htmlentities($request->message_body)),
+            'attachment' => null,
+        ]);
+
+        $messageData = Chatify::fetchMessage($messageID);
+
+        Chatify::push('private-chatify', 'messaging', [
+            'from_id' => auth()->user()->id,
+            'to_id' => $request->to_id,
+            'message' => Chatify::messageCard($messageData, 'default')
+        ]);
+        event(new NewMessage($messageData, \auth()->user()->id, $request->to_id));
+        return back()->withSuccess('Message Send');
     }
 }

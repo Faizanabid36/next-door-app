@@ -90,36 +90,41 @@
 @endsection
 
 @section('modal')
+
     <div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
          aria-labelledby="messageModal"
          aria-hidden="true">
+
         <div class="modal-dialog modal-dialog-centered" role="document">
+
             <div class="modal-content" style="width:94%;margin: 0px auto">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="sendMessageTo">Send Message To</h5>
-                    <button class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body" id="first_modal">
-
-                    @csrf
-                    <div class="mb-2">
-                        <h5 class="uk-text-bold mb-1"> Message Body </h5>
-                        <input type="hidden" name="to_user" value="" id="to_user">
-                        <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
-                                  rows="6" placeholder="Type Message">{{old('message_body')}}</textarea>
+                <form action="{{route('event.message')}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="sendMessageTo">Send Message To</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="modal-body" id="first_modal">
 
-                </div>
-                <div class="modal-footer">
-                    <button type="button" class="btn btn-secondary" id="close_all" data-dismiss="modal">Close
-                    </button>
-                    <button type="button" class="btn btn-primary" id="send_message">
-                        <i class="uil-message"></i>
-                        Send Message
-                    </button>
-                </div>
+                        @csrf
+                        <div class="mb-2">
+                            <h5 class="uk-text-bold mb-1"> Message Body </h5>
+                            <input type="hidden" name="to_user" value="" id="to_user">
+                            <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
+                                      rows="6" placeholder="Type Message">{{old('message_body')}}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close_all" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="send_message">
+                            <i class="uil-message"></i>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
             </div>
         </div>
     </div>

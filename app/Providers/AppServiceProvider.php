@@ -36,18 +36,33 @@ class AppServiceProvider extends ServiceProvider
 
 
         \View::composer(['layouts.salika.header', 'layouts.salika.chat_sidebar'], function ($view) {
+//            $messages = [];
+//            $usersList = Message::where('from_id', auth()->user()->id)
+//                ->orWhere('to_id', auth()->user()->id)
+//                ->where('to_id', '!=', auth()->user()->id)
+//                ->distinct('from_id', 'to_id')
+//                ->pluck('to_id');
+//            foreach ($usersList as $u) {
+//                $messages[] = Message::latest()
+//                    ->whereFromId(auth()->user()->id)->whereToId($u)
+//                    ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
+//                    ->first();
+//            }
             $messages = [];
-            $usersList = Message::where('from_id', auth()->user()->id)
-                ->orWhere('to_id', auth()->user()->id)
-                ->where('to_id', '!=', auth()->user()->id)
-                ->distinct('from_id', 'to_id')
-                ->pluck('to_id');
+            $fromMe = Message::whereFromId(auth()->user()->id)->distinct('to_id')->pluck('to_id')->first();
+            $usersList[] = $fromMe;
+            $toMe = Message::whereToId(auth()->user()->id)->distinct('from_id')->pluck('from_id')->first();
+            $usersList[] = $toMe;
             foreach ($usersList as $u) {
-                $messages[] = Message::latest()
-                    ->whereFromId(auth()->user()->id)->whereToId($u)
-                    ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
-                    ->first();
+                if (!is_null($u))
+                    $messages[] = Message::latest()
+                        ->whereFromId(auth()->user()->id)->whereToId($u)
+                        ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
+                        ->first();
             }
+            $messages = collect($messages)->filter(function ($value, $key) {
+                return $value != null;
+            })->values();
             $users = \App\User::whereIn('id', $usersList)->orderBy('name', 'ASC')->get();
             $view->with(['messages' => $messages, 'users' => $users]);
         });

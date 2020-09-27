@@ -66,6 +66,7 @@
                         <div class="dropdown-notifications-headline">
                             <h4>Messages</h4>
                         </div>
+
                         <!-- notiviation list -->
                         @if(isset(auth()->user()->id) && count($messages)>0)
                             <ul id="chat-panel">
