@@ -61,7 +61,7 @@
                 <hr>
                 @foreach($usersGoing  as $user)
                     <div style="display: flex">
-                        <div class="user-details-card pt-0 ml-4 mb-2" style="width: 70%;float:left;">
+                        <div class="user-details-card pt-0 ml-4 mb-2" style="width: 80%;float:left;">
                             <div class="user-details-card-avatar" style="max-width: 50px">
                                 <img src="{{$user->avatar}}">
                             </div>
@@ -72,8 +72,10 @@
                                 <span class="text-dark"> {{$user->address}} </span>
                             </div>
                         </div>
-                        <div style="width: 30%; float:right;">
-                            <button class=" text-right button primary small rounded mt-1">
+                        <div style="width: 20%; float:right;">
+                            <button data-toggle="modal"
+                                    data-target="#messageModal"
+                                    class="text-right button primary small rounded mt-1">
                                 <i class="uil-message"></i>
                                 Message
                             </button>
@@ -87,13 +89,13 @@
 @endsection
 
 @section('modal')
-    <div class="modal fade" id="postNewEvent" tabindex="-1" role="dialog"
-         aria-labelledby="postNewEventTitle"
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
+         aria-labelledby="messageModal"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content" style="width:94%;margin: 0px auto">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLongTitle ">Post New Item</h5>
+                    <h5 class="modal-title" id="sendMessageTo">Send Message To</h5>
                     <button class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -102,23 +104,18 @@
 
                     @csrf
                     <div class="mb-2">
-                        <h5 class="uk-text-bold mb-1"> Title </h5>
-                        <input type="text" name="body" id="body" value="{{old('body')}}"
-                               class="uk-input uk-form-small" placeholder="Event Title">
-                    </div>
-                    <div class="mb-2">
-                        <h5 class="uk-text-bold mb-1"> Description </h5>
-                        <textarea name="event_description" id="event_description" class="uk-textarea uk-form-small"
-                                  rows="5" placeholder="Event Description">{{old('event_description')}}</textarea>
+                        <h5 class="uk-text-bold mb-1"> Message Body </h5>
+                        <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
+                                  rows="5" placeholder="Event Description">{{old('message_body')}}</textarea>
                     </div>
 
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" id="close_all" data-dismiss="modal">Close
                     </button>
-                    <button type="button" disabled class="btn btn-primary" id="modal_button1" data-toggle="modal"
-                            data-target="#postNewEvent-2">
-                        Next
+                    <button type="button" disabled class="btn btn-primary" id="send_message">
+                        <i class="uil-message"></i>
+                        Send Message
                     </button>
                 </div>
             </div>
