@@ -106,9 +106,9 @@
                     @csrf
                     <div class="mb-2">
                         <h5 class="uk-text-bold mb-1"> Message Body </h5>
-                        <input type="hidden" name="to_user" value="">
+                        <input type="hidden" name="to_user" value="" id="to_user">
                         <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
-                                  rows="5" placeholder="Event Description">{{old('message_body')}}</textarea>
+                                  rows="6" placeholder="Type Message">{{old('message_body')}}</textarea>
                     </div>
 
                 </div>
@@ -133,6 +133,7 @@
                 let name = id.split('-')[1]
                 let user_id = id.split('-')[2]
                 $('#sendMessageTo').text(`Send message to ${name}`)
+                $('#to_user').val(`${user_id}`)
             })
         })
     </script>
