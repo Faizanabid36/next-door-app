@@ -14,6 +14,11 @@ class EventInterest extends Model
         return $this->belongsTo(Event::class, 'event_id', 'id');
     }
 
+    public function users_going()
+    {
+        return $this->hasOne(User::class, 'id', 'user_id');
+    }
+
     public function scopeIsGoing($query)
     {
         return $query->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();

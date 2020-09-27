@@ -15,16 +15,13 @@
             @include('web.frontend.events.components.session_messages')
             <!-- Blog Post -->
                 @foreach($events as $event)
-                    <a class="blog-post">
-                    <!-- Blog Post Thumbnail -->
+                    <div class="blog-post">
+                        <!-- Blog Post Thumbnail -->
                         <div class="blog-post-thumbnail">
                             <div class="blog-post-thumbnail-inner">
-                                @if(auth()->user()->id == $event['user_id'])
-                                    <span class="blog-item-tag text-danger">
-                                        <i class="uil-trash"></i>Delete
-                                    </span>
-                                @endif
-                                <img src="{{$event['event_cover_photo']}}" alt="">
+                                <a href="{{route('event.show',$event['id'])}}">
+                                    <img src="{{$event['event_cover_photo']}}" alt="">
+                                </a>
                             </div>
                         </div>
                         <!-- Blog Post Content -->
@@ -35,7 +32,11 @@
                                 </span>
                                 <span class="blog-post-info-date">Posted: {{\Carbon\Carbon::parse($event['created_at'])->diffForHumans()}}</span>
                             </div>
-                            <h4 class="text-dark mb-1">{{$event['event_title']}}</h4>
+                            <h4 class="mb-1">
+                                <a class="text-dark" href="{{route('event.show',$event['id'])}}">
+                                    {{$event['event_title']}}
+                                </a>
+                            </h4>
                             <p>
                                 {{\Carbon\Carbon::parse($event['event_date']. ' '.$event['start_time'])
                                     ->isoFormat('ddd, MMM Do Y, h:mma')}}
@@ -69,7 +70,7 @@
                                 </div>
                             </div>
                         </div>
-                    </a>
+                    </div>
                 @endforeach
             </div>
             <div class="uk-width-1-3@s">
@@ -323,35 +324,31 @@
                     console.log(data)
                     if (data.notGoing) {
                         let num = $(`#count_going_${event_id}`).text();
-                        let x = parseInt(num);
-                        x = x - 1;
-                        $(`#count_going_${event_id}`).html(x)
-                        console.log(x)
+                        $(`#count_going_${event_id}`).html(parseInt(num) - 1)
                         $(`.${id}-icon`).remove()
                     } else if (data.notMaybe) {
                         let num = $(`#count_maybe_${event_id}`).text();
-                        let x = parseInt(num);
-                        x = x - 1;
-                        $(`#count_maybe_${event_id}`).html(x)
-                        console.log(x)
+                        $(`#count_maybe_${event_id}`).html(parseInt(num) - 1)
                         $(`.${id}-icon`).remove()
                     } else if (data.isGoing) {
-                        $(`.maybe_event_id-${event_id}-icon`).remove()
+                        let test = $(`.maybe_event_id-${event_id}-icon`).remove()
+                        if (test.length) {
+                            let num = $(`#count_maybe_${event_id}`).text();
+                            $(`#count_maybe_${event_id}`).html(parseInt(num) - 1)
+                        }
                         $(`.${id}-text`).remove()
                         let num = $(`#count_going_${event_id}`).text();
-                        let x = parseInt(num);
-                        x = x + 1;
-                        $(`#count_going_${event_id}`).html(x)
-                        console.log(x)
+                        $(`#count_going_${event_id}`).html(parseInt(num) + 1)
                         $(`<i class="uil-check-circle ${id}-icon"></i><span class="${id}-text">Going</span>`).appendTo('#' + id)
                     } else if (data.isMaybe) {
-                        $(`.going_event_id-${event_id}-icon`).remove()
+                        let test = $(`.going_event_id-${event_id}-icon`).remove()
+                        if (test.length) {
+                            let num = $(`#count_going_${event_id}`).text();
+                            $(`#count_going_${event_id}`).html(parseInt(num) - 1)
+                        }
                         $(`.${id}-text`).remove()
                         let num = $(`#count_maybe_${event_id}`).text();
-                        let x = parseInt(num);
-                        x = x + 1;
-                        $(`#count_maybe_${event_id}`).html(x)
-                        console.log(x)
+                        $(`#count_maybe_${event_id}`).html(parseInt(num) + 1)
                         $(`<i class="uil-check ${id}-icon"></i><span class="${id}-text">Maybe</span>`).appendTo('#' + id)
                     }
                 },

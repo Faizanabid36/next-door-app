@@ -1,0 +1,47 @@
+@extends('layouts.salika.index')
+
+@section('content')
+    <div class="uk-width-4-5@m m-auto">
+        <div class="uk-card-default rounded mt-lg-4" uk-grid>
+            <div class="uk-width-1-2@m mt-5">
+                <h2 class="text-dark"><i>{{$event->event_title}}</i></h2>
+                <h5><span>Community: {{$event->event_location}}</span></h5>
+                <h5>
+                    <span>Time: {{\Carbon\Carbon::parse($event['event_date']. ' '.$event['start_time'])
+                                    ->isoFormat('ddd, MMM Do Y, h:mma')}}
+                    </span>
+                </h5>
+                Category:
+                <span class="blog-post-info-tag button danger">
+                    {{$event->category->name}}
+                </span>
+            </div>
+            <div class="uk-width-1-2@m text-right ">
+                <img src="{{$event->event_cover_photo}}" class="rounded" alt="">
+            </div>
+        </div>
+
+
+        <div class="uk-card-default rounded mt-lg-4" uk-grid>
+            <div class="uk-width-2-3@m mt-3 mb-3">
+                <h2 class="text-dark"><i>Description</i></h2>
+                <h5>
+                    {{$event->event_description}}
+                </h5>
+            </div>
+            <div class="uk-width-1-3@m mt-3 mb-3">
+                <div>
+                    <h5 class="mb-1">Posted By:</h5>
+                </div>
+                <div class="user-details-card pt-0">
+                    <div class="user-details-card-avatar" style="max-width: 50px">
+                        <img src="{{$event->creator->avatar}}" alt="">
+                    </div>
+                    <div class="user-details-card-name">
+                        <h5 class="mb-0">{{$event->creator->name}}</h5> <span> {{$event->created_at->diffForHumans()}} </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+@endsection

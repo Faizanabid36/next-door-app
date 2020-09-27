@@ -64,11 +64,24 @@ class EventController extends Controller
      * Display the specified resource.
      *
      * @param \App\Event $event
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
-    public function show(Event $event)
+    public function show($event)
     {
         //
+        $event = Event::whereId($event)->with('category', 'creator')->first();
+        $interest = EventInterest::whereEventId($event->id)->with('users_going')->get();
+        $isGoing = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();
+        $isMaybe = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 2)->count();
+        $totalGoing = $interest->where('interested_or_going', 1)->count();
+        $totalMaybe = $interest->where('interested_or_going', 2)->count();
+        $usersGoing = collect($interest)->map(function ($int) {
+            if (!is_null($int->interested_or_going)) return $int->users_going;
+        });
+        $usersGoing = $usersGoing->filter(function ($value, $key) {
+            return $value != null;
+        })->values();
+        return view('web.frontend.events.single_event', compact('usersGoing', 'event', 'isGoing', 'isMaybe', 'totalGoing', 'totalMaybe'));
     }
 
     /**
@@ -103,6 +116,12 @@ class EventController extends Controller
     public function destroy(Event $event)
     {
         //
+    }
+
+    public function remove($event_id)
+    {
+        $event = Event::whereId($event_id)->whereUserId(auth()->user()->id)->firstOrFail();
+        dd($event);
     }
 
     public function going_to_event($event_id, $type)
