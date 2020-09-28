@@ -1,7 +1,7 @@
 <div class="uk-width-expand">
     <div class="group-card">
         <div class="group-card-content">
-            <h2 class="text-dark"> About public agencies </h2>
+            <h2 class="text-dark"> <i>About public agencies</i> </h2>
             <hr>
             <p class="info m-2">
                 Salika partners with public agencies across the country, providing them a way to share important updates
