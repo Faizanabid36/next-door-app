@@ -51,11 +51,6 @@ class UserController extends Controller
         return back()->with('success', 'Settings Updated');
     }
 
-    public function show_user_details($id)
-    {
-        return User::whereId($id)->with('family_members')->get();
-    }
-
     /**
      * ------------------------------------------------
      * Function for Change Password Setting Tab
@@ -72,11 +67,11 @@ class UserController extends Controller
         //if old pass is not matched
         if(isset($request->old_password))
         {
-            if (!(Hash::check($request->get('old_password'), Auth::user()->password))) {
+            if (!(Hash::check($request->get('old_password'), auth()->user()->password))) {
                 return back()->with('error', "Incorrect Password Entered.");
             }
         }
-        $user = Auth::user();
+        $user = auth()->user();
         $user->password = Hash::make($request->get('new_password'));
         $user->save();
         return back()->with('success', "Password Changed! ");

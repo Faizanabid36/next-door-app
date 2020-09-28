@@ -7,11 +7,11 @@
             </div>
         @endauth
 
-        <!-- Logo-->
+    <!-- Logo-->
         <div id="logo">
-            {{--                    <a href="homepage.html"> <img src="{{asset('salika/assets/images/logo.png')}}" alt=""></a>--}}
-{{--            <h2 class="mt-3">Salika</h2>--}}
-            <a href="{{route('dashboard')}}"> <img src="{{asset('salika/assets/images/salika_logo.png')}}" class="" style="width: 60px" alt=""></a>
+            <a href="{{route('dashboard')}}">
+                <img src="{{asset('salika/assets/images/salika_logo.png')}}" class="" style="width: 60px" alt="">
+            </a>
         </div>
 
         <!-- form search-->

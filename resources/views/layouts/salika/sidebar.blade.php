@@ -23,9 +23,9 @@
                             <span> News Feed </span>
                         </a>
                     </li>
-                    <li>
-                        <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}"
-                                                      alt="">
+                    <li class="{{Request::is('agency*')?'active':''}}">
+                        <a href="{{route('agency.feed')}}">
+                            <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}">
                             <span> Public Agencies </span>
                         </a>
                     </li>
@@ -36,7 +36,7 @@
                             <span> Neighbours </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
+                    <li id="more-veiw" class="{{Request::is('event*')?'active':''}}">
                         <a href="{{route('event.index')}}"> <img src="{{asset('salika/assets/images/icons/events.png')}}" alt="">
                             <span> Events </span>
                         </a>
@@ -57,7 +57,7 @@
                             <span> Real Estate </span>
                         </a>
                     </li>
-                    <li id="more-veiw" class="{{Request::is('sale-and-free')?'active':''}}">
+                    <li id="more-veiw" class="{{Request::is('sale-and-free*')?'active':''}}">
                         <a href="{{ route('ecommerce')}}"> <img
                                 src="{{asset('salika/assets/images/icons/sale_and_free.png')}}"
                                 alt="">

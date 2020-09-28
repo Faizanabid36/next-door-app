@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use App\User;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use App\Http\Requests\ValidateAgent;
+use App\User;
+use Illuminate\Support\Facades\Hash;
 
 class PublicAgentController extends Controller
 {
+
+
     public function agent()
     {
         if(!auth()->user()->admin)
@@ -26,6 +27,19 @@ class PublicAgentController extends Controller
             User::create($request->except('_token'));
             return back()->with('success', 'Created Successfully');
         }
+    }
+
+    public function agencies()
+    {
+        $users = User::whereNotNull('is_public_agent')->get();
+        if (auth()->user()->admin)
+            return \view('admin.public_agents.user_list', compact('users'));
+        return \view('web.frontend.public_agencies.list', compact('users'));
+    }
+
+    public function feed()
+    {
+        return \view('web.frontend.public_agencies.feed');
     }
 
 }

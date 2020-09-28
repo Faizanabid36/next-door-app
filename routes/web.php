@@ -1,6 +1,5 @@
 <?php
 
-use Chatify\Http\Models\Message;
 use Illuminate\Support\Facades\Route;
 
 //
@@ -33,8 +32,7 @@ Route::group(['middleware' => 'auth' ], function(){
     Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
-    Route::get('agents_list','HomeController@agents_list')->name('agents_list');
-    Route::get('user/{id}','UserController@show_user_details')->name('show_user_details');
+    Route::get('admin/agents_list', 'HomeController@agents_list')->name('agents_list');
 });
 
 
@@ -162,6 +160,12 @@ Route::middleware('auth')->group(function () {
 });
 
 
+Route::name('agency.')->middleware('auth')->prefix('agency')->group(function () {
+    Route::get('list', 'PublicAgentController@agencies')->name('list');
+    Route::get('feed', 'PublicAgentController@feed')->name('feed');
+});
+
+
 Route::get('item/delete/{saleItem}', 'SaleItemController@delete')->name('delete_item');
 
 
@@ -179,21 +183,3 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 Route::get('/check_postal_code/{code}', 'HomeController@check_postal_code');
 
-
-Route::get('testing', function () {
-    $messages = [];
-    $fromMe = Message::whereFromId(auth()->user()->id)->distinct('to_id')->pluck('to_id')->first();
-    $usersList[] = $fromMe;
-    $toMe = Message::whereToId(auth()->user()->id)->distinct('from_id')->pluck('from_id')->first();
-    $usersList[] = $toMe;
-    foreach ($usersList as $u) {
-        if (!is_null($u))
-            $messages[] = Message::latest()
-                ->whereFromId(auth()->user()->id)->whereToId($u)
-                ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
-                ->first();
-    }
-    $messages = collect($messages)->filter(function ($value, $key) {
-        return $value != null;
-    })->values();
-});
