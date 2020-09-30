@@ -5,608 +5,86 @@
     <div class="main_content_inner">
         @include('web.frontend.public_agencies.components.nav_link')
         <div class="uk-grid-large" uk-grid>
-            <div class="uk-width-2-3@m">
+            <div class="uk-width-2-3@m fead-area">
+                <div class="post">
+                    <div class="post-heading">
+                        <div class="post-avature">
+                            <img src="{{asset('salika/assets/images/avatars/avatar-6.jpg')}}" alt="">
+                        </div>
+                        <div class="post-title">
+                            <h4> Mariah Ali </h4>
+                            <p> 5 <span> hrs</span> <i class="uil-users-alt"></i></p>
+                        </div>
+                        <div class="post-btn-action">
+                            <span class="icon-more uil-ellipsis-h"></span>
+                            <div class="mt-0 p-2" uk-dropdown="pos: top-right;mode:hover ">
+                                <ul class="uk-nav uk-dropdown-nav">
+                                    <li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a></li>
+                                    <li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>
+                                            Delete </a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="post-description">
+                        <div class="fullsizeimg">
+                            <img src="{{asset('salika/assets/images/post/img-1.jpg')}}">
+                        </div>
 
-                <div class="uk-child-width-1-2@s uk-grid-row-small" uk-grid>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-4.jpg" alt="">
+                        <div class="post-state-details">
+                            <div>
+                                <img src="{{asset('salika/assets/images/icons/reactions_like.png')}}" alt="">
+                                <img src="{{asset('salika/assets/images/icons/reactions_love.png')}}" alt="">
+                                <p> 13 </p>
                             </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Mountain Riders </h5>
-                                </a>
-                                <p> Beach , Hotels </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                            <p> 24 Comments</p>
                         </div>
+
                     </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-2.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Coffee Addicts </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+
+                    <div class="post-state">
+                        <div class="post-state-btns"><i class="uil-thumbs-up"></i> 126<span> Likes </span>
                         </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-3.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Graphic Design </h5>
-                                </a>
-                                <p> Photoshop , Prototype </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="post-state-btns"><i class="uil-thumbs-down"></i> 126<span> Dislikes </span>
                         </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-5.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Property Rent And Sale </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="post-state-btns"><i class="uil-comment"></i> 18 <span> Coments</span>
                         </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-1.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Architecture </h5>
-                                </a>
-                                <p> Sketch , 3D Max </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
+                        <div class="post-state-btns"><i class="uil-share-alt"></i>  <span> Share
                                         </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-4.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Mountain Riders </h5>
-                                </a>
-                                <p> Beach , Hotels </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-2.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Coffee Addicts </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-3.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Graphic Design </h5>
-                                </a>
-                                <p> Photoshop , Prototype </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-5.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Property Rent And Sale </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-1.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Architecture </h5>
-                                </a>
-                                <p> Sketch , 3D Max </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
                         </div>
                     </div>
 
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-4.jpg" alt="">
+                    <!-- post comments -->
+                    <div class="post-comments">
+                        <a href="#" class="view-more-comment"> Veiw 8 more Comments</a>
+                        <div class="post-comments-single">
+                            <div class="post-comment-avatar">
+                                <img src="{{asset('salika/assets/images/avatars/avatar-5.jpg')}}" alt="">
                             </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Mountain Riders </h5>
-                                </a>
-                                <p> Beach , Hotels </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
+                            <div class="post-comment-text">
+                                <div class="post-comment-text-inner">
+                                    <h6> Alex Dolgove</h6>
+                                    <p> Ut wisi enim ad minim laoreet dolore magna aliquam erat </p>
                                 </div>
+                                <div class="uk-text-small">
+                                    <a href="#" class="text-primary mr-1"> <i class="uil-thumbs-up"></i> Like
+                                    </a>
+                                    <a href="#" class="text-secondary mr-1"> <i class="uil-thumbs-down"></i> Dislike
+                                    </a>
+                                    <span> 1d</span>
+                                </div>
+                            </div>
+                            <a href="#" class="post-comment-opt"></a>
+                        </div>
+                        <div class="post-add-comment">
+                            <div class="post-add-comment-avature">
+                                <img src="{{auth()->user()->avatar}}" alt="{{auth()->user()->name}}">
+                            </div>
+                            <div class="post-add-comment-text-area">
+                                <input type="text" placeholder="Write your comment...">
                             </div>
                         </div>
                     </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-2.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Coffee Addicts </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-3.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Graphic Design </h5>
-                                </a>
-                                <p> Photoshop , Prototype </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-5.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Property Rent And Sale </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-1.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Architecture </h5>
-                                </a>
-                                <p> Sketch , 3D Max </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-4.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Mountain Riders </h5>
-                                </a>
-                                <p> Beach , Hotels </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-2.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Coffee Addicts </h5>
-                                </a>
-                                <p> Drinks , Food </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div>
-                        <div class="list-items">
-                            <div class="list-item-media">
-                                <img src="assets/images/group/group-3.jpg" alt="">
-                            </div>
-                            <div class="list-item-content">
-                                <a href="group-feed.html">
-                                    <h5> Graphic Design </h5>
-                                </a>
-                                <p> Photoshop , Prototype </p>
-                            </div>
-                            <div class="uk-width-auto">
-                                        <span class="btn-option" aria-expanded="false">
-                                            <i class="icon-feather-more-horizontal"></i>
-                                        </span>
-                                <div class="dropdown-option-nav uk-dropdown"
-                                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
-                                    <ul>
-                                        <li>
-                                            <span> <i class="uil-bell"></i> Joined </span>
-                                        </li>
-                                        <li>
-                                            <span> <i class="uil-bookmark"></i> Add Bookmark </span>
-                                        </li>
-                                        <li>
-                                                    <span> <i class="uil-share-alt"></i> Share Your Friends
-                                                    </span>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <div class="uk-flex uk-flex-center my-4">
-                    <a href="#" class="button secondary small px-11 circle"> Veiw more </a>
                 </div>
 
             </div>

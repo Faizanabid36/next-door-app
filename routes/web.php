@@ -23,22 +23,26 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
  * --------------------------------
  */
 
-Route::group(['middleware' => 'auth' ], function(){
+Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'RouteViewsController@login_page')->name('login');
     Route::get('/news_feed', 'RouteViewsController@feed')->name('feed');
     Route::get('/dashboard', 'RouteViewsController@user_dashboard')->name('dashboard');
     Route::get('/my-dashboard', 'RouteViewsController@user_dashboard')->name('home');
     Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
-    Route::get('/public_agencies','HomeController@public_agencies')->name('public_agencies');
+
+});
+
+Route::group(['middleware' => 'auth'], function () {
+    Route::get('/public_agencies', 'HomeController@public_agencies')->name('public_agencies');
     Route::post('/delete_user', 'HomeController@delete_user')->name('delete_user');
     Route::get('/neighbours', 'HomeController@neighbours_list')->name('neighbours');
     Route::get('admin/agents_list', 'HomeController@agents_list')->name('agents_list');
 });
 
 
-Auth::routes();
+Auth::routes(['verify' => true]);
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => ['auth', 'verified']], function () {
 
     /**
      * ----------------------------
@@ -109,7 +113,7 @@ Route::name('admin.')->middleware('auth')->prefix('admin')->group(function () {
  * Business page Routes
  * ----------------------------
  */
-Route::name('business.')->middleware('auth')->prefix('business')->group(function (){
+Route::name('business.')->middleware(['auth', 'verified'])->prefix('business')->group(function () {
     Route::get('my_business', 'BusinessController@my_business')->name('my_business');
     Route::get('list', 'BusinessController@index')->name('list');
     Route::get('list/{b_category_slug}', 'BusinessController@list_by_category')->name('list_by_category');
@@ -130,8 +134,8 @@ Route::name('business.')->middleware('auth')->prefix('business')->group(function
  * Admin Ads Routes
  * -----------------------------
  */
-Route::resource('ads', 'AdminAdController')->middleware('auth');
-Route::post('update_ad','AdminAdController@update_ad')->middleware('auth')->name('ads.update_ad');
+Route::resource('ads', 'AdminAdController')->middleware(['auth', 'verified']);
+Route::post('update_ad', 'AdminAdController@update_ad')->middleware(['auth', 'verified'])->name('ads.update_ad');
 
 
 /**
@@ -139,7 +143,7 @@ Route::post('update_ad','AdminAdController@update_ad')->middleware('auth')->name
  * Reviews Routes
  * ----------------------------
  */
-Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function () {
+Route::name('reviews.')->middleware(['auth', 'verified'])->prefix('reviews')->group(function () {
     Route::post('store_review', 'UserBusinessRecommendationController@store')->name('store_review');
     Route::get('delete_review/{id}', 'UserBusinessRecommendationController@delete')->name('delete_review');
     Route::get('add_recommendation/{id}', 'UserBusinessRecommendationController@add_recommendation')->name('add_recommendation');
@@ -152,15 +156,19 @@ Route::name('reviews.')->middleware('auth')->prefix('reviews')->group(function (
  * Events Routes
  * ----------------------------
  */
-Route::middleware('auth')->group(function () {
+Route::middleware(['auth', 'verified'])->group(function () {
     Route::resource('event', 'EventController');
     Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event');
     Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove');
     Route::post('message', 'EventController@message')->name('event.message');
 });
 
-
-Route::name('agency.')->middleware('auth')->prefix('agency')->group(function () {
+/**
+ * ---------------------
+ * Public Agency Routes
+ * ---------------------
+ */
+Route::name('agency.')->middleware(['auth', 'verified'])->prefix('agency')->group(function () {
     Route::get('list', 'PublicAgentController@agencies')->name('list');
     Route::get('feed', 'PublicAgentController@feed')->name('feed');
 });
