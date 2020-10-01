@@ -36,18 +36,6 @@ class AppServiceProvider extends ServiceProvider
 
 
         \View::composer(['layouts.salika.header', 'layouts.salika.chat_sidebar'], function ($view) {
-//            $messages = [];
-//            $usersList = Message::where('from_id', auth()->user()->id)
-//                ->orWhere('to_id', auth()->user()->id)
-//                ->where('to_id', '!=', auth()->user()->id)
-//                ->distinct('from_id', 'to_id')
-//                ->pluck('to_id');
-//            foreach ($usersList as $u) {
-//                $messages[] = Message::latest()
-//                    ->whereFromId(auth()->user()->id)->whereToId($u)
-//                    ->orWhere('from_id', $u)->whereToId(auth()->user()->id)
-//                    ->first();
-//            }
             $messages = [];
             $fromMe = Message::whereFromId(auth()->user()->id)->distinct('to_id')->pluck('to_id')->first();
             $usersList[] = $fromMe;

@@ -20,8 +20,10 @@ class EventController extends Controller
     public function index()
     {
         //
+        if(!isset(auth()->user()->id))
+            abort(404);
         $categories = EventCategory::all();
-        $events = Event::with('category')->get();
+        $events = Event::latest()->with('category')->get();
         $events = collect($events)->map(function ($event) {
             $interest = EventInterest::whereEventId($event->id)->get();
             $isGoing = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();
@@ -30,7 +32,8 @@ class EventController extends Controller
                 'totalGoing' => $interest->where('interested_or_going', 1)->count(),
                 'totalMaybe' => $interest->where('interested_or_going', 2)->count()]);
         });
-        return view('web.frontend.events.view_events', compact('categories', 'events'));
+        $page = 'all_events';
+        return view('web.frontend.events.view_events', compact('page', 'categories', 'events'));
     }
 
     /**
@@ -73,17 +76,23 @@ class EventController extends Controller
         //
         $event = Event::whereId($event)->with('category', 'creator')->first();
         $interest = EventInterest::whereEventId($event->id)->with('users_going')->get();
-        $isGoing = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();
-        $isMaybe = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 2)->count();
+        $isGoing = 0;
+        $isMaybe = 0;
+        if (isset(auth()->user()->id)) {
+            $isGoing = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 1)->count();
+            $isMaybe = $interest->where('user_id', auth()->user()->id)->where('interested_or_going', 2)->count();
+        }
         $totalGoing = $interest->where('interested_or_going', 1)->count();
         $totalMaybe = $interest->where('interested_or_going', 2)->count();
         $usersGoing = collect($interest)->map(function ($int) {
-            if (!is_null($int->interested_or_going)) return $int->users_going;
+            if (!is_null($int->interested_or_going))
+                return $int->users_going;
         });
         $usersGoing = $usersGoing->filter(function ($value, $key) {
             return $value != null;
         })->values();
-        return view('web.frontend.events.single_event', compact('usersGoing', 'event', 'isGoing', 'isMaybe', 'totalGoing', 'totalMaybe'));
+        $page = 'all_events';
+        return view('web.frontend.events.single_event', compact('page', 'usersGoing', 'event', 'isGoing', 'isMaybe', 'totalGoing', 'totalMaybe'));
     }
 
     /**
@@ -164,5 +173,21 @@ class EventController extends Controller
         ]);
         event(new NewMessage($messageData, \auth()->user()->id, $request->to_id));
         return back()->withSuccess('Message Send');
+    }
+
+    public function my_events()
+    {
+        $categories = EventCategory::all();
+        $events = Event::with('category')->whereHas('creator', function ($q) {
+            return $q->whereId(auth()->user()->id);
+        })->get();
+        $events = collect($events)->map(function ($event) {
+            $interest = EventInterest::whereEventId($event->id)->get();
+            return collect($event)->merge([
+                'totalGoing' => $interest->where('interested_or_going', 1)->count(),
+                'totalMaybe' => $interest->where('interested_or_going', 2)->count()]);
+        });
+        $page = 'myevents';
+        return view('web.frontend.events.view_events', compact('categories', 'events', 'page'));
     }
 }

@@ -3,13 +3,14 @@
 @section('content')
     <div class="main_content_inner" style="color: black!important;">
 
-        <div class="uk-flex uk-flex-between">
-            <h1 class="color-black"><i>Events in your community</i></h1>
-            <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"
-                    data-target="#postNewEvent">
-                <i class="uil-plus"> </i> Post An Event
-            </button>
-        </div>
+        {{--        <div class="uk-flex uk-flex-between">--}}
+        {{--            <h1 class="color-black"><i>Events in your community</i></h1>--}}
+        {{--            <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"--}}
+        {{--                    data-target="#postNewEvent">--}}
+        {{--                <i class="uil-plus"> </i> Post An Event--}}
+        {{--            </button>--}}
+        {{--        </div>--}}
+        @include('web.frontend.events.components.nav_links')
         <div class="uk-grid-large mt-5" uk-grid>
             <div class="uk-width-expand">
             @include('web.frontend.events.components.session_messages')
@@ -44,30 +45,38 @@
                                 {{$event['event_location']}}
                             </p>
                             <div class="mt-3">
-                                <div style="width: 35%; float: left;" class="uk-flex-inline">
-                                    <button id="going_event_id-{{$event['id']}}"
-                                            onclick="goingToEvent('going','going_event_id-{{$event['id']}}')"
-                                            class="mr-1 button primary small going-button">
-                                        @if($event['isGoing']==1)
-                                            <i class="uil-check-circle going_event_id-{{$event['id']}}-icon"></i>
+                                @if(isset($page)&&$page=='all_events')
+                                    <div style="width: 35%; float: left;" class="uk-flex-inline">
+                                        <button id="going_event_id-{{$event['id']}}"
+                                                onclick="goingToEvent('going','going_event_id-{{$event['id']}}')"
+                                                class="mr-1 button primary small going-button">
+                                            @if(isset($event['isGoing'])&& $event['isGoing']==1)
+                                                <i class="uil-check-circle going_event_id-{{$event['id']}}-icon"></i>
+                                            @endif
+                                            <span class="going_event_id-{{$event['id']}}-text">Going</span>
+                                        </button>
+                                        <button id="maybe_event_id-{{$event['id']}}"
+                                                onclick="goingToEvent('maybe','maybe_event_id-{{$event['id']}}')"
+                                                class="ml-1 button warning small maybe-button">
+                                            @if(isset($event['isMaybe']) &&$event['isMaybe']==1)
+                                                <i class="uil-check maybe_event_id-{{$event['id']}}-icon"></i>
+                                            @endif
+                                            <span class="maybe_event_id-{{$event['id']}}-text">Maybe</span>
+                                        </button>
+                                    </div>
+                                @endif
+                                @if(isset($page)&&$page=='all_events')
+                                    <div style="float: right" class="mt-1">
                                         @endif
-                                        <span class="going_event_id-{{$event['id']}}-text">Going</span>
-                                    </button>
-                                    <button id="maybe_event_id-{{$event['id']}}"
-                                            onclick="goingToEvent('maybe','maybe_event_id-{{$event['id']}}')"
-                                            class="ml-1 button warning small maybe-button">
-                                        @if($event['isMaybe']==1)
-                                            <i class="uil-check maybe_event_id-{{$event['id']}}-icon"></i>
-                                        @endif
-                                        <span class="maybe_event_id-{{$event['id']}}-text">Maybe</span>
-                                    </button>
-                                </div>
-                                <div style="float: right" class="mt-1">
-                                    <span style=""><span
-                                            id="count_going_{{$event['id']}}">{{$event['totalGoing']}}</span> Going</span>
-                                    <span style=""><span
-                                            id="count_maybe_{{$event['id']}}">{{$event['totalMaybe']}}</span> Maybe</span>
-                                </div>
+
+                                        <span style=""><span
+                                                id="count_going_{{$event['id']}}">{{$event['totalGoing']}}</span> Going</span>
+                                        -
+                                        <span style=""><span
+                                                id="count_maybe_{{$event['id']}}">{{$event['totalMaybe']}}</span> Maybe</span>
+                                        @if(isset($page)&&$page=='all_events')
+                                    </div>
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -79,16 +88,9 @@
 
                     <div class="uk-card-default rounded uk-overflow-hidden">
                         <div class="p-4 text-center">
-
-                            <h4 class="uk-text-bold"> Subsicribe </h4>
-                            <p> Get the Latest Posts and Article for us On Your Email</p>
-
-                            <form class="mt-3">
-                                <input type="text" class="uk-input uk-form-small"
-                                       placeholder="Enter your email address">
-                                <input type="submit" value="Subscirbe" class="button button-default block mt-3">
-                            </form>
-
+                            <h3 class="uk-text-bold text-dark"><i>Community Events</i></h3>
+                            <hr>
+                            <p>Stay Connected to your Neighbours. Go and join in their events</p>
                         </div>
                     </div>
                 </div>

@@ -156,12 +156,15 @@ Route::name('reviews.')->middleware(['auth', 'verified'])->prefix('reviews')->gr
  * Events Routes
  * ----------------------------
  */
-Route::middleware(['auth', 'verified'])->group(function () {
-    Route::resource('event', 'EventController');
-    Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event');
-    Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove');
-    Route::post('message', 'EventController@message')->name('event.message');
-});
+Route::resource('event', 'EventController');
+Route::get('myevents', 'EventController@my_events')->name('event.my_events');
+Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event')->middleware('auth');
+Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove')->middleware('auth');
+Route::get('delete_event/{event_id}', 'EventController@remove')->name('event.delete')->middleware(['auth', 'verified']);
+Route::post('message', 'EventController@message')->name('event.message')->middleware('auth');
+//Route::group([],function () {
+//
+//});
 
 /**
  * ---------------------

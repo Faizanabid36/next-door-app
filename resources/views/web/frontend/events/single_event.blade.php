@@ -15,6 +15,24 @@
                 <span class="blog-post-info-tag button danger">
                     {{$event->category->name}}
                 </span>
+                @if(isset(auth()->user()->id)&& $event->user_id==auth()->user()->id)
+{{--                    <br>--}}
+{{--                    <button class="button danger small">--}}
+{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
+{{--                            Delete--}}
+{{--                        </a>--}}
+{{--                    </button>--}}
+{{--                    <button class="button danger small">--}}
+{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
+{{--                            Delete--}}
+{{--                        </a>--}}
+{{--                    </button>--}}
+{{--                    <button class="button danger small">--}}
+{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
+{{--                            Delete--}}
+{{--                        </a>--}}
+{{--                    </button>--}}
+                @endif
             </div>
             <div class="uk-width-1-2@m text-right ">
                 <img src="{{$event->event_cover_photo}}" class="rounded" alt="">
@@ -22,7 +40,7 @@
         </div>
 
 
-        <div class="uk-card-default rounded mt-lg-4" uk-grid>
+        <div class="uk-card-default rounded mt-lg-7" uk-grid>
             <div class="uk-width-2-3@m mt-3 mb-3">
                 <h2 class="text-dark"><i>Description</i></h2>
                 <hr>
@@ -47,16 +65,15 @@
                     </div>
                     <div class="user-details-card-name">
                         <h4 class="mb-0">
-                            <a class="text-dark" href="{{route('view_profile',$event->creator->id)}}">{{$event->creator->name}}</a>
+                            <a class="text-dark"
+                               href="{{route('view_profile',$event->creator->id)}}">{{$event->creator->name}}</a>
                         </h4>
                         <span> {{$event->created_at->diffForHumans()}} </span>
                     </div>
                 </div>
             </div>
-        </div>
-
-        <div class="uk-card-default rounded mt-lg-4" uk-grid>
-            <div class="uk-width-3-3@m mt-3 mb-3">
+            <div class="uk-width-3-3@m mt-5 mb-3">
+                <hr>
                 <h2 class="text-dark"><i>People who showed interest</i></h2>
                 <hr>
                 @foreach($usersGoing  as $user)
@@ -72,20 +89,21 @@
                                 <span class="text-dark"> {{$user->address}} </span>
                             </div>
                         </div>
-                        <div style="width: 20%; float:right;">
-                            <button data-toggle="modal"
-                                    data-target="#messageModal"
-                                    id="message-{{$user->name}}-{{$user->id}}"
-                                    class="sendMessageButton text-right button primary small rounded mt-1">
-                                <i class="uil-message"></i>
-                                Message
-                            </button>
-                        </div>
+                        @auth()
+                            <div style="width: 20%; float:right;">
+                                <button data-toggle="modal"
+                                        data-target="#messageModal"
+                                        id="message-{{$user->name}}-{{$user->id}}"
+                                        class="sendMessageButton text-right button primary small rounded mt-1">
+                                    <i class="uil-message"></i>
+                                    Message
+                                </button>
+                            </div>
+                        @endauth
                     </div>
                 @endforeach
             </div>
         </div>
-
     </div>
 @endsection
 
@@ -130,6 +148,7 @@
     </div>
 @endsection
 
+@auth()
 @section('footer_scripts')
     <script>
         $(document).ready(function () {
@@ -143,3 +162,4 @@
         })
     </script>
 @endsection
+@endauth

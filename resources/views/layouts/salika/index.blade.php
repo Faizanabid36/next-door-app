@@ -37,9 +37,11 @@
 <!-- sidebar -->
 
     <!-- header -->
-    <div id="main_header">
-        @include('layouts.salika.header')
-    </div>
+    @auth()
+        <div id="main_header">
+            @include('layouts.salika.header')
+        </div>
+    @endauth
 
     <div class="main_content">
         @yield('content')
