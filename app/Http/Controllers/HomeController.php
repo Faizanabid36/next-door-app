@@ -26,9 +26,7 @@ class HomeController extends Controller
 
     public function neighbours_list()
     {
-        $users = User::whereNull('is_public_agent')
-            ->where('id', '!=', auth()->user()->id)
-            ->orderBy('name', 'ASC')->get();
+        $users = User::neighbours(auth()->user())->get();
         if (auth()->user()->admin)
             return \view('admin.neighbours.user_list', compact('users'));
         return \view('web.frontend.neighbours.neighbours', compact('users'));

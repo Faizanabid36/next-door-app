@@ -129,4 +129,13 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ReportedPost::class, 'user_id', 'id');
     }
+
+    public function scopeNeighbours($q, $user)
+    {
+        return $q->whereNull('is_public_agent')
+            ->where('id', '!=', $user->id)
+            ->whereAdmin(0)
+            ->wherePostal($user->postal)
+            ->orderBy('name', 'ASC');
+    }
 }

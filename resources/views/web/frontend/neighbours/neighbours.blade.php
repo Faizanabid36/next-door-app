@@ -3,7 +3,12 @@
     <div class="main_content_inner">
 
 
-        <h2 class="mt-lg-5"> Neighbours </h2>
+        @if(count($users)<1)
+            <h2 class="mt-lg-5"> No Neighbours in this Community </h2>
+        @else
+            <h2 class="mt-lg-5"> Neighbours </h2>
+        @endif
+
 
         <div class="uk-child-width-1-3@m" uk-grid>
             @foreach($users as $user)
@@ -11,7 +16,6 @@
                     <div class="friend-card">
                         <div class="uk-width-auto">
                             <img src="{{$user->avatar}}" alt="{{$user->name}}">
-                            <span class="online-dot"></span>
                         </div>
                         <div class="uk-width-expand">
                             <h3 class="text-dark"> {{$user->name}} </h3>
