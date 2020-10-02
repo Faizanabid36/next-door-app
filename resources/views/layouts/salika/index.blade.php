@@ -14,19 +14,22 @@
 
     <!-- CSS ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/bootstrap.min.css')}}">
-    <link rel="stylesheet" href="{{asset('salika/assets/css/style.css?v='.now())}}">
-    <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">
-    <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css?v='.now())}}">
-    <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css?v='.now())}}">
+    <link rel="stylesheet" href="{{asset('salika/assets/css/style.css?version='.time())}}">
+    {{--    <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">--}}
+    <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css?version='.time())}}">
+    <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css?version='.time())}}">
+    <script src="{{asset('salila.assets/js/toastr.js')}}"></script>
+    <script src="{{asset('salila.assets/css/toastr.css')}}"></script>
 
     <!-- icons ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
 
     <!-- Google font ================================================== -->
-{{--    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>--}}
+    {{--    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>--}}
 </head>
 
-<body style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif">
+<body
+    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif">
 <!-- Wrapper -->
 <div id="wrapper" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
 

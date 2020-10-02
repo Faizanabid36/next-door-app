@@ -3,8 +3,7 @@
         <h1 class="text-dark"><i>Events in the Community</i></h1>
     </div>
 </div>
-
-<nav class="responsive-tab style-4 mb-3">
+<div class="responsive-tab uk-flex uk-flex-between">
     <ul>
         <li class="{{Request::is('event')?'uk-active uk-text-italic':''}}">
             <a href="{{route('event.index')}}">
@@ -17,4 +16,8 @@
             </a>
         </li>
     </ul>
-</nav>
+    <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"
+            data-target="#postNewEvent">
+        <i class="uil-plus"> </i> Post An Event
+    </button>
+</div>

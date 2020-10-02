@@ -3,8 +3,8 @@
 namespace App;
 
 use Chatify\Http\Models\Message;
-use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable implements MustVerifyEmail
@@ -58,26 +58,35 @@ class User extends Authenticatable implements MustVerifyEmail
             $user_extra->hide_phone = 0;
             $user_extra->hide_address = 0;
             $user_extra->save();
-
             $user->notify(new \App\Notifications\UserRegisteredNotification($user));
         });
 
         // Deletes all the relations associated with user whenever a User is deleted via $user->delete()
 
-        static::deleting(function ($family_members) { // delete Family Members
-            $family_members->family_members()->each(function ($member) {
+        static::deleting(function ($user) { // delete Family Members
+            $user->family_members()->each(function ($member) {
                 $member->delete(); // <-- direct deletion
             });
 
-            $family_members->posts()->each(function ($post) { // Delete Posts
+            $user->posts()->each(function ($post) { // Delete Posts
                 $post->delete(); // <-- direct deletion
             });
 
-            $family_members->identities()->each(function ($identity) {
+            $user->identities()->each(function ($identity) {
                 $identity->delete();
             });
 
-            $family_members->user_extra()->delete(); // Deletes User Extra Settings
+            $user->user_extra()->delete(); // Deletes User Extra Settings
+
+            $user->going_to_events()->each(function ($evnt) {
+                $evnt->delete();
+            });
+            $user->user_events()->each(function ($event) {
+                $event->delete();
+            });
+            $user->reported_items()->each(function ($event) {
+                $event->delete();
+            });
         });
     }
     public function user_extra()
@@ -89,12 +98,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function family_members()
     {
         return $this->hasMany(FamilyMember::class, 'user_id');
-    }
-
-    // User can have many posts
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'user_id');
     }
 
     public function identities()
@@ -115,5 +118,15 @@ class User extends Authenticatable implements MustVerifyEmail
     public function going_to_events()
     {
         return $this->hasMany(EventInterest::class, 'user_id', 'id');
+    }
+
+    public function user_events()
+    {
+        return $this->hasMany(Event::class, 'user_id', 'id');
+    }
+
+    public function reported_items()
+    {
+        return $this->hasMany(ReportedPost::class, 'user_id', 'id');
     }
 }

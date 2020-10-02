@@ -177,6 +177,16 @@ Route::name('agency.')->middleware(['auth', 'verified'])->prefix('agency')->grou
 });
 
 
+/**
+ * --------------------
+ * Report Item Routes
+ * --------------------
+ */
+Route::name('report_item.')->middleware(['auth', 'verified'])->prefix('report_item')->group(function () {
+    Route::post('report_item/store', 'ReportedPostController@store')->name('store');
+});
+
+
 Route::get('item/delete/{saleItem}', 'SaleItemController@delete')->name('delete_item');
 
 

@@ -131,14 +131,17 @@ class EventController extends Controller
 
     public function remove($event_id)
     {
-        $event = Event::whereId($event_id)->whereUserId(auth()->user()->id)->firstOrFail();
-        dd($event);
+        $event = Event::find($event_id);
+        if (($event->user_id == auth()->user()->id) || auth()->user()->admin)
+            $event->delete();
+        return redirect()->route('event.index');
+
     }
 
     public function going_to_event($event_id, $type)
     {
         $int = EventInterest::whereUserId(auth()->user()->id)->whereEventId($event_id)->first();
-        if ($int->interested_or_going == $type) {
+        if (!is_null($int) && $int->interested_or_going == $type) {
             EventInterest::updateOrCreate(
                 ['event_id' => $event_id, 'user_id' => auth()->user()->id],
                 ['event_id' => $event_id, 'user_id' => auth()->user()->id, 'interested_or_going' => null]);

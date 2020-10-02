@@ -15,27 +15,43 @@
                 <span class="blog-post-info-tag button danger">
                     {{$event->category->name}}
                 </span>
-                @if(isset(auth()->user()->id)&& $event->user_id==auth()->user()->id)
-{{--                    <br>--}}
-{{--                    <button class="button danger small">--}}
-{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
-{{--                            Delete--}}
-{{--                        </a>--}}
-{{--                    </button>--}}
-{{--                    <button class="button danger small">--}}
-{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
-{{--                            Delete--}}
-{{--                        </a>--}}
-{{--                    </button>--}}
-{{--                    <button class="button danger small">--}}
-{{--                        <a class="text-white" href="{{route('event.delete',$event->id)}}">--}}
-{{--                            Delete--}}
-{{--                        </a>--}}
-{{--                    </button>--}}
-                @endif
+                <span class="ml-5">
+                        <button class="button primary round small">
+                            More
+                            <i class="icon-feather-more-horizontal ml-2"></i>
+                        </button>
+                    </span>
+                <div class="dropdown-option-nav"
+                     uk-dropdown="pos: bottom-right ;mode : hover ;animation: uk-animation-slide-bottom-small">
+                    <ul>
+                        @if(isset(auth()->user()->id)&& $event->user_id==auth()->user()->id)
+                            <li>
+                                <span> <i class="uil-trash"></i>
+                                    <a href="{{route('event.delete',$event->id)}}">
+                                        Delete
+                                    </a>
+                                </span>
+                            </li>
+                        @endif
+                        <li>
+                            <span> <i class="uil-cancel"></i>
+                                <a data-toggle="modal"
+                                   data-target="#reportModal">
+                                    Report
+                                </a>
+                            </span>
+                        </li>
+                        <li>
+                            <span> <i class="uil-facebook"></i> Facebook </span>
+                        </li>
+                        <li>
+                            <span> <i class="uil-share-alt"></i> LinkedIn </span>
+                        </li>
+                    </ul>
+                </div>
             </div>
             <div class="uk-width-1-2@m text-right ">
-                <img src="{{$event->event_cover_photo}}" class="rounded" alt="">
+                <img src="{{$event->event_cover_photo}}" class="rounded" width="400" style="height: 275px">
             </div>
         </div>
 
@@ -108,6 +124,43 @@
 @endsection
 
 @section('modal')
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
+         aria-labelledby="messageModal"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content" style="width:94%;margin: 0px auto">
+                <form id="reportForm" action="{{route('report_item.store')}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="report_event"><i>Report Event</i></h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="first_modal">
+                        @csrf
+                        <div class="mb-2">
+                            <h5 class="uk-text-bold mb-1"> Why do you want to report this event? </h5>
+                            <input type="hidden" name="type" value="event" id="type">
+                            <input type="hidden" name="item_id" value="{{$event->id}}" id="item_id">
+                            <textarea required name="body" id="body" class="uk-textarea uk-form-small rounded"
+                                      rows="6" placeholder="Type Reason Here...">{{old('body')}}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close_all1" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="uil-message"></i>
+                            Report Event
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
     <div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
          aria-labelledby="messageModal"
@@ -158,6 +211,30 @@
                 let user_id = id.split('-')[2]
                 $('#sendMessageTo').text(`Send message to ${name}`)
                 $('#to_user').val(`${user_id}`)
+            })
+            $('#reportForm').submit(function (event) {
+                event.preventDefault();
+                let body = $("#body").val();
+                let type = $("input[name=type]").val();
+                let item_id = $("input[name=item_id]").val();
+                let _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "{{route('report_item.store')}}",
+                    type: "POST",
+                    data: {
+                        body: body,
+                        type: type,
+                        item_id: item_id,
+                        _token: _token
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.success) {
+
+
+                        }
+                    },
+                });
             })
         })
     </script>
