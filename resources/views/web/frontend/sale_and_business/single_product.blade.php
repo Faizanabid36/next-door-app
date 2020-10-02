@@ -58,12 +58,15 @@
                 </div>
                 <div class="mb-4">
                     <div>
-                        <button type="button" class="button primary icon-label bg-facebook">
-                            <a href="{{route('user',$item->user_id)}}" class="text-white">
-                                <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
-                                <span class="inner-text">Contact Seller</span>
-                            </a>
-                        </button>
+                        @if(isset(auth()->user()->id)&&auth()->user()->id!=$item->user_id)
+                            <button type="button" class="button primary icon-label bg-facebook">
+                                <a href="{{route('user',$item->user_id)}}" class="text-white">
+                                    <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
+                                    <span class="inner-text">Contact Seller</span>
+                                </a>
+                            </button>
+                        @endif
+
                         @if(isset(auth()->user()->id) && auth()->user()->id == $item->user_id)
                             <button type="button" class="button primary icon-label bg-danger">
                                 <a href="{{route('delete_item',$item->id)}}" class="text-white">

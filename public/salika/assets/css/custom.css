@@ -2,7 +2,8 @@
     display: flex;
     align-items: flex-start
 }
-.cursor-pointer{
+
+.cursor-pointer {
     cursor: pointer
 }
 

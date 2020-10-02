@@ -18,14 +18,10 @@
     {{--    <link rel="stylesheet" href="{{asset('salika/assets/css/night-mode.css')}}">--}}
     <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css?version='.time())}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css?version='.time())}}">
-    <script src="{{asset('salila.assets/js/toastr.js')}}"></script>
-    <script src="{{asset('salila.assets/css/toastr.css')}}"></script>
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
 
     <!-- icons ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
-
-    <!-- Google font ================================================== -->
-    {{--    <link href='https://fonts.googleapis.com/css?family=IBM Plex Sans' rel='stylesheet'>--}}
 </head>
 
 <body
@@ -61,7 +57,8 @@
 ==================================================
 -->
 
-<script src="{{asset('salika/assets/js/jquery.min.js?v='.now())}}"></script>
+<script src="{{asset('salika/assets/js/jquery.min.js?version='.time())}}"></script>
+<script src="{{asset('salika/assets/js/toastr.js')}}"></script>
 @yield('footer_scripts')
 
 <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
@@ -74,13 +71,13 @@
         integrity="sha384-B4gt1jrGC7Jh4AgTPSdUtOBvfO8shuf57BaghqFfPlYxofvL8/KUEfYiJOMMV+rV"
         crossorigin="anonymous"></script>
 
-<script src="{{asset('salika/assets/js/framework.js?v='.now())}}"></script>
-<script src="{{asset('salika/assets/js/jquery-3.3.1.min.js?v='.now())}}"></script>
-<script src="{{asset('salika/assets/js/simplebar.js?v='.now())}}"></script>
-<script src="{{asset('salika/assets/js/main.js?v='.now())}}"></script>
+<script src="{{asset('salika/assets/js/framework.js?version='.time())}}"></script>
+<script src="{{asset('salika/assets/js/jquery-3.3.1.min.js?version='.time())}}"></script>
+<script src="{{asset('salika/assets/js/simplebar.js?version='.time())}}"></script>
+<script src="{{asset('salika/assets/js/main.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/moment.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
-<script src="https://js.pusher.com/5.0/pusher.min.js"></script>
+<script src="{{asset('salika/assets/js/pusher.min.js')}}"></script>
 
 
 <div id="fb-root"></div>

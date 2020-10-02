@@ -1,5 +1,17 @@
 @extends('layouts.salika.index')
 
+@section('meta')
+    <meta property="og:url" content="{{url()->current()}}"/>
+    <meta property="og:type" content="website"/>
+    <meta property="og:title" content="{{$event->event_title}}"/>
+    <meta property="og:description" content="{{$event->event_description}}"/>
+    <meta property="og:image" content="{{$event->event_cover_photo}}"/>
+    <meta property="og:image:url" content="{{$event->event_cover_photo}}"/>
+    <meta property="og:site_name" content="Salika">
+    <meta name="twitter:image:alt" content="{{$event->event_title}}">
+
+@endsection
+
 @section('content')
     <div class="uk-width-4-5@m m-auto mb-5">
         <div class="uk-card-default rounded mt-lg-4" uk-grid>
@@ -42,10 +54,20 @@
                             </span>
                         </li>
                         <li>
-                            <span> <i class="uil-facebook"></i> Facebook </span>
+                            <span> <i class="uil-facebook"></i>
+                                <a target="_blank"
+                                   href="http://www.facebook.com/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse">
+                                    Facebook
+                                </a>
+                            </span>
                         </li>
                         <li>
-                            <span> <i class="uil-share-alt"></i> LinkedIn </span>
+                            <span> <i class="uil-share-alt"></i>
+                                <a target="_blank"
+                                   href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$event->event_title}}">
+                                    LinkedIn
+                                </a>
+                            </span>
                         </li>
                     </ul>
                 </div>
@@ -230,8 +252,8 @@
                     success: function (res) {
                         console.log(res);
                         if (res.success) {
-
-
+                            toastr.options.closeButton = true
+                            toastr.success(res.success, 'Success', {timeOut: 5000});
                         }
                     },
                 });
