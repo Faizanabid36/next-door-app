@@ -62,7 +62,7 @@
                             </span>
                         </li>
                         <li>
-                            <span> <i class="uil-share-alt"></i>
+                            <span> <i class="uil-linkedin"></i>
                                 <a target="_blank"
                                    href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$event->event_title}}">
                                     LinkedIn
