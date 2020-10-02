@@ -74,7 +74,7 @@ class EventController extends Controller
     public function show($event)
     {
         //
-        $event = Event::whereId($event)->with('category', 'creator')->first();
+        $event = Event::whereId($event)->with('category', 'creator')->firstOrFail();
         $interest = EventInterest::whereEventId($event->id)->with('users_going')->get();
         $isGoing = 0;
         $isMaybe = 0;
@@ -134,7 +134,7 @@ class EventController extends Controller
         $event = Event::find($event_id);
         if (($event->user_id == auth()->user()->id) || auth()->user()->admin)
             $event->delete();
-        return redirect()->route('event.index');
+        return redirect()->route('event.index')->withDeleted('Event Has Been Deleted');
 
     }
 

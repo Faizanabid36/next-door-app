@@ -249,6 +249,7 @@
     </form>
 @endsection
 @section('footer_scripts')
+    @include('web.frontend.events.components.toastr_messages')
     <script>
         let loadCover = function (event) {
             let cover_image = document.getElementById('display_cover_picture');

@@ -26,7 +26,7 @@ class HomeController extends Controller
 
     public function neighbours_list()
     {
-        $users = User::neighbours(auth()->user())->get();
+        $users = User::userList(auth()->user(), 'neighbours')->get();
         if (auth()->user()->admin)
             return \view('admin.neighbours.user_list', compact('users'));
         return \view('web.frontend.neighbours.neighbours', compact('users'));
@@ -50,7 +50,7 @@ class HomeController extends Controller
 
     public function agents_list()
     {
-        $users = User::whereNotNull('is_public_agent')->get();
+        $users = User::userList(auth()->user(),'agents')->get();
         if (auth()->user()->admin)
             return \view('admin.public_agents.user_list', compact('users'));
         return \view('frontend.public_agencies.user_list', compact('users'));

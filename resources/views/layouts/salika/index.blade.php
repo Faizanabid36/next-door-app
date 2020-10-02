@@ -95,10 +95,9 @@
 </script>
 @yield('modal')
 
-
+<script src="{{asset('salika/assets/js/code/public.js')}}"></script>
 <script>
     const auth_id = document.querySelector('meta[name="auth_id"]').content || 0
-
     var pusher = new Pusher("{{ config('chatify.pusher.key') }}", {
         encrypted: true,
         cluster: "{{ config('chatify.pusher.options.cluster') }}",
@@ -112,6 +111,7 @@
 </script>
 <script src="{{asset('salika/assets/js/code/ajaxRequests.js')}}"></script>
 <script src="{{asset('salika/assets/js/code/notifications_from_api.js')}}"></script>
+
 
 </body>
 </html>
