@@ -8,6 +8,8 @@
     <meta property="og:image"         content="{{$item->main_image->image_url}}"/>
     <meta property="og:image:url"     content="{{$item->main_image->image_url}}"/>
     <meta property="og:site_name"     content="Salika">
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
     <meta name="twitter:image:alt"    content="{{$item->title}}">
 @endsection
 

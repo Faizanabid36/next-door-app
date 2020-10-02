@@ -7,6 +7,8 @@
     <meta property="og:description" content="{{$event->event_description}}"/>
     <meta property="og:image" content="{{$event->event_cover_photo}}"/>
     <meta property="og:image:url" content="{{$event->event_cover_photo}}"/>
+    <meta property="og:image:width" content="500" />
+    <meta property="og:image:height" content="500" />
     <meta property="og:site_name" content="Salika">
     <meta name="twitter:image:alt" content="{{$event->event_title}}">
 
