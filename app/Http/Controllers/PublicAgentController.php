@@ -19,7 +19,7 @@ class PublicAgentController extends Controller
 
     public function createagent(ValidateAgent $request)
     {
-        $request->merge(['is_public_agent' => 1, 'avatar' => 'theme\app-assets\images\portrait\small\avatar-s-25.jpg']);
+        $request->merge(['is_public_agent' => 1, 'avatar' => asset('users\avatar\default_avatar.png'), 'cover' => asset('users\avatar\default_cover.png')]);
         if ($request->isMethod('post')) {
             $request->merge(['password' => Hash::make($request->get('password'))]);
             User::create($request->except('_token'));

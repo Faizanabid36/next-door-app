@@ -30,12 +30,15 @@ class UserController extends Controller
             'Picture' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048'
         ]);
         if (request()->hasFile('Picture')) {
-            $file = $request->file('Picture');
-            $imageName = auth()->user()->id . '.' . $file->getClientOriginalExtension();
-            $destinationPath = storeImage($request->file('Picture'), 'users/' . auth()->user()->id);
-            (\request()->merge(['avatar' => $destinationPath]));
+            $path = storeImage($request->file('Picture'), 'users/' . auth()->user()->id . '/avatar');
+            \request()->merge(['avatar' => $path]);
         }
-        User::whereId($id)->update(\request()->except('_token', 'Picture'));
+        if (request()->hasFile('banner_2')) {
+            $path = storeImage($request->file('banner_2'), 'users/' . auth()->user()->id . '/cover');
+            \request()->merge(['cover' => $path]);
+        }
+        User::whereId($id)->update(\request()->except('_token', 'Picture', 'banner_2'));
+
         if (!empty($request->get('postal'))) {
             try {
                 $client = new \GuzzleHttp\Client();

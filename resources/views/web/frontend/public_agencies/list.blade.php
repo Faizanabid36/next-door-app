@@ -17,8 +17,9 @@
 
                                             <!-- Group Card Thumbnail -->
                                             <div class="quiz-group-card-thumbnail">
-                                                <img src="{{asset('salika/assets/images/group/group-cover-4.jpg')}}"
-                                                     style="height: 110px">
+                                                <img
+                                                    src="{{$user->cover??asset('users/cover/default_agency_cover.png')}}"
+                                                    style="height: 110px">
                                             </div>
                                             <!-- Group Card Content -->
                                             <div class="quiz-group-card-content mt-5">

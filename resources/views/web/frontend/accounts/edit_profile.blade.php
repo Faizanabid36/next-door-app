@@ -33,6 +33,33 @@
                         @csrf
                         <div class="mb-5 media-upload-image">
                             <a href="javascript: void(0);">
+                                <img src="{{$user->cover??asset('users/cover/default_agency_cover.png')}}"
+                                     id="display_cover_picture"
+                                     class="rounded mr-75" alt="profile image" height="64"
+                                     width="125">
+                            </a>
+                            <div class="media-body">
+                                <div
+                                    class="col-12 px-0 d-flex flex-sm-row flex-column justify-content-start">
+                                    <label
+                                        class="btn btn-sm small button primary cursor-pointer ml-50 mb-50 mb-sm-0 text-white"
+                                        for="cover-upload">
+                                        Upload new cover photo
+                                    </label>
+                                    <input onchange="loadCover(event)" type="file" name="banner_2"
+                                           id="cover-upload"
+                                           hidden>
+                                </div>
+                                <p class="ml-75 mt-50 text-dark"><small>Allowed JPG, GIF or
+                                        PNG.
+                                        Max
+                                        size of
+                                        5MB</small></p>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="mb-5 media-upload-image">
+                            <a href="javascript: void(0);">
                                 <img src="{{asset($user->avatar)}}"
                                      id="avatar_picture"
                                      class="rounded mr-75" alt="profile image" height="64"
@@ -107,9 +134,9 @@
             let image = document.getElementById('avatar_picture');
             image.src = URL.createObjectURL(event.target.files[0]);
         };
-        // let loadMemberPicture = function(event){
-        //     let image = document.getElementById('member_picture');
-        //     image.src = URL.createObjectURL(event.target.files[0]);
-        // }
+        let loadCover = function (event) {
+            let image = document.getElementById('display_cover_picture');
+            image.src = URL.createObjectURL(event.target.files[0]);
+        };
     </script>
 @endsection
