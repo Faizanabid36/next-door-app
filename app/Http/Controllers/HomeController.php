@@ -45,7 +45,8 @@ class HomeController extends Controller
 
     public function public_agencies()
     {
-        return view('frontend.public_agencies.view');
+        $users = User::userList(auth()->user(), 'agents')->get();
+        return view('frontend.public_agencies.view', compact('users'));
     }
 
     public function agents_list()

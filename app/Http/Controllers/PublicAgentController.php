@@ -19,8 +19,6 @@ class PublicAgentController extends Controller
 
     public function createagent(ValidateAgent $request)
     {
-
-
         $request->merge(['is_public_agent' => 1, 'avatar' => 'theme\app-assets\images\portrait\small\avatar-s-25.jpg']);
         if ($request->isMethod('post')) {
             $request->merge(['password' => Hash::make($request->get('password'))]);
@@ -31,7 +29,7 @@ class PublicAgentController extends Controller
 
     public function agencies()
     {
-        $users = User::whereNotNull('is_public_agent')->get();
+        $users = User::userList(auth()->user(), 'agents')->get();
         if (auth()->user()->admin)
             return \view('admin.public_agents.user_list', compact('users'));
         return \view('web.frontend.public_agencies.list', compact('users'));
