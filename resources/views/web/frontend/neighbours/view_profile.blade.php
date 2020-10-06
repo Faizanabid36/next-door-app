@@ -5,7 +5,7 @@
         <div class="profile">
             <div class="profile-cover">
                 <!-- profile cover -->
-                <img src="{{asset('salika/assets/images/avatars/profile-cover.jpg')}}" alt="">
+                <img src="{{$user->cover??asset('users/cover/default_agency_cover.png')}}" alt="">
             </div>
             <div class="profile-details">
                 <div class="profile-image">
