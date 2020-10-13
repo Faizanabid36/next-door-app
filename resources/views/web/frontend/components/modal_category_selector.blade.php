@@ -1,5 +1,5 @@
 <div class="mb-3">
-    <select name="post_type" class="uk-input uk-form-small text-dark">
+    <select name="post_type" class="uk-select uk-form-small text-dark">
         <option selected disabled value="">Category</option>
         <option value="news-feed">News Feed</option>
         <option value="lost-items">Lost Items</option>

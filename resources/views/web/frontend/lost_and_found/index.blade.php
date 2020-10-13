@@ -3,7 +3,7 @@
 @section('content')
     <div class="main_content_inner">
         <div class="uk-flex uk-flex-between">
-            <h1 class="color-black"><i>Lost and Found</i></h1>
+            <h1 class="color-black"><i>Lost Items</i></h1>
             <button class="button primary small circle pull-right" data-toggle="modal" data-target="#addNewModal"><i
                     class="uil-plus"> </i> Add New
             </button>

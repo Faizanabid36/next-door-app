@@ -2,12 +2,12 @@
     <div class="modal fade" id="addNewModal" tabindex="-1" role="dialog" aria-labelledby="addNewModal"
          aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
+            <div class="modal-content rounded-lg">
                 <form novalidate method="POST"
                       enctype='multipart/form-data'
                       action={{action($action)}}>
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLongTitle"><i>Add new Item</i></h5>
+                        <h4 class="modal-title" id="exampleModalLongTitle"><i>Add new Item</i></h4>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -15,6 +15,13 @@
                     <div class="modal-body">
                         @csrf
                         @include('web.frontend.components.modal_category_selector')
+{{--                        <div class="mb-3">--}}
+{{--                            <select name="post_type" class="uk-input uk-form-small text-dark">--}}
+{{--                                <option selected disabled value="">Neighbourhood</option>--}}
+{{--                                <option value="{{auth()->user()->postal}}">{{auth()->user()->address}}</option>--}}
+{{--                                <option value="all">All Neighbourhood</option>--}}
+{{--                            </select>--}}
+{{--                        </div>--}}
                         <div class="mb-3">
                             <input type="text" name="title" class="uk-input uk-form-small text-dark"
                                    placeholder="Subject" required="true">
