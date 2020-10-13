@@ -150,6 +150,15 @@ Route::name('reviews.')->middleware(['auth', 'verified'])->prefix('reviews')->gr
     Route::get('remove_recommendation/{id}', 'UserBusinessRecommendationController@remove_recommendation')->name('remove_recommendation');
 });
 
+/**
+ *-----------------------------
+ * Lost and Found Routes
+ * ----------------------------
+ */
+
+Route::name('lost_and_found.')->middleware(['auth', 'verified'])->prefix('lost_and_found')->group(function () {
+    Route::get('/', 'LostAndFoundController@index')->name('index');
+});
 
 /**
  *-----------------------------

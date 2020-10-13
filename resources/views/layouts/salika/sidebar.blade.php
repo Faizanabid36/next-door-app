@@ -19,7 +19,8 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="homepage.html"> <img src="{{asset('salika/assets/images/icons/home.png')}}" alt="">
+                        <a href="{{route('dashboard')}}">
+                            <img src="{{asset('salika/assets/images/icons/home.png')}}" alt="">
                             <span> News Feed </span>
                         </a>
                     </li>
@@ -42,7 +43,7 @@
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
+                        <a href="{{route('lost_and_found.index')}}"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
                             <span> Lost Items </span>
                         </a>
                     </li>
