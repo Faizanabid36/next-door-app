@@ -96,9 +96,8 @@
 
             </div>
             @include('web.frontend.public_agencies.components.side_info')
-
         </div>
-
-
     </div>
 @endsection
+
+@include('web.frontend.components.new_post_modal',[$action='LostAndFoundController@store'])

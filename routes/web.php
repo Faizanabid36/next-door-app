@@ -156,8 +156,9 @@ Route::name('reviews.')->middleware(['auth', 'verified'])->prefix('reviews')->gr
  * ----------------------------
  */
 
-Route::name('lost_and_found.')->middleware(['auth', 'verified'])->prefix('lost_and_found')->group(function () {
+Route::name('lost_items.')->middleware(['auth', 'verified'])->prefix('lost_items')->group(function () {
     Route::get('/', 'LostAndFoundController@index')->name('index');
+    Route::post('/store', 'LostAndFoundController@store')->name('store');
 });
 
 /**

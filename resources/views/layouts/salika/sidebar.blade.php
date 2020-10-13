@@ -43,7 +43,7 @@
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="{{route('lost_and_found.index')}}"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
+                        <a href="{{route('lost_items.index')}}"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
                             <span> Lost Items </span>
                         </a>
                     </li>
