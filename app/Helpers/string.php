@@ -49,51 +49,65 @@ if (!function_exists('get_address')) {
 if (!function_exists('postsHTML')){
     function postsHTML($posts){
         $data = '';
+        $showDelete = '';
         foreach ($posts as $post) {
+            if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
+                $showDelete = '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
+                    '<ul class="uk-nav uk-dropdown-nav">' .
+                    '<li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>' .
+                    'Delete </a>' .
+                    '</li>' .
+                    '</ul>' .
+                    '</div>';
+            }
             $data .= '<div class="post uk-box-shadow-hover-large shadow-md">' .
                 '<div class="post-heading">' .
                 '<div class="post-avature">' .
                 '<img src="' . $post->user->avatar . '" alt="">' .
                 '</div>' .
                 '<div class="post-title">' .
-                '<h4>'.$post->user->name.'</h4>' .
+                '<h4>' . $post->user->name . '</h4>' .
                 '<p>' . $post->created_at->diffForHumans() . '<i class="uil-users-alt"></i></p>' .
                 '</div>' .
                 '<div class="post-btn-action">' .
                 '<span class="icon-more uil-ellipsis-h" aria-expanded="false"></span>' .
-                '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
-                '<ul class="uk-nav uk-dropdown-nav">' .
-                '<li><a href="#"> <i class="uil-share-alt mr-1"></i> Share</a></li>' .
-                '</a></li>' .
-                '<li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>' .
-                'Delete </a>' .
-                '</li>' .
-                '</ul>' .
-                '</div>' .
+                $showDelete .
                 '</div>' .
                 '</div>' .
                 '<div class="post-description">' .
                 '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . $post->body . '</p>' .
                 '</div>' .
                 '<div class="post-state">' .
-                '<div class="post-state-btns"><i class="uil-thumbs-up"></i> 126<span> Liked </span>' .
+                '<div class="post-state-btns"><i class="uil-thumbs-up"></i>' . count($post->likes) . '<span> Likes </span>' .
                 '</div>' .
-                '<div class="post-state-btns"><i class="uil-thumbs-down"></i> 126' .
+                '<div class="post-state-btns"><i class="uil-thumbs-down"></i> ' . count($post->dislikes) . '' .
                 '<span> Dislikes </span>' .
                 '</div>' .
                 '<div class="post-state-btns"><i class="uil-comment"></i> 18 <span> Coments</span>' .
                 '</div>' .
-                '<div class="post-state-btns"><i class="uil-share-alt"></i> 193 <span> Shared </span>' .
-                '</div>' .
-                '</div>' .
-                '<div class="post-comments" >' .
-                '<a class="view-more-comment" > Veiw 8 more Comments </a >' .
-                '<div class="post-comments-single" >' .
-                '<div class="post-comment-avatar" >' .
-                '<img src = "' . asset("salika/assets/images/avatars/avatar-5.jpg") . '">' .
-                '</div >' .
-                '<div class="post-comment-text" >' .
-                '<div class="post-comment-text-inner" >' .
+                '<div class="post-state-btns"><i class="uil-share-alt"></i>' .
+                'Share' .
+                '<span class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover "> ' .
+                '<ul class="uk-nav uk-dropdown-nav">' .
+                '<li><a href="#"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
+                '</a></li>' .
+                '<li><a href="#"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
+                '</a></li>' .
+//                '<li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>' .
+//                'Delete </a>' .
+                '</li>' .
+                '</ul>' .
+                '</span > ' .
+                '</div > ' .
+                '</div > ' .
+                '<div class="post-comments" > ' .
+                '<a class="view-more-comment" > Veiw 8 more Comments </a > ' .
+                '<div class="post-comments-single" > ' .
+                '<div class="post-comment-avatar" > ' .
+                '<img src = "' . asset("salika/assets/images/avatars/avatar-5.jpg") . '" > ' .
+                '</div > ' .
+                '<div class="post-comment-text" > ' .
+                '<div class="post-comment-text-inner" > ' .
                 '<h6 > Alex Dolgove </h6 >' .
                 '<p > Ut wisi enim ad minim laoreet dolore magna aliquam erat </p >' .
                 '</div >' .
