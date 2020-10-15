@@ -61,12 +61,9 @@ if (!function_exists('postsHTML')) {
             if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
                 $showDelete = '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
                     '<ul class="uk-nav uk-dropdown-nav">' .
-                    '<li id="del-post-' . $post->id . '" class="del-post-button"><a class="text-danger">' .
+                    '<li><a id="del-post-' . $post->id . '" onclick="deletePost(this)" class="text-danger">' .
                     ' <i class="uil-trash-alt mr-1"></i>' .
                     'Delete </a></li></ul></div>';
-//                $showDelete = '<a onclick="test(' . $post->id . ')"' .
-//                    ' id="del-post-' . $post->id . '" class="text-danger del-post-button">' .
-//                    ' <i class="uil-trash-alt mr-1"></i></a>';
             }
             if (!is_null($myLikes)) {
                 if (in_array($post->id, $myLikesID))

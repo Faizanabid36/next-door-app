@@ -161,6 +161,10 @@ Route::name('lost_items.')->middleware(['auth', 'verified'])->prefix('lost_items
     Route::post('/store', 'LostAndFoundController@store')->name('store');
 });
 
+Route::name('posts.')->middleware(['auth', 'verified'])->prefix('post')->group(function () {
+    Route::post('remove', 'PostController@remove_post')->name('remove');
+});
+
 /**
  *-----------------------------
  * Events Routes
