@@ -73,7 +73,7 @@ if (!function_exists('postsHTML')){
                 '</div>' .
                 '</div>' .
                 '<div class="post-description">' .
-                '<p><b><i>' . $post->subject . '.</i></b>' . $post->body . '</p>' .
+                '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . $post->body . '</p>' .
                 '</div>' .
                 '<div class="post-state">' .
                 '<div class="post-state-btns"><i class="uil-thumbs-up"></i> 126<span> Liked </span>' .
