@@ -25,9 +25,9 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/home', 'RouteViewsController@login_page')->name('login');
-    Route::get('/news_feed', 'RouteViewsController@feed')->name('feed');
-    Route::get('/dashboard', 'RouteViewsController@user_dashboard')->name('dashboard');
-    Route::get('/my-dashboard', 'RouteViewsController@user_dashboard')->name('home');
+    Route::get('/news_feed', 'HomeController@feed')->name('feed');
+    Route::get('/dashboard', 'HomeController@feed')->name('dashboard');
+    Route::get('/my-dashboard', 'RouteViewsController@feed')->name('home');
     Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
 
 });

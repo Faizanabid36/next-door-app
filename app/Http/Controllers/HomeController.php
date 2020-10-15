@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Post;
 use App\User;
 use Illuminate\Http\Request;
 
@@ -35,8 +36,7 @@ class HomeController extends Controller
     public function delete_user()
     {
         $ids=\request('ids');
-        foreach($ids as $id)
-        {
+        foreach($ids as $id) {
             $user = User::find($id);
             $user->delete();
         }
@@ -77,6 +77,20 @@ class HomeController extends Controller
         if (isset($address['error']))
             return ['error' => 'Postal Code Does Not Exist'];
         return ['success' => $address];
+    }
+
+
+    public function feed(Request $request)
+    {
+        if (auth()->user()->admin)
+            return redirect()->route('admin-dashboard');
+
+
+        $posts = Post::sectionPosts('news-feed');
+        if ($request->ajax()) {
+            return postsHTML($posts);
+        }
+        return view('web.frontend.home');
     }
 
 }

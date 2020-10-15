@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\PostLike;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -46,19 +47,27 @@ if (!function_exists('get_address')) {
 }
 
 
-if (!function_exists('postsHTML')){
-    function postsHTML($posts){
+if (!function_exists('postsHTML')) {
+    function postsHTML($posts)
+    {
+        $myLikes = PostLike::whereUserId(auth()->user()->id)->get();
+        $myLikesID = $myLikes->pluck('post_id')->toArray();
         $data = '';
-        $showDelete = '';
         foreach ($posts as $post) {
+            $liked = '';
+            $disliked = '';
+            $res = '';
+            $showDelete = '';
             if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
                 $showDelete = '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
                     '<ul class="uk-nav uk-dropdown-nav">' .
                     '<li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>' .
-                    'Delete </a>' .
-                    '</li>' .
-                    '</ul>' .
-                    '</div>';
+                    'Delete </a></li></ul></div>';
+            }
+            if (!is_null($myLikes)) {
+                if (in_array($post->id, $myLikesID))
+                    $res = $myLikes->where('post_id', $post->id)->first();
+                isset($res->like_dislike) && $res->like_dislike == 1 ? $liked = 'text-primary' : $disliked = 'text-danger';
             }
             $data .= '<div class="post uk-box-shadow-hover-large shadow-md">' .
                 '<div class="post-heading">' .
@@ -78,9 +87,11 @@ if (!function_exists('postsHTML')){
                 '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . $post->body . '</p>' .
                 '</div>' .
                 '<div class="post-state">' .
-                '<div class="post-state-btns"><i class="uil-thumbs-up"></i>' . count($post->likes) . '<span> Likes </span>' .
+                '<div class="post-state-btns ' . $liked . '"><i class="uil-thumbs-up"></i>' . count($post->likes) .
+                '<span> Likes </span>' .
                 '</div>' .
-                '<div class="post-state-btns"><i class="uil-thumbs-down"></i> ' . count($post->dislikes) . '' .
+                '<div class="post-state-btns ' . $disliked . '"><i class="uil-thumbs-down"></i> ' .
+                count($post->dislikes) . '' .
                 '<span> Dislikes </span>' .
                 '</div>' .
                 '<div class="post-state-btns"><i class="uil-comment"></i> 18 <span> Coments</span>' .

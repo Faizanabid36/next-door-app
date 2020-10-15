@@ -13,8 +13,6 @@ class LostAndFoundController extends Controller
     public function index(Request $request)
     {
         $posts = Post::sectionPosts('lost-items');
-        $iLiked = PostLike::whereUserId(auth()->user()->id)->get();
-        return compact('iLiked');
         if ($request->ajax()) {
             return postsHTML($posts);
         }

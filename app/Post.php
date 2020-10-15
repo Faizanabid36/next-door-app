@@ -12,7 +12,7 @@ class Post extends Model
 
     public function scopeSectionPosts($query, $section = 'news-feed')
     {
-        return $query->latest()->with('user')->whereSection($section)->paginate(12);
+        return $query->latest()->with('user')->whereSection($section)->paginate(10);
     }
 
     public function user()
