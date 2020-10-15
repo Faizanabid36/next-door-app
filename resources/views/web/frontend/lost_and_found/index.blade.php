@@ -4,12 +4,16 @@
     <div class="main_content_inner">
         <div class="uk-flex uk-flex-between">
             <h1 class="color-black"><i>Lost Items</i></h1>
-            <button class="button primary small circle pull-right" data-toggle="modal" data-target="#addNewModal"><i
-                    class="uil-plus"> </i> Add New
-            </button>
+{{--            <button class="button primary small circle pull-right" data-toggle="modal" data-target="#addNewModal"><i--}}
+{{--                    class="uil-plus"> </i> Add New--}}
+{{--            </button>--}}
+                <a class="button primary small circle pull-right uk-button-default" href="#addNewModal" uk-toggle>
+                    <i class="uil-plus mr-2"></i>New Post
+                </a>
         </div>
         <div class="uk-grid-large" uk-grid>
-            <div class="uk-width-2-3@m fead-area">
+            <div class="uk-width-2-3@m fead-area" id="feed-area">
+                <div id="laoding-data" style="display: block"><p class="text-dark text-center">Please Wait...!</p></div>
                 <div class="post">
                     <div class="post-heading">
                         <div class="post-avature">
@@ -93,7 +97,6 @@
                         </div>
                     </div>
                 </div>
-
             </div>
             @include('web.frontend.public_agencies.components.side_info')
         </div>

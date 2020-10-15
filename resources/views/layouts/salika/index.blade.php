@@ -50,13 +50,12 @@
         @include('layouts.salika.chat_sidebar')
     @endauth
 </div>
-
+@yield('modal')
 <!--
 ==================================================
                     javaScripts
 ==================================================
 -->
-
 <script src="{{asset('salika/assets/js/jquery.min.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/toastr.js')}}"></script>
 @yield('footer_scripts')
@@ -64,9 +63,7 @@
 <script src="{{asset('salika/assets/js/jquery-3.5.1.slim.min.js')}}"></script>
 <script src="{{asset('salika/assets/js/popper.min.js')}}"></script>
 <script src="{{asset('salika/assets/js/bootstrap.min.js')}}"></script>
-
 <script src="{{asset('salika/assets/js/framework.js?version='.time())}}"></script>
-<script src="{{asset('salika/assets/js/jquery-3.3.1.min.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/simplebar.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/main.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/moment.js')}}"></script>
@@ -87,7 +84,6 @@
         src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v8.0&appId=261958965240905&autoLogAppEvents=1"
         nonce="GLWZhynL">
 </script>
-@yield('modal')
 
 <script src="{{asset('salika/assets/js/code/public.js')}}"></script>
 <script>
@@ -105,6 +101,7 @@
 </script>
 <script src="{{asset('salika/assets/js/code/ajaxRequests.js')}}"></script>
 <script src="{{asset('salika/assets/js/code/notifications_from_api.js')}}"></script>
+<script src="{{asset('salika/assets/js/code/public.js')}}"></script>
 
 
 </body>
