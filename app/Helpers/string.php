@@ -61,15 +61,20 @@ if (!function_exists('postsHTML')) {
             if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
                 $showDelete = '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
                     '<ul class="uk-nav uk-dropdown-nav">' .
-                    '<li><a href="#" class="text-danger"> <i class="uil-trash-alt mr-1"></i>' .
+                    '<li id="del-post-' . $post->id . '" class="del-post-button"><a class="text-danger">' .
+                    ' <i class="uil-trash-alt mr-1"></i>' .
                     'Delete </a></li></ul></div>';
+//                $showDelete = '<a onclick="test(' . $post->id . ')"' .
+//                    ' id="del-post-' . $post->id . '" class="text-danger del-post-button">' .
+//                    ' <i class="uil-trash-alt mr-1"></i></a>';
             }
             if (!is_null($myLikes)) {
                 if (in_array($post->id, $myLikesID))
                     $res = $myLikes->where('post_id', $post->id)->first();
-                isset($res->like_dislike) && $res->like_dislike == 1 ? $liked = 'text-primary' : $disliked = 'text-danger';
+                if (isset($res->like_dislike))
+                    $res->like_dislike == 1 ? $liked = 'text-primary' : $disliked = 'text-danger';
             }
-            $data .= '<div class="post uk-box-shadow-hover-large shadow-md">' .
+            $data .= '<div class="post uk-box-shadow-hover-large shadow-md" id="post-' . $post->id . '">' .
                 '<div class="post-heading">' .
                 '<div class="post-avature">' .
                 '<img src="' . $post->user->avatar . '" alt="">' .
@@ -84,13 +89,15 @@ if (!function_exists('postsHTML')) {
                 '</div>' .
                 '</div>' .
                 '<div class="post-description">' .
-                '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . $post->body . '</p>' .
+                '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . ' ' . ucfirst($post->body) . '</p>' .
                 '</div>' .
                 '<div class="post-state">' .
-                '<div class="post-state-btns ' . $liked . '"><i class="uil-thumbs-up"></i>' . count($post->likes) .
+                '<div class="btn-like-post-' . $post->id . ' post-state-btns ' . $liked . '"><i class="uil-thumbs-up"></i>'
+                . count($post->likes) .
                 '<span> Likes </span>' .
                 '</div>' .
-                '<div class="post-state-btns ' . $disliked . '"><i class="uil-thumbs-down"></i> ' .
+                '<div class="btn-dislike-post-' . $post->id . ' post-state-btns ' . $disliked . '">' .
+                '<i class="uil-thumbs-down"></i> ' .
                 count($post->dislikes) . '' .
                 '<span> Dislikes </span>' .
                 '</div>' .

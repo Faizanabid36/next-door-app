@@ -1,16 +1,7 @@
-function load_more(page) {
-    $.ajax({
-        url: '?page=' + page,
-        type: "get",
-        datatype: "html",
-        beforeSend: function()
-        {
-            $('#laoding-data').css('visibility','visible')
-        }
-    }).done(function (data) {
-        $('#laoding-data').css('visibility','hidden')
-        $("#feed-area").append(data); //append data into #results element
-    }).fail(function (jqXHR, ajaxOptions, thrownError) {
-        alert('No response from server');
-    });
-}
+$(document).ready(function () {
+    $('#del-post-*').on('click', function () {
+        console.log('here i am')
+        let postId = this.id.split('-')[2]
+        alert(postId)
+    })
+});
