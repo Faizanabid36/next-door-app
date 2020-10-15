@@ -50,7 +50,7 @@ if (!function_exists('postsHTML')){
     function postsHTML($posts){
         $data = '';
         foreach ($posts as $post) {
-            $data .= '<div class="post">' .
+            $data .= '<div class="post uk-box-shadow-hover-large shadow-md">' .
                 '<div class="post-heading">' .
                 '<div class="post-avature">' .
                 '<img src="' . $post->user->avatar . '" alt="">' .
