@@ -17,7 +17,7 @@ class LoginController extends Controller
             return redirect()->route('admin-dashboard');
         }
 
-        return redirect('/dashboard');
+        return redirect()->route('feed.', 'news-feed');
     }
 
     public function login(Request $request)
@@ -28,13 +28,12 @@ class LoginController extends Controller
         ]);
         if (Auth::attempt([
             'email' => $request->email,
-            'password' => $request->password])) 
-            {
+            'password' => $request->password])) {
             $user = User::where('email', $request->email)->first();
             if ($user->is_admin()) {
                 return redirect()->route('admin-dashboard');
             }
-            return redirect()->route('dashboard');
+            return redirect()->route('feed.', 'news-feed');
         }
         return redirect()->back()->with('error', 'These Credentials Do not Match Our Records');
     }

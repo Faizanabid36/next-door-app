@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
+use App\Providers\RouteServiceProvider;
 use App\SocialIdentity;
 use App\User;
 use Auth;
@@ -32,7 +33,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    // protected $redirectTo = RouteServiceProvider::HOME;
+     protected $redirectTo = RouteServiceProvider::HOME;
 
     /**
      * Create a new controller instance.
@@ -54,12 +55,12 @@ class LoginController extends Controller
         try {
             $user = Socialite::driver($provider)->user();
         } catch (\Exception $e) {
-            return redirect('/login');
+            return redirect()->route('login');
         }
 
         $authUser = $this->findOrCreateUser($user, $provider);
         \Auth::login($authUser, true);
-        return redirect()->route('dashboard');
+        return redirect()->route('feed.','news-feed');
     }
 
     public function findOrCreateUser($providerUser, $provider)

@@ -27,7 +27,7 @@ class RouteViewsController extends Controller
             if (auth()->user()->admin)
                 return view('admin.main_dashboard');
             else{
-                return view('web.frontend.home');
+                return redirect()->route('feed.', 'news-feed');
             }
         }
     }

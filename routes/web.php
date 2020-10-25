@@ -24,12 +24,11 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
  */
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
-    Route::get('/home', 'RouteViewsController@login_page')->name('login');
-    Route::get('/news_feed', 'HomeController@feed')->name('feed');
-    Route::get('/dashboard', 'HomeController@feed')->name('dashboard');
+    Route::get('/dashboard', 'RouteViewsController@login_page')->name('login');
+//    Route::get('/feed/news-feed', 'HomeController@feed')->name('feed');
+//    Route::get('/dashboard/', 'PostController@index')->name('dashboard');
     Route::get('/my-dashboard', 'RouteViewsController@feed')->name('home');
     Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
-
 });
 
 Route::group(['middleware' => 'auth'], function () {
@@ -157,12 +156,34 @@ Route::name('reviews.')->middleware(['auth', 'verified'])->prefix('reviews')->gr
  */
 
 Route::name('lost_items.')->middleware(['auth', 'verified'])->prefix('lost_items')->group(function () {
-    Route::get('/', 'LostAndFoundController@index')->name('index');
     Route::post('/store', 'LostAndFoundController@store')->name('store');
 });
 
+/**
+ *-----------------------------
+ * Posts and Feed Routes
+ * ----------------------------
+ */
+
+
 Route::name('posts.')->middleware(['auth', 'verified'])->prefix('post')->group(function () {
     Route::post('remove', 'PostController@remove_post')->name('remove');
+});
+
+Route::middleware(['auth', 'verified'])->prefix('feed')->name('feed.')->group(function () {
+    Route::post('/store', 'PostController@store')->name('store');
+    Route::post('/like_dislike_post', 'PostController@like_dislike_post')->name('store');
+    Route::get('/{type}', 'PostController@index');
+
+    /**
+     *-----------------------------
+     * Post Comment and Found Routes
+     * ----------------------------
+     */
+
+    Route::post('/post_comment', 'PostCommentController@store_comment')->name('store.comment');
+    Route::post('/delete_comment', 'PostCommentController@delete_comment')->name('delete.comment');
+
 });
 
 /**

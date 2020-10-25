@@ -87,6 +87,9 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->reported_items()->each(function ($event) {
                 $event->delete();
             });
+            $user->comments()->each(function ($comment) {
+                $comment->delete();
+            });
         });
     }
     public function user_extra()
@@ -94,7 +97,6 @@ class User extends Authenticatable implements MustVerifyEmail
         return $this->hasOne(UserExtra::class, 'user_id', 'id');
     }
 
-    // User can have many family Members
     public function family_members()
     {
         return $this->hasMany(FamilyMember::class, 'user_id');
@@ -129,6 +131,12 @@ class User extends Authenticatable implements MustVerifyEmail
     {
         return $this->hasMany(ReportedPost::class, 'user_id', 'id');
     }
+
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class, 'user_id', 'id');
+    }
+
 
     public function scopeUserList($query, $user, $type)
     {

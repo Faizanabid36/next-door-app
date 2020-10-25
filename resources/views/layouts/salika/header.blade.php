@@ -9,7 +9,7 @@
 
     <!-- Logo-->
         <div id="logo">
-            <a href="{{route('dashboard')}}">
+            <a href="{{route('feed.','news-feed')}}">
                 <img src="{{asset('salika/assets/images/salika_logo.png')}}" class="" style="width: 60px" alt="">
             </a>
         </div>

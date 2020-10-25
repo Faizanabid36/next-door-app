@@ -19,7 +19,7 @@
                     </li>
                     <hr>
                     <li>
-                        <a href="{{route('dashboard')}}">
+                        <a href="{{route('feed.','news-feed')}}">
                             <img src="{{asset('salika/assets/images/icons/home.png')}}" alt="">
                             <span> News Feed </span>
                         </a>
@@ -38,17 +38,20 @@
                         </a>
                     </li>
                     <li id="more-veiw" class="{{Request::is('event*')?'active':''}}">
-                        <a href="{{route('event.index')}}"> <img src="{{asset('salika/assets/images/icons/events.png')}}" alt="">
+                        <a href="{{route('event.index')}}"> <img
+                                src="{{asset('salika/assets/images/icons/events.png')}}" alt="">
                             <span> Events </span>
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="{{route('lost_items.index')}}"> <img src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
+                        <a href="{{route('feed.','lost-items')}}"> <img
+                                src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
                             <span> Lost Items </span>
                         </a>
                     </li>
                     <li id="more-veiw">
-                        <a href="event.html"> <img src="{{asset('salika/assets/images/icons/police.png')}}" alt="">
+                        <a href="{{route('feed.','crime-awareness')}}"> <img
+                                src="{{asset('salika/assets/images/icons/police.png')}}" alt="">
                             <span> Crime Awareness </span>
                         </a>
                     </li>
@@ -65,12 +68,6 @@
                             <span> Free and 4 Sale </span>
                         </a>
                     </li>
-                    {{--                    <li id="more-veiw" >--}}
-                    {{--                        <a href="{{ route('ecommerce')}}"> <img src="{{asset('salika/assets/images/icons/eye.png')}}"--}}
-                    {{--                                                                alt="">--}}
-                    {{--                            <span> Global </span>--}}
-                    {{--                        </a>--}}
-                    {{--                    </li>--}}
 
                     <li id="more-veiw" class="{{Request::is('business/list')?'active':'test'}}">
                         <a href="{{route('business.list')}}"> <img
@@ -79,7 +76,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="questions.html">
+                        <a href="{{route('feed.','questions')}}">
                             <img src="{{asset('salika/assets/images/icons/question.png')}}" alt="">
                             <span> Questions </span>
                         </a>

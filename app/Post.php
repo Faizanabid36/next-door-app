@@ -8,7 +8,7 @@ class Post extends Model
 {
     protected $guarded = [];
 
-    protected $with = ['likes', 'dislikes'];
+    protected $with = ['likes', 'dislikes', 'comments'];
 
     public function scopeSectionPosts($query, $section = 'news-feed')
     {
@@ -40,6 +40,11 @@ class Post extends Model
 
     public function dislikes()
     {
-        return $this->hasMany(PostLike::class, 'post_id', 'id')->where('like_dislike', '!=',1);
+        return $this->hasMany(PostLike::class, 'post_id', 'id')->where('like_dislike', '!=', 1);
+    }
+
+    public function comments()
+    {
+        return $this->hasMany(PostComment::class, 'post_id', 'id')->latest();
     }
 }

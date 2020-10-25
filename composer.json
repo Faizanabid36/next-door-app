@@ -47,7 +47,8 @@
         ],
         "files": [
 
-            "app/Helpers/string.php"
+            "app/Helpers/string.php",
+            "app/Helpers/response.php"
 
         ]
     },

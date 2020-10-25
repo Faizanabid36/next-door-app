@@ -73,7 +73,7 @@
                 {{-- header buttons --}}
                 <nav class="m-header-right">
                     <a href="#" class="add-to-favorite mt-1"><i class="fas fa-star fa-5x"></i></a>
-                    <a class="ml-4" href="{{ route('dashboard') }}"><img src="{{asset('salika/assets/images/icons/home.png')}}" width="25"></a>
+                    <a class="ml-4" href="{{ route('feed.','news-feed') }}"><img src="{{asset('salika/assets/images/icons/home.png')}}" width="25"></a>
                     <a href="#" class="show-infoSide ml-4 mr-2"><img src="{{asset('salika/assets/images/icons/info.png')}}" width="25"></a>
                 </nav>
             </nav>
