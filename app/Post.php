@@ -47,4 +47,10 @@ class Post extends Model
     {
         return $this->hasMany(PostComment::class, 'post_id', 'id')->latest();
     }
+
+
+    public function attachments()
+    {
+        return $this->hasMany(PostAttachment::class, 'post_id', 'id');
+    }
 }

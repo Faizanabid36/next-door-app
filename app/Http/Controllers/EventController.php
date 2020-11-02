@@ -20,8 +20,9 @@ class EventController extends Controller
     public function index()
     {
         //
-        if(!isset(auth()->user()->id))
-            abort(404);
+        if(!isset(auth()->user()->id)) abort(404);
+
+
         $categories = EventCategory::all();
         $events = Event::latest()->with('category')->get();
         $events = collect($events)->map(function ($event) {

@@ -197,9 +197,19 @@ Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event')
 Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove')->middleware('auth');
 Route::get('delete_event/{event_id}', 'EventController@remove')->name('event.delete')->middleware(['auth', 'verified']);
 Route::post('message', 'EventController@message')->name('event.message')->middleware('auth');
-//Route::group([],function () {
-//
-//});
+
+/**
+ * ---------------------
+ * Real Estate Routes
+ * ---------------------
+ */
+
+Route::middleware(['auth', 'verified'])->name('real_estate.')->prefix('real_estate')->group(function () {
+    Route::get('listings', 'PropertiesController@index')->name('listings');
+    Route::get('listing/create', 'PropertiesController@create')->name('create');
+    Route::post('listing/store', 'PropertiesController@store')->name('store');
+});
+
 
 /**
  * ---------------------
@@ -238,4 +248,5 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 
 Route::get('/check_postal_code/{code}', 'HomeController@check_postal_code');
+
 
