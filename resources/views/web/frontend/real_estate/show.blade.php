@@ -54,28 +54,46 @@
                     </h4>
                 </div>
                 <hr>
-                <div class="text-warning mb-3">
-                    <span class="text-primary" style="font-weight: 600;">
-                        {{ucfirst(str_replace('_',' ',$property->status))}}
-                    </span>
-                </div>
-                <hr>
                 <div class="mb-4">
                     <h4 class="mb-2">Total estimated price:</h4>
                     <span class="uk-h1 uk-text-bold mr-3">${{$property->price}}</span>
                 </div>
+                <hr>
+                <div class="mb-3">
+                    <i class="uil-bed"></i>
+                    <span>{{$property->no_of_bed_rooms}} Bed Rooms</span>
+                </div>
+                <div class="mb-3">
+                    <i class="uil-bath"></i>
+                    <span>{{$property->no_of_bath_rooms}} Bath Rooms</span>
+                </div>
+                <div class="mb-3">
+                    <i class="uil-building"></i>
+                    <span>{{$property->area_in_sqft}} sqft</span>
+                </div>
+                <hr>
                 <div class="mb-4">
                     @auth()
                         @if(auth()->user()->id!=$property->user_id)
-                            <button type="button" class="button primary icon-label bg-facebook">
-                                <a href="{{route('user',$property->user_id)}}" class="text-white">
-                                    <span class="inner-icon"><i class="icon-feather-message-square"></i></span>
-                                    <span class="inner-text">Contact Seller</span>
+                            <button type="button" class="button secondary ml-3">
+                                <a data-toggle="modal"
+                                   data-target="#reportModal">
+                                    <i class="inner-text uil-cancel"></i>
+                                    Report
                                 </a>
                             </button>
+
+                            <button type="button" class="button primary ml-3">
+                                <a data-toggle="modal"
+                                   data-target="#messageModal">
+                                    <i class="icon-feather-message-square"></i>
+                                    Contact Seller
+                                </a>
+                            </button>
+
                         @else
                             <button type="button" class="button primary icon-label bg-danger">
-                                <a href="#" class="text-white">
+                                <a href="{{route('real_estate.delete',$property->id)}}" class="text-white">
                                     <span class="inner-icon"><i class="icon-feather-trash"></i></span>
                                     <span class="inner-text">Remove Item</span>
                                 </a>
@@ -304,3 +322,122 @@
         </div>
     </div>
 @endsection
+
+@section('modal')
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
+         aria-labelledby="messageModal"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content" style="width:94%;margin: 0px auto">
+                <form id="reportForm" action="{{route('report_item.store')}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="report_event"><i>Report Property</i></h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="first_modal">
+                        @csrf
+                        <div class="mb-2">
+                            <h5 class="uk-text-bold mb-1"> Why do you want to report this property? </h5>
+                            <input type="hidden" name="type" value="property" id="type">
+                            <input type="hidden" name="item_id" value="{{$property->id}}" id="item_id">
+                            <textarea required name="body" id="body" class="uk-textarea uk-form-small rounded"
+                                      rows="6" placeholder="Type Reason Here...">{{old('body')}}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close_all1" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="uil-message"></i>
+                            Report Property
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="messageModal" tabindex="-1" role="dialog"
+         aria-labelledby="messageModal"
+         aria-hidden="true">
+
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content" style="width:94%;margin: 0px auto">
+                <form action="{{route('event.message')}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="sendMessageTo">Send Message To</h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="first_modal">
+
+                        @csrf
+                        <div class="mb-2">
+                            <h5 class="uk-text-bold mb-1"> Message Body </h5>
+                            <input type="hidden" name="to_user" value="{{$property->user_id}}" id="to_user">
+                            <textarea name="message_body" id="message_body" class="uk-textarea uk-form-small rounded"
+                                      rows="6" placeholder="Type Message">{{old('message_body')}}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close_all" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" class="btn btn-primary" id="send_message">
+                            <i class="uil-message"></i>
+                            Send Message
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+@endsection
+
+
+@auth()
+@section('footer_scripts')
+    <script>
+        $(document).ready(function () {
+            $('.sendMessageButton').on('click', function (event) {
+                let id = event.target.id
+                let name = id.split('-')[1]
+                let user_id = id.split('-')[2]
+                $('#sendMessageTo').text(`Send message to ${name}`)
+                $('#to_user').val(`${user_id}`)
+            })
+            $('#reportForm').submit(function (event) {
+                event.preventDefault();
+                let body = $("#body").val();
+                let type = $("input[name=type]").val();
+                let item_id = $("input[name=item_id]").val();
+                let _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "{{route('report_item.store')}}",
+                    type: "POST",
+                    data: {
+                        body: body,
+                        type: type,
+                        item_id: item_id,
+                        _token: _token
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.success) {
+                            toastr.options.closeButton = true
+                            toastr.success(res.success, 'Success', {timeOut: 5000});
+                        }
+                    },
+                });
+            })
+        })
+    </script>
+@endsection
+@endauth

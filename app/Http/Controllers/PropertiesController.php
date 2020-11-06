@@ -79,11 +79,11 @@ class PropertiesController extends Controller
         return back()->withSuccess('Property Updated Successfully');
     }
 
-    public function destroy($id)
+    public function delete($id)
     {
         $property = Properties::find($id);
         $property->delete();
-        return back()->withSuccess('Property Deleted Successfully');
+        return redirect()->route('real_estate.listings');
     }
 
     public function gallery($id)
