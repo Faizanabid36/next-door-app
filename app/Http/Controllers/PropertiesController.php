@@ -11,10 +11,8 @@ use Illuminate\Support\Facades\Session;
 
 class PropertiesController extends Controller
 {
-    public function index(Request $request)
+    public function my_listings(Request $request)
     {
-//        $p = Properties::where('minimum_price','>=',$request->get('min'))->get();
-//        return compact('p');
         $properties = Properties::with('main_image')->
         when($request->get('search'), function ($query) use ($request) {
             return $query->where('city', 'like', '%' . $request->get('search') . '%')
@@ -22,7 +20,25 @@ class PropertiesController extends Controller
         })->when($request->get('min'), function ($query) use ($request) {
             return $query->where('price', '>', $request->get('min'));
         })->when($request->get('max'), function ($query) use ($request) {
-            return $query->orWhere('price', '<',  $request->get('max'));
+            return $query->orWhere('price', '<', $request->get('max'));
+        })->when($request->get('status'), function ($query) use ($request) {
+            return $query->whereStatus($request->get('status'));
+        })->when($request->get('property_type'), function ($query) use ($request) {
+            return $query->wherePropertyType($request->get('property_type'));
+        })->whereUserId(auth()->user()->id)->paginate(10);
+        return view('web.frontend.real_estate.index', compact('properties'));
+    }
+
+    public function index(Request $request)
+    {
+        $properties = Properties::with('main_image')->
+        when($request->get('search'), function ($query) use ($request) {
+            return $query->where('city', 'like', '%' . $request->get('search') . '%')
+                ->orWhere('postal_code', $request->get('search'));
+        })->when($request->get('min'), function ($query) use ($request) {
+            return $query->where('price', '>', $request->get('min'));
+        })->when($request->get('max'), function ($query) use ($request) {
+            return $query->orWhere('price', '<', $request->get('max'));
         })->when($request->get('status'), function ($query) use ($request) {
             return $query->whereStatus($request->get('status'));
         })->when($request->get('property_type'), function ($query) use ($request) {

@@ -206,6 +206,7 @@ Route::post('message', 'EventController@message')->name('event.message')->middle
 
 Route::middleware(['auth', 'verified'])->name('real_estate.')->prefix('real_estate')->group(function () {
     Route::get('listings', 'PropertiesController@index')->name('listings');
+    Route::get('my_listings', 'PropertiesController@my_listings')->name('my_listings');
     Route::get('listing/create', 'PropertiesController@create')->name('create');
     Route::post('listing/store', 'PropertiesController@store')->name('store');
     Route::get('listing/{id}/gallery', 'PropertiesController@gallery')->name('gallery');

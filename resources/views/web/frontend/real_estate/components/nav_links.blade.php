@@ -10,14 +10,14 @@
                 Nearby Properties
             </a>
         </li>
-        <li class="{{Request::is('myevents')?'uk-active uk-text-italic':''}}">
-            <a href="#">
+        <li class="{{Request::is('real_estate/my_listings')?'uk-active uk-text-italic':''}}">
+            <a href="{{route('real_estate.my_listings')}}">
                 My Properties
             </a>
         </li>
     </ul>
-{{--    <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"--}}
-{{--            data-target="#postNewEvent">--}}
-{{--        <i class="uil-plus"> </i> Post A New Property--}}
-{{--    </button>--}}
+    {{--    <button class="button primary small circle pull-right" id="modal_button" data-toggle="modal"--}}
+    {{--            data-target="#postNewEvent">--}}
+    {{--        <i class="uil-plus"> </i> Post A New Property--}}
+    {{--    </button>--}}
 </div>
