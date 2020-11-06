@@ -35,7 +35,8 @@
                         <ul class="uk-thumbnav  uk-flex-center">
                             @foreach($item->images as $key=>$image)
                                 <li uk-slideshow-item="{{$key}}">
-                                    <a href="#"><img src="{{$image->image_url}}" class="rounded" width="80"
+                                    <a href="#">
+                                        <img src="{{$image->image_url}}" class="rounded" width="80"
                                                      alt="{{$image->title}}">
                                     </a>
                                 </li>

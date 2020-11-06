@@ -52,6 +52,12 @@ class PropertiesController extends Controller
         return view('web.frontend.real_estate.create');
     }
 
+    public function show($id)
+    {
+        $property = Properties::whereId($id)->with(['attachments', 'main_image'])->firstOrFail();
+        return view('web.frontend.real_estate.show', compact('property'));
+    }
+
     public function store(ValidateProperty $request)
     {
 

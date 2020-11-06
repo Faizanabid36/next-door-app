@@ -32,18 +32,19 @@
                     @foreach($properties as $property)
                         <div class="course-card course-card-list shadow rounded pb-0">
                             <div class="course-card-thumbnail">
-                                <img src="{{isset($property->main_image)?$property->main_image->image_url:''}}">
-                                <a href="#"></a>
+                                <a href="{{route('real_estate.show',$property->id)}}"><img
+                                        src="{{isset($property->main_image)?$property->main_image->image_url:''}}"></a>
                             </div>
                             <div class="course-card-body m-3">
-                                <a href="#">
-                                    <h3 class="text-dark mb-1">
+                                <a href="{{route('real_estate.show',$property->id)}}">
+                                    <h3 class=" text-dark mb-1">
                                         {{$property->price}}$
                                     </h3>
                                 </a>
                                 <p class="text-primary"><i class="icon-feather-globe mr-1"></i>
                                     <i>{{ucfirst($property->address)}}</i>
-                                    <span style="float: right" class="blog-post-info-tag button warning"> {{ucfirst($property->status)}}</span>
+                                    <span style="float: right"
+                                          class="blog-post-info-tag button warning"> {{ucfirst($property->status)}}</span>
                                 </p>
                                 <div class="course-details-info text-dark">
                                     <ul>

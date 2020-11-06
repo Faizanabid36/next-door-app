@@ -22,12 +22,13 @@
 
     <!-- icons ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
+    <link href='https://fonts.googleapis.com/css?family=Lato' rel='stylesheet'>
 </head>
 
-<body
-    style="font-family: system-ui, -apple-system, BlinkMacSystemFont, 'HelveticaNeue', 'Helvetica Neue', Helvetica, 'Roboto', 'Segoe UI', Arial, sans-serif">
+<body style="font-family: 'Lato'!important;">
 <!-- Wrapper -->
-<div id="wrapper" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
+<div id=" wrapper
+" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
 
     <!-- sidebar -->
 @auth()
