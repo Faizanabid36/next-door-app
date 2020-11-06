@@ -21,8 +21,8 @@ class CreatePropertiesTable extends Migration
             $table->integer('no_of_bed_rooms');
             $table->integer('no_of_bath_rooms');
             $table->integer('area_in_sqft');
-            $table->string('minimum_price');
-            $table->string('maximum_price');
+            $table->bigInteger('price');
+//            $table->string('maximum_price');
             $table->string('rental_estimate')->nullable();
             $table->string('year_built')->nullable();
             $table->string('postal_code');

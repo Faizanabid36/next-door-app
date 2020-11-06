@@ -26,49 +26,124 @@
         </div>
         <hr>
         <div class="section-small">
-            <h3 class="color-black"><i><u>Most Recommended Business</u></i></h3>
-            <div class="uk-child-width-1-1@m uk-grid-collapse" uk-grid>
-                @foreach($properties as $business)
-                    <div>
-                        <div class="pages-card">
-                            <div class="page-card-media"><img src="{{$business->display_banner}}"
-                                                              alt="{{$business->title}}">
+            <h3 class="color-black"><i><u>Real Estate Listings</u></i></h3>
+            <div class="uk-grid-large uk-grid" uk-grid="">
+                <div class="uk-width-3-4@m uk-first-column">
+                    @foreach($properties as $property)
+                        <div class="course-card course-card-list shadow rounded pb-0">
+                            <div class="course-card-thumbnail">
+                                <img src="{{isset($property->main_image)?$property->main_image->image_url:''}}">
+                                <a href="#"></a>
                             </div>
-                            <div class="page-card-innr">
-                                <h3 style="margin-bottom: 0px"
-                                    class="color-black font-weight-bold"><i>{{ucfirst($business->title)}}</i></h3>
-                                <p style="margin-bottom: 0px"
-                                   class="font-weight-bold pl-1"> {{ucfirst($business->category->b_category_title)}}</p>
-                                <h6 style="margin-bottom: 0px"
-                                    class="pl-1">{{substr($business->description,0,180)}}...</h6>
-
-                                <div class="uk-flex uk-flex-middle mt-2">
-                                    <div class="uk-width-expand pl-1">
-                                        <p>
-                                            <i>
-                                                <strong>Recommended by:</strong> {{$business->recommendations_count}} people
-                                            </i>
-                                        </p>
-                                    </div>
+                            <div class="course-card-body m-3">
+                                <a href="#">
+                                    <h3 class="text-dark mb-1">
+                                        {{$property->price}}$
+                                    </h3>
+                                </a>
+                                <p class="text-primary"><i class="icon-feather-globe mr-1"></i>
+                                    <i>{{ucfirst($property->address)}}</i>
+                                    <span style="float: right" class="blog-post-info-tag button warning"> {{ucfirst($property->status)}}</span>
+                                </p>
+                                <div class="course-details-info text-dark">
+                                    <ul>
+                                        <li class="text-dark"><h5>
+                                                {{$property->no_of_bed_rooms??0}} Bed Rooms
+                                            </h5>
+                                        </li>
+                                        <li class="text-dark"><h5>
+                                                {{$property->no_of_bath_rooms??0}} Bath Rooms
+                                            </h5>
+                                        </li>
+                                        <li class="text-dark"><h5>
+                                                {{$property->area_in_sqft??0}} Sqft
+                                            </h5>
+                                        </li>
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="page-card-btn">
-                                <a href="{{route('business.view_business_page',$business->id)}}" class="button primary">
-                                    <i class="uil-eye"></i>
-                                    View Page
-                                </a>
-                            </div>
+                        </div>
+                @endforeach
+
+                <!-- pagination menu -->
+                    <ul class="uk-flex-center my-5">
+                        {{$properties->links()}}
+                    </ul>
+                </div>
+                <div class="uk-width-expand">
+                    <div class="sidebar-filter uk-sticky" uk-sticky="offset:30 ; media : @s: bottom: true" style="">
+                        <div class="sidebar-filter-contents">
+                            <h4 class="text-primary"><i>Apply Filters</i></h4>
+                            <form action="">
+                                <ul class="sidebar-filter-list uk-accordion" uk-accordion="multiple: true">
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Search </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-input uk-form-width-medium uk-form-small" min="0" name="search" type="text" placeholder="Zip,City or Neighbourhood">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="uk-open">
+                                        <a class="uk-accordion-title" href="#"> Pricing </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-input uk-form-width-medium uk-form-small" min="0" name="min" type="number" placeholder="Min">
+                                                </label>
+                                                <label>
+                                                    <input class="uk-input uk-form-width-medium uk-form-small" min="0" name="max" type="number" placeholder="Max">
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#"> Property Type </a>
+                                        <div class="uk-accordion-content" aria-hidden="false">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="property_type" value="residential">
+                                                    <span class="test"> Residential </span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" type="radio" name="property_type" value="rental">
+                                                    <span class="test"> Rental </span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+
+                                    <li class="">
+                                        <a class="uk-accordion-title" href="#"> Property Status </a>
+                                        <div class="uk-accordion-content" aria-hidden="true" hidden="">
+                                            <div class="uk-form-controls">
+                                                <label>
+                                                    <input class="uk-radio" value="pending" type="radio" name="status">
+                                                    <span class="test"> Pending </span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" value="sold" type="radio" name="status">
+                                                    <span class="test"> Sold</span>
+                                                </label>
+                                                <label>
+                                                    <input class="uk-radio" value="for_sale" type="radio" name="status">
+                                                    <span class="test"> For Sale</span>
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                                <div class="mt-1">
+                                    <input type="submit" class="button primary small" value="Search">
+                                </div>
+                            </form>
                         </div>
                     </div>
-                    <hr>
-            @endforeach
-            <!-- pagination menu -->
-                <ul class="uk-flex-center my-5">
-                    {{$properties->links()}}
-                </ul>
-
+                    <div class="uk-sticky-placeholder" style="height: 365px; margin: 0px;" hidden=""></div>
+                </div>
             </div>
-
-
         </div>
 @endsection

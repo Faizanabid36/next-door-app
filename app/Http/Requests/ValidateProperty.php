@@ -24,14 +24,12 @@ class ValidateProperty extends FormRequest
     public function rules()
     {
         return [
-            'address'=>'required|min:3',
             'description'=>'required|min:40',
             'property_type'=>'required',
             'no_of_bed_rooms'=>'required',
             'no_of_bath_rooms'=>'required',
             'area_in_sqft'=>'required',
-            'minimum_price'=>'required',
-            'maximum_price'=>'required|min:3',
+            'price'=>'required',
             'postal_code'=>'required|min:3',
             'city'=>'required|min:3',
             'neighbourhood'=>'required|min:3',

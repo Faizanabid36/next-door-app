@@ -25,17 +25,11 @@
                             <div class="mb-3 bg-secondary p-3">
                                 <span class="alert">
                                     You have Posted A New Property,
-                                    <a class="btn-link" href="#">Click Here to upload Images</a>
+                                    <a class="btn-link" href="{{route('real_estate.gallery',Session::get('property_id'))}}">Click Here to upload Images</a>
                                 </span>
                             </div>
                         @endif
                         <div class="row">
-                            <div class="col-md-6 mb-3">
-                                <h5 class="uk-text-bold mb-2 text-dark"> Address </h5>
-                                <input value="{{old('address')}}" type="text" name="address" class="
-                                @error('address')uk-form-danger @enderror
-                                    uk-input text-dark" placeholder="Enter Address">
-                            </div>
                             <div class="col-md-6 mb-3">
                                 <h5 class="uk-text-bold mb-2 text-dark"> Property Type </h5>
                                 <select name="property_type" class="
@@ -44,6 +38,17 @@
                                     <option value="" disabled selected>Select Type</option>
                                     <option value="residential">{{ucfirst('residential')}}</option>
                                     <option value="rental">{{ucfirst('rental')}}</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <h5 class="uk-text-bold mb-2 text-dark"> Current Status </h5>
+                                <select name="status" class="
+                                @error('status')uk-form-danger @enderror
+                                    uk-select text-dark">
+                                    <option value="" disabled selected>Select Type</option>
+                                    <option value="pending">{{ucfirst('pending')}}</option>
+                                    <option value="for_sale">{{ucfirst('for Sale')}}</option>
+                                    <option value="sold">{{ucfirst('sold')}}</option>
                                 </select>
                             </div>
                             <div class="col-md-12 mb-3">
@@ -95,20 +100,12 @@
                             </div>
 
                             <div class="col-md-4 mb-3">
-                                <h5 class="uk-text-bold mb-2 text-dark"> Maximum Estimated Price </h5>
-                                <input value="{{old('maximum_price')}}" type="number" min="0" name="maximum_price"
+                                <h5 class="uk-text-bold mb-2 text-dark"> Estimated Price </h5>
+                                <input value="{{old('price')}}" type="number" min="0" name="price"
                                        class="
-                                       @error('maximum_price')uk-form-danger @enderror
+                                       @error('price')uk-form-danger @enderror
                                            uk-input text-dark"
                                        placeholder="Maximum Estimated Price">
-                            </div>
-                            <div class="col-md-4 mb-3">
-                                <h5 class="uk-text-bold mb-2 text-dark"> Minimum Estimated Price </h5>
-                                <input value="{{old('minimum_price')}}" type="number" min="0" name="minimum_price"
-                                       class="
-                                       @error('minimum_price')uk-form-danger @enderror
-                                           uk-input text-dark"
-                                       placeholder="Minimum Estimated Price">
                             </div>
                             <div class="col-md-4 mb-3">
                                 <h5 class="uk-text-bold mb-2 text-dark"> Rental Estimation </h5>
@@ -119,14 +116,14 @@
                                        placeholder="Rental Estimation(optional)">
                             </div>
 
-                            <div class="col-md-4 mb-3">
-                                <h5 class="uk-text-bold mb-2 text-dark"> Built in Year </h5>
-                                <input value="{{old('year_built')}}" type="number" name="year_built"
-                                       class="
-                                       @error('year_built')uk-form-danger @enderror
-                                           uk-input text-dark"
-                                       placeholder="Built in Year(optional)">
-                            </div>
+{{--                            <div class="col-md-4 mb-3">--}}
+{{--                                <h5 class="uk-text-bold mb-2 text-dark"> Built in Year </h5>--}}
+{{--                                <input value="{{old('year_built')}}" type="number" name="year_built"--}}
+{{--                                       class="--}}
+{{--                                       @error('year_built')uk-form-danger @enderror--}}
+{{--                                           uk-input text-dark"--}}
+{{--                                       placeholder="Built in Year(optional)">--}}
+{{--                            </div>--}}
                             <div class="col-md-4 mb-3">
                                 <h5 class="uk-text-bold mb-2 text-dark"> Postal Code </h5>
                                 <input value="{{old('postal_code')}}" type="number" name="postal_code"
@@ -135,17 +132,7 @@
                                            uk-input text-dark"
                                        placeholder="Postal Code">
                             </div>
-                            <div class="col-md-4 mb-3">
-                                <h5 class="uk-text-bold mb-2 text-dark"> Current Status </h5>
-                                <select name="status" class="
-                                @error('status')uk-form-danger @enderror
-                                    uk-select text-dark">
-                                    <option value="" disabled selected>Select Type</option>
-                                    <option value="pending">{{ucfirst('pending')}}</option>
-                                    <option value="for_sale">{{ucfirst('for Sale')}}</option>
-                                    <option value="sold">{{ucfirst('sold')}}</option>
-                                </select>
-                            </div>
+
                         </div>
                         <div class="uk-flex">
                             <button class="button primary"><span class="uil-check"></span> Post Property</button>
