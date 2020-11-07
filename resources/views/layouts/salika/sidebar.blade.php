@@ -56,8 +56,9 @@
                         </a>
                     </li>
                     <li>
-                        <a href="jobs.html"> <img src="{{asset('salika/assets/images/icons/real_estate_icon.png')}}"
-                                                  alt="">
+                        <a href="{{route('real_estate.listings')}}"> <img
+                                src="{{asset('salika/assets/images/icons/real_estate_icon.png')}}"
+                                alt="">
                             <span> Real Estate </span>
                         </a>
                     </li>

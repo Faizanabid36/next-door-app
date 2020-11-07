@@ -27,8 +27,7 @@
 
 <body style="font-family: 'Lato'!important;">
 <!-- Wrapper -->
-<div id=" wrapper
-" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
+<div id="wrapper" class="{{str_contains(url()->current(),'business/view/page/')?'collapse-sidebar mobile-visible':''}}">
 
     <!-- sidebar -->
 @auth()
