@@ -61,7 +61,6 @@ class User extends Authenticatable implements MustVerifyEmail
             $user->notify(new \App\Notifications\UserRegisteredNotification($user));
         });
 
-
         // Deletes all the relations associated with user whenever a User is deleted via $user->delete()
 
         static::deleting(function ($user) { // delete Family Members
@@ -136,16 +135,6 @@ class User extends Authenticatable implements MustVerifyEmail
     public function comments()
     {
         return $this->hasMany(PostComment::class, 'user_id', 'id');
-    }
-
-    public function posts()
-    {
-        return $this->hasMany(Post::class, 'user_id', 'id');
-    }
-
-    public function listings()
-    {
-        return $this->hasMany(Properties::class, 'user_id', 'id');
     }
 
 
