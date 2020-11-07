@@ -197,7 +197,6 @@ Route::get('going_to_event/{event_id}/{type}', 'EventController@going_to_event')
 Route::get('remove/{event_id}', 'EventController@remove')->name('event.remove')->middleware('auth');
 Route::get('delete_event/{event_id}', 'EventController@remove')->name('event.delete')->middleware(['auth', 'verified']);
 Route::post('message', 'EventController@message')->name('event.message')->middleware('auth');
-<<<<<<< HEAD
 
 /**
  * ---------------------
@@ -219,11 +218,6 @@ Route::middleware(['auth', 'verified'])->name('real_estate.')->prefix('real_esta
 });
 Route::get('real_estate/listing/show/{id}', 'PropertiesController@show')->name('real_estate.show');
 
-=======
-//Route::group([],function () {
-//
-//});
->>>>>>> parent of f571c30... Posts and Real Estate
 
 /**
  * ---------------------
