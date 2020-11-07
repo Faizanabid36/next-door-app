@@ -96,7 +96,7 @@
                 let files = [];
                 for (let i = 0; i < $("#cover-upload")[0].files.length; i++) {
                     files.push($("#cover-upload")[0].files[i]);
-                    formData.append(`post_attachments[${i}]`,files[i])
+                    formData.append(`files[${i}]`,files[i])
                 }
                 let _token = $('meta[name="csrf-token"]').attr('content');
 
