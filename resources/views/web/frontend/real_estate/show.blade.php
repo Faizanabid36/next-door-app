@@ -95,7 +95,13 @@
                             <button type="button" class="button primary icon-label bg-danger">
                                 <a href="{{route('real_estate.delete',$property->id)}}" class="text-white">
                                     <span class="inner-icon"><i class="icon-feather-trash"></i></span>
-                                    <span class="inner-text">Remove Item</span>
+                                    <span class="inner-text">Remove</span>
+                                </a>
+                            </button>
+                            <button type="button" class="button primary icon-label bg-secondary">
+                                <a href="{{route('real_estate.edit',$property->id)}}" class="text-white">
+                                    <span class="inner-icon"><i class="uil-edit"></i></span>
+                                    <span class="inner-text">Edit</span>
                                 </a>
                             </button>
                         @endif

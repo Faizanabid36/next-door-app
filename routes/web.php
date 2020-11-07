@@ -208,7 +208,9 @@ Route::middleware(['auth', 'verified'])->name('real_estate.')->prefix('real_esta
     Route::get('listings', 'PropertiesController@index')->name('listings');
     Route::get('my_listings', 'PropertiesController@my_listings')->name('my_listings');
     Route::get('listing/create', 'PropertiesController@create')->name('create');
+    Route::get('listing/edit/{id}', 'PropertiesController@edit')->name('edit');
     Route::post('listing/store', 'PropertiesController@store')->name('store');
+    Route::post('listing/update/{id}', 'PropertiesController@update')->name('update');
     Route::get('listing/delete/{id}', 'PropertiesController@delete')->name('delete');
     Route::get('listing/{id}/gallery', 'PropertiesController@gallery')->name('gallery');
     Route::post('listing/{id}/gallery/store', 'PropertiesController@store_property_image')->name('gallery.store');
