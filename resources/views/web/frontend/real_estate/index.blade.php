@@ -14,8 +14,8 @@
                     <h3 class="uk-card-title font-weight-bold color-black mb-2">
                         <i>Real Estate Agents: Post Your Property Today!</i>
                     </h3>
-                    <h6 class="color-black mb-0">Connect with local customers on Nextdoor and become your neighborhood's
-                        favorite.</h6>
+                    <h6 class="color-black mb-0">
+                        Connect with local customers on Nextdoor and become your neighborhood's favorite.</h6>
                     <button class="button primary mt-3 ">
                         <a href="{{route('real_estate.create')}}" class="color-white">
                             <i>Add Listing</i>

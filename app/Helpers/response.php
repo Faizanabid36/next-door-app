@@ -43,6 +43,7 @@ if (!function_exists('postsHTML')) {
                 '<div class="post-description">' .
                 '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . ' ' . ucfirst($post->body) . '</p>' .
                 '</div>' .
+                postAttachments($post) .
                 postStateHTML($post, $liked, $disliked) .
                 '<div class="post-comments" id="post-all-comments-' . $post->id . '"> ' .
                 '<a class="view-more-comment" > Veiw 8 more Comments </a > ' .
@@ -90,7 +91,7 @@ class="ml-1 mt-4 text-danger uil-trash" ></a >' : '';
                 '</a >' .
                 '<a class="text-secondary mr-1" > <i class="uil-thumbs-down" ></i > Dislike' .
                 '</a >' .
-                '<span > 1d </span >' .
+                '<span > ' . $comment->created_at->diffForHumans() . ' </span >' .
                 '</div >' .
                 '</div >' .
                 $is_deletable .
@@ -130,3 +131,27 @@ if (!function_exists('postStateHTML')) {
             '</div > ';
     }
 }
+if (!function_exists('postAttachments')) {
+    function postAttachments($post)
+    {
+        $data = '';
+        if ($post->has_attachments) {
+            $data .= '<div uk-slideshow = "animation: pull" >' .
+                '<div class=" uk-visible-toggle uk-light" tabindex = "-1" >' .
+                '<ul class="uk-slideshow-items" >';
+            foreach ($post->attachments as $attachment) {
+                $data .= '<li >' .
+                    '<img style="height: 100vh!important" src = "' . $attachment->attachment_path . '" alt = "" uk-cover >' .
+                    '</li >';
+            }
+            $data .= '</ul >' .
+                '<a class="uk-position-center-left uk-position-small uk-hidden-hover" href = "#" uk-slidenav-previous uk-slideshow-item = "previous" ></a >' .
+                '<a class="uk-position-center-right uk-position-small uk-hidden-hover" href = "#" uk-slidenav-next uk-slideshow-item = "next" ></a >' .
+                '</div >' .
+                '</div >';
+
+        }
+        return $data;
+    }
+}
+

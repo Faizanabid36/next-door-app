@@ -25,7 +25,15 @@ class Post extends Model
             $post->dislikes()->each(function ($disliked_post) {
                 $disliked_post->delete(); // <-- direct deletion
             });
+            $post->attachments()->each(function ($attachment) {
+                $attachment->delete();
+            });
         });
+    }
+
+    public function attachments()
+    {
+        return $this->hasMany(PostAttachment::class, 'post_id', 'id');
     }
 
     public function user()

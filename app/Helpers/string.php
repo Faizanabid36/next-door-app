@@ -1,6 +1,7 @@
 <?php
 
 use App\Post;
+use App\PostAttachment;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
@@ -25,8 +26,17 @@ if (!function_exists('store_post')) {
         \request()->merge([
             'user_id' => auth()->user()->id
         ]);
-        dd(request()->all());
-        $post[] = Post::create(\request()->except('_token'));
+        if ($request->hasFile('post_attachments'))
+            \request()->merge(['has_attachments' => 1]);
+        $post[] = Post::create(\request()->except('_token', 'post_attachments'));
+        if ($request->hasFile('post_attachments')) {
+            foreach ($request->file('post_attachments') as $attachment) {
+                if (explode('/', $attachment->getClientMimeType())[0] == 'image') {
+                    $url = storeImage($attachment, 'posts/' . auth()->user()->id);
+                    PostAttachment::create(['post_id' => $post[0]->id, 'attachment_path' => $url, 'type' => 'image']);
+                }
+            }
+        }
         return postsHTML($post);
     }
 }

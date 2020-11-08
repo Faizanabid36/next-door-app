@@ -55,7 +55,9 @@ class PropertiesController extends Controller
     public function show($id)
     {
         $property = Properties::whereId($id)->with(['attachments', 'main_image'])->firstOrFail();
-        return view('web.frontend.real_estate.show', compact('property'));
+        $related_properties = Properties::where('id', '!=', $property->id)
+            ->whereUserId($property->user_id)->orWhere('postal_code',$property->postal_code)->take(3)->get();
+        return view('web.frontend.real_estate.show', compact('property','related_properties'));
     }
 
     public function store(ValidateProperty $request)

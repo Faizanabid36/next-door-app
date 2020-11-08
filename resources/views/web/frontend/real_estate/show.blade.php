@@ -179,151 +179,23 @@
 
                     <div uk-sticky="offset:90 ; media: @s ; bottom: true" class="uk-sticky">
 
-                        <h3 class="mb-lg-5"> Related </h3>
-                        <div class="market-list">
-                            <div class="item-media" style="height: 160px">
-                                <img src="assets/images/product/2.jpg" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 23$</div>
-                                <div class="item-title"> Wireless headphones</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i>
-                                                <span class="count">16</span> likes </span>
-                                    <span> <i class="uil-comment-message"></i>
-                                                <span class="count">202</span> views </span>
+                        <h3 class="mb-lg-5"> Related Properties</h3>
+                        @foreach($related_properties as $prop)
+                            <div class="market-list">
+                                <div class="item-media" style="height: 160px">
+                                    <img src="{{$prop->main_image->image_url}}" alt="">
+                                </div>
+                                <div class="item-inner">
+                                    <div class="item-price"> <b>{{$prop->price}}$</b></div>
+                                    <div class="item-title"> {{$prop->address .' - '. $prop->neighbourhood}}</div>
                                 </div>
                             </div>
-                        </div>
-
-
-                        <div class="market-list">
-                            <div class="item-media" style="height: 160px">
-                                <img src="assets/images/product/1.jpg" alt="">
-                            </div>
-                            <div class="item-inner">
-                                <div class="item-price"> 50$</div>
-                                <div class="item-title"> Wireless headphones</div>
-                                <div class="item-statistic">
-                                            <span> <i class="uil-thumbs-up"></i>
-                                                <span class="count">16</span> likes </span>
-                                    <span> <i class="uil-comment-message"></i>
-                                                <span class="count">202</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-
+                            <hr>
+                        @endforeach
                     </div>
                     <div class="uk-sticky-placeholder" hidden="" style="height: 554px; margin: 0px;"></div>
 
                 </div>
-            </div>
-
-
-        </div>
-
-
-        <hr>
-
-        <h2> Related product</h2>
-
-        <div class="uk-position-relative mt-5 uk-slider" uk-slider="finite: true">
-
-            <div class="uk-slider-container pb-3">
-
-                <ul class="uk-slider-items uk-child-width-1-5@m uk-child-width-1-3@s uk-grid-small uk-grid"
-                    style="transform: translate3d(0px, 0px, 0px);">
-
-                    <li tabindex="-1" class="uk-active">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/1.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 20$</div>
-                                <div class="item-title"> Brown headphones</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">4</span> likes </span>
-                                    <span> <span class="count">106</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li tabindex="-1" class="uk-active">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/13.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 12$</div>
-                                <div class="item-title"> Parfum Spray</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">2</span> likes </span>
-                                    <span> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li tabindex="-1" class="uk-active">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/2.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 23$</div>
-                                <div class="item-title"> Wireless headphones</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">16</span> likes </span>
-                                    <span> <span class="count">202</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li tabindex="-1" class="uk-active">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/16.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 60$</div>
-                                <div class="item-title"> Paper Coffee Cup</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">12</span> likes </span>
-                                    <span> <span class="count">160</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                    <li tabindex="-1" class="uk-active">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/17.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 30$</div>
-                                <div class="item-title"> Sed diam nonummy</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">9</span> likes </span>
-                                    <span> <span class="count">136</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-
-                    </li>
-                    <li tabindex="-1" class="">
-                        <div class="market-list">
-                            <div class="item-media"><img src="assets/images/product/15.jpg" alt=""></div>
-
-                            <div class="item-inner">
-                                <div class="item-price"> 10$</div>
-                                <div class="item-title"> Herbal Shampoo</div>
-                                <div class="item-statistic">
-                                    <span> <span class="count">2</span> likes </span>
-                                    <span> <span class="count">286</span> views </span>
-                                </div>
-                            </div>
-                        </div>
-                    </li>
-                </ul>
-                <a class="uk-position-center-left-out uk-position-small uk-hidden-hover slidenav-prev uk-invisible"
-                   href="#" uk-slider-item="previous"></a>
-                <a class="uk-position-center-right-out uk-position-small uk-hidden-hover slidenav-next" href="#"
-                   uk-slider-item="next"></a>
             </div>
         </div>
     </div>
