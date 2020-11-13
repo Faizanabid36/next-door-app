@@ -57,9 +57,13 @@ class HomeController extends Controller
         return \view('frontend.public_agencies.user_list', compact('users'));
     }
 
-    public function view_profile($id)
+    public function view_profile(Request $request, $id)
     {
         $user = User::whereId($id)->with('family_members')->firstOrFail();
+        $posts = Post::latest()->with('user')->whereUserId($user->id)->paginate(10);
+        if ($request->ajax()) {
+            return postsHTML($posts);
+        }
         return \view('web.frontend.neighbours.view_profile', compact('user'));
 //        return \view('frontend.account.view_profile' , compact('profile'));
     }

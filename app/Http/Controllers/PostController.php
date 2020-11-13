@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidatePostItem;
+use App\Notifications\PostLiked;
 use App\Post;
 use App\PostLike;
 use Illuminate\Http\Request;
@@ -49,7 +50,8 @@ class PostController extends Controller
         $postState = PostLike::wherePostId($post->id)->whereUserId(auth()->user()->id)->first();
         $liked = $disliked = '';
         $postState->like_dislike == 1 ? $liked = 'text-primary' : $disliked = 'text-danger';
-
+        $operation = $postState->like_dislike == 1 ? 'liked' : 'disliked';
+        $post->user->notify(new PostLiked($operation, auth()->user(), $post));
         $response = postStateHTML($post, $liked, $disliked);
         return ['response' => $response, 'operation' => $liked == '' ? 'You disliked this post' : 'You Liked this Post'];
     }

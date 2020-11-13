@@ -46,7 +46,7 @@ if (!function_exists('postsHTML')) {
                 postAttachments($post) .
                 postStateHTML($post, $liked, $disliked) .
                 '<div class="post-comments" id="post-all-comments-' . $post->id . '"> ' .
-                '<a class="view-more-comment" > Veiw 8 more Comments </a > ' .
+//                '<a class="view-more-comment" > Veiw 8 more Comments </a > ' .
                 postCommentsHTML($post->comments, $post) .
                 '</div >' .
                 '<div class="post-add-comment mt-0 pb-4" style="width: 94%;margin: 0px auto;">' .
@@ -140,9 +140,15 @@ if (!function_exists('postAttachments')) {
                 '<div class=" uk-visible-toggle uk-light" tabindex = "-1" >' .
                 '<ul class="uk-slideshow-items" >';
             foreach ($post->attachments as $attachment) {
-                $data .= '<li >' .
-                    '<img style="height: 100vh!important" src = "' . $attachment->attachment_path . '" alt = "" uk-cover >' .
-                    '</li >';
+                $data .= '<li >';
+                if ($attachment->type == 'image')
+                    $data .= '<img style="height: 100vh!important" src = "' . $attachment->attachment_path . '" alt = "" uk-cover >';
+                else {
+                    $data .= '<video controls>' .
+                        '<source src="' . $attachment->attachment_path . '" type="video/mp4">' .
+                        '</video >';
+                }
+                $data .= '</li >';
             }
             $data .= '</ul >' .
                 '<a class="uk-position-center-left uk-position-small uk-hidden-hover" href = "#" uk-slidenav-previous uk-slideshow-item = "previous" ></a >' .

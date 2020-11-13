@@ -119,6 +119,10 @@
                         $('#feed-area').prepend($(res.post))
                         if (res.success) {
                             $("#addNewModal .uk-close").click()
+                            $("#cover-upload").val(null);
+                            $("#body").val('');
+                            $("input[name=subject]").val('');
+                            $('#section').val('')
                             //$("[data-dismiss=modal]").trigger({type: "click"});
                             toastr.success(res.success, 'Success', {timeOut: 5000});
                         }

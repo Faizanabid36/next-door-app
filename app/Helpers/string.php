@@ -31,9 +31,17 @@ if (!function_exists('store_post')) {
         $post[] = Post::create(\request()->except('_token', 'post_attachments'));
         if ($request->hasFile('post_attachments')) {
             foreach ($request->file('post_attachments') as $attachment) {
+
                 if (explode('/', $attachment->getClientMimeType())[0] == 'image') {
                     $url = storeImage($attachment, 'posts/' . auth()->user()->id);
                     PostAttachment::create(['post_id' => $post[0]->id, 'attachment_path' => $url, 'type' => 'image']);
+                }
+                if (explode('/', $attachment->getClientMimeType())[0] == 'video') {
+                    $folderName = 'posts/' . auth()->user()->id;
+                    $video_name = Carbon::now()->toDateString() . '-' . uniqid() . '.' . $attachment->getClientOriginalExtension();
+                    $url = $attachment->storeAs($folderName, $video_name, 'public');
+                    $url = asset('storage/' . $url);
+                    PostAttachment::create(['post_id' => $post[0]->id, 'attachment_path' => $url, 'type' => 'video']);
                 }
             }
         }

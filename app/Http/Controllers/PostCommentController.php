@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Notifications\PostComment as NotifyComment;
 use App\Post;
 use App\PostComment;
 use Illuminate\Http\Request;
@@ -13,6 +14,7 @@ class PostCommentController extends Controller
         $comment_stored[] = PostComment::create($request->except('_token'));
         if ($comment_stored) {
             $post = Post::whereId($comment_stored[0]->post_id)->first();
+            $post->user->notify(new NotifyComment(auth()->user(), $post));
             $comment = postCommentsHTML($comment_stored,$post);
             return ['success' => 'You commented has been posted', 'comment' => $comment];
         }
