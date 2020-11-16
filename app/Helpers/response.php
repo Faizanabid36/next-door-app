@@ -120,8 +120,8 @@ if (!function_exists('postStateHTML')) {
             'Share' .
             '<span class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover "> ' .
             '<ul class="uk-nav uk-dropdown-nav">' .
-            '<li><a href="http://www.facebook.com/sharer.php?u=' . route('single.post', $post->id) . '&amp;src=sdkpreparse"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
-            '<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=' . route('single.post', $post->id) . '"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
+            '<li><a target="_blank" href="http://www.facebook.com/sharer.php?u=' . route('single.post', $post->id) . '&amp;src=sdkpreparse"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
+            '<li><a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url=' . route('single.post', $post->id) . '"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
             '</ul>' .
             '</span > ' .
             '</div > ' .

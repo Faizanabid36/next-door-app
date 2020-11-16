@@ -77,11 +77,11 @@
                             <span class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">
                                 <ul class="uk-nav uk-dropdown-nav">
                                     <li>
-                                        <a href="http://www.facebook.com/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse"><i
+                                        <a target="_blank" href="http://www.facebook.com/sharer.php?u={{url()->current()}}&amp;src=sdkpreparse"><i
                                                 class="uil-facebook mr-1"></i> Share on Facebook</a>
                                     </li>
                                     <li>
-                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$post->subject}}"> <i
+                                        <a target="_blank" href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$post->subject}}"> <i
                                                 class="uil-linkedin mr-1"></i> Share on LinkedIn</a>
                                     </li>
                                 </ul>
