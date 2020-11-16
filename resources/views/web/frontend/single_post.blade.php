@@ -81,8 +81,8 @@
                                                 class="uil-facebook mr-1"></i> Share on Facebook</a>
                                     </li>
                                     <li>
-{{--                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$event->event_title}}"> <i--}}
-{{--                                                class="uil-linkedin mr-1"></i> Share on LinkedIn</a>--}}
+                                        <a href="https://www.linkedin.com/shareArticle?mini=true&url={{url()->current()}}&title={{$event->event_title}}"> <i
+                                                class="uil-linkedin mr-1"></i> Share on LinkedIn</a>
                                     </li>
                                 </ul>
                             </span>

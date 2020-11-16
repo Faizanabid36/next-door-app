@@ -41,7 +41,7 @@ if (!function_exists('postsHTML')) {
                 '</div>' .
                 '</div>' .
                 '<div class="post-description">' .
-                '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . ' ' . ucfirst($post->body) . '</p>' .
+                '<p><b><i>' . ucfirst($post->subject) . '.</i></b>' . '' . ucfirst($post->body) . '</p>' .
                 '</div>' .
                 postAttachments($post) .
                 postStateHTML($post, $liked, $disliked) .
@@ -114,14 +114,14 @@ if (!function_exists('postStateHTML')) {
             count($post->dislikes) . '' .
             '<span> Dislikes </span>' .
             '</div>' .
-            '<div class="post-state-btns"><i class="uil-comment"></i> '.count($post->comments).' <span> Comments</span>' .
+            '<div class="post-state-btns"><i class="uil-comment"></i> ' . count($post->comments) . ' <span> Comments</span>' .
             '</div>' .
             '<div class="post-state-btns"><i class="uil-share-alt"></i>' .
             'Share' .
             '<span class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover "> ' .
             '<ul class="uk-nav uk-dropdown-nav">' .
-            '<li><a href="#"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
-            '<li><a href="#"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
+            '<li><a href="http://www.facebook.com/sharer.php?u=' . route('single.post', $post->id) . '&amp;src=sdkpreparse"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
+            '<li><a href="https://www.linkedin.com/shareArticle?mini=true&url=' . route('single.post', $post->id) . '"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
             '</ul>' .
             '</span > ' .
             '</div > ' .
