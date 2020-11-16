@@ -55,4 +55,11 @@ class PostController extends Controller
         $response = postStateHTML($post, $liked, $disliked);
         return ['response' => $response, 'operation' => $liked == '' ? 'You disliked this post' : 'You Liked this Post'];
     }
+
+    public function single_post($id)
+    {
+        $post = Post::with('user', 'attachments')->whereId($id)->firstOrFail();
+//        $data = postsHTML($posts);
+        return view('web.frontend.single_post', compact('post'));
+    }
 }

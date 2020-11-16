@@ -11,7 +11,6 @@
     <meta property="og:image:height" content="500" />
     <meta property="og:site_name" content="Salika">
     <meta name="twitter:image:alt" content="{{$event->event_title}}">
-
 @endsection
 
 @section('content')

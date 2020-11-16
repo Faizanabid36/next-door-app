@@ -25,11 +25,10 @@ Route::get('/', 'RouteViewsController@login_page')->name('login');
 
 Route::group(['middleware' => ['auth', 'verified']], function () {
     Route::get('/dashboard', 'RouteViewsController@login_page')->name('login');
-//    Route::get('/feed/news-feed', 'HomeController@feed')->name('feed');
-//    Route::get('/dashboard/', 'PostController@index')->name('dashboard');
     Route::get('/my-dashboard', 'RouteViewsController@feed')->name('home');
     Route::get('/admin-dashboard', 'RouteViewsController@main_dashboard')->name('admin-dashboard');
 });
+
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/public_agencies', 'HomeController@public_agencies')->name('public_agencies');
@@ -183,8 +182,9 @@ Route::middleware(['auth', 'verified'])->prefix('feed')->name('feed.')->group(fu
 
     Route::post('/post_comment', 'PostCommentController@store_comment')->name('store.comment');
     Route::post('/delete_comment', 'PostCommentController@delete_comment')->name('delete.comment');
-
 });
+
+Route::get('post/item/{id}','PostController@single_post')->name('single.post');
 
 /**
  *-----------------------------
@@ -256,4 +256,6 @@ Route::get('login/{provider}/callback', 'Auth\LoginController@handleProviderCall
 
 
 Route::get('/check_postal_code/{code}', 'HomeController@check_postal_code');
+
+
 

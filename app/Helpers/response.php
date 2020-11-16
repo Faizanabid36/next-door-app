@@ -121,10 +121,7 @@ if (!function_exists('postStateHTML')) {
             '<span class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover "> ' .
             '<ul class="uk-nav uk-dropdown-nav">' .
             '<li><a href="#"> <i class="uil-facebook mr-1"></i> Share on Facebook</a></li>' .
-            '</a></li>' .
             '<li><a href="#"> <i class="uil-linkedin mr-1"></i> Share on LinkedIn</a></li>' .
-            '</a></li>' .
-            '</li>' .
             '</ul>' .
             '</span > ' .
             '</div > ' .
