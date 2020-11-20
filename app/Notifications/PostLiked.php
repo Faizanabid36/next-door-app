@@ -49,8 +49,8 @@ class PostLiked extends Notification implements ShouldQueue
     {
         return (new MailMessage)
             ->subject('Someone ' . $this->operation . ' on your post.')
-            ->line(ucfirst($this->user->name) .' '. $this->operation.' your post')
-//            ->action('Click to View', route('business.view_business_page', $this->business_id))
+            ->line(ucfirst($this->user->name) . ' ' . $this->operation . ' your post')
+            ->action('View Post', route('single.post', $this->post->id))
             ->line('Thank you for using our application!');
     }
 
@@ -64,7 +64,7 @@ class PostLiked extends Notification implements ShouldQueue
     {
         return [
             'body' => ucfirst($this->operation . ' your post'),
-            'url' => '',
+            'url' => route('single.post', $this->post->id),
             'user' => $this->user,
             'type' => 'post-notification'
         ];

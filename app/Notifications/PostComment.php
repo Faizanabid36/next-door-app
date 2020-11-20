@@ -47,7 +47,7 @@ class PostComment extends Notification implements ShouldQueue
         return (new MailMessage)
             ->subject('Someone commented on your post.')
             ->line(ucfirst($this->user->name) . ' left a comment on your post')
-//            ->action('Click to View', route('business.view_business_page', $this->business_id))
+            ->action('View Post', route('single.post', $this->post->id))
             ->line('Thank you for using our application!');
     }
 
@@ -61,7 +61,7 @@ class PostComment extends Notification implements ShouldQueue
     {
         return [
             'body' => 'commented your post',
-            'url' => '',
+            'url' => route('single.post', $this->post->id),
             'user' => $this->user,
             'type' => 'post-notification'
         ];
