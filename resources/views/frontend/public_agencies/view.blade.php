@@ -271,17 +271,6 @@
                                             <h6 class="mb-0">Contact:</h6>
                                             <p>+923000000</p>
                                         </div>
-{{--                                        <div class="mt-1">--}}
-{{--                                            <button type="button" class="btn btn-sm btn-icon btn-primary mr-25 p-25">--}}
-{{--                                                <i class="feather icon-facebook"></i>--}}
-{{--                                            </button>--}}
-{{--                                            <button type="button" class="btn btn-sm btn-icon btn-primary mr-25 p-25">--}}
-{{--                                                <i class="feather icon-twitter"></i>--}}
-{{--                                            </button>--}}
-{{--                                            <button type="button" class="btn btn-sm btn-icon btn-primary p-25">--}}
-{{--                                                <i class="feather icon-instagram"></i>--}}
-{{--                                            </button>--}}
-{{--                                        </div>--}}
                                     </div>
                                 </div>
                             </div>

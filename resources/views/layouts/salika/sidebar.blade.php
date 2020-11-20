@@ -18,7 +18,7 @@
                         <h2 class="text-dark"> {{isset(auth()->user()->id)?auth()->user()->address:''}} </h2>
                     </li>
                     <hr>
-                    <li>
+                    <li class="{{Request::is('feed/news-feed')?'active':''}}">
                         <a href="{{route('feed.','news-feed')}}">
                             <img src="{{asset('salika/assets/images/icons/home.png')}}" alt="">
                             <span> News Feed </span>
@@ -30,7 +30,7 @@
                             <span> Public Agencies </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
+                    <li class="{{Route::currentRouteName()=='neighbours'?'active':''}}">
                         <a href="{{route('neighbours')}}"> <img
                                 src="{{asset('salika/assets/images/icons/friends.png')}}"
                                 alt="">
@@ -43,19 +43,19 @@
                             <span> Events </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
+                    <li class="{{Request::is('feed/lost-items')?'active':''}}">
                         <a href="{{route('feed.','lost-items')}}"> <img
                                 src="{{asset('salika/assets/images/icons/lost_items.png')}}" alt="">
                             <span> Lost Items </span>
                         </a>
                     </li>
-                    <li id="more-veiw">
+                    <li class="{{Request::is('feed/crime-awareness')?'active':''}}">
                         <a href="{{route('feed.','crime-awareness')}}"> <img
                                 src="{{asset('salika/assets/images/icons/police.png')}}" alt="">
                             <span> Crime Awareness </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{Request::is('real_estate*')?'active':''}}">
                         <a href="{{route('real_estate.listings')}}"> <img
                                 src="{{asset('salika/assets/images/icons/real_estate_icon.png')}}"
                                 alt="">
@@ -76,7 +76,7 @@
                             <span> Business </span>
                         </a>
                     </li>
-                    <li>
+                    <li class="{{Request::is('feed/questions')?'active':'test'}}">
                         <a href="{{route('feed.','questions')}}">
                             <img src="{{asset('salika/assets/images/icons/question.png')}}" alt="">
                             <span> Questions </span>

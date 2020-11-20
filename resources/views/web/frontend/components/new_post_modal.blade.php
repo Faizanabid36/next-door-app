@@ -12,7 +12,11 @@
                 </div>
                 <div class="modal-body">
                     @csrf
-                    @include('web.frontend.components.modal_category_selector')
+                    @if(!auth()->user()->is_public_agent)
+                        @include('web.frontend.components.modal_category_selector')
+                    @else
+                        <input type="hidden" name="section" value="agency-post">
+                    @endif
                     <div class="mb-3">
                         <input type="text" name="subject" class="uk-input uk-form-small text-dark"
                                placeholder="Subject" required="true">

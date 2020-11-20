@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ValidateAgent;
+use App\Post;
 use App\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
 class PublicAgentController extends Controller
@@ -35,9 +37,15 @@ class PublicAgentController extends Controller
         return \view('web.frontend.public_agencies.list', compact('users'));
     }
 
-    public function feed()
+    public function feed(Request $request)
     {
-        return \view('web.frontend.public_agencies.feed');
+        $posts = Post::latest()->with('user')->whereHas('user', function ($q) {
+            return $q->whereIsPublicAgent(1);
+        })->paginate(10);
+        if ($request->ajax()) {
+            return postsHTML($posts);
+        }
+        return view('web.frontend.public_agencies.feed');
     }
 
 }

@@ -226,7 +226,7 @@ Route::get('real_estate/listing/show/{id}', 'PropertiesController@show')->name('
  */
 Route::name('agency.')->middleware(['auth', 'verified'])->prefix('agency')->group(function () {
     Route::get('list', 'PublicAgentController@agencies')->name('list');
-    Route::get('feed', 'PublicAgentController@feed')->name('feed');
+        Route::get('feed', 'PublicAgentController@feed')->name('feed');
 });
 
 
