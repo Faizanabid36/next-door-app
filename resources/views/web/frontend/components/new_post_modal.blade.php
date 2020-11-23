@@ -26,6 +26,10 @@
                                       required placeholder="Message"></textarea>
                     </div>
                     <div class="media-upload-image" id="media-upload-image"></div>
+
+                    {{--                    <div class="input-field">--}}
+                    {{--                        <div class="input-images"></div>--}}
+                    {{--                    </div>--}}
                 </div>
                 <div class="modal-footer">
                     <div style="flex: auto" class="px-0 d-flex flex-sm-row flex-column justify-content-start">
@@ -51,6 +55,8 @@
 
 @section('footer_scripts')
     <script>
+        let deleted_file_ids = [];
+        $('.input-images').imageUploader();
         $('#cover-upload').on('change', function (e) {
             let files = e.target.files;
             $.each(files, async function (i, file) {
@@ -59,8 +65,8 @@
                 await reader.readAsDataURL(file);
                 reader.onload = await function (e) {
                     if (file.type.match('image')) {
-                        let template = '<div style="position:relative;">' +
-                            '<div onclick="alert(`faizan`)" class="close" style="cursor: pointer;right:5px;position: absolute;">' +
+                        let template = `<div style="position:relative;" id="modal-item-${i}">` +
+                            `<div id="${i}" class="close-item" style="cursor: pointer;right:5px;position: absolute;">` +
                             '<span>&times;</span>' +
                             '</div>' +
                             `<img class="mx-1" src="${e.target.result}" style="width: 80px!important;height: 80px !important;border-radius: 10px"/>` +
@@ -68,8 +74,8 @@
                         $('.media-upload-image').append($(template));
                     } else {
                         let src = "https://mk0theshotsuimyah8q1.kinstacdn.com/wp-content/plugins/video-thumbnails/default.jpg";
-                        let template = '<div style="position:relative;">' +
-                            '<div onclick="alert(`faizan`)" class="close" style="cursor: pointer;right:5px;position: absolute;">' +
+                        let template = `<div style="position:relative;" id="modal-item-${i}">` +
+                            `<div id="${i}" class="close-item" style="cursor: pointer;right:5px;position: absolute;">` +
                             '<span>&times;</span>' +
                             '</div>' +
                             `<img class="mx-1" src="${src}" style="width: 80px!important;height: 80px !important;border-radius: 10px"/>` +
@@ -83,6 +89,7 @@
 
         $(document).ready(function () {
             let page = 1;
+            let deleted_file_ids = []
             load_more(page)
             $(window).scroll(function () { //detect page scroll
                 if ($(window).scrollTop() + $(window).height() + 2 >= $(document).height()) {
@@ -90,6 +97,11 @@
                     load_more(page);
                 }
             });
+            $(document).on('click', '.close-item', function (e) {
+                deleted_file_ids.push(this.id)
+                $(`#modal-item-${this.id}`).fadeOut();
+                console.log(deleted_file_ids)
+            })
 
             $('#newForm').submit(function (event) {
                 event.preventDefault();
@@ -100,14 +112,15 @@
                 let files = [];
                 for (let i = 0; i < $("#cover-upload")[0].files.length; i++) {
                     files.push($("#cover-upload")[0].files[i]);
-                    formData.append(`post_attachments[${i}]`,files[i])
+                    formData.append(`post_attachments[${i}]`, files[i])
                 }
                 let _token = $('meta[name="csrf-token"]').attr('content');
 
-                formData.append('subject',subject)
-                formData.append('section',section)
-                formData.append('body',body)
-                formData.append('_token',_token)
+                formData.append('subject', subject)
+                formData.append('section', section)
+                formData.append('body', body)
+                formData.append('deleted_file_ids', deleted_file_ids)
+                formData.append('_token', _token)
                 toastr.options.closeButton = true
                 $.ajax({
                     url: "{{action($action)}}",

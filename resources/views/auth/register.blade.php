@@ -44,14 +44,14 @@
 
 
             <div class="form-media-footer">
-                <ul>
-                    <li><a href="#"> About </a></li>
-                    <li><a href="#"> Contact </a></li>
-                    <li><a href="#"> About </a></li>
-                    <li><a href="#"> Contact </a></li>
-                    <li><a href="#"> About </a></li>
-                    <li><a href="#"> Contact </a></li>
-                </ul>
+{{--                <ul>--}}
+{{--                    <li><a href="#"> About </a></li>--}}
+{{--                    <li><a href="#"> Contact </a></li>--}}
+{{--                    <li><a href="#"> About </a></li>--}}
+{{--                    <li><a href="#"> Contact </a></li>--}}
+{{--                    <li><a href="#"> About </a></li>--}}
+{{--                    <li><a href="#"> Contact </a></li>--}}
+{{--                </ul>--}}
             </div>
 
         </div>

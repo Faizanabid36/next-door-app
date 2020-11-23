@@ -19,6 +19,8 @@
     <link rel="stylesheet" href="{{asset('salika/assets/css/framework.css?version='.time())}}">
     <link rel="stylesheet" href="{{asset('salika/assets/css/custom.css?version='.time())}}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link type="text/css" rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link type="text/css" rel="stylesheet" href="{{asset('salika/assets/css/image-uploader.css')}}">
 
     <!-- icons ================================================== -->
     <link rel="stylesheet" href="{{asset('salika/assets/css/icons.css')}}">
@@ -58,6 +60,7 @@
 -->
 <script src="{{asset('salika/assets/js/jquery.min.js?version='.time())}}"></script>
 <script src="{{asset('salika/assets/js/toastr.js')}}"></script>
+<script type="text/javascript" src="{{asset('salika/assets/js/image-uploader.min.js')}}"></script>
 @yield('footer_scripts')
 
 <script src="{{asset('salika/assets/js/jquery-3.5.1.slim.min.js')}}"></script>
@@ -69,6 +72,7 @@
 <script src="{{asset('salika/assets/js/moment.js')}}"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('salika/assets/js/pusher.min.js')}}"></script>
+
 
 
 <div id="fb-root"></div>
