@@ -13,9 +13,9 @@ class PostController extends Controller
     //
     public function index(Request $request, $type)
     {
-        if (!in_array($type, ['lost-items', 'news-feed', 'crime-awareness', 'questions', 'dashboard'])) abort(404);
+        if (!in_array($type, ['global', 'lost-items', 'news-feed', 'crime-awareness', 'questions', 'dashboard'])) abort(404);
         $type = $type == 'dashboard' ? 'news-feed' : $type;
-        $posts = Post::sectionPosts($type);
+        $posts = $type == 'global' ? Post::latest()->with('user')->paginate(10) : $posts = Post::sectionPosts($type);
         if ($request->ajax()) {
             return postsHTML($posts);
         }

@@ -24,6 +24,13 @@
                             <span> News Feed </span>
                         </a>
                     </li>
+                    <li class="{{Request::is('feed/global')?'active':''}}">
+                        <a href="{{route('feed.','global')}}"> <img
+                                src="{{asset('salika/assets/images/icons/eye.png')}}"
+                                alt="">
+                            <span> Global </span>
+                        </a>
+                    </li>
                     <li class="{{Request::is('agency*')?'active':''}}">
                         <a href="{{route('agency.feed')}}">
                             <img src="{{asset('salika/assets/images/icons/public_agencies.png')}}">
