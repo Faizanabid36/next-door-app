@@ -15,6 +15,6 @@ class ReportedPostController extends Controller
             'user_id' => auth()->user()->id,
             'item_id' => $request->get('item_id')
         ], $request->except('_token'));
-        return response()->json(['success' => 'Event Reported']);
+        return response()->json(['success' => ucfirst($request->type) . ' Reported']);
     }
 }

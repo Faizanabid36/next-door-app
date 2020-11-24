@@ -51,8 +51,45 @@
         </div>
     </div>
 
-@endsection
+    <div class="modal fade" id="reportModal" tabindex="-1" role="dialog"
+         aria-labelledby="messageModal"
+         aria-hidden="true">
 
+        <div class="modal-dialog modal-dialog-centered" role="document">
+
+            <div class="modal-content" style="width:94%;margin: 0px auto">
+                <form id="reportForm" action="{{route('report_item.store')}}" method="POST">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="report_event"><i>Report Post</i></h5>
+                        <button class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body" id="first_modal">
+                        @csrf
+                        <div class="mb-2">
+                            <h5 class="uk-text-bold mb-1"> Why do you want to report this event? </h5>
+                            <input type="hidden" name="type" value="post" id="type">
+                            <input type="hidden" name="item_id" value="" id="item_id">
+                            <textarea required name="body_html" id="body_html" class="uk-textarea uk-form-small rounded"
+                                      rows="6" placeholder="Type Reason Here...">{{old('body_html')}}</textarea>
+                        </div>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" id="close_all1" data-dismiss="modal">Close
+                        </button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="uil-message"></i>
+                            Report Post
+                        </button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+@endsection
 @section('footer_scripts')
     <script>
         let deleted_file_ids = [];
@@ -101,6 +138,36 @@
                 deleted_file_ids.push(this.id)
                 $(`#modal-item-${this.id}`).fadeOut();
                 console.log(deleted_file_ids)
+            })
+            $(document).on("click", '.reportModal', function (e) {
+                console.log(this)
+                let detailId = $(this).attr("data-post-id");
+                document.getElementById('item_id').value = detailId;
+                // $('#reportModal').toggle()
+            });
+            $('#reportForm').submit(function (event) {
+                event.preventDefault();
+                let body = $("#body_html").val();
+                let type = $("input[name=type]").val();
+                let item_id = $("input[name=item_id]").val();
+                let _token = $('meta[name="csrf-token"]').attr('content');
+                $.ajax({
+                    url: "{{route('report_item.store')}}",
+                    type: "POST",
+                    data: {
+                        body: body,
+                        type: type,
+                        item_id: item_id,
+                        _token: _token
+                    },
+                    success: function (res) {
+                        console.log(res);
+                        if (res.success) {
+                            toastr.options.closeButton = true
+                            toastr.success(res.success, 'Success', {timeOut: 5000});
+                        }
+                    },
+                });
             })
 
             $('#newForm').submit(function (event) {

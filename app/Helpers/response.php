@@ -14,9 +14,15 @@ if (!function_exists('postsHTML')) {
             $res = '';
             $showDelete = '';
             $showReport = '';
+            $tx = '';
 
-            if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
-                $showReport = '<li>
+            if (isset(auth()->user()->id)) {
+                if ($post->user_id == auth()->user()->id) {
+                    $tx = '<li><a id="del-post-' . $post->id . '" onclick="deletePost(this)" class="text-danger">' .
+                        ' <i class="uil-trash-alt mr-1"></i>' .
+                        'Delete </a></li>';
+                } else {
+                    $showReport = '<li>
                                 <a data-toggle="modal"
                                    data-post-id="' . $post->id . '"
                                    class="reportModal"
@@ -25,13 +31,11 @@ if (!function_exists('postsHTML')) {
                                    Report
                                 </a>
                             </li>';
-            }
-            if (isset(auth()->user()->id) && $post->user_id == auth()->user()->id) {
+                }
                 $showDelete = '<div class="mt-0 p-2 uk-dropdown" uk-dropdown="pos: bottom-right;mode:hover ">' .
                     '<ul class="uk-nav uk-dropdown-nav">' .
-                    '<li><a id="del-post-' . $post->id . '" onclick="deletePost(this)" class="text-danger">' .
-                    ' <i class="uil-trash-alt mr-1"></i>' .
-                    'Delete </a></li>' . $showReport . '</ul></div>';
+                    $tx .
+                    $showReport . '</ul></div>';
             }
             if (!is_null($myLikes)) {
                 if (in_array($post->id, $myLikesID))
