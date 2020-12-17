@@ -27,7 +27,6 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        \Illuminate\Support\Facades\URL::forceScheme('https');
         \View::composer(['web.frontend.sale_and_business.list_items', 'frontend.ecommerce.all_sale_items'], function ($view) {
             $categories = Cache::remember('articles', 15, function () {
                 return Category::all();
