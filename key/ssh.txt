@@ -1,0 +1,1 @@
+ssh -i "AWSUbuntukey.pem" ubuntu@ec2-54-167-183-19.compute-1.amazonaws.com
